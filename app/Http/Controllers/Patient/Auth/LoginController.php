@@ -77,4 +77,9 @@ class LoginController extends Controller
         return redirect($this->redirectTo);
     }
 
+    public function username()
+    {
+        return 'cin';
+    }
+
 }

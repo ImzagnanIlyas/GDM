@@ -24,38 +24,4 @@ Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
 
-//Patient Routse :
-Route::prefix('patient')->group(function () {
-    //put ur routes here
-    /*
-    Exemple :
-
-    Route::get('toto', function () {
-        // Matches The "/pateint/toto" URL
-    });
-    */
-});
-
-//Medecin Routes :
-Route::prefix('medecin')->group(function () {
-    //put ur routes here
-    /*
-    Exemple :
-
-    Route::get('toto', function () {
-        // Matches The "/medecin/toto" URL
-    });
-    */
-});
-
-//Pharmacie Routes :
-Route::prefix('pharmacie')->group(function () {
-    //put ur routes here
-});
-
-//Examinateur Routes :
-Route::prefix('examinateur')->group(function () {
-    //put ur routes here
-});
-
 
