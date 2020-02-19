@@ -9,6 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.2",
+        "bitfumes/laravel-multiauth": "^3.0",
         "fideloper/proxy": "^4.0",
         "larapack/hooks": "^1.0",
         "laravel/framework": "^6.2",
