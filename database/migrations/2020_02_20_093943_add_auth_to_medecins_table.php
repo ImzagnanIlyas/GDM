@@ -1,10 +1,10 @@
-    <?php
+<?php
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddAuthToPatientsTable extends Migration
+class AddAuthToMedecinsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddAuthToPatientsTable extends Migration
      */
     public function up()
     {
-        Schema::table('patients', function (Blueprint $table) {
-            $table->string('username')->after('atcd');
+        Schema::table('medecins', function (Blueprint $table) {
+            $table->string('username')->after('lieu');
             $table->string('password')->after('username');
         });
     }

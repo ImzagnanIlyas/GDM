@@ -36,6 +36,11 @@ return [
     */
 
     'guards' => [
+        'medecin' => [
+            'driver'   => 'session',
+            'provider' => 'medecins',
+        ],
+
         'patient' => [
             'driver'   => 'session',
             'provider' => 'patients',
@@ -71,6 +76,11 @@ return [
     */
 
     'providers' => [
+        'medecins' => [
+            'driver' => 'eloquent',
+            'model'  => App\Medecin::class,
+        ],
+
         'patients' => [
             'driver' => 'eloquent',
             'model'  => App\Patient::class,
@@ -103,6 +113,12 @@ return [
     */
 
     'passwords' => [
+        'medecins' => [
+            'provider' => 'medecins',
+            'table'    => 'password_resets',
+            'expire'   => 60,
+        ],
+
         'patients' => [
             'provider' => 'patients',
             'table'    => 'password_resets',
