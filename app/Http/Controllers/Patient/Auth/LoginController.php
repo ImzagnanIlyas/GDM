@@ -79,7 +79,7 @@ class LoginController extends Controller
 
     public function username()
     {
-        return 'cin';
+        return 'inpe';
     }
 
 }

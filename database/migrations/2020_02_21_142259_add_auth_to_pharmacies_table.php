@@ -14,6 +14,7 @@ class AddAuthToPharmaciesTable extends Migration
     public function up()
     {
         Schema::create('pharmacies', function (Blueprint $table) {
+            $table->bigInteger('inpe')->after('id');;
             $table->string('username')->after('patient_id');
             $table->string('password')->after('username');
         });
