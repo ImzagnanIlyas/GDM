@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2b4610137114ccdae609616cd1f906c5",
+    "content-hash": "0a610d72dd8c163fc896d2418267b400",
     "packages": [
         {
             "name": "arrilot/laravel-widgets",
@@ -67,6 +67,64 @@
                 "widgets"
             ],
             "time": "2019-03-25T14:20:55+00:00"
+        },
+        {
+            "name": "bitfumes/laravel-multiauth",
+            "version": "3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bitfumes/laravel-multiauth.git",
+                "reference": "b2ebcbe091512aabe1c53d93203185accad99b30"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bitfumes/laravel-multiauth/zipball/b2ebcbe091512aabe1c53d93203185accad99b30",
+                "reference": "b2ebcbe091512aabe1c53d93203185accad99b30",
+                "shasum": ""
+            },
+            "require-dev": {
+                "fzaninotto/faker": "^1.9@dev",
+                "illuminate/support": "^5.8|^6.0",
+                "mockery/mockery": "^1.0@dev",
+                "orchestra/database": "^4.0",
+                "orchestra/testbench": "^4.0",
+                "phpunit/phpunit": "^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Bitfumes\\Multiauth\\MultiauthServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Bitfumes\\Multiauth\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "sarthaksavvy",
+                    "email": "sarthak@bitfumes.com"
+                }
+            ],
+            "description": "Laravel Multiauth package",
+            "keywords": [
+                "Laravel multiauth",
+                "Multi Auth",
+                "admin auth",
+                "bitfumes",
+                "laravel acl",
+                "laravel permissions",
+                "laravel roles permissions",
+                "multiauth"
+            ],
+            "time": "2019-12-25T17:00:33+00:00"
         },
         {
             "name": "composer/ca-bundle",

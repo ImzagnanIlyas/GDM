@@ -36,6 +36,26 @@ return [
     */
 
     'guards' => [
+        'examinateur' => [
+            'driver'   => 'session',
+            'provider' => 'examinateurs',
+        ],
+
+        'pharmacie' => [
+            'driver'   => 'session',
+            'provider' => 'pharmacies',
+        ],
+
+        'medecin' => [
+            'driver'   => 'session',
+            'provider' => 'medecins',
+        ],
+
+        'patient' => [
+            'driver'   => 'session',
+            'provider' => 'patients',
+        ],
+
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
@@ -66,6 +86,26 @@ return [
     */
 
     'providers' => [
+        'examinateurs' => [
+            'driver' => 'eloquent',
+            'model'  => App\Examinateur::class,
+        ],
+
+        'pharmacies' => [
+            'driver' => 'eloquent',
+            'model'  => App\Pharmacie::class,
+        ],
+
+        'medecins' => [
+            'driver' => 'eloquent',
+            'model'  => App\Medecin::class,
+        ],
+
+        'patients' => [
+            'driver' => 'eloquent',
+            'model'  => App\Patient::class,
+        ],
+
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
@@ -93,6 +133,30 @@ return [
     */
 
     'passwords' => [
+        'examinateurs' => [
+            'provider' => 'examinateurs',
+            'table'    => 'password_resets',
+            'expire'   => 60,
+        ],
+
+        'pharmacies' => [
+            'provider' => 'pharmacies',
+            'table'    => 'password_resets',
+            'expire'   => 60,
+        ],
+
+        'medecins' => [
+            'provider' => 'medecins',
+            'table'    => 'password_resets',
+            'expire'   => 60,
+        ],
+
+        'patients' => [
+            'provider' => 'patients',
+            'table'    => 'password_resets',
+            'expire'   => 60,
+        ],
+
         'users' => [
             'provider' => 'users',
             'table' => 'password_resets',

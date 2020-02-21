@@ -46,8 +46,84 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapWebRoutes();
 
+        $this->mapExaminateurRoutes();
+
+        $this->mapPharmacieRoutes();
+
+        $this->mapMedecinRoutes();
+
+        $this->mapPatientRoutes();
+
         //
+    }    
+    
+    /**
+     * Define the "patient" routes for the application.
+     *
+     * These routes are typically stateless.
+     *
+     * @return void
+     */
+    protected function mapPatientRoutes()
+    {
+        Route::prefix('patient')
+             ->middleware(['web'])
+             ->namespace($this->namespace)
+             ->group(base_path('routes/patient.php'));
+    }    
+    
+    /**
+     * Define the "medecin" routes for the application.
+     *
+     * These routes are typically stateless.
+     *
+     * @return void
+     */
+    protected function mapMedecinRoutes()
+    {
+        Route::prefix('medecin')
+             ->middleware(['web'])
+             ->namespace($this->namespace)
+             ->group(base_path('routes/medecin.php'));
+    }    
+    
+    /**
+     * Define the "pharmacie" routes for the application.
+     *
+     * These routes are typically stateless.
+     *
+     * @return void
+     */
+    protected function mapPharmacieRoutes()
+    {
+        Route::prefix('pharmacie')
+             ->middleware(['web'])
+             ->namespace($this->namespace)
+             ->group(base_path('routes/pharmacie.php'));
+    }    
+    
+    /**
+     * Define the "examinateur" routes for the application.
+     *
+     * These routes are typically stateless.
+     *
+     * @return void
+     */
+    protected function mapExaminateurRoutes()
+    {
+        Route::prefix('examinateur')
+             ->middleware(['web'])
+             ->namespace($this->namespace)
+             ->group(base_path('routes/examinateur.php'));
     }
+
+
+
+
+
+
+
+
 
     /**
      * Define the "web" routes for the application.
