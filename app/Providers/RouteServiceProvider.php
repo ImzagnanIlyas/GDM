@@ -46,6 +46,8 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapWebRoutes();
 
+        $this->mapPharmacieRoutes();
+
         $this->mapMedecinRoutes();
 
         $this->mapPatientRoutes();
@@ -81,7 +83,24 @@ class RouteServiceProvider extends ServiceProvider
              ->middleware(['web'])
              ->namespace($this->namespace)
              ->group(base_path('routes/medecin.php'));
+    }    
+    
+    /**
+     * Define the "pharmacie" routes for the application.
+     *
+     * These routes are typically stateless.
+     *
+     * @return void
+     */
+    protected function mapPharmacieRoutes()
+    {
+        Route::prefix('pharmacie')
+             ->middleware(['web'])
+             ->namespace($this->namespace)
+             ->group(base_path('routes/pharmacie.php'));
     }
+
+
 
 
 
