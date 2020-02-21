@@ -36,6 +36,11 @@ return [
     */
 
     'guards' => [
+        'examinateur' => [
+            'driver'   => 'session',
+            'provider' => 'examinateurs',
+        ],
+
         'pharmacie' => [
             'driver'   => 'session',
             'provider' => 'pharmacies',
@@ -81,6 +86,11 @@ return [
     */
 
     'providers' => [
+        'examinateurs' => [
+            'driver' => 'eloquent',
+            'model'  => App\Examinateur::class,
+        ],
+
         'pharmacies' => [
             'driver' => 'eloquent',
             'model'  => App\Pharmacie::class,
@@ -123,6 +133,12 @@ return [
     */
 
     'passwords' => [
+        'examinateurs' => [
+            'provider' => 'examinateurs',
+            'table'    => 'password_resets',
+            'expire'   => 60,
+        ],
+
         'pharmacies' => [
             'provider' => 'pharmacies',
             'table'    => 'password_resets',

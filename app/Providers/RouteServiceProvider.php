@@ -46,6 +46,8 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapWebRoutes();
 
+        $this->mapExaminateurRoutes();
+
         $this->mapPharmacieRoutes();
 
         $this->mapMedecinRoutes();
@@ -98,7 +100,24 @@ class RouteServiceProvider extends ServiceProvider
              ->middleware(['web'])
              ->namespace($this->namespace)
              ->group(base_path('routes/pharmacie.php'));
+    }    
+    
+    /**
+     * Define the "examinateur" routes for the application.
+     *
+     * These routes are typically stateless.
+     *
+     * @return void
+     */
+    protected function mapExaminateurRoutes()
+    {
+        Route::prefix('examinateur')
+             ->middleware(['web'])
+             ->namespace($this->namespace)
+             ->group(base_path('routes/examinateur.php'));
     }
+
+
 
 
 
