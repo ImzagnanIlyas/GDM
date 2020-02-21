@@ -13,7 +13,7 @@ class AddAuthToExaminateursTable extends Migration
      */
     public function up()
     {
-        Schema::create('examinateurs', function (Blueprint $table) {
+        Schema::table('examinateurs', function (Blueprint $table) {
             $table->bigInteger('inpe')->after('id');;
             $table->string('username')->after('patient_id');
             $table->string('password')->after('username');

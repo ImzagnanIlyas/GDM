@@ -16,7 +16,7 @@ class CreateMedecinsTable extends Migration
         Schema::create('medecins', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('patient_id');
-            $table->bigInteger('inp');
+            $table->bigInteger('inpe');
             $table->string('specialite', 50);
             $table->string('type', 10);
             $table->string('tele_pro', 20);
