@@ -82,4 +82,16 @@ class LoginController extends Controller
         return 'cin';
     }
 
+    protected function validateLogin(Request $request)
+    {
+        $this->validate($request, [
+            $this->username() => 'required|regex:/^[A-Z]{1,3}[0-9]{4,8}/',
+            'password' => 'required|min:8',
+        ],
+        [
+            'regex' => 'Format invalide. Exemple : AD123456',
+        ]
+    );
+    }
+
 }
