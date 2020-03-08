@@ -1,71 +1,129 @@
-@extends('pharmacie.layouts.app')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Authentification</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href=""/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ asset('fonts/fontawesome-all.min.css') }}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/auth/animate.css') }}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/auth/hamburgers.min.css') }}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/auth/select2.min.css') }}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/auth/util.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/auth/main.css') }}">
+<!--===============================================================================================-->
+</head>
+<body>
+<div class="context">
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<div class="login100-pic js-tilt" data-tilt>
+					<img src="{{ asset('img/auth/pharmacie.jpg') }}" alt="IMG">
+				</div>
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+				<form class="login100-form validate-form" method="POST" action="{{ route('pharmacie.login') }}" aria-label="{{ __('Login') }}">
+					@csrf
+					<span class="login100-form-title" style="font-size: 22px">
+						Pharmacie - Authentification
+					</span>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('pharmacie.login') }}" aria-label="{{ __('Login') }}">
-                        @csrf
+					<div class="wrap-input100 validate-input" data-validate = "Invalide">
+						<input class="input100" type="text" id="inpe" name="inpe" placeholder="INPE" value="{{ old('inpe') }}" autofocus>
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+                            <i class="fas fa-user-md" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    @if ($errors->has('inpe'))
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {{ $errors->first('inpe') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    @endif
 
-                        <div class="form-group row">
-                            <label for="inpe" class="col-sm-4 col-form-label text-md-right">{{ __('INPE') }}</label>
+					<div class="wrap-input100 validate-input" data-validate = "Invalide">
+						<input class="input100" type="password" id="password" name="password" placeholder="Mot de passe" >
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+                    </div>
+                    @if ($errors->has('password'))
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        {{ $errors->first('password') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    @endif
 
-                            <div class="col-md-6">
-                                <input id="inpe" type="inpe" class="form-control{{ $errors->has('inpe') ? ' is-invalid' : '' }}" name="inpe" value="{{ old('inpe') }}" required autofocus>
-
-                                @if ($errors->has('inpe'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('inpe') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
+                        <div class="custom-control custom-checkbox small">
+                            <div class="form-check"><input class="form-check-input custom-control-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}><label class="form-check-label custom-control-label" for="remember">Se souvenir de moi</label></div>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn" type="submit">
+							Connexion
+						</button>
+					</div>
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+					<div class="text-center p-t-12">
+						<a class="txt2" href="#">
+							Mot de passe oublié ?
+						</a>
+					</div>
 
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                <a class="btn btn-link" href="{{ route('pharmacie.password.request') }}">
-                                    {{ __('Forgot Your Password?') }}
-                                </a>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+					<div class="text-center p-t-136">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 </div>
-@endsection
+
+<div class="area" >
+    <ul class="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+    </ul>
+</div >
+
+<!--===============================================================================================-->
+	<script src="{{ asset('js/jquery.min.js') }}"></script>
+<!--===============================================================================================-->
+	<script src="{{ asset('js/auth/popper.js') }}"></script>
+	<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+<!--===============================================================================================-->
+	<script src="{{ asset('js/auth/select2.min.js') }}"></script>
+<!--===============================================================================================-->
+	<script src="{{ asset('js/auth/tilt.jquery.min.js') }}"></script>
+	<script >
+		$('.js-tilt').tilt({
+			scale: 1.1
+		})
+	</script>
+<!--===============================================================================================-->
+	<script src="{{ asset('js/auth/main.js') }}"></script>
+
+</body>
+</html>
