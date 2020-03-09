@@ -82,4 +82,16 @@ class LoginController extends Controller
         return 'inpe';
     }
 
+    protected function validateLogin(Request $request)
+    {
+        $this->validate($request, [
+            $this->username() => 'required|regex:/[0-9]{9}/',
+            'password' => 'required|min:8',
+        ],
+        [
+            'regex' => 'Format invalide. Exemple : 123456789',
+        ]
+    );
+    }
+
 }

@@ -1,10 +1,10 @@
-    <?php
+<?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class AddAuthToPatientsTable extends Migration
+class AddBiometrieToPatientsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,9 +14,7 @@ class AddAuthToPatientsTable extends Migration
     public function up()
     {
         Schema::table('patients', function (Blueprint $table) {
-            $table->string('username')->after('atcd');
-            $table->string('password')->after('username');
-            $table->rememberToken();
+            $table->json('biometrie')->after('famille');
         });
     }
 
@@ -27,6 +25,8 @@ class AddAuthToPatientsTable extends Migration
      */
     public function down()
     {
-
+        Schema::table('patients', function (Blueprint $table) {
+            //
+        });
     }
 }

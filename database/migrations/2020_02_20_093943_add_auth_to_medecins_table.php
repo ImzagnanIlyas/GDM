@@ -16,6 +16,7 @@ class AddAuthToMedecinsTable extends Migration
         Schema::table('medecins', function (Blueprint $table) {
             $table->string('username')->after('lieu');
             $table->string('password')->after('username');
+            $table->rememberToken();
         });
     }
 

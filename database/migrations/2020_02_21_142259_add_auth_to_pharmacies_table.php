@@ -17,6 +17,7 @@ class AddAuthToPharmaciesTable extends Migration
             $table->bigInteger('inpe')->after('id');;
             $table->string('username')->after('patient_id');
             $table->string('password')->after('username');
+            $table->rememberToken();
         });
     }
 
