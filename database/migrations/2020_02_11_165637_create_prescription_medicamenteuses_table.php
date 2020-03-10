@@ -22,7 +22,7 @@ class CreatePrescriptionMedicamenteusesTable extends Migration
             $table->string('rythme');
             $table->string('duree');
             $table->date('date_debut');
-            $table->string('Commentaire')->nullable();
+            $table->string('commentaire')->nullable();
             $table->boolean('confirmation')->default(0);
             $table->unsignedBigInteger('pharmacie_id')->nullable();
             $table->timestamps();

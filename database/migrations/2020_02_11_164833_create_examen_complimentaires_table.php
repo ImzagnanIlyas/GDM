@@ -17,7 +17,7 @@ class CreateExamenComplimentairesTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('consultation_id');
             $table->string('bilan');
-            $table->json('Prescription_analyse');
+            $table->json('prescription_analyse');
             $table->boolean('confirmation')->default(0);
             $table->unsignedBigInteger('examinateur_id')->nullable();
             $table->timestamps();
