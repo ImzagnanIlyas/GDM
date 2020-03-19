@@ -38,7 +38,7 @@
                 </a>
                 <hr class="sidebar-divider my-0">
                 <ul class="nav navbar-nav text-light" id="accordionSidebar">
-                    <li class="nav-item" role="presentation"><a class="nav-link active" href="index.html"><i
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="{{ url('/medecin') }}"><i
                                 class="fas fa-home"></i><span>Accueil</span></a><a class="nav-link active"
                             href="index.html"><i class="fas fa-users"></i><span>Mes patients</span></a><a
                             class="nav-link active" href="index.html"><i class="far fa-clipboard"></i><span>Mes
@@ -56,12 +56,14 @@
                 <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
                     <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle mr-3"
                             id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
-                        <form
-                            class="form-inline d-none d-sm-inline-block mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                            <div class="input-group"><input class="bg-light form-control border-0 small" type="text"
-                                    placeholder="Rechercher un patient...">
-                                <div class="input-group-append"><button class="btn btn-primary py-0" type="button"><i
-                                            class="fas fa-search"></i></button></div>
+                    <form method="GET" action="{{ route('medecin.recherche') }}" class="form-inline d-none d-sm-inline-block mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                            <div class="input-group">
+                                <input class="bg-light form-control border-0 small" type="text" name="cin"
+                                    placeholder="Entrez le CIN du patient...">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary py-0" type="submit">
+                                    <i class="fas fa-search"></i></button>
+                                </div>
                             </div>
                         </form>
                         <ul class="nav navbar-nav flex-nowrap ml-auto">
@@ -83,9 +85,7 @@
                             <li class="nav-item dropdown no-arrow" role="presentation">
                             <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" data-toggle="dropdown"
                                     aria-expanded="false" href="#"><span
-                                        class="d-none d-lg-inline mr-2 text-gray-600 small">{{ Auth::guard('medecin')->user()->username }}</span><img
-                                        class="border rounded-circle img-profile"
-                                        src="assets/img/avatars/avatar1.jpeg"></a>
+                                        class="d-none d-lg-inline mr-2 text-gray-600 small">{{ Auth::guard('medecin')->user()->username }}</span></a>
                                 <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu"><a
                                         class="dropdown-item" role="presentation" href="#"><i
                                             class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Mon
