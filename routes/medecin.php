@@ -2,6 +2,13 @@
 
 Route::group(['namespace' => 'Medecin'], function() {
     Route::get('/', 'HomeController@index')->name('medecin.dashboard');
+    Route::get('/rechercher', 'HomeController@recherche')->name('medecin.recherche');
+    Route::get('/dossier_medical/{patient}/ATCD', 'HomeController@dossier_ATCD')->name('medecin.dossier_ATCD');
+    Route::get('/dossier_medical/{patient}/Biometrie', 'HomeController@dossier_Biometrie')->name('medecin.dossier_Biometrie');
+    Route::get('/dossier_medical/{patient}/CM', 'HomeController@dossier_CM')->name('medecin.dossier_CM');
+    Route::get('/dossier_medical/{patient}/Ordonnances', 'HomeController@dossier_Ordonnances')->name('medecin.dossier_Ordonnances');
+    Route::get('/dossier_medical/{patient}/Examens', 'HomeController@dossier_Examens')->name('medecin.dossier_Examens');
+    Route::get('/dossier_medical/{patient}/Problemes', 'HomeController@dossier_Problemes')->name('medecin.dossier_Problemes');
 
     // Login
     Route::get('login', 'Auth\LoginController@showLoginForm')->name('medecin.login');
