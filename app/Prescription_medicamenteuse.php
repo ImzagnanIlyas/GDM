@@ -9,7 +9,7 @@ use Jahondust\ModelLog\Traits\ModelLogging;
 class Prescription_medicamenteuse extends Model
 {
     use ModelLogging;
-    
+
 
     public function consultation()
     {
@@ -19,5 +19,10 @@ class Prescription_medicamenteuse extends Model
     public function pharmacie()
     {
         return $this->belongsTo('App\Pharmacie');
+    }
+
+    public function medicament()
+    {
+        return $this->belongsTo('App\Medicament');
     }
 }
