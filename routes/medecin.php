@@ -30,4 +30,5 @@ Route::group(['namespace' => 'Medecin'], function() {
     Route::get('email/verify','Auth\VerificationController@show')->name('medecin.verification.notice');
     Route::get('email/verify/{id}','Auth\VerificationController@verify')->name('medecin.verification.verify');
 
+    //Test
 });
