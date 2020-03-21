@@ -12,7 +12,7 @@
         </div>
         <div class="card-body">
             <div class="row">
-                <a href="{{ route('medecin.nouv_cons', ['patient' => $patient->id]) }}" class="btn btn-success" style="margin-left: 80%">Nouvelle consultation</a>
+                <a href="{{ route('nouvelle-consultation.show', ['nouvelle_consultation' => $patient->id]) }}" class="btn btn-success" style="margin-left: 80%">Nouvelle consultation</a>
             </div>
             <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
                 <table class="table dataTable my-0" id="dataTable">

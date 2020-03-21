@@ -40,35 +40,10 @@ class HomeController extends Controller
         ]);
     }
 
-    public function nouv_cons($id)
+
+    public function consult_med()
     {
-        return view('medecin.nouv_consult', [
-            'patient' => Patient::find($id)
-        ]);
-    }
-
-    public function enrg_cons($id, Request $req)
-    {
-        $cons = new Consultation();
-
-        $cons->patient_id = $id;
-        $cons->date = date_default_timezone_get();
-        $cons->lieu = $req->input("lieu");
-        $cons->motif = $req->input("motif");
-
-        $cons->id = 1;
-        $cons->medecin_id = 1;
-
-        $cons->save();
-
-        return redirect()->route('medecin.consult_med');
-    }
-
-    public function consult_med($id)
-    {
-        return view('medecin.consult_med', [
-            'patient' => Patient::find($id)
-        ]);
+        return view('medecin.consult_med');
     }
 
     public function dossier_ATCD($id)
