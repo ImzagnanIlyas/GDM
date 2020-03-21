@@ -8,11 +8,11 @@
     <h3 class="text-dark mb-4">Rechercher un patient</h3>
     <div class="card shadow">
         <div class="card-header py-3">
-        <p class="text-primary m-0 font-weight-bold">CIN entré: {{ $cin }}</p>
+            <p class="text-primary m-0 font-weight-bold">CIN entré: {{ $cin }}</p>
         </div>
         <div class="card-body">
             <div class="row">
-
+                <a href="{{ route('medecin.nouv_cons', ['patient' => $patient->id]) }}" class="btn btn-success" style="margin-left: 80%">Nouvelle consultation</a>
             </div>
             <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
                 <table class="table dataTable my-0" id="dataTable">
@@ -40,7 +40,9 @@
                             <td>{{ $patient->sexe }}</td>
                             <td>{{ $patient->telephone }}</td>
                             <td>{{ $patient->adresse }}</td>
-                            <td><a href="{{ route('medecin.dossier_ATCD', ['patient' => $patient->id]) }}">Détails</td>
+                            <td>
+                                <a href="{{ route('medecin.dossier_ATCD', ['patient' => $patient->id]) }}" class="btn btn-primary">Détails</a>
+                            </td>
                         </tr>
                         @endif
                     </tbody>
