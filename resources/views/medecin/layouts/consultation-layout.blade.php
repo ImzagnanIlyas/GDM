@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h3 class="text-dark mb-4">Consultation</h3>
+<h3 class="text-dark mb-4">Consultation {{ $consultation->id }}</h3>
 <div class="col-md-12">
     <div class="card shadow">
         <div class="card-header">
@@ -12,7 +12,7 @@
                         <ul class="nav navbar-nav">
                             <li class="nav-item" role="presentation"><a class="nav-link" href="{{ route('medecin.consultation.showInfo', [ 'id' => $consultation->id ]) }}">Informations</a></li>
                             <li class="nav-item" role="presentation"><a class="nav-link" href="">Examen général</a></li>
-                            <li class="nav-item" role="presentation"><a class="nav-link" href="{{ route('medecin.consultation.showExamSpecial', [ 'id' => $consultation->id ]) }}">Examen spécialisé</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="{{ route('medecin.consultation.showExamSpecial', [ 'consultation_id' => $consultation->id ]) }}">Examen spécialisé</a></li>
                             <li class="nav-item" role="presentation"><a class="nav-link" href="">Examen complémentaire</a></li>
                             <li class="nav-item" role="presentation"><a class="nav-link" href="">Ordonnance</a></li>
                         </ul>
@@ -21,7 +21,7 @@
             </nav>
         </div>
         <div class="card-body">
-            <div class="row">
+            <div class="row justify-content-around">
 
                 @yield('onglet')
 
@@ -31,3 +31,4 @@
 </div>
 
 @endsection
+

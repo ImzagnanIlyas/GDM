@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="{{ asset('fonts/fontawesome-all.min.css') }}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aladin">
     <link rel="stylesheet" href="{{ asset('css/untitled.css') }}">
+    @livewireStyles
+    @yield('style')
 </head>
 
 <body id="page-top">
@@ -151,6 +153,9 @@
     <script src="{{ asset('js/bootstrap.min.js') }}" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
     <script src="{{ asset('js/theme.js') }}" defer></script>
+    @livewireScripts
+    @include('sweetalert::alert')
+    @yield('js')
 </body>
 
 </html>
