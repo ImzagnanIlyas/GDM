@@ -2,4 +2,6 @@
 
 @section('onglet')
 
+@livewire('medecin.consultation.live-exam-special')
+
 @endsection
