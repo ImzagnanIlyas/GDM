@@ -46,7 +46,7 @@
             <label for="files">Sélectionner un ou plusieurs fichiers</label>
             <input type="file" class="form-control-file" name="data[]" multiple>
         </div>
-        <button type='submit' class='btn btn-primary btn-lg btn-block'>Confirmer</button>
+        <button type='submit' class='btn btn-primary btn-lg btn-block' onClick="$('#upload').css('visibility', 'visible');">Confirmer</button>
     </form>
 
 @elseif ( $type === "image" )
@@ -57,12 +57,12 @@
             <label for="files">Sélectionner un ou plusieurs fichiers</label>
             <input type="file" class="form-control-file" name="data[]" multiple>
         </div>
-        <button type='submit' class='btn btn-primary btn-lg btn-block'>Confirmer</button>
+        <button type='submit' class='btn btn-primary btn-lg btn-block' onClick="$('#upload').css('visibility', 'visible');">Confirmer</button>
     </form>
 
 @elseif ( $type === "video" )
 
-    <form id="vid" method="POST" action="{{ route('medecin.consultation.ExamSpecial.storeFile', [ 'examen_id' => $examen->id, 'type' => $type ]) }}" enctype="multipart/form-data" class='custom-form'>
+    <form method="POST" action="{{ route('medecin.consultation.ExamSpecial.storeFile', [ 'examen_id' => $examen->id, 'type' => $type ]) }}" enctype="multipart/form-data" class='custom-form'>
         @csrf
         <div class="form-group">
             <label for="files">Sélectionner un ou plusieurs fichiers</label>
@@ -79,7 +79,7 @@
             <label for="files">Sélectionner un ou plusieurs fichiers</label>
             <input type="file" class="form-control-file" name="data[]" multiple>
         </div>
-        <button type='submit' class='btn btn-primary btn-lg btn-block'>Confirmer</button>
+        <button type='submit' class='btn btn-primary btn-lg btn-block' onClick="$('#upload').css('visibility', 'visible');">Confirmer</button>
     </form>
 
 @endif
