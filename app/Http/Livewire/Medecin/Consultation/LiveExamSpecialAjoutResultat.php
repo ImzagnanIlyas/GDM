@@ -36,7 +36,7 @@ class LiveExamSpecialAjoutResultat extends Component
 
         $this->examen->save();
 
-        return redirect()->route('medecin.consultation.showExamSpecial', ['consultation_id' => $this->consultation->id]);
+        return redirect()->route('medecin.consultation.showExamSpecialResultat', [ 'consultation_id' => $this->consultation->id, 'examen_id' => $this->examen->id ]);
     }
 
     public function updatedSelect(){

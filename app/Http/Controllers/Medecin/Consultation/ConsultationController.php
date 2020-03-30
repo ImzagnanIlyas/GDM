@@ -98,7 +98,7 @@ class ConsultationController extends Controller
             ]);
 
             $examen->save();
-            return redirect()->route('medecin.consultation.showExamSpecial', ['consultation_id' => $examen->consultation->id]);
+            return redirect()->route('medecin.consultation.showExamSpecialResultat', [ 'consultation_id' => $examen->consultation->id, 'examen_id' => $examen->id ]);
 
         }elseif ( $type === "image" ){
 
@@ -118,7 +118,7 @@ class ConsultationController extends Controller
             ]);
 
             $examen->save();
-            return redirect()->route('medecin.consultation.showExamSpecial', ['consultation_id' => $examen->consultation->id]);
+            return redirect()->route('medecin.consultation.showExamSpecialResultat', [ 'consultation_id' => $examen->consultation->id, 'examen_id' => $examen->id ]);
 
         }elseif ( $type === "video" ){
 
@@ -138,7 +138,7 @@ class ConsultationController extends Controller
             ]);
 
             $examen->save();
-            return redirect()->route('medecin.consultation.showExamSpecial', ['consultation_id' => $examen->consultation->id]);
+            return redirect()->route('medecin.consultation.showExamSpecialResultat', [ 'consultation_id' => $examen->consultation->id, 'examen_id' => $examen->id ]);
 
         }elseif ( $type === "audio" ){
 
@@ -158,7 +158,7 @@ class ConsultationController extends Controller
             ]);
 
             $examen->save();
-            return redirect()->route('medecin.consultation.showExamSpecial', ['consultation_id' => $examen->consultation->id]);
+            return redirect()->route('medecin.consultation.showExamSpecialResultat', [ 'consultation_id' => $examen->consultation->id, 'examen_id' => $examen->id ]);
         }
     }
 
