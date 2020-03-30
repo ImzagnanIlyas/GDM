@@ -12,6 +12,15 @@ use Illuminate\Http\UploadedFile;
 
 class ConsultationController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('medecin.auth:medecin');
+    }
 
     public function showInfo($id)
     {
