@@ -14,11 +14,13 @@ class LiveExamSpecial extends Component
         'refresh' => '$refresh',
     ];
 
-    public $consultation, $route;
+    public $consultation;
+    public $route, $consultationId;
 
     public function mount(){
         $this->consultation = Consultation::findOrFail(Request::segment(3));
         $this->route = route('medecin.consultation.storeExamSpecial');
+        $this->consultationId = $this->consultation->id;
     }
 
 
@@ -35,6 +37,7 @@ class LiveExamSpecial extends Component
             <div class='form-group'>
                 <label for='nom'>Titre d'examen</label>
                 <input type='text' class='form-control' id='nom' name='nom' placeholder=''>
+                <input type='text' class='form-control' id='consultationId' name='consultationId' value='$this->consultationId' hidden>
             </div>
             <button type='submit' class='btn btn-primary btn-lg btn-block'>Confirmer</button>
         </form>
