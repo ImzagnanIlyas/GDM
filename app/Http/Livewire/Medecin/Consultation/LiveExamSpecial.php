@@ -14,10 +14,11 @@ class LiveExamSpecial extends Component
         'refresh' => '$refresh',
     ];
 
-    public $consultation;
+    public $consultation, $route;
 
     public function mount(){
         $this->consultation = Consultation::findOrFail(Request::segment(3));
+        $this->route = route('medecin.consultation.storeExamSpecial');
     }
 
 
@@ -30,7 +31,7 @@ class LiveExamSpecial extends Component
         Alert::html(
         '<h1>Ajouter un examen</h1>',
         "
-        <form class='custom-form'  method='GET' action='http://gdm.test/medecin/consultation/examen-specialise/'>
+        <form class='custom-form'  method='GET' action='$this->route'>
             <div class='form-group'>
                 <label for='nom'>Titre d'examen</label>
                 <input type='text' class='form-control' id='nom' name='nom' placeholder=''>
