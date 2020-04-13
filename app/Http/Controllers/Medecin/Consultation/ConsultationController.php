@@ -30,8 +30,9 @@ class ConsultationController extends Controller
     }
 
 
-    /**
+    /**************************************************************************
      * Examen spécialisé functions
+     **************************************************************************
      */
 
     public function showExamSpecial($consultation_id)
@@ -44,11 +45,11 @@ class ConsultationController extends Controller
     public function storeExamSpecial(Request $request)
     {
         $tmp = new Examen_specialise();
-        $tmp->consultation_id = substr(redirect()->back()->getTargetUrl(), -20, 2);
+        $tmp->consultation_id = $request->input('consultationId');
         $tmp->nom = $request->input('nom');
         $tmp->save();
 
-        Alert::success('Examen créé avec success');
+        Alert::success('Examen créé avec succès');
         return redirect()->back();
     }
 
@@ -71,9 +72,7 @@ class ConsultationController extends Controller
         return response()->file( public_path('storage/'.$resultat->pdf[$i-1]) );
     }
 
-    /**
-     * Examen spécialisé functions :: Files store function
-     */
+    // Examen spécialisé functions :: Files store function
 
     public function storeFiles(Request $request,$examen_id, $type){
 
@@ -160,6 +159,18 @@ class ConsultationController extends Controller
             $examen->save();
             return redirect()->route('medecin.consultation.showExamSpecialResultat', [ 'consultation_id' => $examen->consultation->id, 'examen_id' => $examen->id ]);
         }
+    }
+
+    /**************************************************************************
+     * Ordonnance functions
+     **************************************************************************
+     */
+
+    public function showOrdonnance($consultation_id)
+    {
+        return view('medecin.consultation.consultation-ordonnance', [
+            'consultation' => Consultation::findOrFail($consultation_id)
+        ]);
     }
 
 }

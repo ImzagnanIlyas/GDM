@@ -39,6 +39,8 @@ Route::group(['namespace' => 'Medecin'], function() {
         Route::post('examen-specialise/{examen_id}/{type}', 'Consultation\ConsultationController@storeFiles')->name('medecin.consultation.ExamSpecial.storeFile');
         Route::get('{consultation_id}/examen-specialise/{examen_id}/resultat', 'Consultation\ConsultationController@showExamSpecialResultat')->name('medecin.consultation.showExamSpecialResultat');
         Route::get('{consultation_id}/examen-specialise/{examen_id}/PDF{i}', 'Consultation\ConsultationController@showExamSpecialResultatPDF')->name('medecin.consultation.ExamSpecialResultat.PDF');
+
+        Route::get('{consultation_id}/ordonnance', 'Consultation\ConsultationController@showOrdonnance')->name('medecin.consultation.showOrdonnance');
     });
 
 

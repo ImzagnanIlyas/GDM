@@ -140,10 +140,10 @@
             </footer>
         </div>
     </div>
-    <script src="{{ asset('js/jquery.min.js') }}" defer></script>
-    <script src="{{ asset('js/bootstrap.min.js') }}" defer></script>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
-    <script src="{{ asset('js/theme.js') }}" defer></script>
+    <script src="{{ asset('js/theme.js') }}"></script>
     @livewireScripts
     @include('sweetalert::alert')
     @yield('js')
