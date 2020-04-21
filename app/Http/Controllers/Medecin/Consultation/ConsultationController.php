@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Medecin\Consultation;
 
 use App\Consultation;
+use App\Examen_complimentaire;
 use App\Examen_specialise;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -173,4 +174,43 @@ class ConsultationController extends Controller
         ]);
     }
 
+    /**************************************************************************
+     * Examen complémentaire functions
+     **************************************************************************
+     */
+
+    public function showExamCompl($consultation_id)
+    {
+        return view('medecin.consultation.consultation-examCompl', [
+            'consultation' => Consultation::findOrFail($consultation_id)
+        ]);
+    }
+
+    public function createExamCompl($consultation_id)
+    {
+        return view('medecin.consultation.consultation-examComplCreation', [
+            'consultation' => Consultation::findOrFail($consultation_id)
+        ]);
+    }
+
+    public function showExamComplBilan($consultation_id, $examen_id)
+    {
+        return view('medecin.consultation.consultation-examComplBilan', [
+            'consultation' => Consultation::findOrFail($consultation_id),
+            'examen' => Examen_complimentaire::findOrFail($examen_id),
+        ]);
+    }
+
+    public function showExamComplResultat($consultation_id, $examen_id){
+        return view('medecin.consultation.consultation-examComplResultat', [
+            'consultation' => Consultation::findOrFail($consultation_id),
+            'examen' => Examen_complimentaire::findOrFail($examen_id),
+        ]);
+    }
+
+    public function showExamComplResultatPDF($consultation_id, $examen_id, $i){
+        $examen = Examen_complimentaire::findOrFail($examen_id);
+        $resultat = json_decode($examen->resultat);
+        return response()->file( public_path('storage/'.$resultat->pdf[$i-1]) );
+    }
 }

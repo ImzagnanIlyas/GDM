@@ -41,6 +41,13 @@ Route::group(['namespace' => 'Medecin'], function() {
         Route::get('{consultation_id}/examen-specialise/{examen_id}/PDF{i}', 'Consultation\ConsultationController@showExamSpecialResultatPDF')->name('medecin.consultation.ExamSpecialResultat.PDF');
 
         Route::get('{consultation_id}/ordonnance', 'Consultation\ConsultationController@showOrdonnance')->name('medecin.consultation.showOrdonnance');
+
+        Route::get('{consultation_id}/examen-complementaire', 'Consultation\ConsultationController@showExamCompl')->name('medecin.consultation.showExamCompl');
+        Route::get('{consultation_id}/nouveau-examen-complementaire', 'Consultation\ConsultationController@createExamCompl')->name('medecin.consultation.createExamCompl');
+        Route::get('{consultation_id}/examen-complementaire/{examen_id}/resultat', 'Consultation\ConsultationController@showExamComplResultat')->name('medecin.consultation.showExamComplResultat');
+        Route::get('{consultation_id}/examen-complementaire/{examen_id}/PDF{i}', 'Consultation\ConsultationController@showExamComplResultatPDF')->name('medecin.consultation.ExamComplResultat.PDF');
+        Route::get('{consultation_id}/examen-complementaire/{examen_id}/bilan', 'Consultation\ConsultationController@showExamComplBilan')->name('medecin.consultation.showExamComplBilan');
+
     });
 
 

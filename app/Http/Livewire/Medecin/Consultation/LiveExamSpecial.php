@@ -54,14 +54,19 @@ class LiveExamSpecial extends Component
 
     public function showResultat($id){
         $tmp = Examen_specialise::findOrFail($id);
-        Alert::html(
-        "<h1>Résultat d'examen ".$id."</h1>",
-        "<hr>".json_decode($tmp->resultat)->text
-        )
-        ->persistent(false,true)
-        ->autoClose(null)
-        ->width('50rem');
-        return redirect()->route('medecin.consultation.showExamSpecial', [ 'consultation_id' => $this->consultation->id ]);
+        $resultat = json_decode($tmp->resultat);
+        if ( $resultat->type === 'text' ) {
+            Alert::html(
+                "<h1>Résultat d'examen</h1>",
+                '<div id="quill-textarea" style="color: black">
+                    '.$resultat->text.'
+                </div>'
+            )
+            ->persistent(false,true)
+            ->autoClose(null)
+            ->width('50rem');
+        }
+        return redirect()->route('medecin.consultation.showExamSpecialResultat', [ 'consultation_id' => $this->consultation->id, 'examen_id' => $tmp->id ]);
     }
 
 }

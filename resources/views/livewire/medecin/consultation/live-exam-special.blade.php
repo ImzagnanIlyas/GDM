@@ -10,9 +10,9 @@
         <table class="table dataTable my-0">
             <thead>
                 <tr>
-                    <th>Titre</th>
+                    <th class="col-3">Titre</th>
                     <th>Date</th>
-                    <th>Resultat</th>
+                    <th>Résultat</th>
                     <th>Date de la resultat</th>
                     <th>Action</th>
                 </tr>
@@ -23,16 +23,17 @@
                     <td>{{ $ES->nom }}</td>
                     <td>{{ $ES->created_at }}</td>
                     @if ( empty($ES->resultat) )
-                    <td> <i class="fas fa-thumbs-down" style="color: red;"></i> </td>
+                    <td title="En attend"> <i class="fas fa-clock ml-3" style="color: orange;font-size: x-large;"></i> </td>
                     <td> - </td>
                     <td>
-                        <a href="{{ route('medecin.consultation.showExamSpecialAjoutResultat', [ 'consultation_id' => $consultation->id, 'examen_id' => $ES->id, 'type' => 'text' ]) }}" class="btn btn-primary">Ajouter resultat</a>
+                        <a href="{{ route('medecin.consultation.showExamSpecialAjoutResultat', [ 'consultation_id' => $consultation->id, 'examen_id' => $ES->id, 'type' => 'text' ]) }}" class="btn btn-primary">Ajouter résultat</a>
                     </td>
                     @else
-                    <td> <i class="fas fa-thumbs-up" style="color: green;"></i> </td>
+                    <td title="Résultat ajouté"> <i class="fas fa-check-circle ml-3" style="color: green;font-size: x-large;"></i> </td>
                     <td> {{ $ES->updated_at }} </td>
                     <td>
-                        <a href="{{ route('medecin.consultation.showExamSpecialResultat', [ 'consultation_id' => $consultation->id, 'examen_id' => $ES->id ]) }}" class="btn btn-primary">Voir resultat</a>
+                        <a href="{{ route('medecin.consultation.showExamSpecialResultat', [ 'consultation_id' => $consultation->id, 'examen_id' => $ES->id ]) }}" class="btn btn-primary">Voir résultat</a>
+                        <!-- <button class="btn btn-primary" wire:click="showResultat({{$ES->id}})">Voir resultat</button> -->
                     </td>
                     @endif
                 </tr>
