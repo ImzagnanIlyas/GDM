@@ -92,4 +92,9 @@ class HomeController extends Controller
     {
         return view('medecin.profil');
     }
+
+    public function mesCons()
+    {
+        return view('medecin.mesCons');
+    }
 }

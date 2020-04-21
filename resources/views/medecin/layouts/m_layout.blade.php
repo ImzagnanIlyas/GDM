@@ -42,7 +42,7 @@
                             <i class="fas fa-users"></i>
                             <span>Mes patients</span>
                         </a>
-                        <a class="nav-link active" href="index.html">
+                        <a class="nav-link active" href="{{ route('medecin.mesCons') }}">
                             <i class="far fa-clipboard"></i>
                             <span>Mes consultations</span>
                         </a>

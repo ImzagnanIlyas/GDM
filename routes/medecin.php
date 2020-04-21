@@ -26,6 +26,7 @@ Route::group(['namespace' => 'Medecin'], function() {
 
     Route::get('/rechercher', 'HomeController@recherche')->name('medecin.recherche');
     Route::get('/mon_profil', 'HomeController@profil')->name('medecin.profil');
+    Route::get('/mes_consultations', 'HomeController@mesCons')->name('medecin.mesCons');
 
     //Nouvelle consultation : show & store
     Route::resource('nouvelle-consultation', 'Consultation\NouvelleConsultationController')->only(['show', 'store']);
