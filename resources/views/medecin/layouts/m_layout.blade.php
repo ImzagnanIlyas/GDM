@@ -46,7 +46,7 @@
                             <i class="far fa-clipboard"></i>
                             <span>Mes consultations</span>
                         </a>
-                        <a class="nav-link active" href="index.html">
+                        <a class="nav-link active" href="{{ route('medecin.profil') }}">
                             <i class="far fa-id-badge"></i>
                             <span>Mon profil</span>
                         </a>
@@ -99,7 +99,7 @@
                                         <span class="d-none d-lg-inline mr-2 text-gray-600 small">{{ Auth::guard('medecin')->user()->username }}</span>
                                     </a>
                                     <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu">
-                                        <a class="dropdown-item" role="presentation" href="#">
+                                        <a class="dropdown-item" role="presentation" href="{{ route('medecin.profil') }}">
                                             <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                             &nbsp;Mon profil
                                         </a>

@@ -11,7 +11,7 @@
                     <div class="collapse navbar-collapse justify-content-around" id="navcol-1">
                         <ul class="nav navbar-nav">
                             <li class="nav-item" role="presentation"><a class="nav-link" href="{{ route('medecin.consultation.showInfo', [ 'id' => $consultation->id ]) }}">Informations</a></li>
-                            <li class="nav-item" role="presentation"><a class="nav-link" href="">Examen général</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="{{ route('medecin.consultation.showEG', [ 'id' => $consultation->id ]) }}">Examen général</a></li>
                             <li class="nav-item" role="presentation"><a class="nav-link" href="{{ route('medecin.consultation.showExamSpecial', [ 'consultation_id' => $consultation->id ]) }}">Examen spécialisé</a></li>
                             <li class="nav-item" role="presentation"><a class="nav-link" href="{{ route('medecin.consultation.showExamCompl', [ 'consultation_id' => $consultation->id ]) }}">Examen complémentaire</a></li>
                             <li class="nav-item" role="presentation"><a class="nav-link" href="{{ route('medecin.consultation.showOrdonnance', [ 'consultation_id' => $consultation->id ]) }}">Ordonnance</a></li>

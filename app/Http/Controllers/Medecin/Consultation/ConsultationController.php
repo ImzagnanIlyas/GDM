@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Medecin\Consultation;
 
 use App\Consultation;
 use App\Examen_complimentaire;
+use App\Examen_general;
 use App\Examen_specialise;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -160,6 +161,50 @@ class ConsultationController extends Controller
             $examen->save();
             return redirect()->route('medecin.consultation.showExamSpecialResultat', [ 'consultation_id' => $examen->consultation->id, 'examen_id' => $examen->id ]);
         }
+    }
+    public function storeInfo(Request $request, $id)
+    {
+        $cons = Consultation::findOrFail($id);
+
+        if(!empty($request->input('histoire'))) $cons->histoire = $request->input('histoire');
+        if(!empty($request->input('sd'))) $cons->strategie_diagnostique = $request->input('sd');
+        if(!empty($request->input('dr'))) $cons->diagnostic_retenu = $request->input('dr');
+
+        $cons->save();
+        return redirect()->route('medecin.consultation.showInfo', [ 'id' => $id ]);
+    }
+
+    public function showEG($id)
+    {
+        return view('medecin.consultation.consultation-EG', [
+            'consultation' => Consultation::findOrFail($id)
+        ]);
+    }
+
+    public function storeEG(Request $request, $id)
+    {
+        $EG = new Examen_general();
+        $EG->consultation_id = $id;
+        $EG->etat = $request->input('etat');
+        $EG->save();
+        return redirect()->route('medecin.consultation.showEG', [ 'id' => $id ]);
+    }
+
+    public function updateEG(Request $request, $id, $c_id)
+    {
+        $EG = Examen_general::findOrFail($id);
+        if(!empty($request->input('temperature'))) $EG->temperature = $request->input('temperature');
+        if(!empty($request->input('ta'))) $EG->tension_arterielle = $request->input('ta');
+        if(!empty($request->input('fc'))) $EG->frequence_cardiaque = $request->input('fc');
+        if(!empty($request->input('fr'))) $EG->frequence_respiratoire = $request->input('fr');
+        if(!empty($request->input('p'))) $EG->poids = $request->input('p');
+        if(!empty($request->input('t'))) $EG->taille = $request->input('t');
+        if(!empty($request->input('c'))) $EG->conjonctives = $request->input('c');
+        if(!empty($request->input('autres'))) $EG->autre = json_encode($request->input('autres'));
+
+
+        $EG->save();
+        return redirect()->route('medecin.consultation.showEG', [ 'id' => $c_id ]);
     }
 
     /**************************************************************************

@@ -5,6 +5,21 @@
 @endsection
 
 @section('content')
+
+<style>
+    .card {
+        width: 60%;
+    }
+    .wrapper {
+    text-align: center;
+}
+
+.button {
+    position: absolute;
+    top: 50%;
+}
+</style>
+
 <div class="container-fluid">
 <div class="row justify-content-center">
     <div class="card shadow">
@@ -28,13 +43,15 @@
                                     <label class="col-form-label" for="motif">Motif</label>
                                 </div>
                                 <div class="col-sm-6 input-column">
-                                    <textarea id="motif" name="motif" class="form-control form-control-lg"></textarea>
+                                    <textarea id="motif" name="motif" rows="5" cols="35" class="form-control form-control-lg"></textarea>
                                 </div>
                             </div>
                             <input class="form-control" type="hidden" name="id" value="{{ $patient->id }}">
-                            <button class="btn btn-success btn-lg btn-block" type="submit">
+                            <div class="wrapper">
+                            <button class="btn btn-success" type="submit">
                                 Valider
                             </button>
+                            </div>
                         </form>
                     </div>
                 </div>
