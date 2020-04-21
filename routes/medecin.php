@@ -25,6 +25,7 @@ Route::group(['namespace' => 'Medecin'], function() {
     Route::get('/', 'HomeController@index')->name('medecin.dashboard');
 
     Route::get('/rechercher', 'HomeController@recherche')->name('medecin.recherche');
+    Route::get('/mon_profil', 'HomeController@profil')->name('medecin.profil');
 
     //Nouvelle consultation : show & store
     Route::resource('nouvelle-consultation', 'Consultation\NouvelleConsultationController')->only(['show', 'store']);
@@ -32,7 +33,10 @@ Route::group(['namespace' => 'Medecin'], function() {
     //Consultation
     Route::prefix('consultation')->group(function () {
         Route::get('informations/{id}', 'Consultation\ConsultationController@showInfo')->name('medecin.consultation.showInfo');
-
+        Route::post('storeInfo/{id}', 'Consultation\ConsultationController@storeInfo')->name('medecin.consultation.storeInfo');
+        Route::get('exam_general/{id}', 'Consultation\ConsultationController@showEG')->name('medecin.consultation.showEG');
+        Route::post('storeEG/{id}', 'Consultation\ConsultationController@storeEG')->name('medecin.consultation.storeEG');
+        Route::post('updateEG/{id}/{c_id}', 'Consultation\ConsultationController@updateEG')->name('medecin.consultation.updateEG');
         Route::get('{consultation_id}/examen-specialise', 'Consultation\ConsultationController@showExamSpecial')->name('medecin.consultation.showExamSpecial');
         Route::get('examen-specialise', 'Consultation\ConsultationController@storeExamSpecial')->name('medecin.consultation.storeExamSpecial');
         Route::get('{consultation_id}/examen-specialise/{examen_id}/resultat/{type}', 'Consultation\ConsultationController@showExamSpecialAjoutResultat')->name('medecin.consultation.showExamSpecialAjoutResultat');

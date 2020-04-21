@@ -87,4 +87,9 @@ class HomeController extends Controller
             'patient' => Patient::find($id)
         ]);
     }
+
+    public function profil()
+    {
+        return view('medecin.profil');
+    }
 }
