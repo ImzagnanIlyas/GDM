@@ -18,8 +18,8 @@ class CreateMedicamentsTable extends Migration
             $table->unsignedBigInteger('code');
             $table->string('nom', 50);
             $table->string('dci');
-            $table->string('dosage', 20);
-            $table->string('unite_dosage', 20);
+            $table->string('dosage');
+            $table->string('unite_dosage');
             $table->string('forme');
             $table->string('presentation');
             $table->double('ppv');
