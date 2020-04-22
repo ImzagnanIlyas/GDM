@@ -4,65 +4,54 @@
     Accueil
 @endsection
 
+<style>
+.card{
+     margin: 2%;
+}
+#timedate {
+  color: black;
+  border-left: 3px solid #ed1f24;
+  padding-left: 10%;
+  float: right;
+}
+
+</style>
+
 @section('content')
-    <div class="col-md-6 col-xl-3 mb-4">
-        <div class="card shadow border-left-primary py-2">
-            <div class="card-body">
-                <div class="row align-items-center no-gutters">
-                    <div class="col mr-2" style="width: 70px;">
-                        <div class="text-uppercase text-primary font-weight-bold text-xs mb-1" style="width: 129px;height: 41px;"><span style="font-size: 15px;">Nouvelle consultation</span></div>
-                    </div>
-                    <div class="col-auto"><i class="far fa-clipboard fa-2x text-gray-300"></i></div>
+<div class="container">
+    <div class="card shadow border-info" >
+        <div class="card-body">
+            <div class="row">
+                <div class="col text-info">
+                    <p class="card-text " style="font-size: 32px;">Bonjour docteur(e) {{ Auth::guard('medecin')->user()->patient->nom }}</p>
+                </div>
+                <div class="col-auto">
+                    <p id="timedate">{{ date("d-m-Y") }} {{ date("H:i") }}</p>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-md-6 col-xl-3 mb-4">
-        <div class="card shadow border-left-success py-2">
-            <div class="card-body">
-                <div class="row align-items-center no-gutters">
-                    <div class="col mr-2">
-                        <div class="text-uppercase text-success font-weight-bold text-xs mb-1"><span>Lorem ipsum</span></div>
-                        <div class="text-dark font-weight-bold h5 mb-0"><span>$215,000</span></div>
-                    </div>
-                    <div class="col-auto"><i class="fas fa-dollar-sign fa-2x text-gray-300"></i></div>
+
+    <div class="card-group">
+        <div class="card shadow border-left-primary border-primary py-2">
+            <div class="card-body text-center">
+                <div class="text-uppercase text-primary font-weight-bold">
+                    <p class="card-text" style="font-size: 20px;">
+                        <a href="#" class="stretched-link"></a>Nouvelle consultation
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card shadow border-left-success border-right-success border-success py-2">
+            <div class="card-body text-center">
+                <div class="text-uppercase text-success font-weight-bold">
+                    <p class="card-text" style="font-size: 20px;">
+                        <a href="#" class="stretched-link"></a>Liste des médicaments
+                    </p>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-md-6 col-xl-3 mb-4">
-        <div class="card shadow border-left-info py-2">
-            <div class="card-body">
-                <div class="row align-items-center no-gutters">
-                    <div class="col mr-2">
-                        <div class="text-uppercase text-info font-weight-bold text-xs mb-1"><span>Les tâches</span></div>
-                        <div class="row no-gutters align-items-center">
-                            <div class="col-auto">
-                                <div class="text-dark font-weight-bold h5 mb-0 mr-3"><span>50%</span></div>
-                            </div>
-                            <div class="col">
-                                <div class="progress progress-sm">
-                                    <div class="progress-bar bg-info" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%;"><span class="sr-only">50%</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-auto"><i class="fas fa-clipboard-list fa-2x text-gray-300"></i></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6 col-xl-3 mb-4">
-        <div class="card shadow border-left-warning py-2">
-            <div class="card-body">
-                <div class="row align-items-center no-gutters">
-                    <div class="col mr-2">
-                        <div class="text-uppercase text-warning font-weight-bold text-xs mb-1"><span>Les médicaments</span></div>
-                        <div class="text-dark font-weight-bold h5 mb-0"><span>18</span></div>
-                    </div>
-                    <div class="col-auto"><i class="fas fa-pills fa-2x text-gray-300"></i></div>
-                </div>
-            </div>
-        </div>
-    </div>
+</div>
 @endsection

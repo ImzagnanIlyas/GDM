@@ -6,6 +6,7 @@ use App\Consultation;
 use App\Http\Controllers\Controller;
 use App\Patient;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class NouvelleConsultationController extends Controller
 {
@@ -31,7 +32,7 @@ class NouvelleConsultationController extends Controller
         $cons = new Consultation();
 
         $cons->patient_id = $request->input('id');
-        $cons->medecin_id = 1;
+        $cons->medecin_id = Auth::guard('medecin')->user()->id;
         $cons->date = now();
         $cons->lieu = $request->input('lieu');
         $cons->motif = $request->input('motif');
