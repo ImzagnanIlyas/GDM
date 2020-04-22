@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Patient;
 use DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -96,5 +97,10 @@ class HomeController extends Controller
     public function mesCons()
     {
         return view('medecin.mesCons');
+    }
+
+    public function mesPatients()
+    {
+        return view('medecin.mes-patients');
     }
 }

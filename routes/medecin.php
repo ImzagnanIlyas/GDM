@@ -55,6 +55,8 @@ Route::group(['namespace' => 'Medecin'], function() {
 
     });
 
+    //Mes patients
+    Route::get('/mes-patients', 'HomeController@mesPatients')->name('medecin.mesPatients');
 
     Route::get('/dossier_medical/{patient}/ATCD', 'HomeController@dossier_ATCD')->name('medecin.dossier_ATCD');
     Route::get('/dossier_medical/{patient}/Biometrie', 'HomeController@dossier_Biometrie')->name('medecin.dossier_Biometrie');

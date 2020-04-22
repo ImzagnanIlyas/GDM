@@ -38,7 +38,7 @@
                             <i class="fas fa-home"></i>
                             <span>Accueil</span>
                         </a>
-                        <a class="nav-link active" href="index.html">
+                        <a class="nav-link active" href="{{ route('medecin.mesPatients') }}">
                             <i class="fas fa-users"></i>
                             <span>Mes patients</span>
                         </a>
