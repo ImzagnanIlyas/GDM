@@ -16,8 +16,8 @@ class CreateExamenComplimentairesTable extends Migration
         Schema::create('examen_complimentaires', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('consultation_id');
-            $table->string('bilan');
-            $table->json('prescription_analyse');
+            $table->json('bilan');
+            $table->json('resultat')->nullable();
             $table->boolean('confirmation')->default(0);
             $table->unsignedBigInteger('examinateur_id')->nullable();
             $table->timestamps();
