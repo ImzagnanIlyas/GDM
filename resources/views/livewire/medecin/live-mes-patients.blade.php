@@ -2,7 +2,7 @@
     <div class="card-header py-3 d-flex justify-content-between align-items-center">
         <p class="text-primary m-0 font-weight-bold">MES PATIENTS</p>
         <div class="input-group col-3">
-            <input class="form-control" type="text" placeholder="Recherche par CIN" wire:model="searchInput">
+            <input class="form-control" type="text" placeholder="Rechercher par CIN" wire:model="searchInput">
         </div>
     </div>
     <div class="container">
@@ -13,7 +13,7 @@
                         <th>CIN</th>
                         <th class="col-3">Nom et prenom</th>
                         <th>sexe</th>
-                        <th class="text-center">Nombre des consultuations</th>
+                        <th class="text-center">Nombre de consultations</th>
                         <th>Date de la dernière consultation</th>
                         <th>Autres</th>
                     </tr>

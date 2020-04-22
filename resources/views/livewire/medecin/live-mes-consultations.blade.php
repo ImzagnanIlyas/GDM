@@ -2,7 +2,7 @@
     <div class="card-header py-3 d-flex justify-content-between align-items-center">
         <p class="text-primary m-0 font-weight-bold">MES CONSULTATIONS</p>
         <div class="input-group col-3">
-            <input class="form-control" type="text" placeholder="Recherche par date" wire:model="searchInput" onfocus="(this.type='date')" onblur="(this.type='text')">
+            <input class="form-control" type="text" placeholder="Rechercher par date" wire:model="searchInput" onfocus="(this.type='date')" onblur="(this.type='text')">
         </div>
     </div>
     <div class="container">

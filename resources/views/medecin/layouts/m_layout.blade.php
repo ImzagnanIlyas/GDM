@@ -50,10 +50,6 @@
                             <i class="far fa-id-badge"></i>
                             <span>Mon profil</span>
                         </a>
-                        <a class="nav-link active" href="index.html">
-                            <i class="far fa-list-alt"></i>
-                            <span>Mes tâches</span>
-                        </a>
                     </li>
                 </ul>
                 <div class="text-center d-none d-md-inline">
