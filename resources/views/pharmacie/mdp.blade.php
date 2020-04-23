@@ -14,7 +14,7 @@
 
 @section('content')
 
-@livewire('patient.live-mdp')
+@livewire('pharmacie.live-mdp')
 
 @endsection
 

@@ -26,7 +26,7 @@
 @section('content')
 <div class="col-sm-8 col-md-9">
     <div class="card">
-        @livewire('patient.live-recherche')
+        @livewire('pharmacie.live-recherche')
     </div>
 </div>
 @endsection

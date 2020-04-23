@@ -14,7 +14,7 @@
 
 @section('content')
 
-@livewire('patient.live-profil')
+@livewire('pharmacie.live-profil')
 
 @endsection
 

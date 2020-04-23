@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Patient;
+namespace App\Http\Livewire\Pharmacie;
 
 use App\Pharmacie;
 use Illuminate\Support\Facades\Auth;
@@ -20,7 +20,7 @@ class LiveProfil extends Component
 
     public function render()
     {
-        return view('livewire.patient.live-profil');
+        return view('livewire.pharmacie.live-profil');
     }
 
     public function updated($field)

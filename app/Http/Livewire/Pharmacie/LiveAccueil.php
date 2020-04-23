@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Patient;
+namespace App\Http\Livewire\Pharmacie;
 
 use Livewire\Component;
 
@@ -8,6 +8,6 @@ class LiveAccueil extends Component
 {
     public function render()
     {
-        return view('livewire.patient.live-accueil');
+        return view('livewire.pharmacie.live-accueil');
     }
 }

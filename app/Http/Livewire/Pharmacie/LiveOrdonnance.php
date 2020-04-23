@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Patient;
+namespace App\Http\Livewire\Pharmacie;
 
 use App\Consultation;
 use App\Patient;
@@ -27,7 +27,7 @@ class LiveOrdonnance extends Component
 
     public function render()
     {
-        return view('livewire.patient.live-ordonnance');
+        return view('livewire.pharmacie.live-ordonnance');
     }
 
     public function getConsultations(){

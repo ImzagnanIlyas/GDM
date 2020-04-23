@@ -35,7 +35,7 @@
 <div class="col-sm-8 col-md-9">
     <div class="page-wrapper">
         <div class="row">
-            @livewire('patient.live-accueil')
+            @livewire('pharmacie.live-accueil')
         </div>
     </div>
 </div>

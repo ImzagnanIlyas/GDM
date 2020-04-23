@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Patient;
+namespace App\Http\Livewire\Pharmacie;
 
 use App\Patient;
 use Illuminate\Support\Facades\Crypt;
@@ -23,7 +23,7 @@ class LiveRecherche extends Component
         if ($this->query === "") {
             $this->patients = [];
         }
-        return view('livewire.patient.live-recherche', [
+        return view('livewire.pharmacie.live-recherche', [
             'patients' => $this->patients
         ]);
     }

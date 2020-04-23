@@ -34,7 +34,7 @@
 
 @section('content')
 
-@livewire('patient.live-ordonnance', $patient)
+@livewire('pharmacie.live-ordonnance', $patient)
 
 @endsection
 

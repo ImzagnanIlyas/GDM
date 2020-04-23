@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Patient;
+namespace App\Http\Livewire\Pharmacie;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -21,7 +21,7 @@ class LiveMdp extends Component
 
     public function render()
     {
-        return view('livewire.patient.live-mdp');
+        return view('livewire.pharmacie.live-mdp');
     }
 
     public function updated($field)
