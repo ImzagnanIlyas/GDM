@@ -30,6 +30,9 @@ Route::group(['namespace' => 'Medecin'], function() {
 
     //Nouvelle consultation : show & store
     Route::resource('nouvelle-consultation', 'Consultation\NouvelleConsultationController')->only(['show', 'store']);
+    //Fast nouvelle consultation :
+    Route::get('nouvelle-consultation-searchAlert', 'Consultation\NouvelleConsultationController@showSearchAlert')->name('medecin.showSearchAlert');
+    Route::get('nouvelle-consultation-addAlert', 'Consultation\NouvelleConsultationController@showAddAlert')->name('medecin.showAddAlert');
 
     //Consultation
     Route::prefix('consultation')->group(function () {

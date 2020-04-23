@@ -37,7 +37,7 @@
             <div class="card-body text-center">
                 <div class="text-uppercase text-primary font-weight-bold">
                     <p class="card-text" style="font-size: 20px;">
-                        <a href="#" class="stretched-link"></a>Nouvelle consultation
+                        <a href="{{ route('medecin.showSearchAlert') }}" class="stretched-link"></a>Nouvelle consultation
                     </p>
                 </div>
             </div>
