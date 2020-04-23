@@ -8,6 +8,7 @@ use App\Prescription_medicamenteuse;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Request;
 use Livewire\Component;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -59,7 +60,7 @@ class LiveOrdonnance extends Component
     public function generer(){
         setlocale (LC_TIME, 'fr_FR.utf8','fra');
         $this->ordonnance =
-        "<p class='ql-align-right'><strong>Le ".strftime("%A %d %B %Y").", à ".strftime("%H:%M")."</strong></p><p><strong>Docteur ".strtoupper($this->medecin->patient->nom)." ".$this->medecin->patient->prenom."</strong></p><p><strong>Médecin ".$this->medecin->specialite."</strong></p><p><strong>".$this->medecin->lieu."</strong></p><p><strong>".$this->medecin->tele_pro."</strong></p><p>&nbsp;</p>
+        "<p class='ql-align-right'><strong>Le ".strftime("%A %d %B %Y")."</strong></p><p><strong>Docteur ".strtoupper($this->medecin->patient->nom)." ".$this->medecin->patient->prenom."</strong></p><p><strong>Médecin ".$this->medecin->specialite."</strong></p><p><strong>".$this->medecin->lieu."</strong></p><p><strong>".$this->medecin->tele_pro."</strong></p><p>&nbsp;</p>
         <p><br></p><p>Patient : ".strtoupper($this->consultation->patient->nom)." ".$this->consultation->patient->prenom."</p><p>&nbsp;</p>";
 
         foreach ($this->pms as $key => $pm) {
@@ -89,6 +90,10 @@ class LiveOrdonnance extends Component
 
         $this->consultation->ordonnance = $formData['data-textarea'];
         $this->consultation->save();
+
+        DB::table('prescription_medicamenteuses')
+              ->where('consultation_id', $this->consultation->id)
+              ->update(['created_at' => now()]);
 
         Alert::success('Ordonnance ajouté avec succès');
         return redirect()->route('medecin.consultation.showOrdonnance', [ 'consultation_id' => Crypt::encrypt($this->consultation->id) ]);
