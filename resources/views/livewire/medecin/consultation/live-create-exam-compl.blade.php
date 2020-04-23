@@ -6,13 +6,13 @@
             <label for="type[]" class="col-1 col-form-label">Type</label>
             <select class="form-control col-4" name="type[]" required wire:model="examentype">
                 <option name="type[]" value="." selected hidden>Sélectionner le type</option>
-                <option name="type[]" value="AB">Analyse biologique</option>
-                <option name="type[]" value="IM">Imagerie médicale</option>
+                <option name="type[]" value="Analyse biologique">Analyse biologique</option>
+                <option name="type[]" value="Imagerie médicale">Imagerie médicale</option>
                 <option name="type[]" value="Autre">Autre</option>
             </select>
         </div>
     </fieldset>
-@if ( $examentype === 'AB' )
+@if ( $examentype === 'Analyse biologique' )
     <fieldset>
         <legend>Les analyses biologiques</legend>
         <div class="form-group row justify-content-center">
@@ -189,7 +189,7 @@
         </form>
     </fieldset>
 
-@elseif ( $examentype === 'IM' )
+@elseif ( $examentype === 'Imagerie médicale' )
     <fieldset>
         <legend>Les examens par l'imagerie médicale</legend>
         <div class="form-group row justify-content-center">
@@ -252,6 +252,4 @@
     </fieldset>
 @endif
 
-
-    <button wire:click="do">do</button>
 </div>

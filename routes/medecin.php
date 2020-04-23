@@ -38,10 +38,11 @@ Route::group(['namespace' => 'Medecin'], function() {
         Route::get('exam_general/{id}', 'Consultation\ConsultationController@showEG')->name('medecin.consultation.showEG');
         Route::post('storeEG/{id}', 'Consultation\ConsultationController@storeEG')->name('medecin.consultation.storeEG');
         Route::post('updateEG/{id}/{c_id}', 'Consultation\ConsultationController@updateEG')->name('medecin.consultation.updateEG');
+
         Route::get('{consultation_id}/examen-specialise', 'Consultation\ConsultationController@showExamSpecial')->name('medecin.consultation.showExamSpecial');
         Route::get('examen-specialise', 'Consultation\ConsultationController@storeExamSpecial')->name('medecin.consultation.storeExamSpecial');
         Route::get('{consultation_id}/examen-specialise/{examen_id}/resultat/{type}', 'Consultation\ConsultationController@showExamSpecialAjoutResultat')->name('medecin.consultation.showExamSpecialAjoutResultat');
-        Route::post('examen-specialise/{examen_id}/{type}', 'Consultation\ConsultationController@storeFiles')->name('medecin.consultation.ExamSpecial.storeFile');
+        Route::post('examen-specialise', 'Consultation\ConsultationController@storeFiles')->name('medecin.consultation.ExamSpecial.storeFile');
         Route::get('{consultation_id}/examen-specialise/{examen_id}/resultat', 'Consultation\ConsultationController@showExamSpecialResultat')->name('medecin.consultation.showExamSpecialResultat');
         Route::get('{consultation_id}/examen-specialise/{examen_id}/PDF{i}', 'Consultation\ConsultationController@showExamSpecialResultatPDF')->name('medecin.consultation.ExamSpecialResultat.PDF');
 
@@ -57,6 +58,7 @@ Route::group(['namespace' => 'Medecin'], function() {
 
     //Mes patients
     Route::get('/mes-patients', 'HomeController@mesPatients')->name('medecin.mesPatients');
+    Route::get('/mes-consultations/{patient_id}', 'HomeController@mesConsultationsPatient')->name('medecin.mesConsultationsPatient');
 
     Route::get('/dossier_medical/{patient}/ATCD', 'HomeController@dossier_ATCD')->name('medecin.dossier_ATCD');
     Route::get('/dossier_medical/{patient}/Biometrie', 'HomeController@dossier_Biometrie')->name('medecin.dossier_Biometrie');

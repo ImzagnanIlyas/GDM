@@ -1,5 +1,9 @@
 @extends('medecin.layouts.consultation-layout')
 
+@section('title')
+    Bilan de l'examen complémentaire
+@endsection
+
 @section('style')
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <style>

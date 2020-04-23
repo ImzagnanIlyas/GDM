@@ -40,44 +40,52 @@
 
 @elseif ( $type === "pdf" )
 
-    <form method="POST" action="{{ route('medecin.consultation.ExamSpecial.storeFile', [ 'examen_id' => $examen->id, 'type' => $type ]) }}" enctype="multipart/form-data" class='custom-form'>
+    <form method="POST" action="{{ route('medecin.consultation.ExamSpecial.storeFile') }}" enctype="multipart/form-data" class='custom-form'>
         @csrf
         <div class="form-group">
             <label for="files">Sélectionner un ou plusieurs fichiers</label>
             <input type="file" class="form-control-file" name="data[]" multiple>
+            <input type="text" name="examen_id" value="{{ $examen->id }}" hidden>
+            <input type="text" name="type" value="{{ $type }}" hidden>
         </div>
         <button type='submit' class='btn btn-primary btn-lg btn-block' onClick="$('#upload').css('visibility', 'visible');">Confirmer</button>
     </form>
 
 @elseif ( $type === "image" )
 
-    <form method="POST" action="{{ route('medecin.consultation.ExamSpecial.storeFile', [ 'examen_id' => $examen->id, 'type' => $type ]) }}" enctype="multipart/form-data" class='custom-form'>
+    <form method="POST" action="{{ route('medecin.consultation.ExamSpecial.storeFile') }}" enctype="multipart/form-data" class='custom-form'>
         @csrf
         <div class="form-group">
             <label for="files">Sélectionner un ou plusieurs fichiers</label>
             <input type="file" class="form-control-file" name="data[]" multiple>
+            <input type="text" name="examen_id" value="{{ $examen->id }}" hidden>
+            <input type="text" name="type" value="{{ $type }}" hidden>
         </div>
         <button type='submit' class='btn btn-primary btn-lg btn-block' onClick="$('#upload').css('visibility', 'visible');">Confirmer</button>
     </form>
 
 @elseif ( $type === "video" )
 
-    <form method="POST" action="{{ route('medecin.consultation.ExamSpecial.storeFile', [ 'examen_id' => $examen->id, 'type' => $type ]) }}" enctype="multipart/form-data" class='custom-form'>
+    <form method="POST" action="{{ route('medecin.consultation.ExamSpecial.storeFile') }}" enctype="multipart/form-data" class='custom-form'>
         @csrf
         <div class="form-group">
             <label for="files">Sélectionner un ou plusieurs fichiers</label>
             <input type="file" class="form-control-file" name="data[]" multiple>
+            <input type="text" name="examen_id" value="{{ $examen->id }}" hidden>
+            <input type="text" name="type" value="{{ $type }}" hidden>
         </div>
         <button type='submit' class='btn btn-primary btn-lg btn-block' onClick="$('#upload').css('visibility', 'visible');">Confirmer</button>
     </form>
 
 @elseif ( $type === "audio" )
 
-    <form method="POST" action="{{ route('medecin.consultation.ExamSpecial.storeFile', [ 'examen_id' => $examen->id, 'type' => $type ]) }}" enctype="multipart/form-data" class='custom-form'>
+    <form method="POST" action="{{ route('medecin.consultation.ExamSpecial.storeFile') }}" enctype="multipart/form-data" class='custom-form'>
         @csrf
         <div class="form-group">
             <label for="files">Sélectionner un ou plusieurs fichiers</label>
             <input type="file" class="form-control-file" name="data[]" multiple>
+            <input type="text" name="examen_id" value="{{ $examen->id }}" hidden>
+            <input type="text" name="type" value="{{ $type }}" hidden>
         </div>
         <button type='submit' class='btn btn-primary btn-lg btn-block' onClick="$('#upload').css('visibility', 'visible');">Confirmer</button>
     </form>

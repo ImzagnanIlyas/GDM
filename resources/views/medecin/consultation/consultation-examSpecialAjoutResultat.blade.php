@@ -1,5 +1,9 @@
 @extends('medecin.layouts.consultation-layout')
 
+@section('title')
+    Ajouter le résultat pour l'examen spécialisé
+@endsection
+
 @section('style')
     <!-- Include stylesheet -->
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
@@ -156,7 +160,7 @@
 
 @section('onglet')
 
-@livewire('medecin.consultation.live-exam-special-ajout-resultat')
+@livewire('medecin.consultation.live-exam-special-ajout-resultat', [ 'consultation' => $consultation, 'examen' => $examen])
 
 @endsection
 

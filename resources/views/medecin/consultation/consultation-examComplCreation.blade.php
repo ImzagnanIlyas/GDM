@@ -1,5 +1,9 @@
 @extends('medecin.layouts.consultation-layout')
 
+@section('title')
+    Ajouter un examen complémentaire
+@endsection
+
 @section('style')
     <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
@@ -18,7 +22,7 @@ fieldset{
 
 @section('onglet')
 
-@livewire('medecin.consultation.live-create-exam-compl')
+@livewire('medecin.consultation.live-create-exam-compl', $consultation)
 
 @endsection
 

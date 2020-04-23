@@ -1,5 +1,9 @@
 @extends('medecin.layouts.consultation-layout')
 
+@section('title')
+    Générale
+@endsection
+
 @section('onglet')
 <table style="width:60%">
     <tr>
