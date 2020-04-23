@@ -46,10 +46,10 @@ class LiveMdp extends Component
                 $tmp = Auth::guard('pharmacie')->user();
                 $tmp->password = bcrypt($formData['password']);
                 $tmp->save();
-                session()->flash('message', 'Post successfully updated.');
+                session()->flash('message', 'Mise à jour réussie');
                 $this->mount();
             }else {
-                session()->flash('not', 'MDP incorrecte');
+                session()->flash('not', 'Echec de la mise à jour');
             }
         }
     }

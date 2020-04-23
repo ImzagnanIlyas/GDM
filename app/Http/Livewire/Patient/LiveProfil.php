@@ -40,7 +40,7 @@ class LiveProfil extends Component
             $tmp->tele = $formData['telephone'];
             $tmp->save();
             $this->mount();
-            session()->flash('message', 'Post successfully updated.');
+            session()->flash('message', 'Mise à jour réussie');
         }
     }
 }

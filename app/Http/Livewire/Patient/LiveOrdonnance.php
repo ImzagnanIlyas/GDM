@@ -18,10 +18,10 @@ class LiveOrdonnance extends Component
     public $item;
     public $disabled = "disabled";
 
-    public function mount(){
-        $this->patient = Patient::findOrFail(Request::segment(3));
+    public function mount($patient){
+        $this->patient = $patient;
         $this->consultations = $this->getConsultations();
-        $this->item = $this->consultations->first();
+        $this->item = Consultation::find($this->consultations[0]);
         $this->getDisabled();
     }
 
@@ -34,17 +34,20 @@ class LiveOrdonnance extends Component
 
         $query =  DB::table('prescription_medicamenteuses')
                     ->join('consultations', 'prescription_medicamenteuses.consultation_id', '=', 'consultations.id')
-                    ->select('consultation_id')
+                    ->select('consultation_id', 'prescription_medicamenteuses.created_at')
                     ->where('consultations.patient_id','=',$this->patient->id)
-                    ->groupBy('consultation_id')
+                    ->groupBy('consultation_id', 'prescription_medicamenteuses.created_at')
+                    ->orderByDesc('prescription_medicamenteuses.created_at')
                     ->get()->toArray();
+
 
         $ids = [];
         for ($i=0; $i < sizeof($query); $i++) {
             array_push($ids, $query[$i]->consultation_id);
         }
 
-        return Consultation::findMany(array_values($ids));
+        //return Consultation::findMany(array_values($ids));
+        return $ids;
     }
 
     public function getDisabled(){

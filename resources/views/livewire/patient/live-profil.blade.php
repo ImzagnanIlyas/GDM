@@ -1,11 +1,11 @@
 <div>
 <div class="col-sm-8 col-md-9">
-    <div class="card">
     @if (session()->has('message'))
         <div class="alert alert-success">
             {{ session('message') }}
         </div>
     @endif
+    <div class="card">
         <div class="card-block">
             <h5 class="title">Profil</h5>
             <form class="update-profile" wire:submit.prevent="do(Object.fromEntries(new FormData($event.target)))">
@@ -76,8 +76,8 @@
 </div>
 
 
-<div wire:poll>
-    Current time: {{ now() }}
+<div wire:poll.5000ms class="hidden">
+
 </div>
 
 

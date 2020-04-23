@@ -1,6 +1,8 @@
 <?php
 
 use App\Patient;
+use Illuminate\Contracts\Encryption\DecryptException;
+use Illuminate\Support\Facades\Crypt;
 
 Route::group(['namespace' => 'Pharmacie'], function() {
     Route::get('/', 'HomeController@index')->name('pharmacie.accueil');
@@ -33,8 +35,17 @@ Route::group(['namespace' => 'Pharmacie'], function() {
         return view('pharmacie.recherche');
     })->name('pharmacie.recherche');
 
-    Route::get('ordonnance/{id}', function () {
-        return view('pharmacie.ordonnance');
+    Route::get('ordonnance/{id}', function ($id) {
+
+        try {
+            $decrypted = Crypt::decrypt($id);
+        } catch (DecryptException $e) {
+            abort(404);
+        }
+
+        return view('pharmacie.ordonnance',[
+            'patient' => Patient::findOrFail($decrypted)
+        ]);
     })->name('pharmacie.ordonnance');
 
     Route::get('profil', function () {

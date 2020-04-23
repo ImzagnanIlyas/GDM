@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Patient;
 
 use App\Patient;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Request;
 use Livewire\Component;
 
@@ -31,8 +32,7 @@ class LiveRecherche extends Component
         $this->patients = Patient::where('cin','like',$this->query.'%')->get();
     }
 
-    public function ordonnance($patient){
-        session()->flash('patient', $patient);
-        return redirect()->route('pharmacie.ordonnance', ['id' => $patient]);
+    public function ordonnance($patientId){
+        return redirect()->route('pharmacie.ordonnance', ['id' => Crypt::encrypt($patientId)]);
     }
 }
