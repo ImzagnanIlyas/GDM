@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Medecin\Consultation;
 
 use App\Consultation;
 use App\Examen_specialise;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Request;
 use Livewire\Component;
 Use RealRashid\SweetAlert\Facades\Alert;
@@ -17,8 +18,8 @@ class LiveExamSpecial extends Component
     public $consultation;
     public $route, $consultationId;
 
-    public function mount(){
-        $this->consultation = Consultation::findOrFail(Request::segment(3));
+    public function mount($consultation){
+        $this->consultation = $consultation;
         $this->route = route('medecin.consultation.storeExamSpecial');
         $this->consultationId = $this->consultation->id;
     }
@@ -45,7 +46,7 @@ class LiveExamSpecial extends Component
         )
         ->persistent(false,true)
         ->autoClose(null);
-        return redirect()->route('medecin.consultation.showExamSpecial', [ 'consultation_id' => $this->consultation->id ]);
+        return redirect()->route('medecin.consultation.showExamSpecial', [ 'consultation_id' => Crypt::encrypt($this->consultation->id) ]);
     }
 
     public function ConfirmForm(){

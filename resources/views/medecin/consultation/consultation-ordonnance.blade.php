@@ -1,5 +1,9 @@
 @extends('medecin.layouts.consultation-layout')
 
+@section('title')
+    Ordonnance
+@endsection
+
 @section('style')
     <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
@@ -23,7 +27,7 @@ input:required{
 @section('onglet')
 
 @empty ($consultation->ordonnance)
-    @livewire('medecin.consultation.live-ordonnance')
+    @livewire('medecin.consultation.live-ordonnance', $consultation)
 @else
     <div class="col-md-10">
         <div class="card-body">

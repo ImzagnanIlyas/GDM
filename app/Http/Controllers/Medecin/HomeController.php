@@ -8,6 +8,7 @@ use App\Patient;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 
 class HomeController extends Controller
 {
@@ -102,5 +103,12 @@ class HomeController extends Controller
     public function mesPatients()
     {
         return view('medecin.mes-patients');
+    }
+
+    public function mesConsultationsPatient($patient_id)
+    {
+        return view('medecin.mes-consultations-patient',[
+            'patient' => Patient::findOrFail(Crypt::decrypt($patient_id)),
+        ]);
     }
 }

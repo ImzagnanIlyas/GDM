@@ -7,6 +7,7 @@ use App\Medicament;
 use App\Prescription_medicamenteuse;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Request;
 use Livewire\Component;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -17,8 +18,8 @@ class LiveOrdonnance extends Component
     public $pms, $ordonnance;
 
 
-    public function mount(){
-        $this->consultation = Consultation::findOrFail(Request::segment(3));
+    public function mount($consultation){
+        $this->consultation = $consultation;
         $this->medicaments = Medicament::all();
         $this->medecin = Auth::guard('medecin')->user();
         $this->ordonnance = "";
@@ -90,7 +91,7 @@ class LiveOrdonnance extends Component
         $this->consultation->save();
 
         Alert::success('Ordonnance ajouté avec succès');
-        return redirect()->route('medecin.consultation.showOrdonnance', [ 'consultation_id' => $this->consultation->id ]);
+        return redirect()->route('medecin.consultation.showOrdonnance', [ 'consultation_id' => Crypt::encrypt($this->consultation->id) ]);
     }
 
 }

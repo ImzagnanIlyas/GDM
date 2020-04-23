@@ -7,10 +7,12 @@ use App\Examen_complimentaire;
 use App\Examen_general;
 use App\Examen_specialise;
 use App\Http\Controllers\Controller;
+use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Crypt;
 
 class ConsultationController extends Controller
 {
@@ -39,8 +41,13 @@ class ConsultationController extends Controller
 
     public function showExamSpecial($consultation_id)
     {
+        try {
+            $decrypted = Crypt::decrypt($consultation_id);
+        }catch (DecryptException $e) {
+            abort(404);
+        }
         return view('medecin.consultation.consultation-examSpecial', [
-            'consultation' => Consultation::findOrFail($consultation_id)
+            'consultation' => Consultation::findOrFail($decrypted)
         ]);
     }
 
@@ -55,29 +62,51 @@ class ConsultationController extends Controller
         return redirect()->back();
     }
 
-    public function showExamSpecialAjoutResultat($consultation_id){
+    public function showExamSpecialAjoutResultat($consultation_id, $examen_id){
+        try {
+            $decrypted = Crypt::decrypt($consultation_id);
+            $decrypted = Crypt::decrypt($examen_id);
+        }catch (DecryptException $e) {
+            abort(404);
+        }
+
         return view('medecin.consultation.consultation-examSpecialAjoutResultat', [
-            'consultation' => Consultation::findOrFail($consultation_id)
+            'consultation' => Consultation::findOrFail(Crypt::decrypt($consultation_id)),
+            'examen' => Examen_specialise::findOrFail(Crypt::decrypt($examen_id)),
         ]);
     }
 
     public function showExamSpecialResultat($consultation_id, $examen_id){
+        try {
+            $decrypted = Crypt::decrypt($consultation_id);
+            $decrypted = Crypt::decrypt($examen_id);
+        }catch (DecryptException $e) {
+            abort(404);
+        }
+
         return view('medecin.consultation.consultation-examSpecialResultat', [
-            'consultation' => Consultation::findOrFail($consultation_id),
-            'examen' => Examen_specialise::findOrFail($examen_id),
+            'consultation' => Consultation::findOrFail(Crypt::decrypt($consultation_id)),
+            'examen' => Examen_specialise::findOrFail(Crypt::decrypt($examen_id)),
         ]);
     }
 
     public function showExamSpecialResultatPDF($consultation_id, $examen_id, $i){
-        $examen = Examen_specialise::findOrFail($examen_id);
+        try {
+            $decrypted = Crypt::decrypt($consultation_id);
+            $decrypted = Crypt::decrypt($examen_id);
+        }catch (DecryptException $e) {
+            abort(404);
+        }
+        $examen = Examen_specialise::findOrFail(Crypt::decrypt($examen_id));
         $resultat = json_decode($examen->resultat);
         return response()->file( public_path('storage/'.$resultat->pdf[$i-1]) );
     }
 
     // Examen spécialisé functions :: Files store function
 
-    public function storeFiles(Request $request,$examen_id, $type){
-
+    public function storeFiles(Request $request){
+        $examen_id = $request->input('examen_id');
+        $type = $request->input('type');
         $examen = Examen_specialise::findOrFail($examen_id);
         $links_tab = [];
 
@@ -99,7 +128,7 @@ class ConsultationController extends Controller
             ]);
 
             $examen->save();
-            return redirect()->route('medecin.consultation.showExamSpecialResultat', [ 'consultation_id' => $examen->consultation->id, 'examen_id' => $examen->id ]);
+            return redirect()->route('medecin.consultation.showExamSpecialResultat', [ 'consultation_id' => Crypt::encrypt($examen->consultation->id), 'examen_id' => Crypt::encrypt($examen->id) ]);
 
         }elseif ( $type === "image" ){
 
@@ -119,7 +148,7 @@ class ConsultationController extends Controller
             ]);
 
             $examen->save();
-            return redirect()->route('medecin.consultation.showExamSpecialResultat', [ 'consultation_id' => $examen->consultation->id, 'examen_id' => $examen->id ]);
+            return redirect()->route('medecin.consultation.showExamSpecialResultat', [ 'consultation_id' => Crypt::encrypt($examen->consultation->id), 'examen_id' => Crypt::encrypt($examen->id) ]);
 
         }elseif ( $type === "video" ){
 
@@ -139,7 +168,7 @@ class ConsultationController extends Controller
             ]);
 
             $examen->save();
-            return redirect()->route('medecin.consultation.showExamSpecialResultat', [ 'consultation_id' => $examen->consultation->id, 'examen_id' => $examen->id ]);
+            return redirect()->route('medecin.consultation.showExamSpecialResultat', [ 'consultation_id' => Crypt::encrypt($examen->consultation->id), 'examen_id' => Crypt::encrypt($examen->id) ]);
 
         }elseif ( $type === "audio" ){
 
@@ -159,7 +188,7 @@ class ConsultationController extends Controller
             ]);
 
             $examen->save();
-            return redirect()->route('medecin.consultation.showExamSpecialResultat', [ 'consultation_id' => $examen->consultation->id, 'examen_id' => $examen->id ]);
+            return redirect()->route('medecin.consultation.showExamSpecialResultat', [ 'consultation_id' => Crypt::encrypt($examen->consultation->id), 'examen_id' => Crypt::encrypt($examen->id) ]);
         }
     }
     public function storeInfo(Request $request, $id)
@@ -214,8 +243,13 @@ class ConsultationController extends Controller
 
     public function showOrdonnance($consultation_id)
     {
+        try {
+            $decrypted = Crypt::decrypt($consultation_id);
+        }catch (DecryptException $e) {
+            abort(404);
+        }
         return view('medecin.consultation.consultation-ordonnance', [
-            'consultation' => Consultation::findOrFail($consultation_id)
+            'consultation' => Consultation::findOrFail($decrypted)
         ]);
     }
 
@@ -226,35 +260,63 @@ class ConsultationController extends Controller
 
     public function showExamCompl($consultation_id)
     {
+        try {
+            $decrypted = Crypt::decrypt($consultation_id);
+        }catch (DecryptException $e) {
+            abort(404);
+        }
         return view('medecin.consultation.consultation-examCompl', [
-            'consultation' => Consultation::findOrFail($consultation_id)
+            'consultation' => Consultation::findOrFail($decrypted)
         ]);
     }
 
     public function createExamCompl($consultation_id)
     {
+        try {
+            $decrypted = Crypt::decrypt($consultation_id);
+        }catch (DecryptException $e) {
+            abort(404);
+        }
         return view('medecin.consultation.consultation-examComplCreation', [
-            'consultation' => Consultation::findOrFail($consultation_id)
+            'consultation' => Consultation::findOrFail($decrypted)
         ]);
     }
 
     public function showExamComplBilan($consultation_id, $examen_id)
     {
+        try {
+            $decrypted = Crypt::decrypt($consultation_id);
+            $decrypted = Crypt::decrypt($examen_id);
+        }catch (DecryptException $e) {
+            abort(404);
+        }
         return view('medecin.consultation.consultation-examComplBilan', [
-            'consultation' => Consultation::findOrFail($consultation_id),
-            'examen' => Examen_complimentaire::findOrFail($examen_id),
+            'consultation' => Consultation::findOrFail(Crypt::decrypt($consultation_id)),
+            'examen' => Examen_complimentaire::findOrFail(Crypt::decrypt($examen_id)),
         ]);
     }
 
     public function showExamComplResultat($consultation_id, $examen_id){
+        try {
+            $decrypted = Crypt::decrypt($consultation_id);
+            $decrypted = Crypt::decrypt($examen_id);
+        }catch (DecryptException $e) {
+            abort(404);
+        }
         return view('medecin.consultation.consultation-examComplResultat', [
-            'consultation' => Consultation::findOrFail($consultation_id),
-            'examen' => Examen_complimentaire::findOrFail($examen_id),
+            'consultation' => Consultation::findOrFail(Crypt::decrypt($consultation_id)),
+            'examen' => Examen_complimentaire::findOrFail(Crypt::decrypt($examen_id)),
         ]);
     }
 
     public function showExamComplResultatPDF($consultation_id, $examen_id, $i){
-        $examen = Examen_complimentaire::findOrFail($examen_id);
+        try {
+            $decrypted = Crypt::decrypt($consultation_id);
+            $decrypted = Crypt::decrypt($examen_id);
+        }catch (DecryptException $e) {
+            abort(404);
+        }
+        $examen = Examen_complimentaire::findOrFail(Crypt::decrypt($examen_id));
         $resultat = json_decode($examen->resultat);
         return response()->file( public_path('storage/'.$resultat->pdf[$i-1]) );
     }

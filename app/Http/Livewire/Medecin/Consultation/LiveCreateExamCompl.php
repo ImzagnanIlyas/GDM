@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Medecin\Consultation;
 use App\Consultation;
 use App\Examen_complimentaire;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Request;
 use Livewire\Component;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -15,8 +16,8 @@ class LiveCreateExamCompl extends Component
     public $x, $examentype, $imtype, $im_examen , $autretype, $prescription;
     protected $listeners = ['AB','IM'];
 
-    public function mount(){
-        $this->consultation = Consultation::findOrFail(Request::segment(3));
+    public function mount($consultation){
+        $this->consultation = $consultation;
         $this->examentype = null;
         $this->im_examen = [];
         $this->autretype = "";
@@ -115,7 +116,7 @@ class LiveCreateExamCompl extends Component
         $tmp->save();
 
         Alert::success('Examen complémentaire ajouté avec succès');
-        return redirect()->route('medecin.consultation.showExamCompl', [ 'consultation_id' => $this->consultation->id ]);
+        return redirect()->route('medecin.consultation.showExamCompl', [ 'consultation_id' => Crypt::encrypt($this->consultation->id) ]);
     }
 
 }

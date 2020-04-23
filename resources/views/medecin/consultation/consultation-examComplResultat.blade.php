@@ -1,5 +1,9 @@
 @extends('medecin.layouts.consultation-layout')
 
+@section('title')
+    Résultat de l'examen complémentaire
+@endsection
+
 @section('style')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css">
     <link rel="stylesheet" href="{{ asset('css/resultat.css') }}">
@@ -34,7 +38,7 @@
         <ul id="files">
             @foreach ( $resultat->pdf as $pdf )
                 <li>
-                    <a href="{{ route('medecin.consultation.ExamComplResultat.PDF', [ 'consultation_id' => $consultation->id, 'examen_id' => $examen->id, 'i' => $i ]) }}" target="_blank" class="file_link">
+                    <a href="{{ route('medecin.consultation.ExamComplResultat.PDF', [ 'consultation_id' => Crypt::encrypt($consultation->id), 'examen_id' => Crypt::encrypt($examen->id), 'i' => $i ]) }}" target="_blank" class="file_link">
                         <div class="link_icon">
                             <i class="fas fa-file-pdf"></i>
                         </div>

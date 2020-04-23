@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Medecin\Consultation;
 
 use App\Consultation;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Request;
 use Livewire\Component;
 
@@ -10,8 +11,8 @@ class LiveExamCompl extends Component
 {
     public $consultation;
 
-    public function mount(){
-        $this->consultation = Consultation::findOrFail(Request::segment(3));
+    public function mount($consultation){
+        $this->consultation = $consultation;
     }
 
     public function render()
@@ -20,7 +21,7 @@ class LiveExamCompl extends Component
     }
 
     public function createExam(){
-        return redirect()->route('medecin.consultation.createExamCompl', [ 'consultation_id' => $this->consultation->id ]);
+        return redirect()->route('medecin.consultation.createExamCompl', [ 'consultation_id' => Crypt::encrypt($this->consultation->id) ]);
     }
 
     public function test(){

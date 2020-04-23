@@ -32,7 +32,7 @@
                     <td> - </td>
                     <td> - </td>
                     <td class="d-flex justify-content-between">
-                        <a href="{{ route('medecin.consultation.showExamComplBilan', [ 'consultation_id' => $consultation->id, 'examen_id' => $EC->id ]) }}" class="btn btn-info col-6 mr-1">Bilan</a>
+                        <a href="{{ route('medecin.consultation.showExamComplBilan', [ 'consultation_id' => Crypt::encrypt($consultation->id), 'examen_id' => Crypt::encrypt($EC->id) ]) }}" class="btn btn-info col-6 mr-1">Bilan</a>
                         <a href="" class="btn btn-primary disabled col-6 ml-1">Résultat</a>
                     </td>
                     @else
@@ -40,8 +40,8 @@
                     <td> {{ $EC->examinateur->nom }}</td>
                     <td> {{ $EC->updated_at }} </td>
                     <td class="d-flex justify-content-between">
-                        <a href="{{ route('medecin.consultation.showExamComplBilan', [ 'consultation_id' => $consultation->id, 'examen_id' => $EC->id ]) }}" class="btn btn-info col-6 mr-1" >Bilan</a>
-                        <a href="{{ route('medecin.consultation.showExamComplResultat', [ 'consultation_id' => $consultation->id, 'examen_id' => $EC->id ]) }}" class="btn btn-primary col-6 ml-1">Résultat</a>
+                        <a href="{{ route('medecin.consultation.showExamComplBilan', [ 'consultation_id' => Crypt::encrypt($consultation->id), 'examen_id' => Crypt::encrypt($EC->id) ]) }}" class="btn btn-info col-6 mr-1" >Bilan</a>
+                        <a href="{{ route('medecin.consultation.showExamComplResultat', [ 'consultation_id' => Crypt::encrypt($consultation->id), 'examen_id' => Crypt::encrypt($EC->id) ]) }}" class="btn btn-primary col-6 ml-1">Résultat</a>
                     </td>
                     @endif
                 </tr>

@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Medecin\Consultation;
 
 use App\Consultation;
 use App\Examen_specialise;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Request;
 use Livewire\Component;
 
@@ -14,10 +15,10 @@ class LiveExamSpecialAjoutResultat extends Component
     public $consultation, $examen;
     public $type, $select;
 
-    public function mount(){
+    public function mount($data){
         $this->select = $this->type = Request::segment(7);
-        $this->consultation = Consultation::findOrFail(Request::segment(3));
-        $this->examen = Examen_specialise::findOrFail(Request::segment(5));
+        $this->consultation = $data['consultation'];
+        $this->examen = $data['examen'];
     }
 
     public function render()
@@ -36,7 +37,7 @@ class LiveExamSpecialAjoutResultat extends Component
 
         $this->examen->save();
 
-        return redirect()->route('medecin.consultation.showExamSpecialResultat', [ 'consultation_id' => $this->consultation->id, 'examen_id' => $this->examen->id ]);
+        return redirect()->route('medecin.consultation.showExamSpecialResultat', [ 'consultation_id' => Crypt::encrypt($this->consultation->id), 'examen_id' => Crypt::encrypt($this->examen->id) ]);
     }
 
     public function updatedSelect(){
@@ -44,7 +45,7 @@ class LiveExamSpecialAjoutResultat extends Component
     }
 
     public function switchType(){
-        return redirect()->route('medecin.consultation.showExamSpecialAjoutResultat', [ 'consultation_id' => $this->consultation->id, 'examen_id' => $this->examen->id, 'type' => $this->select ]);
+        return redirect()->route('medecin.consultation.showExamSpecialAjoutResultat', [ 'consultation_id' => Crypt::encrypt($this->consultation->id), 'examen_id' => Crypt::encrypt($this->examen->id), 'type' => $this->select ]);
     }
 
 }
