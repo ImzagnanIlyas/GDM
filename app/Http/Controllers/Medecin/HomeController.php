@@ -35,10 +35,18 @@ class HomeController extends Controller
 
     public function recherche(Request $request)
     {
-        $cin = $request->cin;
-        return view('medecin.liste_patients', [
-            'patient' => Patient::where('cin', $request->cin)->first(), 'cin' => $cin
-        ]);
+        if(!empty($request->cin))
+        {
+            return view('medecin.liste_patients', [
+                'patient' => Patient::where('cin', $request->cin)->first(), 'cin' => $request->cin
+            ]);
+        }else
+        {
+            return view('medecin.liste_patients', [
+                'patient' => null, 'cin' => $request->cin
+            ]);
+        }
+
     }
 
 
