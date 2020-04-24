@@ -18,7 +18,6 @@ class HomeController extends Controller
     {
         $this->middleware('patient.auth:patient');
     }
-
     /**
      * Show the Patient dashboard.
      *
@@ -27,5 +26,8 @@ class HomeController extends Controller
     public function index() {
         return view('patient.home');
     }
+
+
+
 
 }

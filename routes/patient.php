@@ -23,4 +23,24 @@ Route::group(['namespace' => 'Patient'], function() {
     Route::get('email/verify','Auth\VerificationController@show')->name('patient.verification.notice');
     Route::get('email/verify/{id}','Auth\VerificationController@verify')->name('patient.verification.verify');
 
+
+    Route::get('ATCD','acceuil\acceuilController@show')->name('ATCD')->middleware('patient.auth');
+    Route::get('Bio','acceuil\BioController@show')->name('Bio')->middleware('patient.auth');
+    Route::get('mescon','acceuil\mesconController@index')->name('mescon')->middleware('patient.auth');
+    Route::get('detail/{id}','acceuil\mesconController@show')->name('detail')->middleware('patient.auth');
+    Route::get('Ord/{id}','acceuil\OrdController@show')->name('Ord')->middleware('patient.auth');
+    Route::get('Ex','acceuil\ExController@show')->name('Ex')->middleware('patient.auth');
+    Route::get('Examengeneral/{id}','acceuil\ExController@showEG')->name('Examengeneral')->middleware('patient.auth');
+    Route::get('Examenspecialise/{id}','acceuil\ExController@showES')->name('Examenspecialise')->middleware('patient.auth');
+    Route::get('prblm','acceuil\prblmController@show')->name('prblm')->middleware('patient.auth');
+    Route::get('profile','acceuil\profileController@show')->name('profile')->middleware('patient.auth');
+    Route::get('CM','acceuil\CMController@show')->name('CM')->middleware('patient.auth');
+    Route::get('Resultat/{id}' ,'acceuil\resultatController@show')->name('Resultat')->middleware('patient.auth');
+    Route::get('Bilan/{id}' ,'acceuil\resultatController@showBilan')->name('Bilan')->middleware('patient.auth');
+    Route::get('search', 'acceuil\mesconController@search')->name('search');
+
 });
+
+
+
+
