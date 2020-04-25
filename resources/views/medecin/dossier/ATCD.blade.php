@@ -2,49 +2,33 @@
 
 @section('onglet')
 
-<ul class="nav nav-tabs" id="myTab" role="tablist">
-    <li class="nav-item">
-        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="medi" aria-selected="true">Médicaments</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#habitude" role="tab" aria-controls="hab" aria-selected="false">Habitudes</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#chirurgicaux" role="tab" aria-controls="chiru" aria-selected="false">Chirurgicaux</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#Gynéco" role="tab" aria-controls="Gynéco" aria-selected="false">Gynéco</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" id="profile-tab" data-toggle="tab" href="" role="tab" aria-controls="All" aria-selected="false"></a>
-    </li>
-</ul>
-
-<div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="home">
+    @if ($n == 1)
+        {{-- medicament --}}
         <table class="table" style="margin: 15px;margin-left: 10px;">
             <head>
                 <tr>
-                    <th>ID</th>
-                    <th>Posologie</th>
-                    <th>Voie</th>
+                    <th>Nom médicament</th>
+                    <th>Dose</th>
                     <th>Rythme</th>
                     <th>Date Début </th>
                     <th>Durée</th>
+                    <th>Commentaire</th>
                 </tr>
             </head>
             <body>
-                <tr>
-                    <td>1</td>
-                    <td>lorem ipsum</td>
-                    <td>dolor sit</td>
-                    <td>amet consectetur</td>
-                    <td>elit</td>
-                    <td>2 mois</td>
-                </tr>
+                @foreach ($prescriptions as $pres)
+                    <tr>
+                        <td>{{$pres->nom}}</td>
+                        <td>{{$pres->dose}}</td>
+                        <td>{{$pres->rythme}}</td>
+                        <td>{{$pres->duree}}</td>
+                        <td>{{$pres->date_debut}}</td>
+                        <td>{{$pres->commentaire}}</td>
+                    </tr>
+                @endforeach
         </table>
-    </div>
-    <div role="tabpanel" class="tab-pane " id="habitude">
+    @elseif ($n == 2)
+        {{-- habitude --}}
         <table class="table" style="margin: 15px;margin-left: 10px;">
             <head>
                 <tr>
@@ -68,8 +52,8 @@
                 </tr>
 
         </table>
-    </div>
-    <div role="tabpanel" class="tab-pane " id="chirurgicaux">
+    @elseif ($n == 3)
+        {{-- chirurgicaux --}}
         <table class="table" style="margin: 15px;margin-left: 10px;">
             <head>
                 <tr>
@@ -89,8 +73,8 @@
                 </tr>
 
         </table>
-    </div>
-    <div role="tabpanel" class="tab-pane " id="Gynéco">
+    @elseif ($n == 4)
+        {{-- Gynéco --}}
         <table class="table" style="margin: 15px;margin-left: 10px;">
             <head>
                 <tr>
@@ -114,11 +98,10 @@
                 </tr>
 
         </table>
-    </div>
-        <div role="tabpanel" class="tab-pane " id="Allergie">
 
-        </div>
-    </div>
-</div>
+    @elseif ($n == 5)
+        {{-- Allergie --}}
+    @endif
+
 
 @endsection

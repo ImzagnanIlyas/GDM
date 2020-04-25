@@ -34,7 +34,7 @@
             <div id="quill-textarea" style="height: 200px; color: black;">
             </div>
         </div>
-        <textarea class='form-control' rows="5" id="data-textarea" name="data-textarea" type="textarea" hidden></textarea>
+        <textarea class='form-control' rows="5" id="data-textarea" name="data-textarea" type="textarea" hidden required></textarea>
         <button type='submit' class='btn btn-primary btn-lg btn-block'>Confirmer</button>
     </form>
 

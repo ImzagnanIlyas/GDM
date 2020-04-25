@@ -10,8 +10,8 @@
                 <div class="container"><button data-toggle="collapse" class="navbar-toggler btn-lg btn-block" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse justify-content-around" id="navcol-1">
                         <ul class="nav navbar-nav">
-                            <li class="nav-item" role="presentation"><a class="nav-link" href="{{ route('medecin.consultation.showInfo', [ 'id' => $consultation->id ]) }}">Informations</a></li>
-                            <li class="nav-item" role="presentation"><a class="nav-link" href="{{ route('medecin.consultation.showEG', [ 'id' => $consultation->id ]) }}">Examen général</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="{{ route('medecin.consultation.showInfo', [ 'id' => Crypt::encrypt($consultation->id) ]) }}">Informations</a></li>
+                            <li class="nav-item" role="presentation"><a class="nav-link" href="{{ route('medecin.consultation.showEG', [ 'id' => Crypt::encrypt($consultation->id) ]) }}">Examen général</a></li>
                             <li class="nav-item" role="presentation"><a class="nav-link" href="{{ route('medecin.consultation.showExamSpecial', [ 'consultation_id' => Crypt::encrypt($consultation->id) ]) }}">Examen spécialisé</a></li>
                             <li class="nav-item" role="presentation"><a class="nav-link" href="{{ route('medecin.consultation.showExamCompl', [ 'consultation_id' => Crypt::encrypt($consultation->id) ]) }}">Examen complémentaire</a></li>
                             <li class="nav-item" role="presentation"><a class="nav-link" href="{{ route('medecin.consultation.showOrdonnance', [ 'consultation_id' => Crypt::encrypt($consultation->id) ]) }}">Ordonnance</a></li>

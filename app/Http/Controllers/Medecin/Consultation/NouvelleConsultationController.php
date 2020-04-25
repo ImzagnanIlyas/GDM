@@ -8,6 +8,7 @@ use App\Patient;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class NouvelleConsultationController extends Controller
@@ -41,7 +42,8 @@ class NouvelleConsultationController extends Controller
 
         $cons->save();
         toast('Consultation créée avec succès','success');
-        return redirect()->route('medecin.consultation.showInfo', [ 'id' => Consultation::all()->where('medecin_id',Auth::guard('medecin')->user()->id)->sortBy('created_at')->last()->id ]);
+        $id = Consultation::all()->where('medecin_id',Auth::guard('medecin')->user()->id)->sortBy('created_at')->last()->id;
+        return redirect()->route('medecin.consultation.showInfo', [ 'id' => Crypt::encrypt($id) ]);
     }
 
     /**
@@ -89,10 +91,10 @@ class NouvelleConsultationController extends Controller
             <form class='custom-form'  method='POST' action='$route'>
                 $token
                 <div class='form-group'>
-                    <input type='text' class='form-control' id='lieu' name='lieu' value='$lieu' placeholder='Lieu'>
+                    <input type='text' class='form-control' id='lieu' name='lieu' value='$lieu' placeholder='Lieu' required>
                 </div>
                 <div class='form-group'>
-                    <textarea id='motif' name='motif' rows='5' cols='35' class='form-control form-control-lg' placeholder='Motif'></textarea>
+                    <textarea id='motif' name='motif' rows='5' cols='35' class='form-control form-control-lg' placeholder='Motif' required></textarea>
                 </div>
                 <input class='form-control' type='hidden' name='id' value='$patient->id'>
                 <button type='submit' class='btn btn-primary btn-lg btn-block'>Confirmer</button>
@@ -103,7 +105,7 @@ class NouvelleConsultationController extends Controller
             ->iconHtml('<i class="fas fa-file-medical-alt" style="font-size: xxx-large;"></i>')
             ->autoClose(null);
 
-            return redirect()->route('medecin.dashboard');
+            return redirect()->back();
 
         }
         catch(ModelNotFoundException $e)

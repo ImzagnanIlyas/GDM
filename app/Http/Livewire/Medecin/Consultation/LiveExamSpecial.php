@@ -37,7 +37,7 @@ class LiveExamSpecial extends Component
         <form class='custom-form'  method='GET' action='$this->route'>
             <div class='form-group'>
                 <label for='nom'>Titre d'examen</label>
-                <input type='text' class='form-control' id='nom' name='nom' placeholder=''>
+                <input type='text' class='form-control' id='nom' name='nom' placeholder='' required>
                 <input type='text' class='form-control' id='consultationId' name='consultationId' value='$this->consultationId' hidden>
             </div>
             <button type='submit' class='btn btn-primary btn-lg btn-block'>Confirmer</button>

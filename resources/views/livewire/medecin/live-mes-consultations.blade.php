@@ -26,7 +26,7 @@
                         <td>{{ $c->lieu }}</td>
                         <td>{{ $c->motif }}</td>
                         <td>{{ $c->date }}</td>
-                        <td><a href="{{ route('medecin.consultation.showInfo', ['id' => $c->id]) }}" class="btn btn-primary">Détails</a></td>
+                        <td><a href="{{ route('medecin.consultation.showInfo', ['id' => Crypt::encrypt($c->id) ]) }}" class="btn btn-primary">Détails</a></td>
                     </tr>
                     @empty
                     <tr>

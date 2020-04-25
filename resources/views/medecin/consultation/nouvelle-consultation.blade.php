@@ -36,14 +36,14 @@
                             @csrf
                             <div class="form-row form-group">
                                 <div class="col-sm-4 label-column"><label class="col-form-label" for="lieu">Lieu</label></div>
-                                <div class="col-sm-6 input-column"><input class="form-control" type="text" id="lieu" name="lieu"></div>
+                                <div class="col-sm-6 input-column"><input class="form-control" type="text" id="lieu" name="lieu" required></div>
                             </div>
                             <div class="form-row form-group">
                                 <div class="col-sm-4 label-column" style="padding-right: 5px;">
                                     <label class="col-form-label" for="motif">Motif</label>
                                 </div>
                                 <div class="col-sm-6 input-column">
-                                    <textarea id="motif" name="motif" rows="5" cols="35" class="form-control form-control-lg"></textarea>
+                                    <textarea id="motif" name="motif" rows="5" cols="35" class="form-control form-control-lg" required></textarea>
                                 </div>
                             </div>
                             <input class="form-control" type="hidden" name="id" value="{{ $patient->id }}">

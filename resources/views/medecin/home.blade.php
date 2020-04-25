@@ -47,7 +47,7 @@
             <div class="card-body text-center">
                 <div class="text-uppercase text-success font-weight-bold">
                     <p class="card-text" style="font-size: 20px;">
-                        <a href="#" class="stretched-link"></a>Liste des médicaments
+                        <a href="{{ route('medecin.medicaments') }}" class="stretched-link"></a>Liste des médicaments
                     </p>
                 </div>
             </div>

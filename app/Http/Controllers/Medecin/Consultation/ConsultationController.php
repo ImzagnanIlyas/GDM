@@ -9,9 +9,7 @@ use App\Examen_specialise;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\URL;
 use RealRashid\SweetAlert\Facades\Alert;
-use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Crypt;
 
 class ConsultationController extends Controller
@@ -29,7 +27,7 @@ class ConsultationController extends Controller
     public function showInfo($id)
     {
         return view('medecin.consultation.consultation-info', [
-            'consultation' => Consultation::findOrFail($id)
+            'consultation' => Consultation::findOrFail(Crypt::decrypt($id))
         ]);
     }
 
@@ -206,7 +204,7 @@ class ConsultationController extends Controller
     public function showEG($id)
     {
         return view('medecin.consultation.consultation-EG', [
-            'consultation' => Consultation::findOrFail($id)
+            'consultation' => Consultation::findOrFail(Crypt::decrypt($id))
         ]);
     }
 

@@ -26,7 +26,10 @@
                         <table style="width:100%">
                             <tr>
                                 <th>
-                                    <a href="{{ route('nouvelle-consultation.show', ['nouvelle_consultation' => $patient->id]) }}" class="btn btn-success">Nouvelle consultation</a>
+                                    <form class='custom-form'  method='GET' action="{{ route('medecin.showAddAlert') }}">
+                                        <input type='text' value="{{ $cin }}" id='cin' name='cin' hidden>
+                                        <button type='submit' class='btn btn-success'>Nouvelle consultation</button>
+                                    </form>
                                 </th>
                                 <td></td>
                             </tr>
@@ -61,7 +64,9 @@
                             <tr>
                                 <th>Dossier médical</th>
                                 <td>
-                                    <a href="{{ route('medecin.dossier_ATCD', ['patient' => $patient->id]) }}">Cliquez ici pour afficher</a>
+                                    <a href="{{ route('medecin.dossier.ATCD', ['patient' => $patient->id, 'n' => 1]) }}">
+                                        Cliquez ici pour afficher le dossier
+                                    </a>
                                 </td>
                             </tr>
                         </table>

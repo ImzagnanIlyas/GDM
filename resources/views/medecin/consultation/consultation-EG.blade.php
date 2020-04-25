@@ -20,7 +20,7 @@
             <td>
                 <form method="POST" action="{{ route('medecin.consultation.storeEG', [ 'id' => $consultation->id ]) }}" class="form-inline">
                     @csrf
-                    <select name="etat">
+                    <select name="etat" required>
                         <option selected="yes"></option>
                         <option>Bon</option>
                         <option>Assez bon</option>

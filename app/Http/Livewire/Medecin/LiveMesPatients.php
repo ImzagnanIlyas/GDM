@@ -2,7 +2,6 @@
 
 namespace App\Http\Livewire\Medecin;
 
-use Illuminate\Support\Facades\DB;
 use App\Consultation;
 use App\Patient;
 use Illuminate\Support\Facades\Auth;
