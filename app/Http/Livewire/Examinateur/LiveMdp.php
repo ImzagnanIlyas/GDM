@@ -1,19 +1,18 @@
 <?php
 
-namespace App\Http\Livewire\Pharmacie;
+namespace App\Http\Livewire\Examinateur;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
-use Symfony\Component\Console\Input\Input;
 
 class LiveMdp extends Component
 {
-    public $pharmacie;
+    public $examinateur;
     public $old_password, $password, $password_confirmation;
 
     public function mount(){
-        $this->pharmacie = Auth::guard('pharmacie')->user();
+        $this->examinateur = Auth::guard('examinateur')->user();
         $this->old_password = "";
         $this->password = "";
         $this->password_confirmation = "";
@@ -21,7 +20,7 @@ class LiveMdp extends Component
 
     public function render()
     {
-        return view('livewire.pharmacie.live-mdp');
+        return view('livewire.examinateur.live-mdp');
     }
 
     public function updated($field)
@@ -42,14 +41,14 @@ class LiveMdp extends Component
         ]);
 
         if ($validatedData) {
-            if (Hash::check($formData['old_password'], $this->pharmacie->password)) {
-                $tmp = Auth::guard('pharmacie')->user();
+            if (Hash::check($formData['old_password'], $this->examinateur->password)) {
+                $tmp = Auth::guard('examinateur')->user();
                 $tmp->password = bcrypt($formData['password']);
                 $tmp->save();
                 session()->flash('message', 'Mise à jour réussie');
                 $this->mount();
             }else {
-                session()->flash('not', 'Echec de la mise à jour');
+                session()->flash('not', 'Echec de la mise à jour. Mot de passe actuel est incorrect');
                 $this->mount();
             }
         }

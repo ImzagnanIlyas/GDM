@@ -1,26 +1,25 @@
 <?php
 
-namespace App\Http\Livewire\Pharmacie;
+namespace App\Http\Livewire\Examinateur;
 
-use App\Pharmacie;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class LiveProfil extends Component
 {
-    public $pharmacie;
+    public $examinateur;
     public $titre, $adresse, $telephone;
 
     public function mount(){
-        $this->pharmacie = Auth::guard('pharmacie')->user();
-        $this->titre = $this->pharmacie->nom;
-        $this->adresse = $this->pharmacie->adresse;
-        $this->telephone = $this->pharmacie->tele;
+        $this->examinateur = Auth::guard('examinateur')->user();
+        $this->titre = $this->examinateur->nom;
+        $this->adresse = $this->examinateur->adresse;
+        $this->telephone = $this->examinateur->tele;
     }
 
     public function render()
     {
-        return view('livewire.pharmacie.live-profil');
+        return view('livewire.examinateur.live-profil');
     }
 
     public function updated($field)
@@ -32,22 +31,21 @@ class LiveProfil extends Component
         ]);
     }
 
-    public function do($formData){
+    public function submit($formData){
         $validator = $this->validate([
             'titre' => 'required|min:5',
             'adresse' => 'required|min:5',
             'telephone' => 'required|regex:/(0)[5-7][0-9]{8}/',
         ]);
-
-        if ($formData['titre'] != $this->pharmacie->nom OR $formData['adresse'] != $this->pharmacie->adresse OR $formData['telephone'] != $this->pharmacie->tele) {
-            $tmp = Auth::guard('pharmacie')->user();
+        if ($formData['titre'] != $this->examinateur->nom OR $formData['adresse'] != $this->examinateur->adresse OR $formData['telephone'] != $this->examinateur->tele) {
+            $tmp = Auth::guard('examinateur')->user();
             $tmp->nom = $formData['titre'];
             $tmp->adresse = $formData['adresse'];
             $tmp->tele = $formData['telephone'];
             $tmp->save();
             $this->mount();
             session()->flash('message', 'Mise à jour réussie');
-            return redirect()->route('pharmacie.profil');
+            return redirect()->route('examinateur.profil');
         }
     }
 }

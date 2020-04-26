@@ -8,14 +8,14 @@
     <div class="card">
         <div class="card-block">
             <h5 class="title">Profil</h5>
-            <form class="update-profile" wire:submit.prevent="do(Object.fromEntries(new FormData($event.target)))">
+            <form class="update-profile" wire:submit.prevent="submit(Object.fromEntries(new FormData($event.target)))">
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="form-group label-floating">
                             <label class="control-label" for="inpe">
                                 INPE
                             </label>
-                            <input class="form-control" type="text" name="inpe" value="{{ $pharmacie->inpe }}" disabled>
+                            <input class="form-control" type="text" name="inpe" value="{{ $examinateur->inpe }}" disabled>
                         </div>
                     </div>
                 </div>
@@ -25,7 +25,7 @@
                             <label class="control-label" for="titre">
                                 Titre
                             </label>
-                            <input class="form-control" type="text" name="titre" value="{{ $pharmacie->nom }}" wire:model="titre">
+                            <input class="form-control" type="text" name="titre" value="{{ $examinateur->nom }}" wire:model="titre">
                             @error('titre') <span class="error" style="color: red;">{{ $message }}</span> @enderror
                         </div>
                     </div>
@@ -36,7 +36,7 @@
                             <label class="control-label" for="adresse">
                                 Adresse
                             </label>
-                            <input class="form-control" type="text" name="adresse" value="{{ $pharmacie->adresse }}" wire:model="adresse">
+                            <input class="form-control" type="text" name="adresse" value="{{ $examinateur->adresse }}" wire:model="adresse">
                             @error('adresse') <span class="error" style="color: red;">{{ $message }}</span> @enderror
                         </div>
                     </div>
@@ -47,7 +47,7 @@
                             <label class="control-label" for="telephone">
                                 Numéro de téléphone
                             </label>
-                            <input class="form-control" type="text" name="telephone" value="{{ $pharmacie->tele }}" wire:model="telephone">
+                            <input class="form-control" type="text" name="telephone" value="{{ $examinateur->tele }}" wire:model="telephone">
                             @error('telephone') <span class="error" style="color: red;">{{ $message }}</span> @enderror
                         </div>
                     </div>
@@ -58,7 +58,7 @@
                             <label class="control-label" for="proprietaire">
                                 Propriétaire
                             </label>
-                            <input class="form-control" type="text" name="proprietaire" value="{{ strtoupper($pharmacie->patient->nom) }} {{ $pharmacie->patient->prenom }} - {{ $pharmacie->patient->cin }}" disabled>
+                            <input class="form-control" type="text" name="proprietaire" value="{{ strtoupper($examinateur->patient->nom) }} {{ $examinateur->patient->prenom }} - {{ $examinateur->patient->cin }}" disabled>
                         </div>
                     </div>
                 </div><hr>
