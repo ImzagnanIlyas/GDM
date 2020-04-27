@@ -51,12 +51,12 @@ Route::group(['namespace' => 'Medecin'], function() {
 
     //Dossier
     Route::prefix('dossier')->group(function () {
-        Route::get('{patient}/ATCD/{n}', 'Dossier\DossierController@ATCD')->name('medecin.dossier.ATCD');
-        Route::get('{patient}/Biometrie', 'Dossier\DossierController@Biometrie')->name('medecin.dossier.Biometrie');
-        Route::get('{patient}/CM', 'Dossier\DossierController@CM')->name('medecin.dossier.CM');
-        Route::get('{patient}/Ordonnances', 'Dossier\DossierController@Ordonnances')->name('medecin.dossier.Ordonnances');
-        Route::get('{patient}/Examens', 'Dossier\DossierController@Examens')->name('medecin.dossier.Examens');
-        Route::get('{patient}/Problemes', 'Dossier\DossierController@Problemes')->name('medecin.dossier.Problemes');
+        Route::get('{patient_id}/ATCD/{n}', 'Dossier\DossierController@ATCD')->name('medecin.dossier.ATCD');
+        Route::get('{patient_id}/Biometrie', 'Dossier\DossierController@Biometrie')->name('medecin.dossier.Biometrie');
+        Route::get('{patient_id}/CM', 'Dossier\DossierController@CM')->name('medecin.dossier.CM');
+        Route::get('{patient_id}/Ordonnances', 'Dossier\DossierController@Ordonnances')->name('medecin.dossier.Ordonnances');
+        Route::get('{patient_id}/Examens', 'Dossier\DossierController@Examens')->name('medecin.dossier.Examens');
+        Route::get('{patient_id}/Problemes', 'Dossier\DossierController@Problemes')->name('medecin.dossier.Problemes');
     });
 
 });

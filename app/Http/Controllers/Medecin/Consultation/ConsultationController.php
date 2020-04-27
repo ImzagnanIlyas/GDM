@@ -26,6 +26,11 @@ class ConsultationController extends Controller
 
     public function showInfo($id)
     {
+        try {
+            $decrypted = Crypt::decrypt($id);
+        }catch (DecryptException $e) {
+            abort(404);
+        }
         return view('medecin.consultation.consultation-info', [
             'consultation' => Consultation::findOrFail(Crypt::decrypt($id))
         ]);
@@ -203,6 +208,11 @@ class ConsultationController extends Controller
 
     public function showEG($id)
     {
+        try {
+            $decrypted = Crypt::decrypt($id);
+        }catch (DecryptException $e) {
+            abort(404);
+        }
         return view('medecin.consultation.consultation-EG', [
             'consultation' => Consultation::findOrFail(Crypt::decrypt($id))
         ]);

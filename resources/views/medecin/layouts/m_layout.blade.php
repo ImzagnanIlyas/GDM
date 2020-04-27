@@ -32,7 +32,7 @@
                     </div>
                 </a>
                 <hr class="sidebar-divider my-0">
-                <ul class="nav navbar-nav text-light" id="accordionSidebar" style="">
+                <ul class="nav navbar-nav text-light" id="accordionSidebar">
                     <li class="nav-item" role="presentation">
                         <a class="nav-link active" href="{{ url('/medecin') }}" style="font-size: 16px;">
                             <i class="fas fa-home" style="font-size: 20px;"></i>

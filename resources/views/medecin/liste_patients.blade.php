@@ -64,7 +64,7 @@
                             <tr>
                                 <th>Dossier médical</th>
                                 <td>
-                                    <a href="{{ route('medecin.dossier.ATCD', ['patient' => $patient->id, 'n' => 1]) }}">
+                                    <a href="{{ route('medecin.dossier.ATCD', ['patient_id' => Crypt::encrypt($patient->id), 'n' => 1]) }}">
                                         Cliquez ici pour afficher le dossier
                                     </a>
                                 </td>
