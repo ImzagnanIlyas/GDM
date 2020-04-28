@@ -66,10 +66,6 @@
                 <th>Lieu:</th>
                 <td>{{ Auth::guard('medecin')->user()->lieu }}</td>
             </tr>
-            <tr>
-                <th>pass:</th>
-                <td>{{ Crypt::decrypt(Auth::guard('medecin')->user()->password) }}</td>
-            </tr>
         </table>
         </div>
     </div>

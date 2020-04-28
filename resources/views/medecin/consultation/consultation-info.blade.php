@@ -7,8 +7,8 @@
 @section('onglet')
 <table style="width:60%">
     <tr>
-        <th>ID du médecin:</th>
-        <td>{{ $consultation->medecin_id }}</td>
+        <th>Médecin:</th>
+        <td>{{ $consultation->medecin->patient->nom }} {{ $consultation->medecin->patient->prenom }}</td>
     </tr>
     <tr>
         <th>Date de création:</th>

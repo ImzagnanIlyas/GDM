@@ -24,7 +24,7 @@ Route::group(['namespace' => 'Medecin'], function() {
     Route::prefix('consultation')->group(function () {
         Route::get('informations/{id}', 'Consultation\ConsultationController@showInfo')->name('medecin.consultation.showInfo');
         Route::post('storeInfo/{id}', 'Consultation\ConsultationController@storeInfo')->name('medecin.consultation.storeInfo');
-        Route::get('exam_general/{id}', 'Consultation\ConsultationController@showEG')->name('medecin.consultation.showEG');
+        Route::get('examen-general/{id}', 'Consultation\ConsultationController@showEG')->name('medecin.consultation.showEG');
         Route::post('storeEG/{id}', 'Consultation\ConsultationController@storeEG')->name('medecin.consultation.storeEG');
         Route::post('updateEG/{id}/{c_id}', 'Consultation\ConsultationController@updateEG')->name('medecin.consultation.updateEG');
 

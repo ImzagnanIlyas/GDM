@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Medecin;
 
 use App\Http\Controllers\Controller;
 use App\Patient;
+use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 
@@ -64,8 +65,14 @@ class HomeController extends Controller
 
     public function mesConsultationsPatient($patient_id)
     {
+        try {
+            $decrypted = Crypt::decrypt($patient_id);
+        }catch (DecryptException $e) {
+            abort(404);
+        }
+
         return view('medecin.mes-consultations-patient',[
-            'patient' => Patient::findOrFail(Crypt::decrypt($patient_id)),
+            'patient' => Patient::findOrFail($decrypted),
         ]);
     }
 
