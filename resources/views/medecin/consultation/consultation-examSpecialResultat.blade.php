@@ -21,7 +21,7 @@
     @endphp
 
     <div class="col-md-12">
-        <h2>Résultat de l'examen num : {{ $examen->id }}</h2>
+        <h2>Résultat de l'examen spécialisé ({{ $examen->id }})</h2>
         <hr>
     </div>
 

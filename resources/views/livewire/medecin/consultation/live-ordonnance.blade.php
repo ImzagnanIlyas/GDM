@@ -64,8 +64,11 @@
 
 @else
     <div class="col-md-12 d-flex justify-content-between">
-        <h5>Les prescription médicamenteuse</h5>
-        <button wire:click="switchAjout(true)" class='btn btn-primary'>ajouter</button>
+        <span>
+            <h5>Les prescriptions médicamenteuses</h5>
+            <small class="text-muted mt-0">Note bien que les prescriptions sont stockées temporairement si vous n'avez pas confirmé l'ordonnance. Donc si vous actualisez ou quittez la page vous perdra les données.</small>
+        </span>
+        <button wire:click="switchAjout(true)" class='btn btn-primary'>Ajouter</button>
     </div>
     @empty ($pms)
         <div class="alert alert-warning mt-4" role="alert">

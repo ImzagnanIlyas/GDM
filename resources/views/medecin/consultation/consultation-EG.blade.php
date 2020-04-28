@@ -1,5 +1,9 @@
 @extends('medecin.layouts.consultation-layout')
 
+@section('title')
+    Examen général
+@endsection
+
 @section('onglet')
 
 <style>
