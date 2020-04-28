@@ -12,7 +12,7 @@
                     <tr>
                         <th>CIN</th>
                         <th class="col-3">Nom et prenom</th>
-                        <th>sexe</th>
+                        <th>Sexe</th>
                         <th class="text-center">Nombre de consultations</th>
                         <th>Date de la dernière consultation</th>
                         <th>Autres</th>

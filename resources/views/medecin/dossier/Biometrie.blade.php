@@ -11,7 +11,7 @@
 <div class="col-md-12 d-flex justify-content-center mt-3">
     @if ($vitaux->isEmpty())
         <div class="alert alert-warning mt-4" role="alert">
-            Aucune donnée n'existe pour ce patient
+            Les données n'existent pas pour ce patient.
         </div>
     @else
         <div class="table-responsive table col-md-9 overflow-auto" style="max-height: 430px">

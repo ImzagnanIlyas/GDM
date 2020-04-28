@@ -8,7 +8,7 @@
 <div class="d-flex justify-content-center mt-2">
     @if ( empty($allergies) )
         <div class="alert alert-warning mt-4" role="alert">
-            Ce patient n'a aucune allergie.
+            Ce patient n'a pas d'allergies.
         </div>
     @else
         <div class="table-responsive table col-md-12 mt-2 overflow-auto" style="max-height: 430px">

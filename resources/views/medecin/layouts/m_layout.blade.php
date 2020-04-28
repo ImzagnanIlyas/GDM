@@ -13,7 +13,7 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="{{ asset('fonts/fontawesome-all.min.css') }}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aladin">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merienda">
     <link rel="stylesheet" href="{{ asset('css/untitled.css') }}">
     @livewireStyles
     @yield('style')
@@ -24,10 +24,11 @@
         <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
             <div class="container-fluid d-flex flex-column p-0">
                 <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="{{ url('/medecin') }}">
-                    <i class="fas fa-heartbeat" style="width: 30px;height: 40px;margin: 0px;padding: 0px;font-size: 36px;"></i>
+
+                    <i class="fas fa-file-medical-alt" style="width: 30px;height: 40px;margin: 0px;padding: 0px;font-size: 36px;"></i>
                     <div class="sidebar-brand-text mx-3">
-                        <span style="font-size: 36px;font-family: Aladin, cursive;margin: 4px;padding: 0px;">
-                            Sihati
+                        <span style="font-size: 36px;font-family: Merienda">
+                            Milafi
                         </span>
                     </div>
                 </a>

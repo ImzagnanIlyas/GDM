@@ -40,7 +40,7 @@
                 @empty
                 <tr>
                     <div class="alert alert-warning" role="alert">
-                        Aucun examen pour cette consultation.
+                        Pas examen pour cette consultation.
                     </div>
                 </tr>
                 @endforelse

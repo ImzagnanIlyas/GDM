@@ -7,7 +7,7 @@
 <div class="d-flex justify-content-center mt-2"">
     @if ($consultations->isEmpty())
         <div class="alert alert-warning mt-4" role="alert">
-            Ce patient n'a effectué aucune consultation.
+            Ce patient n'a passé aucune consultation.
         </div>
     @else
         <div class="table-responsive table col-md-12 mt-2 overflow-auto" style="max-height: 430px">

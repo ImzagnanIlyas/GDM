@@ -51,7 +51,11 @@
                             </tr>
                             <tr>
                                 <th>Sexe</th>
-                                <td>{{ $patient->sexe }}</td>
+                                <td>@if (($patient->sexe)=='H')
+                                    Homme
+                                @else
+                                    Femme
+                                @endif</td>
                             </tr>
                             <tr>
                                 <th>Téléphone</th>

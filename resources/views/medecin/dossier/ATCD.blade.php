@@ -3,7 +3,7 @@
 @section('onglet')
     @if ( empty($data) )
         <div class="alert alert-warning mt-4" role="alert">
-            Aucune donnée n'existe pour ce patient
+            Les données n'existent pas pour ce patient.
         </div>
     @else
         @if ($n == 1)

@@ -23,7 +23,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="col text-info">
-                    <p class="card-text " style="font-size: 32px;">Bonjour docteur(e) {{ Auth::guard('medecin')->user()->patient->nom }}</p>
+                    <p class="card-text " style="font-size: 32px;">Bonjour Dr. {{ Auth::guard('medecin')->user()->patient->prenom }} {{ Auth::guard('medecin')->user()->patient->nom }}</p>
                 </div>
                 <div class="col-auto">
                     <p id="timedate">{{ date("d-m-Y") }} {{ date("H:i") }}</p>

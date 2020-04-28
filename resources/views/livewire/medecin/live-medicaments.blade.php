@@ -10,7 +10,7 @@
             <table class="table dataTable my-0">
                 <thead>
                     <tr>
-                        <th>code</th>
+                        <th>Code</th>
                         <th>Nom</th>
                         <th>DCI</th>
                         <th>Dosage</th>

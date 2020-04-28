@@ -12,7 +12,7 @@
     .active-nav-item{
         border-radius: 0px 50px 50px 50px;
         -moz-border-radius: 0px 50px 50px 50px;
-        -webkit-border-radius: 0px 50px 50px 50px;
+        -webkit-border-radius: 0px 0px 20px 20px;
         border: 1px solid #ffffff;
         background-color: white;
     }
