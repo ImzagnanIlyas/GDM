@@ -46,11 +46,7 @@ $active2 = Request::segment(4);
                             {{ $consultation->patient->prenom }}
                         </h5>
                         <hr style="margin:8px auto">
-<<<<<<< HEAD
                         <h6>{{ $consultation->patient->cin }} - {{ date("m/d/Y", strtotime($consultation->patient->ddn)) }}</h6>
-=======
-                        <h6>{{ $consultation->patient->cin }} - {{ date("d/m/yy", strtotime($consultation->patient->ddn)) }}</h6>
->>>>>>> 064f3f56bbbbfcfdb623386a1488c1357a7f59a4
                     </div>
                 </div>
             </div>
