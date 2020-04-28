@@ -6,13 +6,17 @@
         <img src="{{ asset('img/medecin/blood.png') }}" alt="Smiley face" height="50">
         <h4 class="text-dark ml-2">Groupe sanguin : <b>A+</b></h4>
     </div>
-    <input class="form-control col-3" type="text" placeholder="Rechercher par date" wire:model="searchInput">
+    <input class="form-control col-3" type="text" placeholder="Rechercher par date" id="searchInput">
 </div>
-<div class="col-md-8">
-    <div class="tab-content profile-tab" id="myTabContent">
-        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-            <table class="table" style="margin: 15px;margin-left: 190px;">
-                <head>
+<div class="col-md-12 d-flex justify-content-center mt-3">
+    @if ($vitaux->isEmpty())
+        <div class="alert alert-warning mt-4" role="alert">
+            Aucune donnée n'existe pour ce patient
+        </div>
+    @else
+        <div class="table-responsive table col-md-9 overflow-auto" style="max-height: 430px">
+            <table class="table">
+                <thead>
                     <tr>
                         <th>ID Consultation</th>
                         <th>Taille</th>
@@ -20,8 +24,8 @@
                         <th>Date</th>
                         <th>Plus</th>
                     </tr>
-                </head>
-                <body>
+                </thead>
+                <tbody>
                 @foreach ($vitaux as $tmp)
                     <tr>
                         <td> <a href="{{ route('medecin.consultation.showInfo', [ 'id' => Crypt::encrypt($tmp->consultation->id) ]) }}">{{ $tmp->consultation->id }}</a> </td>
@@ -31,8 +35,10 @@
                         <td> <a href="{{ route('medecin.consultation.showEG', [ 'id' => Crypt::encrypt($tmp->consultation->id) ]) }}" class="btn btn-info col-6 mr-1" ><i class="fas fa-external-link-alt"></i></a> </td>
                     </tr>
                 @endforeach
+                </tbody>
             </table>
         </div>
-    </div>
+    @endif
+</div>
 
 @endsection

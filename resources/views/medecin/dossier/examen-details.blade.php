@@ -1,46 +1,50 @@
-@extends('medecin.layouts.consultation-layout')
+@extends('medecin.layouts.dossier_layout')
 
-@section('title')
-    Bilan de l'examen complémentaire
-@endsection
-
-@section('style')
-    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-    <style>
+@section('onglet')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.css">
+<link rel="stylesheet" href="{{ asset('css/resultat.css') }}">
+<link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+<style>
 #quill-textarea{
     border: 1px solid gray;
 }
-    </style>
-@endsection
+#quill-textarea2{
+    border: 1px solid gray;
+}
+</style>
 
+<div class="col-md-12 mt-3">
+    <h4 class="text-center"><b>Bilan</b></h4>
+</div>
 
-@section('onglet')
-
-<div class="col-md-10">
-    <div class="card-body">
-        <div id="quill-textarea" style="color: black">
-            {!! json_decode($examen->bilan)->text !!}
+<div class="d-flex justify-content-center mt-2">
+    <div class="col-md-10">
+        <div class="card-body">
+            <div id="quill-textarea" style="color: black">
+                {!! json_decode($examen->bilan)->text !!}
+            </div>
         </div>
     </div>
 </div>
-
 
 @php $resultat = json_decode($examen->resultat); @endphp
 
 @if (! empty($resultat) )
 
     <div class="col-md-12">
-        <h2>Résultat de l'examen num : {{ $examen->id }}</h2>
         <hr>
+        <h4 class="text-center"><b>Résultat</b></h4>
     </div>
 
     @if ( $resultat->type === 'text' )
+        <div class="d-flex justify-content-center mt-2">
         <div class="col-md-10">
             <div class="card-body">
-                <div id="quill-textarea" style="color: black">
+                <div id="quill-textarea2" style="color: black">
                     {!! $resultat->text !!}
                 </div>
             </div>
+        </div>
         </div>
     @elseif ( $resultat->type === 'pdf')
         @php $i = 1; @endphp
@@ -112,18 +116,27 @@
 
 @endif
 
-@endsection
-
-@section('js')
-    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-    <script>
-        var toolbarOptions2 = [];
-        var quill2 = new Quill('#quill-textarea', {
-            readOnly: true,
-            modules: {
-                toolbar: toolbarOptions2
-            },
-            theme: 'bubble'
-        });
-    </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+<script>
+    baguetteBox.run('.tz-gallery');
+    var toolbarOptions = [];
+    var quill = new Quill('#quill-textarea', {
+        readOnly: true,
+        modules: {
+            toolbar: toolbarOptions
+        },
+        theme: 'bubble'
+    });
+</script>
+<script>
+    var toolbarOptions2 = [];
+    var quill2 = new Quill('#quill-textarea2', {
+        readOnly: true,
+        modules: {
+            toolbar: toolbarOptions2
+        },
+        theme: 'bubble'
+    });
+</script>
 @endsection

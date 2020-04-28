@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Medecin\Dossier;
 
+use App\Consultation;
+use App\Examen_complimentaire;
 use App\Examen_general;
 use App\Http\Controllers\Controller;
 use App\Patient;
@@ -75,38 +77,121 @@ class DossierController extends Controller
                 ->paginate(5);
 
 
-        return view('medecin.dossier.Biometrie', [
+        return view('medecin.dossier.biometrie', [
             'patient' => $patient,
             'biometrie' => $biometrie,
             'vitaux' => $EG
         ]);
     }
 
-    public function CM($id)
+    public function CM($patient_id)
     {
+        try {
+            $decrypted = Crypt::decrypt($patient_id);
+        }catch (DecryptException $e) {
+            abort(404);
+        }
+
+        $patient = Patient::find($decrypted);
         return view('medecin.dossier.CM', [
-            'patient' => Patient::find($id)
+            'patient' => $patient,
+            'consultations' => Consultation::where('patient_id', $patient->id)->orderByDesc('created_at')->paginate(5)
         ]);
     }
 
-    public function Ordonnances($id)
+    public function Ordonnances($patient_id)
     {
-        return view('medecin.dossier.Ordonnances', [
-            'patient' => Patient::find($id)
+        try {
+            $decrypted = Crypt::decrypt($patient_id);
+        }catch (DecryptException $e) {
+            abort(404);
+        }
+
+        $patient = Patient::find($decrypted);
+        return view('medecin.dossier.ordonnances', [
+            'patient' => $patient,
+            'consultations' => Consultation::where('patient_id', $patient->id)->whereNotNull('ordonnance')->orderByDesc('created_at')->paginate(5)
         ]);
     }
 
-    public function Examens($id)
+    public function showOrdonnance($patient_id, $consultation_id)
     {
-        return view('medecin.dossier.Examens', [
-            'patient' => Patient::find($id)
+        try {
+            $decrypted = Crypt::decrypt($patient_id);
+            $decrypted = Crypt::decrypt($consultation_id);
+        }catch (DecryptException $e) {
+            abort(404);
+        }
+
+        return view('medecin.dossier.ordonnance-details', [
+            'patient' => Patient::findOrFail(Crypt::decrypt($patient_id)),
+            'consultation' => Consultation::findOrFail($decrypted)
         ]);
     }
 
-    public function Problemes($id)
+    public function Examens($patient_id)
     {
-        return view('medecin.dossier.Problemes', [
-            'patient' => Patient::find($id)
+        try {
+            $decrypted = Crypt::decrypt($patient_id);
+        }catch (DecryptException $e) {
+            abort(404);
+        }
+
+        $patient = Patient::find($decrypted);
+        $EC = $EG = Examen_complimentaire::
+                join('consultations' , 'consultations.id' , 'examen_complimentaires.consultation_id')
+                ->select('examen_complimentaires.*')
+                ->where('consultations.patient_id', $patient->id)
+                ->orderByDesc('examen_complimentaires.created_at')
+                ->paginate(4);
+
+        return view('medecin.dossier.examens', [
+            'patient' => $patient,
+            'examens' => $EC
+        ]);
+    }
+
+    public function showExamen($patient_id, $examen_id){
+        try {
+            $decrypted = Crypt::decrypt($patient_id);
+            $decrypted = Crypt::decrypt($examen_id);
+        }catch (DecryptException $e) {
+            abort(404);
+        }
+
+        $patient = Patient::find(Crypt::decrypt($patient_id));
+        return view('medecin.dossier.examen-details', [
+            'patient' => $patient,
+            'examen' => Examen_complimentaire::findOrFail(Crypt::decrypt($examen_id))
+        ]);
+    }
+
+    public function Problemes($patient_id)
+    {
+        try {
+            $decrypted = Crypt::decrypt($patient_id);
+        }catch (DecryptException $e) {
+            abort(404);
+        }
+
+        $patient = Patient::find(Crypt::decrypt($patient_id));
+
+        $atcd = json_decode($patient->atcd);
+        $allergies = $atcd->allergie;
+
+        $TC = Prescription_medicamenteuse::Join('medicaments' , 'medicaments.id' , 'prescription_medicamenteuses.medicament_id')
+            ->Join('consultations' , 'consultations.id' , 'prescription_medicamenteuses.consultation_id')
+            ->Where([
+                ['consultations.patient_id' , $decrypted],
+                ['confirmation' , true],
+                ['duree', 'chronique']
+                ])
+            ->orderByDesc('prescription_medicamenteuses.created_at')
+            ->paginate(5);
+        return view('medecin.dossier.problemes', [
+            'patient' => $patient,
+            'allergies' => $allergies,
+            'TC' => $TC
         ]);
     }
 

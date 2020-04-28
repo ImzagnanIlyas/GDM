@@ -44,8 +44,8 @@ $active = Request::segment(4);
                     <li class="nav-item @if($active === 'Biometrie') active-nav-item @endif" role="presentation"><a class="nav-link" href="{{ route('medecin.dossier.Biometrie', ['patient_id' => Crypt::encrypt($patient->id)]) }}">Biométrie</a></li>
                     <li class="nav-item @if($active === 'CM') active-nav-item @endif" role="presentation"><a class="nav-link" href="{{ route('medecin.dossier.CM', ['patient_id' => Crypt::encrypt($patient->id)]) }}">Consultations médicales</a></li>
                     <li class="nav-item @if($active === 'Ordonnances') active-nav-item @endif" role="presentation"><a class="nav-link" href="{{ route('medecin.dossier.Ordonnances', ['patient_id' => Crypt::encrypt($patient->id)]) }}">Ordonnonces</a></li>
-                    <li class="nav-item @if($active === 'Examens') active-nav-item @endif" role="presentation"><a class="nav-link" href="{{ route('medecin.dossier.Examens', ['patient_id' => Crypt::encrypt($patient->id)]) }}">Examen</a></li>
-                    <li class="nav-item @if($active === 'Problemes  ') active-nav-item @endif" role="presentation"><a class="nav-link" href="{{ route('medecin.dossier.Problemes', ['patient_id' => Crypt::encrypt($patient->id)]) }}">Problémes</a></li>
+                    <li class="nav-item @if($active === 'Examens') active-nav-item @endif" role="presentation"><a class="nav-link" href="{{ route('medecin.dossier.Examens', ['patient_id' => Crypt::encrypt($patient->id)]) }}">Examens</a></li>
+                    <li class="nav-item @if($active === 'Problemes') active-nav-item @endif" role="presentation"><a class="nav-link" href="{{ route('medecin.dossier.Problemes', ['patient_id' => Crypt::encrypt($patient->id)]) }}">Problémes</a></li>
                 </ul>
             </nav>
 
@@ -53,4 +53,12 @@ $active = Request::segment(4);
         </div>
     </div>
 </div>
+@endsection
+
+@section('js')
+<script>
+    $('#searchInput').change( function(){
+        alert('Charkti m3ana f caméra cachée');
+    });
+</script>
 @endsection

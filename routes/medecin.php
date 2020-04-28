@@ -55,7 +55,9 @@ Route::group(['namespace' => 'Medecin'], function() {
         Route::get('{patient_id}/Biometrie', 'Dossier\DossierController@Biometrie')->name('medecin.dossier.Biometrie');
         Route::get('{patient_id}/CM', 'Dossier\DossierController@CM')->name('medecin.dossier.CM');
         Route::get('{patient_id}/Ordonnances', 'Dossier\DossierController@Ordonnances')->name('medecin.dossier.Ordonnances');
+        Route::get('{patient_id}/Ordonnances/{consultation_id}', 'Dossier\DossierController@showOrdonnance')->name('medecin.dossier.showOrdonnance');
         Route::get('{patient_id}/Examens', 'Dossier\DossierController@Examens')->name('medecin.dossier.Examens');
+        Route::get('{patient_id}/Examens/{examen_id}', 'Dossier\DossierController@showExamen')->name('medecin.dossier.showExamen');
         Route::get('{patient_id}/Problemes', 'Dossier\DossierController@Problemes')->name('medecin.dossier.Problemes');
     });
 
