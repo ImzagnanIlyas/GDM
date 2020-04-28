@@ -224,7 +224,7 @@ class ConsultationController extends Controller
         $EG->consultation_id = $id;
         $EG->etat = $request->input('etat');
         $EG->save();
-        return redirect()->route('medecin.consultation.showEG', [ 'id' => $id ]);
+        return redirect()->route('medecin.consultation.showEG', [ 'id' => Crypt::encrypt($id) ]);
     }
 
     public function updateEG(Request $request, $id, $c_id)

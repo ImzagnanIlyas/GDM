@@ -46,7 +46,7 @@ $active2 = Request::segment(4);
                             {{ $consultation->patient->prenom }}
                         </h5>
                         <hr style="margin:8px auto">
-                        <h6>{{ $consultation->patient->cin }} - {{ date("m/d/yy", strtotime($consultation->patient->ddn)) }}</h6>
+                        <h6>{{ $consultation->patient->cin }} - {{ date("d/m/yy", strtotime($consultation->patient->ddn)) }}</h6>
                     </div>
                 </div>
             </div>
@@ -108,7 +108,7 @@ $active2 = Request::segment(4);
                             @endempty
                         </h5>
                         <hr style="margin:8px auto">
-                        <h6>{{ $consultation->id }} - {{ date("m/d/Y H:i", strtotime($consultation->created_at)) }}</h6>
+                        <h6>{{ $consultation->id }} - {{ date("d/m/Y H:i", strtotime($consultation->created_at)) }}</h6>
                     </div>
                 </div>
             </div>
@@ -121,7 +121,7 @@ $active2 = Request::segment(4);
 <div class="col-md-12 mt-4">
     <div class="card shadow">
         <div class="card-header">
-            <nav class="navbar navbar-dark navbar-expand-md bg-info border rounded shadow m-auto visible col-md-8" style="filter: brightness(106%) contrast(106%) grayscale(27%) saturate(124%) sepia(0%);">
+            <nav class="navbar navbar-dark navbar-expand-md bg-info border rounded shadow m-auto visible col-md-9" style="filter: brightness(106%) contrast(106%) grayscale(27%) saturate(124%) sepia(0%);">
                 <div class="container"><button data-toggle="collapse" class="navbar-toggler btn-lg btn-block" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse justify-content-around" id="navcol-1">
                         <ul class="nav navbar-nav">
