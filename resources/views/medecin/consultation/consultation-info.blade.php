@@ -5,9 +5,10 @@
 @endsection
 
 @section('onglet')
-<table style="width:60%">
+<div style="margin-right: 20%; margin-left: 20%">
+<table  class="table">
     <tr>
-        <th>Médecin:</th>
+        <th style="width:50%">Médecin:</th>
         <td>{{ $consultation->medecin->patient->nom }} {{ $consultation->medecin->patient->prenom }}</td>
     </tr>
     <tr>
@@ -29,7 +30,7 @@
                 <form method="POST" action="{{ route('medecin.consultation.storeInfo', [ 'id' => $consultation->id ]) }}" class="form-inline">
                     @csrf
                     <input type="text" name="histoire" id="histoire" class="form-control" aria-describedby="helpId">
-                    <button class="btn btn-primary" type="submit"><i class="far fa-check-circle"></i></button>
+                    &emsp;<button class="btn btn-primary" type="submit"><i class="far fa-check-circle"></i></button>
                 </form>
             @else
                 {{ $consultation->histoire }}
@@ -43,7 +44,7 @@
                 <form method="POST" action="{{ route('medecin.consultation.storeInfo', [ 'id' => $consultation->id ]) }}" class="form-inline">
                     @csrf
                     <input type="text" name="sd" id="sd" class="form-control" aria-describedby="helpId">
-                    <button class="btn btn-primary" type="submit"><i class="far fa-check-circle"></i></button>
+                    &emsp;<button class="btn btn-primary" type="submit"><i class="far fa-check-circle"></i></button>
                 </form>
             @else
                 {{ $consultation->strategie_diagnostique }}
@@ -57,7 +58,7 @@
                 <form method="POST" action="{{ route('medecin.consultation.storeInfo', [ 'id' => $consultation->id ]) }}" class="form-inline">
                     @csrf
                     <input type="text" name="dr" id="dr" class="form-control" aria-describedby="helpId">
-                    <button class="btn btn-primary" type="submit"><i class="far fa-check-circle"></i></button>
+                    &emsp;<button class="btn btn-primary" type="submit"><i class="far fa-check-circle"></i></button>
                 </form>
             @else
                 {{ $consultation->diagnostic_retenu }}
@@ -65,4 +66,5 @@
         </td>
     </tr>
   </table>
+</div>
 @endsection

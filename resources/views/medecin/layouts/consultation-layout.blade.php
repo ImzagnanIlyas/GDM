@@ -28,7 +28,7 @@ $active2 = Request::segment(4);
                         <a href="#">
                             <img
                             class="img-circle"
-                            @if($consultation->patient->sexe === "Mâle")
+                            @if($consultation->patient->sexe === "Homme")
                             src="{{ asset('img/medecin/male.png') }}"
                             @else
                             src="{{ asset('img/medecin/female.png') }}"
@@ -37,7 +37,7 @@ $active2 = Request::segment(4);
                         </a>
                     <div class="ml-3">
                         <h5 class="font-weight-bold">
-                            @if($consultation->patient->sexe === "Mâle")
+                            @if($consultation->patient->sexe === "Homme")
                             M.
                             @else
                             Mme.
@@ -46,7 +46,7 @@ $active2 = Request::segment(4);
                             {{ $consultation->patient->prenom }}
                         </h5>
                         <hr style="margin:8px auto">
-                        <h6>{{ $consultation->patient->cin }} - {{ date("m/d/yy", strtotime($consultation->patient->ddn)) }}</h6>
+                        <h6>{{ $consultation->patient->cin }} - {{ date("m/d/Y", strtotime($consultation->patient->ddn)) }}</h6>
                     </div>
                 </div>
             </div>
@@ -62,7 +62,7 @@ $active2 = Request::segment(4);
                         <a href="#">
                             <img
                             class="img-circle"
-                            @if($consultation->medecin->patient->sexe === "Mâle")
+                            @if($consultation->medecin->patient->sexe === "Homme")
                             src="{{ asset('img/medecin/doctor.png') }}"
                             @else
                             src="{{ asset('img/medecin/doctore.png') }}"
@@ -71,7 +71,7 @@ $active2 = Request::segment(4);
                         </a>
                     <div class="ml-3">
                         <h5 class="font-weight-bold">
-                            Médecin
+                            Dr.
                             {{ strtoupper($consultation->medecin->patient->nom) }}
                             {{ $consultation->medecin->patient->prenom }}
                         </h5>
@@ -121,13 +121,13 @@ $active2 = Request::segment(4);
 <div class="col-md-12 mt-4">
     <div class="card shadow">
         <div class="card-header">
-            <nav class="navbar navbar-dark navbar-expand-md bg-info border rounded shadow m-auto visible col-md-8" style="filter: brightness(106%) contrast(106%) grayscale(27%) saturate(124%) sepia(0%);">
+            <nav class="navbar navbar-dark navbar-expand-md bg-info border rounded shadow m-auto visible col-md-8">
                 <div class="container"><button data-toggle="collapse" class="navbar-toggler btn-lg btn-block" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse justify-content-around" id="navcol-1">
                         <ul class="nav navbar-nav">
                             <li class="nav-item @if($active1 === 'informations') active-nav-item @endif" role="presentation"><a class="nav-link" href="{{ route('medecin.consultation.showInfo', [ 'id' => Crypt::encrypt($consultation->id) ]) }}">Informations</a></li>
                             <li class="nav-item @if($active1 === 'examen-general') active-nav-item @endif" role="presentation"><a class="nav-link" href="{{ route('medecin.consultation.showEG', [ 'id' => Crypt::encrypt($consultation->id) ]) }}">Examen général</a></li>
-                            <li class="nav-item @if($active2 === 'examen-specialise') active-nav-item @endif" role="presentation"><a class="nav-link" href="{{ route('medecin.consultation.showExamSpecial', [ 'consultation_id' => Crypt::encrypt($consultation->id) ]) }}">Examen spécialisé</a></li>
+                            <li class="nav-item @if($active2 === 'examen-specialise') active-nav-item @endif" role="presentation"><a class="nav-link" href="{{ route('medecin.consultation.showExamSpecial', [ 'consultation_id' => Crypt::encrypt($consultation->id) ]) }}">Examen(s) spécialisé(s)</a></li>
                             <li class="nav-item @if($active2 === 'examen-complementaire') active-nav-item @endif" role="presentation"><a class="nav-link" href="{{ route('medecin.consultation.showExamCompl', [ 'consultation_id' => Crypt::encrypt($consultation->id) ]) }}">Examen complémentaire</a></li>
                             <li class="nav-item @if($active2 === 'ordonnance') active-nav-item @endif" role="presentation"><a class="nav-link" href="{{ route('medecin.consultation.showOrdonnance', [ 'consultation_id' => Crypt::encrypt($consultation->id) ]) }}">Ordonnance</a></li>
                         </ul>

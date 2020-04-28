@@ -13,23 +13,24 @@
 </style>
 
 @if ( empty($consultation->EG->id) )
-    <p>Aucun examen général pour cette consultation. Séléctionner l'état du patient pour lancer un nouveau examen général.</p>
-    <table style="width:60%">
+    <p>Pas d'examen général pour cette consultation. Sélectionnez l'état du patient pour lancer un nouvel examen général.</p>
+    <table style="width:40%">
         <tr>
             <th>État général:</th>
-            <td>
-                <form method="POST" action="{{ route('medecin.consultation.storeEG', [ 'id' => $consultation->id ]) }}" class="form-inline">
-                    @csrf
-                    <select name="etat" required>
+            <form method="POST" action="{{ route('medecin.consultation.storeEG', [ 'id' => $consultation->id ]) }}" class="form-inline">
+                @csrf
+                <td>
+                    <select name="etat" class="form-control " required>
                         <option selected="yes"></option>
                         <option>Bon</option>
                         <option>Assez bon</option>
                         <option>Mauvais</option>
                     </select>
-                    &emsp;
+                </td>
+                <td>
                     <button class="btn btn-primary" type="submit"><i class="far fa-check-circle"></i></button>
-                </form>
-            </td>
+                </td>
+            </form>
         </tr>
     </table>
 @else
