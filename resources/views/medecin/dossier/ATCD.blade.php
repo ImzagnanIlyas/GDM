@@ -8,7 +8,8 @@
     @else
         @if ($n == 1)
             {{-- medicament --}}
-            <div class="col-md-12 d-flex justify-content-end mt-2">
+            <div class="col-md-12 d-flex justify-content-between align-items-center mt-2">
+                <h4 class="text-dark">Médicament(s)</h4>
                 <input class="form-control col-3" type="text" placeholder="Rechercher par médicament" id="searchInput">
             </div>
             <table class="table mt-2">
@@ -40,7 +41,8 @@
             </div>
         @elseif ($n == 2)
             {{-- habitude --}}
-            <div class="col-md-12 d-flex justify-content-end mt-2">
+            <div class="col-md-12 d-flex justify-content-between mt-2">
+                <h4 class="text-dark">Habitude(s)</h4>
                 <input class="form-control col-3" type="text" placeholder="Rechercher par date" id="searchInput">
             </div>
             <div class="d-flex justify-content-center mt-2">
@@ -70,7 +72,8 @@
             </div>
         @elseif ($n == 3)
             {{-- chirurgicaux --}}
-            <div class="col-md-12 d-flex justify-content-end mt-2">
+            <div class="col-md-12 d-flex justify-content-between mt-2">
+                <h4 class="text-dark">Chirurgicaux</h4>
                 <input class="form-control col-3" type="text" placeholder="Rechercher par date" id="searchInput">
             </div>
             <div class="d-flex justify-content-center mt-2">

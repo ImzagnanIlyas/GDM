@@ -16,7 +16,7 @@
                     <tr>
                         <th>ID</th>
                         <th>Médecin</th>
-                        <th class="col-2">Lieu</th>
+                        <th class="col-3">Lieu</th>
                         <th class="col-3">Motif</th>
                         <th>Date</th>
                         <th>Détails</th>
