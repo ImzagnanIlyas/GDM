@@ -3,7 +3,7 @@
     <fieldset>
         <legend>Type d'examen complémentaire</legend>
         <div class="form-group row justify-content-center">
-            <label for="type[]" class="col-1 col-form-label">Type</label>
+            <label for="type[]" class="col-1 col-form-label">Type:</label>
             <select class="form-control col-4" name="type[]" required wire:model="examentype">
                 <option name="type[]" value="." selected hidden>Sélectionner le type</option>
                 <option name="type[]" value="Analyse biologique">Analyse biologique</option>

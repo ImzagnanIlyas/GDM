@@ -14,7 +14,7 @@
     <form class='form-row' wire:submit.prevent="storePM(Object.fromEntries(new FormData($event.target)))">
         @csrf
 
-        <div class="form-group col-8">
+        <div class="form-group col-6">
             <label for="voie">Liste des médicaments</label> @if ($errors->has('med')) <i class="fas fa-exclamation-circle" style="color: red"></i> @endif
             <select class="js-example-basic-single" name="medicament" style="width: 100%;" required>
                 <option></option>
@@ -24,19 +24,19 @@
             </select>
         </div>
 
-        <div class="form-group col-4">
+        <div class="form-group col-6">
             <label for="voie">Voie(s) d’administration</label>
-            <input type="text" class="form-control" name="voie" required>
+            <input type="text" class="form-control" name="voie" placeholder="Par exemple : orale" required>
         </div>
 
         <div class="form-group col-6">
             <label for="dose">Posologie</label>
-            <input type="text" class="form-control" name="dose" placeholder="Exemple : 2 comprimé | de 1 à 2 comprimé" required>
+            <input type="text" class="form-control" name="dose" placeholder="Par exemple : 2 comprimé | de 1 à 2 comprimé" required>
         </div>
 
         <div class="form-group col-6">
             <label for="rythme">Rythme</label>
-            <input type="text" class="form-control" name="rythme" placeholder="Exemple : tous les jours, matin, avant le repas | tous les 8 heurs, après le repas" required>
+            <input type="text" class="form-control" name="rythme" placeholder="Par exemple : tous les jours, matin, avant le repas | tous les 8 heurs, après le repas" required>
         </div>
 
         <div class="form-group col-6">
@@ -46,7 +46,7 @@
 
         <div class="form-group col-6">
             <label for="duree">Durée</label>
-            <input type="text" class="form-control" name="duree" placeholder="Exemple : pour 1 mois | chronique" required>
+            <input type="text" class="form-control" name="duree" placeholder="Par exemple : pour 1 mois | chronique" required>
             <small class="form-text text-muted">Si le traitement est chronique, écrivez le mot clé "chronique" ci-dessus.</small>
         </div>
 
@@ -66,7 +66,7 @@
     <div class="col-md-12 d-flex justify-content-between">
         <span>
             <h5>Les prescriptions médicamenteuses</h5>
-            <small class="text-muted mt-0">Note bien que les prescriptions sont stockées temporairement si vous n'avez pas confirmé l'ordonnance. Donc si vous actualisez ou quittez la page vous perdra les données.</small>
+            <small class="text-muted mt-0">Notez bien que les prescriptions doivent être confirmés aprés l'ajout, sinon vous perdrez les données de l'ordonnance.</small>
         </span>
         <button wire:click="switchAjout(true)" class='btn btn-primary'>Ajouter</button>
     </div>
