@@ -19,8 +19,8 @@ $factory->define(App\Patient::class, function () {
     $faker = Faker::create('fr_FR');
 
     // sexe random
-    $sexe = $faker->randomElement(['Mâle', 'Femelle']);
-    if ($sexe === "Mâle") {
+    $sexe = $faker->randomElement(['Homme', 'Femme']);
+    if ($sexe === "Homme") {
         $gender = "male";
     }else {
         $gender = "female";

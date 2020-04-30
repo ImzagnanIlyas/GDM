@@ -36,7 +36,7 @@ class LiveHistorique extends Component
         $tmp = Examen_complimentaire::
                 where('examinateur_id', Auth::guard('examinateur')->user()->id)
                 ->orderByDesc('updated_at')
-                ->paginate(3);
+                ->paginate(8);
         return $tmp;
     }
 
@@ -54,6 +54,6 @@ class LiveHistorique extends Component
                         where('examinateur_id', Auth::guard('examinateur')->user()->id)
                         ->whereDate('updated_at','=',$this->searchInput)
                         ->orderByDesc('updated_at')
-                        ->paginate(3);
+                        ->paginate(8);
     }
 }

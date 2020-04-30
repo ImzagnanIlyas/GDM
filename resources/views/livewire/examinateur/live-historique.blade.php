@@ -1,7 +1,7 @@
 <div>
     <div class="col-sm-8 col-md-12 m-0">
-        <div class="card mb-0">
-            <h4 class="text-dark">Historique</h4>
+        <div class="card mb-0" style="display: flex;justify-content: flex-start;">
+            <h4 class="text-dark col-3">Historique</h4>
             <input class="form-control col-3" type="text" placeholder="Rechercher par date" wire:model="searchInput" onfocus="(this.type='date')" onblur="(this.type='text')">
         </div>
     </div>

@@ -24,7 +24,7 @@
                         <div class="media">
                             <div class="media-body">
                                 <h4 class="media-heading">
-                                    @if($patient->sexe === "Mâle")
+                                    @if($patient->sexe === "Homme")
                                     M.
                                     @else
                                     Mme.

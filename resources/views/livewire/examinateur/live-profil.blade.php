@@ -76,9 +76,7 @@
 </div>
 
 
-<div wire:poll.5000ms class="hidden">
 
-</div>
 
 
 </div>

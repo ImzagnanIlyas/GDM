@@ -26,7 +26,7 @@ border: 1px solid gray;
                     <a class="pull-left" href="#">
                         <img
                         class="media-object img-circle"
-                        @if($patient->sexe === "Mâle")
+                        @if($patient->sexe === "Homme")
                         src="{{ asset('img/male.png') }}"
                         @else
                         src="{{ asset('img/female.png') }}"
@@ -35,7 +35,7 @@ border: 1px solid gray;
                     </a>
                     <div class="media-body">
                         <h4 class="media-heading">
-                            @if($patient->sexe === "Mâle")
+                            @if($patient->sexe === "Homme")
                             M.
                             @else
                             Mme.

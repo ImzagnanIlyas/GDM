@@ -21,18 +21,18 @@
 <div class="col-md-6">
     <div class="card bg-blue order-card">
         <div class="card-block">
-            <h6>Ordonnance confirmé</h6>
-            <h2 class="text-right"><i class="fas fa-file-medical-alt pull-left"></i><span>386</span></h2>
-            <p class="mb-0">Ce mois-ci<span class="pull-right">51</span></p>
+            <h6>Examen confirmé</h6>
+            <h2 class="text-right"><i class="fas fa-file-medical-alt pull-left"></i><span>256</span></h2>
+            <p class="mb-0">Ce mois-ci<span class="pull-right">178</span></p>
         </div>
     </div>
 </div>
 <div class="col-md-6">
     <div class="card bg-green order-card">
         <div class="card-block">
-            <h6>Médicaments vendus</h6>
-            <h2 class="text-right"><i class="fas fa-pills pull-left"></i><span>1141</span></h2>
-            <p class="mb-0">Ce mois-ci<span class="pull-right">213</span></p>
+            <h6>Patient traité</h6>
+            <h2 class="text-right"><i class="fas fa-user-injured pull-left"></i><span>189</span></h2>
+            <p class="mb-0">Ce mois-ci<span class="pull-right   ">156</span></p>
         </div>
     </div>
 </div>

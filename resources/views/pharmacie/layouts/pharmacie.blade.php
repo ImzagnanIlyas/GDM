@@ -58,7 +58,7 @@
                                 <a href="{{ route('pharmacie.profil') }}"><i class="fas fa-user-cog"></i>Paramètres</a>
                                 <a href="{{ route('pharmacie.mdp') }}"><i class="fas fa-key"></i>Mot de passe</a>
                             </p>
-                            <a href="{{ route('pharmacie.recherche') }}" class="btn theme-btn btn-block">Rechrcher un patient</a>
+                            <!-- <a href="{{ route('pharmacie.recherche') }}" class="btn theme-btn btn-block">Rechrcher un patient</a> -->
                             <a href="#" class="btn theme-btn btn-block">Historique</a>
                         </div>
                     </aside>

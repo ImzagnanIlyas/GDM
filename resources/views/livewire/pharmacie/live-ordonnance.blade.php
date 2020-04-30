@@ -7,7 +7,7 @@
                     <a class="pull-left" href="#">
                         <img
                         class="media-object img-circle"
-                        @if($patient->sexe === "Mâle")
+                        @if($patient->sexe === "Homme")
                         src="{{ asset('img/male.png') }}"
                         @else
                         src="{{ asset('img/female.png') }}"
@@ -16,7 +16,7 @@
                     </a>
                     <div class="media-body">
                         <h4 class="media-heading">
-                            @if($patient->sexe === "Mâle")
+                            @if($patient->sexe === "Homme")
                             M.
                             @else
                             Mme.
@@ -45,13 +45,16 @@
                         <div
                             class="list-group-item"
                             wire:click="switchItem({{ $consultation->id }})"
+                            style="border-bottom: 3px solid gray;
                         @if($consultation->id === $item->id)
-                            style="box-shadow: inset 0px 0px 12px 1px rgba(0, 0, 0, 0.3); border-left: 10px inset #B9B9B9; border-radius: 0px 0px 0px 0px;"
+                            box-shadow: inset 0px 0px 12px 1px rgba(0, 0, 0, 0.3); border-left: 10px inset #B9B9B9; border-radius: 0px 0px 0px 0px;"
+                        @else
+                            "
                         @endif
                         >
                             <div class="row">
                                 <div class="col-sm-6">
-                                    <h4 class="list-group-item-heading">Docteur {{ $consultation->medecin->patient->nom }}</h4>
+                                    <h4 class="list-group-item-heading">Dr. {{ $consultation->medecin->patient->nom }} {{ $consultation->medecin->patient->prenom }}</h4>
                                     <p class="list-group-item-text">Specialite {{ $consultation->medecin->specialite }}</p>
                                 </div>
                                 <div class="col-sm-6">
@@ -75,7 +78,7 @@
             @endif
 </div>
 @if (session()->has('message'))
-<div class="col-sm-8 col-md-12">
+<div class="col-sm-8 col-md-6">
     <div class="alert alert-success">
         {{ session('message') }}
     </div>
@@ -95,9 +98,11 @@
                             {!! $item->ordonnance !!}
                         </div>
                     </div>
-                <div class="list-group-item">
-                    <h4 class="list-group-item-heading">Medicaments</h4>
-                </div>
+            </div>
+            <div class="panel-heading clearfix">
+                <h4 class="panel-title text-center">Medicaments</h4>
+            </div>
+            <div class="list-group">
                 <div class="list-group-item">
                 <form wire:submit.prevent="confirmer(Object.fromEntries(new FormData($event.target)))">
                     @foreach ($item->PMs as $PM)
