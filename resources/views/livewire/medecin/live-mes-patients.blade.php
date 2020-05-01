@@ -10,23 +10,23 @@
             <table class="table dataTable my-0">
                 <thead>
                     <tr>
-                        <th>CIN</th>
-                        <th class="col-3">Nom et prenom</th>
-                        <th>Sexe</th>
+                        <th class="text-center">CIN</th>
+                        <th class="col-2 text-center">Nom et prenom</th>
+                        <th class="text-center">Sexe</th>
                         <th class="text-center">Nombre de consultations</th>
-                        <th>Date de la dernière consultation</th>
-                        <th>Autres</th>
+                        <th class="text-center">Date de la dernière consultation</th>
+                        <th class="text-center">Dossier médical</th>
                     </tr>
                 </thead>
                 <tbody>
                     @forelse ( $patients as $patient )
                     <tr>
-                        <td>{{ $patient->cin }}</td>
-                        <td>{{ strtoupper($patient->nom).' '.$patient->prenom }}</td>
+                        <td class="text-center">{{ $patient->cin }}</td>
+                        <td class="text-center">{{ strtoupper($patient->nom).' '.$patient->prenom }}</td>
                         <td class="text-center">{{ $patient->sexe }}</td>
                         <td class="text-center"><a href="{{ route('medecin.mesConsultationsPatient', [ 'patient_id' => Crypt::encrypt($patient->id) ]) }}">{{ $patient->consultations->where('medecin_id', $medecin->id)->count() }}</a></td>
-                        <td>{{ $patient->consultations->where('medecin_id', $medecin->id)->sortByDesc('created_at')->first()->created_at }}</td>
-                        <td><a href="" class="btn btn-primary">Profil</a></td>
+                        <td class="text-center">{{ $patient->consultations->where('medecin_id', $medecin->id)->sortByDesc('created_at')->first()->created_at }}</td>
+                        <td class="text-center"><a href="{{ route('medecin.dossier.ATCD', ['patient_id' => Crypt::encrypt($patient->id), 'n' => 1]) }}" class="btn btn-primary">Afficher</a></td>
                     </tr>
                     @empty
                     <tr>

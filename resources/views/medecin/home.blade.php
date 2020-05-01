@@ -4,20 +4,22 @@
     Accueil
 @endsection
 
+@section('content')
+
 <style>
-.card{
-     margin: 2%;
-}
-#timedate {
-  color: black;
-  border-left: 3px solid #ed1f24;
-  padding-left: 10%;
-  float: right;
-}
+    .card{
+         margin: 2%;
+    }
+    #timedate {
+      color: black;
+      border-left: 3px solid #ed1f24;
+      padding-left: 10%;
+      float: right;
+    }
 
 </style>
 
-@section('content')
+
 <div class="container">
     <div class="card shadow border-info" >
         <div class="card-body">

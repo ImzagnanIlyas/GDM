@@ -35,27 +35,27 @@
                 <hr class="sidebar-divider my-0">
                 <ul class="nav navbar-nav text-light" id="accordionSidebar">
                     <li class="nav-item" role="presentation">
-                        <a class="nav-link active" href="{{ url('/medecin') }}" style="font-size: 16px;">
+                        <a class="nav-link active" href="{{ url('/medecin') }}" style="font-size: 12px;">
                             <i class="fas fa-home" style="font-size: 20px;"></i>
                             <span>Accueil</span>
                         </a>
-                        <a class="nav-link active" href="{{ route('medecin.mesPatients') }}" style="font-size: 16px;">
+                        <a class="nav-link active" href="{{ route('medecin.mesPatients') }}" style="font-size: 12px;">
                             <i class="fas fa-users" style="font-size: 20px;"></i>
                             <span>Mes patients</span>
                         </a>
-                        <a class="nav-link active" href="{{ route('medecin.mesCons') }}" style="font-size: 16px;">
+                        <a class="nav-link active" href="{{ route('medecin.mesCons') }}" style="font-size: 12px;">
                             <i class="far fa-clipboard" style="font-size: 20px;"></i>
                             <span>Mes consultations</span>
                         </a>
-                        <a class="nav-link active" href="{{ route('medecin.profil') }}" style="font-size: 16px;">
+                        <a class="nav-link active" href="{{ route('medecin.profil') }}" style="font-size: 12px;">
                             <i class="far fa-id-badge" style="font-size: 20px;"></i>
                             <span>Mon profil</span>
                         </a>
                     </li>
                 </ul>
-                <div class="text-center d-none d-md-inline">
+                {{-- <div class="text-center d-none d-md-inline">
                     <button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button>
-                </div>
+                </div> --}}
             </div>
         </nav>
         <div class="d-flex flex-column" id="content-wrapper">

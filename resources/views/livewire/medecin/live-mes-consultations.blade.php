@@ -11,11 +11,11 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Nom du patient</th>
+                        <th class="col-2">Nom du patient</th>
                         <th>Lieu</th>
                         <th>Motif</th>
                         <th>Date</th>
-                        <th>Autres</th>
+                        <th>Détails</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -26,7 +26,7 @@
                         <td>{{ $c->lieu }}</td>
                         <td>{{ $c->motif }}</td>
                         <td>{{ $c->date }}</td>
-                        <td><a href="{{ route('medecin.consultation.showInfo', ['id' => Crypt::encrypt($c->id) ]) }}" class="btn btn-primary">Détails</a></td>
+                        <td><a href="{{ route('medecin.consultation.showInfo', ['id' => Crypt::encrypt($c->id) ]) }}" class="btn btn-primary">Afficher</a></td>
                     </tr>
                     @empty
                     <tr>
