@@ -120,6 +120,11 @@
     $biometrie =json_decode($patient->biometrie);
 
 @endphp
+@if ( empty($EG) )
+<div class="alert alert-warning mt-4" role="alert">
+    Les données n'existent pas pour ce patient.
+</div>
+@else
 @foreach ($EG as $EG)
                                     <tr>
                                         <td>{{$EG->date}}</td>
@@ -129,6 +134,7 @@
 
                                     </tr>
                                     @endforeach
+                                    @endif
                                 </tbody>
                             </table>
                         </div>

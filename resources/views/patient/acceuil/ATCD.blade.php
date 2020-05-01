@@ -137,6 +137,11 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    @if ( empty($pres) )
+        <div class="alert alert-warning mt-4" role="alert">
+            Les données n'existent pas pour ce patient.
+        </div>
+    @else
                                                     @foreach ($pres as $pres)
                                                     <tr>
                                                         <td>{{$pres->nom}}</td>
@@ -147,6 +152,7 @@
                                                         <td>{{$pres->commentaire}}</td>
                                                     </tr>
                                                     @endforeach
+                                                    @endif
                                                 </tbody>
                                             </table>
                                         </div>
@@ -262,14 +268,21 @@
                                                 <tbody>
                                                     @php
                                                     $atcd =json_decode($patient->atcd);
+                                                    $data=$atcd->chirurgicaux;
                                                 @endphp
-                                                @foreach($atcd->chirurgicaux as $op)
+                                                @if ( empty($data) )
+                                                <div class="alert alert-warning mt-4" role="alert">
+                                                    Les données n'existent pas pour ce patient.
+                                                </div>
+                                            @else
+                                                @foreach($data as $op)
                                                     <tr>
                                                         <td>{{$op->operation}}</td>
                                                         <td>{{$op->date_operation}}</td>
                                                         <td>{{$op->description}}</td>
                                                     </tr>
                                                     @endforeach
+                                                    @endif
                                                 </tbody>
                                             </table>
                                         </div>
@@ -302,11 +315,18 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    @if($patient->sexe == "F")
                                                     @php
                                                     $atcd =json_decode($patient->atcd);
+                                                    $data=$atcd->gyneco;
                                                 @endphp
-                                                 @if($patient->sexe == "F")
-                                                    @foreach($atcd->gyneco as $at)
+
+                                                @if ( empty($data) )
+                                                <div class="alert alert-warning mt-4" role="alert">
+                                                    Les données n'existent pas pour ce patient.
+                                                </div>
+                                            @else
+                                                    @foreach($data as $at)
                                                     <tr>
                                                         <td>{{$at->menarches}}</td>
                                                         <td>{{$at->menopause}}</td>
@@ -314,6 +334,7 @@
                                                         <td>{{$at->gestation}}<</td>
                                                     </tr>
                                                  @endforeach
+                                                 @endif
                                                  @endif
                                                 </tbody>
                                             </table>

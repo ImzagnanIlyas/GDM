@@ -82,14 +82,18 @@
 
                 @php
                 foreach($examenspecialise as $examen){
-                $resultat = json_decode($id->resultat);}
+                $resultat = json_decode($id->resultat);
+                $data=$resultat->type;}
             @endphp
-
-
 <div class="card care ">
     <div class="card-header colo">
         Résultat d'examen spécialicé
       </div>
+      @if ( empty($data) )
+      <div class="alert alert-warning mt-4" role="alert">
+          Les données n'existent pas pour ce patient.
+      </div>
+     @else
             @if ( $resultat->type === 'text' )
                 <div class="col-md-10">
                     <div class="card-body">
@@ -165,7 +169,7 @@
                     @endforeach
                 </ul>
             @endif
-
+@endif
             </div>
         </div>
     </div>

@@ -193,7 +193,7 @@ background-color: #00D7D8;
   background-color: #00D7D8;
   color: white;
   width: 70px;
-  height: 70px;
+  height:70px;
   left: 50%;
   margin-left: -35px;
   top: 50%;

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -115,7 +114,7 @@
                                     <tr>
                                         <td>{{$examen->consultation->date}}</td>
                                         <td><a href="{{route('Bilan' ,[$examen->id])}}">Bilan</a></td>
-                                        <td><a href="{{route('Resultat' ,[$examen->id])}}">Résultat</a></td>
+                                        <td><a @if($examen->confirmation) class="disabled" href="{{route('Resultat' ,[$examen->id])}}" @endif>Résultat</a></td>
                                     </tr>
                                     @endforeach
                                 </tbody>
