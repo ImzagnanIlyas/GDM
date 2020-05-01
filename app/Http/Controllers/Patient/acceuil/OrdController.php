@@ -24,7 +24,7 @@ class OrdController extends Controller
 $id=Consultation::find($id);
 
                    return view('patient.acceuil.Ord' , compact('id') , [
-                    
+                    'patient'=>$patient,
                     'consultations'=>$consultations ,
                     'id'=>$id
 

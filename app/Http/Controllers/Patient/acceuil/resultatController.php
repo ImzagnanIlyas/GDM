@@ -30,7 +30,8 @@ $id=Examen_complimentaire::find($id);
                    return view('patient.acceuil.Resultat' , compact('id') , [
                     'examen' => $examen ,
                     'consultations'=>$consultations ,
-                    'id'=>$id
+                    'id'=>$id ,
+                    'patient'=>$patient
 
                 ]
 
@@ -53,7 +54,8 @@ $id=Examen_complimentaire::find($id);
                    return view('patient.acceuil.bilan' , compact('id') , [
                     'examen' => $examen ,
                     'consultations'=>$consultations ,
-                    'id'=>$id
+                    'id'=>$id ,
+                    'patient'=>$patient
 
                 ]
 

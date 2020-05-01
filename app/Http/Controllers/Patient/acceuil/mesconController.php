@@ -11,16 +11,16 @@ use Illuminate\Support\Facades\Auth;
 
 class mesconController extends Controller
 {
-    
+
     public function index()
     {
         $patient = Auth::guard('patient')->user();
 
  return view('patient.acceuil.mescon' , [
 
-    'patient'=> $patient , 
-    
-    
+    'patient'=> $patient ,
+
+
 
  ]);
     }
@@ -35,7 +35,7 @@ class mesconController extends Controller
 $id=Consultation::find($id);
 
                    return view('patient.acceuil.DetailCon' , compact('id') , [
-                    
+'patient'=>$patient,
                     'consultations'=>$consultations ,
                     'id'=>$id
 
@@ -43,7 +43,7 @@ $id=Consultation::find($id);
 
             );
     }
-    
+
 function search(Request $request)
 {
     if($request->ajax())
@@ -58,7 +58,7 @@ function search(Request $request)
         ->get()
         ->toArray();
       $data = Consultation::select('*')
-      ->whereIn('id' , array_values( $consultations))     
+      ->whereIn('id' , array_values( $consultations))
       ->where('date', 'like', '%'.$query.'%')
         ->get();
 
@@ -84,7 +84,8 @@ function search(Request $request)
         <td>'.$row->id.'</td>
         <td>'.$row->date.'</td>
         <td>'.$row->lieu.'</td>
-        <td><a href="'.route('detail' ,[$row->id]).'">Détail</a></td>
+        <td><a href="'.route('detail' ,[$row->id]).'" class="btn btn-primary">Détail</a></td>
+
        </tr>
        ';
       }

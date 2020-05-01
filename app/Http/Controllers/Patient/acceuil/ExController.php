@@ -30,6 +30,7 @@ $examen = Examen_complimentaire::select('*')
 
 
                    return view('patient.acceuil.Ex' , [
+                       'patient'=>$patient,
                     'examen' => $examen ,
                     'consultations'=>$consultations ,
 
@@ -54,7 +55,8 @@ $patient = Auth::guard('patient')->user();
                    return view('patient.acceuil.ExamenGeneral' ,compact('id') , [
                     'examen' => $examenGeneral ,
                     'consultations'=>$consultations ,
-                    'id'=>$id
+                    'id'=>$id,
+                    'patient'=>$patient
 
 
                 ]
@@ -79,7 +81,8 @@ $id=Examen_specialise::find($id);
                    return view('patient.acceuil.ExamenSpecilaise' , compact('id') , [
                     'examenspecialise' => $examenspecialise ,
                     'consultations'=>$consultations ,
-                    'id'=>$id
+                    'id'=>$id ,
+                    'patient'=>$patient
 
                 ]
 

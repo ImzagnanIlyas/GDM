@@ -8,11 +8,21 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/profile.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merienda">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/untitled.css') }}">
 </head>
 <body id="page-top">
     <div id="wrapper">
         <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
-            <div class="container-fluid d-flex flex-column p-0"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#"><i class="fas fa-heartbeat" style="width: 30px;height: 41px;margin: 0px;padding: 0px;font-size: 40px;"></i><div class="sidebar-brand-text mx-3"><span>sIhati.com</span></div></a>
+            <div class="container-fluid d-flex flex-column p-0"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="{{ url('/medecin') }}">
+
+                <i class="fas fa-file-medical-alt" style="width: 30px;height: 40px;margin: 0px;padding: 0px;font-size: 36px;"></i>
+                <div class="sidebar-brand-text mx-3">
+                    <span style="font-size: 36px;font-family: Merienda">
+                        Milafi
+                    </span>
+                </div>
+            </a>
                 <hr
                     class="sidebar-divider my-0">
                     <ul class="nav navbar-nav text-light" id="accordionSidebar">
@@ -25,108 +35,157 @@
                     <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
             </div>
         </nav>
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div class="text-white bg-white" id="content" style="width: 75;">
+                <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
+                    <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
+                        <form class="form-inline d-none d-sm-inline-block mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                            <div class="input-group"><input class="bg-light form-control border-0 small" type="text" placeholder="{{$patient->nom }} {{$patient->prenom}} " readonly>
+                                <div class="input-group-append"></div>
+                            </div>
+                        </form>
+                    </div>
+                    <ul class="nav navbar-nav flex-nowrap ml-auto">
+                        <li class="nav-item dropdown d-sm-none no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><i class="fas fa-search"></i></a>
+                            <div class="dropdown-menu dropdown-menu-right p-3 animated--grow-in" role="menu" aria-labelledby="searchDropdown">
+                                <form class="form-inline mr-auto navbar-search w-100">
+                                    <div class="input-group"><input class="bg-light form-control border-0 small" type="text" placeholder="Search for ...">
+                                        <div class="input-group-append"><button class="btn btn-primary py-0" type="button"><i class="fas fa-search"></i></button></div>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"></a>
+                                <div class="dropdown-menu dropdown-menu-right dropdown-list dropdown-menu-right animated--grow-in" role="menu">
+                            </li>
+                            <div class="shadow dropdown-list dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown"></div>
+                        <div class="d-none d-sm-block topbar-divider"></div>
+                        <div class="" >
+                                <div class="dropdown-divider"></div><a class="dropdown-item" href="{{ route('patient.logout') }}"
+                                onclick="event.preventDefault();
+                                                  document.getElementById('logout-form').submit();">
+                                 {{ __('Logout') }}
+                                 <form id="logout-form" action="{{ route('patient.logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i></a></div>
+                                <div class="d-none d-sm-block topbar-divider"></div>
+                            </li>
+                </ul>
+                </nav>
+
     <div class="container">
         <div class="row">
 
-                <div class="col-lg-8 mar">
-                   <div class="card z-depth-3">
-                    <div class="card-body">
-                    <ul class="nav nav-pills nav-pills-primary nav-justified">
-                        <li class="nav-item">
-                            <a href="javascript:void();" data-target="#profile" ></a>
-                        </li>
-                        
-                    </ul>
+
+                    <div class="card-body ca ">
+                        <div class="card car ">
+                            <div class="card-header col">
+                                Examen général
+                              </div>
                     <div class="tab-content p-3">
-                        <div class="tab-pane active show" id="profile">
 
                                 <form>
                                     <div class="form-group row">
-                                        <label class="col-lg-3 col-form-label form-control-label">Etat</label>
+                                        <label class="col-lg-3 col-form-label form-control-label colo">Etat</label>
                                         <div class="col-lg-9">
                                             <input class="form-control" type="text" value="{{$id->etat}}" style="height:80px;" readonly>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-lg-3 col-form-label form-control-label">Température</label>
+                                        <label class="col-lg-3 col-form-label form-control-label colo ">Température</label>
                                         <div class="col-lg-9">
                                             <input class="form-control" type="text" value="{{$id->temperature}}" style="height:80px;" readonly>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-lg-3 col-form-label form-control-label">Tension artielle</label>
+                                        <label class="col-lg-3 col-form-label form-control-label colo">Tension artielle</label>
                                         <div class="col-lg-9">
                                             <input class="form-control" type="text" value="{{$id->tension_arterielle}}" style="height:80px;" readonly>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-lg-3 col-form-label form-control-label">Fréquence cardiaque</label>
+                                        <label class="col-lg-3 col-form-label form-control-label colo ">Fréquence cardiaque</label>
                                         <div class="col-lg-9">
                                             <input class="form-control" type="text" value="{{$id->frequence_cardiaque}}" style="height:80px;" readonly>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-lg-3 col-form-label form-control-label">Fréquence respiratoire</label>
+                                        <label class="col-lg-3 col-form-label form-control-label colo ">Fréquence respiratoire</label>
                                         <div class="col-lg-9">
                                             <input class="form-control" type="text" value="{{$id->frequence_respiratoire}}" style="height:80px;" readonly>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-lg-3 col-form-label form-control-label">Poids</label>
+                                        <label class="col-lg-3 col-form-label form-control-label colo ">Poids</label>
                                         <div class="col-lg-9">
                                             <input class="form-control" type="text" value="{{$id->poids}}" style="height:80px;" readonly>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-lg-3 col-form-label form-control-label">Taille</label>
+                                        <label class="col-lg-3 col-form-label form-control-label colo">Taille</label>
                                         <div class="col-lg-9">
                                             <input class="form-control" type="text" value="{{$id->taille}}" style="height:80px;" readonly>
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-lg-3 col-form-label form-control-label">Conjonctives</label>
+                                        <label class="col-lg-3 col-form-label form-control-label colo ">Conjonctives</label>
                                         <div class="col-lg-9">
                                             <input class="form-control" type="text" value="{{$id->conjonctives}}" style="height:80px;" readonly>
                                         </div>
                                     </div>
+
+
                                     <div class="form-group row">
-                                        <label class="col-lg-3 col-form-label form-control-label">Autre</label>
+                                        <label class="col-lg-3 col-form-label form-control-label "></label>
                                         <div class="col-lg-9">
-                                            <input class="form-control" type="text" value="{{$id->autre}}" style="height:80px;" readonly>
-                                        </div>
-                                    </div>
-            
-                                    <div class="form-group row">
-                                        <label class="col-lg-3 col-form-label form-control-label"></label>
-                                        <div class="col-lg-9">
-                                            <input type="button" class="btn btn-success" value="Examen Specialicé" onclick="location.href='{{ route('ATCD') }}'">
-                                            
+                                            <input type="button" class="btn btn-success" value="Retour" onclick="location.href='{{ route('detail' ,[$patient->id]) }}'">
+
                                         </div>
                                     </div>
                                 </form>
                             </div>
-
-                            <!--/row-->
-
-                        
-                        
                 </div>
-
-
             </div>
         </div>
     </div>
     <style>
-    /* User Cards */
 
+  .dib{
+        margin-left: 800px;
+        padding-top: 35px;
+    }
+.car{
+    margin-left: 40px;
+    margin-top: 20px;
+    width:1000px;
+
+}
+.ca{
+
+    width:1000px;
+
+}
+.carr{
+    margin-top: 0px;
+    height: 100px;
+    width: 100px;
+}
+.col{
+    background-color: #00D7D8;
+    margin-top: -15px;
+}
+.colo{
+    color: indigo;
+}
     .mar{
         margin-top: 10px;
         margin-left: 190px;
         width: 190px;
     }
-    
 
-    
+
+
 
     .profile-card-2 .card::before {
         content: "";
@@ -520,7 +579,7 @@
     } </style>
 </body>
 
-    </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a></div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
