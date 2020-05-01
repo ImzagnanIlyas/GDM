@@ -1,10 +1,19 @@
 (function($) {
   "use strict"; // Start of use strict
 
+  window.onload = function afterWebPageLoad() {
+    $("body").toggleClass("sidebar-toggled");
+    $(".sidebar").toggleClass("toggled");
+    if ($(".sidebar").hasClass("toggled")) {
+      $('.sidebar .collapse').collapse('hide');
+    };
+  }
+
   // Toggle the side navigation
   $("#sidebarToggle, #sidebarToggleTop").on('click', function(e) {
     $("body").toggleClass("sidebar-toggled");
     $(".sidebar").toggleClass("toggled");
+    $(".logo").toggleClass("logo-toggled");
     if ($(".sidebar").hasClass("toggled")) {
       $('.sidebar .collapse').collapse('hide');
     };
