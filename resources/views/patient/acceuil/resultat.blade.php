@@ -19,7 +19,7 @@
     <div id="wrapper">
         @include('patient.layouts.nav-vertical')
         <div class="d-flex flex-column" id="content-wrapper">
-            <div class="text-white bg-white" id="content" style="width: 75;">
+            <div class="text-white" id="content" style="width: 75;">
                 @include('patient.layouts.nav-horizontal')
                 <div class="text-light bg-white" id="content">
                     @include('patient.layouts.nav-dossier')

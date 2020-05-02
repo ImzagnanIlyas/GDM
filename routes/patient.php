@@ -35,7 +35,7 @@ Route::group(['namespace' => 'Patient'], function() {
     Route::get('Examenspe','acceuil\ExController@showExamenS')->name('Examenspe')->middleware('patient.auth');
     Route::get('Problèmes','acceuil\prblmController@show')->name('prblm')->middleware('patient.auth');
     Route::get('profile','acceuil\profileController@show')->name('profile')->middleware('patient.auth');
-    Route::get('Consultations_médicales','acceuil\CMController@show')->name('CM')->middleware('patient.auth');
+    Route::get('Consultations-médicales','acceuil\CMController@show')->name('CM')->middleware('patient.auth');
     Route::get('Resultat/{id}' ,'acceuil\resultatController@show')->name('Resultat')->middleware('patient.auth');
     Route::get('Bilan/{id}' ,'acceuil\resultatController@showBilan')->name('Bilan')->middleware('patient.auth');
     Route::get('search', 'acceuil\mesconController@search')->name('search');

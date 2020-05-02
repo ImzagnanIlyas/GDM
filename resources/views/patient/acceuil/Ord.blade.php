@@ -24,48 +24,56 @@
                 @include('patient.layouts.nav-dossier')
                 <div class="container">
                     <div class="d-flex justify-content-center mt-2">
-                        @if($consultations->isEmpty())
-                            <div class=" alert alert-warning mt-4" role="alert">
-                                Ce patient n'a pas d'ordonnance.
+                        <div class="card col-12 p-0 shadow">
+                            <div class="card-header d-flex justify-content-between align-items-center py-3">
+                                <p class="text-primary m-0 font-weight-bold">La liste des ordonnances</p>
+                                <input class="form-control col-3" type="text" placeholder="Rechercher par date" id="searchInput">
                             </div>
-                        @else
-                            <div class="table-responsive table col-md-12 mt-2 overflow-auto" style="max-height: 430px">
-                                <table class="table dataTable my-0">
-                                    <thead>
-                                        <tr class="text-center">
-                                            <th>ID Consultation</th>
-                                            <th>Médecin</th>
-                                            <th>Médicaments</th>
-                                            <th>Date d'ordonnance</th>
-                                            <th>Détails</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @forelse( $consultations as $c )
-                                            <tr class="text-center">
-                                                <td>{{ $c->id }}</td>
-                                                <td>{{ $c->medecin->patient->nom.' '.$c->medecin->patient->prenom }}</td>
-                                                @if ($c->PMs->isEmpty())
-                                                    <td>Cette consultation n'a pas de prescription</td>
-                                                    <td>-</td>
-                                                    <td>-</td>
-                                                @else
-                                                    <td>{{ $c->PMs->count() }}</td>
-                                                    <td>{{ date('d/m/Y',strtotime($c->PMs->first()->created_at)) }}</td>
-                                                    <td><a href="" class="btn btn-primary">Afficher</a></td>
-                                                @endif
-                                            </tr>
-                                        @empty
-                                            <tr>
-                                                <div class="alert alert-warning" role="alert">
-                                                    Vous n'avez effectué aucune consultation.
-                                                </div>
-                                            </tr>
-                                        @endforelse
-                                    </tbody>
-                                </table>
+                            <div class="card-body">
+                                @if($consultations->isEmpty())
+                                    <div class=" alert alert-warning mt-4" role="alert">
+                                        Ce patient n'a pas d'ordonnance.
+                                    </div>
+                                @else
+                                    <div class="table-responsive table col-md-12 overflow-auto" style="max-height: 430px">
+                                        <table class="table dataTable my-0">
+                                            <thead>
+                                                <tr class="text-center">
+                                                    <th>ID Consultation</th>
+                                                    <th>Médecin</th>
+                                                    <th>Médicaments</th>
+                                                    <th>Date d'ordonnance</th>
+                                                    <th>Détails</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @forelse( $consultations as $c )
+                                                    <tr class="text-center">
+                                                        <td>{{ $c->id }}</td>
+                                                        <td>{{ $c->medecin->patient->nom.' '.$c->medecin->patient->prenom }}</td>
+                                                        @if ($c->PMs->isEmpty())
+                                                            <td>Cette consultation n'a pas de prescription</td>
+                                                            <td>-</td>
+                                                            <td>-</td>
+                                                        @else
+                                                            <td>{{ $c->PMs->count() }}</td>
+                                                            <td>{{ date('d/m/Y',strtotime($c->PMs->first()->created_at)) }}</td>
+                                                            <td><a href="" class="btn btn-primary">Afficher</a></td>
+                                                        @endif
+                                                    </tr>
+                                                @empty
+                                                    <tr>
+                                                        <div class="alert alert-warning" role="alert">
+                                                            Vous n'avez effectué aucune consultation.
+                                                        </div>
+                                                    </tr>
+                                                @endforelse
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                @endif
                             </div>
-                        @endif
+                        </div>
                     </div>
                 </div>
             </div>

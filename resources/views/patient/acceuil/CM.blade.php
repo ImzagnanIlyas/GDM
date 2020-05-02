@@ -26,40 +26,48 @@
                 @include('patient.layouts.nav-horizontal')
                 @include('patient.layouts.nav-dossier')
                 <div class="container">
-                <div class="d-flex justify-content-center mt-2">
-                    @if($consultations->isEmpty())
-                        <div class="alert alert-warning mt-4" role="alert">
-                            Ce patient n'a passé aucune consultation.
+                    <div class="d-flex justify-content-center mt-2">
+                        <div class="card col-12 p-0 shadow">
+                            <div class="card-header d-flex justify-content-between align-items-center py-3">
+                                <p class="text-primary m-0 font-weight-bold">La liste des consultation médicale</p>
+                                <input class="form-control col-3" type="text" placeholder="Rechercher par date" id="searchInput">
+                            </div>
+                            <div class="card-body">
+                                @if($consultations->isEmpty())
+                                    <div class="alert alert-warning mt-4" role="alert">
+                                        Ce patient n'a passé aucune consultation.
+                                    </div>
+                                @else
+                                    <div class="table-responsive table col-md-12 overflow-auto" style="max-height: 430px">
+                                        <table class="table dataTable my-0">
+                                            <thead>
+                                                <tr class="text-center">
+                                                    <th>ID</th>
+                                                    <th class="col-3">Médecin</th>
+                                                    <th>Lieu</th>
+                                                    <th class="col-3">Motif</th>
+                                                    <th>Date</th>
+                                                    <th>Détails</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach( $consultations as $c )
+                                                    <tr class="text-center">
+                                                        <td>{{ $c->id }}</td>
+                                                        <td>{{ $c->medecin->patient->nom.' '.$c->medecin->patient->prenom }}</td>
+                                                        <td>{{ $c->lieu }}</td>
+                                                        <td>{{ $c->motif }}</td>
+                                                        <td>{{ date('d/m/Y',strtotime($c->date )) }}</td>
+                                                        <td><a href="" class="btn btn-primary">Afficher</a></td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                @endif
+                            </div>
                         </div>
-                    @else
-                        <div class="table-responsive table col-md-12 mt-2 overflow-auto" style="max-height: 430px">
-                            <table class="table dataTable my-0">
-                                <thead>
-                                    <tr class="text-center">
-                                        <th>ID</th>
-                                        <th class="col-3">Médecin</th>
-                                        <th>Lieu</th>
-                                        <th class="col-3">Motif</th>
-                                        <th>Date</th>
-                                        <th>Détails</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach( $consultations as $c )
-                                        <tr class="text-center">
-                                            <td>{{ $c->id }}</td>
-                                            <td>{{ $c->medecin->patient->nom.' '.$c->medecin->patient->prenom }}</td>
-                                            <td>{{ $c->lieu }}</td>
-                                            <td>{{ $c->motif }}</td>
-                                            <td>{{ date('d/m/Y',strtotime($c->date )) }}</td>
-                                            <td><a href="" class="btn btn-primary">Afficher</a></td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    @endif
-                </div>
+                    </div>
                 </div>
             </div>
         </div>

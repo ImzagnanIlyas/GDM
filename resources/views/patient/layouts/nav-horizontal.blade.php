@@ -1,4 +1,4 @@
-<nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
+<!-- <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
     <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
         <form class="form-inline d-none d-sm-inline-block mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
             <div class="input-group"><input class="bg-light form-control border-0 small" type="text" placeholder="{{$patient->nom }} {{$patient->prenom}} " readonly>
@@ -33,4 +33,55 @@
         </div>
         <div class="d-none d-sm-block topbar-divider"></div>
     </ul>
+</nav> -->
+
+<nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top" style="position: fixed;top: 0;left: 0;width: 100%;z-index: 999;">
+    <div class="container-fluid">
+        <button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
+        <div class="d-flex justify-content-center align-items-center">
+            <a class="d-flex justify-content-center align-items-center logo" href="{{ url('/patient') }}" id="logo">
+                <img src="{{ asset('img/patient/MILAFI.png') }}" height="65">
+            </a>
+        </div>
+        <div class="d-none d-sm-block topbar-divider"></div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav text-dark col-12" id="accordionSidebar">
+                <li class="nav-item col-2" role="presentation">
+                    <a class="nav-link" href="{{ route('ATCD') }}"><span>Dossier médicale</span></a>
+                </li>
+                <div class="d-none d-sm-block topbar-divider"></div>
+                <li class="nav-item col-2" role="presentation">
+                    <a class="nav-link" href="{{ route('mescon') }}"><span>Consultations</span></a>
+                </li>
+            </ul>
+            <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
+        </div>
+
+        <ul class="nav navbar-nav flex-nowrap">
+            <div class="d-none d-sm-block topbar-divider"></div>
+            <li class="nav-item dropdown no-arrow" role="presentation">
+                <li class="nav-item dropdown">
+                    <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">
+                        <span class="d-none d-lg-inline mr-2 text-gray-600 small">{{ strtoupper(Auth::guard('patient')->user()->username) }}</span>
+                    </a>
+                    <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu">
+                        <a class="dropdown-item" role="presentation" href="{{ route('profile') }}">
+                            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                            &nbsp;Mon profil
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" role="presentation" href="{{ route('patient.logout') }}"
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                            &nbsp;Se déconnecter
+                        </a>
+                        <form id="logout-form" action="{{ route('patient.logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </div>
+                </li>
+            </li>
+        </ul>
+    </div>
 </nav>
+

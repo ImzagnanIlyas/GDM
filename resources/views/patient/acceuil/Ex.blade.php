@@ -19,49 +19,65 @@
     <div id="wrapper">
         @include('patient.layouts.nav-vertical')
         <div class="d-flex flex-column" id="content-wrapper">
-            <div class="text-white bg-white" id="content" style="width: 75;">
+            <div class="text-white" id="content" style="width: 75;">
                 @include('patient.layouts.nav-horizontal')
                 @include('patient.layouts.nav-dossier')
+
+
+
                 <div class="container">
-                    <div class="row">
-                        <div class="card car ">
-                            <div class="panel panel-primary filterable">
-                                <div class="panel-heading">
-                                    <div class="card-header colo">
-                                        Examen complimentaire
+                    <div class="d-flex justify-content-center mt-2">
+                        <div class="card col-12 p-0 shadow">
+                            <div class="card-header d-flex justify-content-between align-items-center py-3">
+                                <p class="text-primary m-0 font-weight-bold">La liste des ordonnances</p>
+                                <input class="form-control col-3" type="text" placeholder="Rechercher par date" id="searchInput">
+                            </div>
+                            <div class="card-body">
+                                @if($examen->isEmpty())
+                                    <div class=" alert alert-warning mt-4" role="alert">
+                                        Ce patient n'a passé aucun examen.
                                     </div>
-                                    <div class="pull-right dib">
-                                        <button class="btn btn-default btn-xs btn-filter btn btn-primary"><span
-                                                class="glyphicon glyphicon-filter"></span> Chercher</button>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <table class="table">
-                                        <thead>
-                                            <tr class="filters">
-                                                <th><input type="text" class="form-control" placeholder="Date d'examen"
-                                                        disabled></th>
-                                                <th><input type="text" class="form-control" placeholder="Bilan"
-                                                        disabled></th>
-                                                <th><input type="text" class="form-control" placeholder="Résultat"
-                                                        disabled></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach($examen as $examen)
+                                @else
+                                    <div class="table-responsive table col-md-12 overflow-auto" style="max-height: 405px">
+                                        <table class="table dataTable my-0">
+                                            <thead>
                                                 <tr>
-                                                    <td>{{ $examen->consultation->date }}</td>
-                                                    <td><a
-                                                            href="{{ route('Bilan' ,[$examen->id]) }}">Bilan</a>
-                                                    </td>
-                                                    <td><a @if($examen->confirmation) class="disabled"
-                                                            href="{{ route('Resultat' ,[$examen->id]) }}"
-                                                            @endif>Résultat</a></td>
+                                                    <th class="col-2">Type</th>
+                                                    <th class="col-2">Date</th>
+                                                    <th class="col-1">Résultat</th>
+                                                    <th class="col-2">Examinateur</th>
+                                                    <th class="col-2">Date du résultat</th>
+                                                    <th class="col-3 text-center">Action</th>
                                                 </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
+                                            </thead>
+                                            <tbody>
+                                                @foreach( $examen as $EC )
+                                                <tr>
+                                                    <td>{{ json_decode($EC->bilan)->type }}</td>
+                                                    <td>{{ date('d/m/Y', strtotime($EC->created_at)) }}</td>
+                                                    @if (! $EC->confirmation )
+                                                    <td class="text-center" title="En attend"> <i class="fas fa-clock" style="color: orange;font-size: x-large;"></i> </td>
+                                                    <td> - </td>
+                                                    <td> - </td>
+                                                    <td class="d-flex justify-content-center">
+                                                        <a href="{{ route('Bilan' ,[$EC->id]) }}" class="btn btn-info col-6 mr-1">Bilan</a>
+                                                        <a href="" class="btn btn-primary disabled col-6 mr-1">Résultat</a>
+                                                    </td>
+                                                    @else
+                                                    <td  class="text-center" title="Résultat ajouté"> <i class="fas fa-check-circle" style="color: green;font-size: x-large;"></i> </td>
+                                                    <td> {{ $EC->examinateur->nom }}</td>
+                                                    <td> {{ date('d/m/Y', strtotime($EC->updated_at)) }} </td>
+                                                    <td class="d-flex justify-content-center">
+                                                        <a href="{{ route('Bilan' ,[$EC->id]) }}" class="btn btn-info col-6 mr-1" >Bilan</a>
+                                                        <a href="{{ route('Resultat' ,[$EC->id]) }}" class="btn btn-primary col-6 mr-1">Résultat</a>
+                                                    </td>
+                                                    @endif
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>
