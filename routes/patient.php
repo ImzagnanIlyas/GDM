@@ -32,6 +32,7 @@ Route::group(['namespace' => 'Patient'], function() {
     Route::get('Ex','acceuil\ExController@show')->name('Ex')->middleware('patient.auth');
     Route::get('Examengeneral/{id}','acceuil\ExController@showEG')->name('Examengeneral')->middleware('patient.auth');
     Route::get('Examenspecialise/{id}','acceuil\ExController@showES')->name('Examenspecialise')->middleware('patient.auth');
+    Route::get('Examenspe','acceuil\ExController@showExamenS')->name('Examenspe')->middleware('patient.auth');
     Route::get('prblm','acceuil\prblmController@show')->name('prblm')->middleware('patient.auth');
     Route::get('profile','acceuil\profileController@show')->name('profile')->middleware('patient.auth');
     Route::get('CM','acceuil\CMController@show')->name('CM')->middleware('patient.auth');

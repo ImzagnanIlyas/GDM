@@ -64,7 +64,7 @@
                                     <div class="form-group row">
                                         <label class="col-lg-3 col-form-label form-control-label"></label>
                                         <div class="col-lg-9">
-                                            <input type="button" class="btn btn-success" value="Examen Specialicé" onclick="location.href='{{route('Examenspecialise' ,[$id->id])}}'">
+                                            <input type="button" class="btn btn-success" value="Examen Specialicé" onclick="location.href='{{route('Examenspe')}}'">
                                             <input type="button" class="btn btn-primary" value="Examen Générale" onclick="location.href='{{route('Examengeneral' ,[$id->id])}}'">
                                         </div>
                                     </div>

@@ -88,6 +88,9 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                            </div>
+
                             <div class="tab-pane " id="habitude">
                                 @php $atcd =json_decode($patient->atcd); @endphp
                                 <div class="card care ">

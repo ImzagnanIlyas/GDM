@@ -53,4 +53,19 @@ class ExController extends Controller
             'patient'=>$patient
         ]);
     }
+
+    public function showExamenS()
+    {
+        $patient = Auth::guard('patient')->user();
+        $consultations =  Consultation::select('id')
+        ->where('patient_id',$patient->id)->get()->toArray();
+        $examen = Examen_specialise::select('*')
+        ->whereIn('consultation_id' , array_values( $consultations))->get();
+        return view('patient.acceuil.Examenspe' , [
+            'examen' => $examen ,
+            'consultations'=>$consultations ,
+            'patient'=>$patient
+        ]);
+    }
+
 }

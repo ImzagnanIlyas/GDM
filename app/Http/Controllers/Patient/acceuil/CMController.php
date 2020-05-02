@@ -17,7 +17,7 @@ class CMController extends Controller
         return view('patient.acceuil.CM' , [
             'patient'=>$patient,
             'consultations' => $consultations,
-            'examen'=>$examen,
+            'examen'=>$examen
 
         ]);
     }
