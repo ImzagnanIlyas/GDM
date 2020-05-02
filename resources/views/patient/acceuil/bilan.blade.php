@@ -21,77 +21,84 @@
         <div class="d-flex flex-column" id="content-wrapper">
             <div class="text-white bg-white" id="content" style="width: 75;">
                 @include('patient.layouts.nav-horizontal')
+                <div class="text-light bg-white" id="content">
+                    @include('patient.layouts.nav-dossier')
 
-            <div class="text-light bg-white" id="content">
-                @include('patient.layouts.nav-dossier')
+                    @php
+                        foreach($examen as $examen){
+                        $bilan = json_decode($id->bilan);}
+                    @endphp
+                    <div class="card car ">
+                        <div class="card-header col">
+                            Bilan
+                        </div>
 
-                @php
-                foreach($examen as $examen){
-                $bilan = json_decode($id->bilan);}
-            @endphp
-                 <div class="card car ">
-                    <div class="card-header col">
-                        Bilan
-                      </div>
-
-                <div class="col-md-10">
-                    <div class="card-body">
-                        <div id="quill-textarea" style="color: black">
-                            {!! $bilan->text !!}
+                        <div class="col-md-10">
+                            <div class="card-body">
+                                <div id="quill-textarea" style="color: black">
+                                    {!! $bilan->text !!}
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </div>
     </div>
+</body>
+
 <style>
-  .dib{
+    .dib {
         margin-left: 800px;
         padding-top: 35px;
     }
-.car{
-    margin-left: 70px;
-    width:1000px;
 
-}
-.ca{
+    .car {
+        margin-left: 70px;
+        width: 1000px;
 
-    width:1000px;
+    }
 
-}
-.carr{
-    margin-top: 0px;
-    height: 100px;
-    width: 100px;
-}
-.col{
-    background-color: #00D7D8;
+    .ca {
 
-}
-.colo{
-    color: indigo;
-}
-    .mar{
+        width: 1000px;
+
+    }
+
+    .carr {
+        margin-top: 0px;
+        height: 100px;
+        width: 100px;
+    }
+
+    .col {
+        background-color: #00D7D8;
+
+    }
+
+    .colo {
+        color: indigo;
+    }
+
+    .mar {
 
         margin-left: 190px;
         width: 190px;
     }
 </style>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
-    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-    <script>
-        baguetteBox.run('.tz-gallery');
-        var toolbarOptions = [];
-        var quill = new Quill('#quill-textarea', {
-            readOnly: true,
-            modules: {
-                toolbar: toolbarOptions
-            },
-            theme: 'bubble'
-        });
-    </script>
-</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+<script>
+    baguetteBox.run('.tz-gallery');
+    var toolbarOptions = [];
+    var quill = new Quill('#quill-textarea', {
+        readOnly: true,
+        modules: {
+            toolbar: toolbarOptions
+        },
+        theme: 'bubble'
+    });
+</script>
+
 </html>

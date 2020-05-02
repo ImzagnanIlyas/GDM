@@ -22,114 +22,132 @@
     <div id="wrapper">
         @include('patient.layouts.nav-vertical')
         <div class="d-flex flex-column" id="content-wrapper">
-            <div class="text-white bg-white" id="content" style="width: 75;">
+            <div class="text-white" id="content">
                 @include('patient.layouts.nav-horizontal')
-
-            @include('patient.layouts.nav-dossier')
-
-                <div class="containers">
-                    <ul class="responsive-table">
-                      <li class="table-header">
-                        <div class="col col-1">Date</div>
-                        <div class="col col-2">Lieu</div>
-                        <div class="col col-3">Motif</div>
-                        <div class="col col-4">Ordonnonce</div>
-                      </li>
-                      @foreach ($consultations as $con)
-                      <li class="table-row">
-                        <div class="col col-1" data-label="Job Id">{{$con->date}}</div>
-                      <div class="col col-2" data-label="Customer Name">{{$con->lieu}}</div>
-                      <div class="col col-3" data-label="Amount">{{$con->motif}}</div>
-                      <div class="col col-4" data-label="Payment Status"><a href="{{route('Ord' ,[$con->id])}}">Ordonnonce</a></div>
-                      </li>
-                    @endforeach
-                    </ul>
-                  </div>
-
-
-                  <div id="cover"></div>
-  <style>
-
-
-
-.containers {
-  max-width: 1000px;
-  margin-left: 50px;
-
-
-}
-.responsive-table li {
-    border-radius: 3px;
-    padding: 13px 60px;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 25px;
-  }
-  .table-header {
-    background-color: #3CB4E4;
-    font-size: 20px;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-  }
-  .table-row {
-    background-color: #fff;
-    box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);
-    color:indigo;
-  }
-  .col-1 {
-    flex-basis: 10%;
-  }
-  .col-2 {
-    flex-basis: 40%;
-  }
-  .col-3 {
-    flex-basis: 25%;
-  }
-  .col-4 {
-    flex-basis: 25%;
-  }
-
-  @media all and (max-width: 767px) {
-    .table-header {
-      display: none;
-    }
-    .table-row{
-
-    }
-    li {
-      display: block;
-    }
-    .col {
-
-      flex-basis: 100%;
-
-    }
-    .col {
-      display: flex;
-      padding: 10px 0;
-      &:before {
-        color: #6C7A89;
-        padding-right: 10px;
-        content: attr(data-label);
-        flex-basis: 50%;
-        text-align: right;
-      }
-    }
-
-                </style>
-                    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
-                    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
-                    <script>
-                        baguetteBox.run('.tz-gallery');
-                        var toolbarOptions = [];
-                        var quill = new Quill('#quill-textarea', {
-                            readOnly: true,
-                            modules: {
-                                toolbar: toolbarOptions
-                            },
-                            theme: 'bubble'
-                        });
-                    </script>
+                @include('patient.layouts.nav-dossier')
+                <div class="container">
+                <div class="d-flex justify-content-center mt-2">
+                    @if($consultations->isEmpty())
+                        <div class="alert alert-warning mt-4" role="alert">
+                            Ce patient n'a passé aucune consultation.
+                        </div>
+                    @else
+                        <div class="table-responsive table col-md-12 mt-2 overflow-auto" style="max-height: 430px">
+                            <table class="table dataTable my-0">
+                                <thead>
+                                    <tr class="text-center">
+                                        <th>ID</th>
+                                        <th class="col-3">Médecin</th>
+                                        <th>Lieu</th>
+                                        <th class="col-3">Motif</th>
+                                        <th>Date</th>
+                                        <th>Détails</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach( $consultations as $c )
+                                        <tr class="text-center">
+                                            <td>{{ $c->id }}</td>
+                                            <td>{{ $c->medecin->patient->nom.' '.$c->medecin->patient->prenom }}</td>
+                                            <td>{{ $c->lieu }}</td>
+                                            <td>{{ $c->motif }}</td>
+                                            <td>{{ date('d/m/Y',strtotime($c->date )) }}</td>
+                                            <td><a href="" class="btn btn-primary">Afficher</a></td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    @endif
+                </div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
+
+<style>
+    .containers {
+        max-width: 1000px;
+        margin-left: 50px;
+    }
+
+    .responsive-table li {
+        border-radius: 3px;
+        padding: 13px 60px;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 25px;
+    }
+
+    .table-header {
+        background-color: #3CB4E4;
+        font-size: 20px;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+    }
+
+    .table-row {
+        background-color: #fff;
+        box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+        color: indigo;
+    }
+
+    .col-1 {
+        flex-basis: 10%;
+    }
+
+    .col-2 {
+        flex-basis: 40%;
+    }
+
+    .col-3 {
+        flex-basis: 25%;
+    }
+
+
+    .col-4 {
+        flex-basis: 25%;
+    }
+
+    @media all and (max-width: 767px) {
+        display: none;
+    }
+
+    li {
+        display: block;
+    }
+
+    .col {
+        flex-basis: 100%;
+    }
+
+    .col {
+        display: flex;
+        padding: 10px 0;
+
+        &:before {
+            color: #6C7A89;
+            padding-right: 10px;
+            content: attr(data-label);
+            flex-basis: 50%;
+            text-align: right;
+        }
+    }
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.8.1/baguetteBox.min.js"></script>
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+<script>
+    baguetteBox.run('.tz-gallery');
+    var toolbarOptions = [];
+    var quill = new Quill('#quill-textarea', {
+        readOnly: true,
+        modules: {
+            toolbar: toolbarOptions
+        },
+        theme: 'bubble'
+    });
+</script>
+
 </html>

@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merienda">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/untitled.css') }}">
 </head>
+
 <body id="page-top">
     <div id="wrapper">
         @include('patient.layouts.nav-vertical')
@@ -18,111 +19,140 @@
             <div class="text-white bg-white" id="content" style="width: 75;">
                 @include('patient.layouts.nav-horizontal')
 
-    <div class="container">
-        <div class="row">
+                <div class="container">
+                    <div class="row">
 
 
-                    <div class="card-body ca ">
-                        <div class="card car ">
-                            <div class="card-header col">
-                                Examen général
-                              </div>
-                    <div class="tab-content p-3">
+                        <div class="card-body ca ">
+                            <div class="card car ">
+                                <div class="card-header col">
+                                    Examen général
+                                </div>
+                                <div class="tab-content p-3">
 
-                                <form>
-                                    <div class="form-group row">
-                                        <label class="col-lg-3 col-form-label form-control-label colo">Etat</label>
-                                        <div class="col-lg-9">
-                                            <input class="form-control" type="text" value="{{$id->etat}}" style="height:80px;" readonly>
+                                    <form>
+                                        <div class="form-group row">
+                                            <label class="col-lg-3 col-form-label form-control-label colo">Etat</label>
+                                            <div class="col-lg-9">
+                                                <input class="form-control" type="text" value="{{ $id->etat }}"
+                                                    style="height:80px;" readonly>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-lg-3 col-form-label form-control-label colo ">Température</label>
-                                        <div class="col-lg-9">
-                                            <input class="form-control" type="text" value="{{$id->temperature}}" style="height:80px;" readonly>
+                                        <div class="form-group row">
+                                            <label
+                                                class="col-lg-3 col-form-label form-control-label colo ">Température</label>
+                                            <div class="col-lg-9">
+                                                <input class="form-control" type="text" value="{{ $id->temperature }}"
+                                                    style="height:80px;" readonly>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-lg-3 col-form-label form-control-label colo">Tension artielle</label>
-                                        <div class="col-lg-9">
-                                            <input class="form-control" type="text" value="{{$id->tension_arterielle}}" style="height:80px;" readonly>
+                                        <div class="form-group row">
+                                            <label class="col-lg-3 col-form-label form-control-label colo">Tension
+                                                artielle</label>
+                                            <div class="col-lg-9">
+                                                <input class="form-control" type="text"
+                                                    value="{{ $id->tension_arterielle }}" style="height:80px;"
+                                                    readonly>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-lg-3 col-form-label form-control-label colo ">Fréquence cardiaque</label>
-                                        <div class="col-lg-9">
-                                            <input class="form-control" type="text" value="{{$id->frequence_cardiaque}}" style="height:80px;" readonly>
+                                        <div class="form-group row">
+                                            <label class="col-lg-3 col-form-label form-control-label colo ">Fréquence
+                                                cardiaque</label>
+                                            <div class="col-lg-9">
+                                                <input class="form-control" type="text"
+                                                    value="{{ $id->frequence_cardiaque }}" style="height:80px;"
+                                                    readonly>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-lg-3 col-form-label form-control-label colo ">Fréquence respiratoire</label>
-                                        <div class="col-lg-9">
-                                            <input class="form-control" type="text" value="{{$id->frequence_respiratoire}}" style="height:80px;" readonly>
+                                        <div class="form-group row">
+                                            <label class="col-lg-3 col-form-label form-control-label colo ">Fréquence
+                                                respiratoire</label>
+                                            <div class="col-lg-9">
+                                                <input class="form-control" type="text"
+                                                    value="{{ $id->frequence_respiratoire }}" style="height:80px;"
+                                                    readonly>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-lg-3 col-form-label form-control-label colo ">Poids</label>
-                                        <div class="col-lg-9">
-                                            <input class="form-control" type="text" value="{{$id->poids}}" style="height:80px;" readonly>
+                                        <div class="form-group row">
+                                            <label
+                                                class="col-lg-3 col-form-label form-control-label colo ">Poids</label>
+                                            <div class="col-lg-9">
+                                                <input class="form-control" type="text" value="{{ $id->poids }}"
+                                                    style="height:80px;" readonly>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-lg-3 col-form-label form-control-label colo">Taille</label>
-                                        <div class="col-lg-9">
-                                            <input class="form-control" type="text" value="{{$id->taille}}" style="height:80px;" readonly>
+                                        <div class="form-group row">
+                                            <label
+                                                class="col-lg-3 col-form-label form-control-label colo">Taille</label>
+                                            <div class="col-lg-9">
+                                                <input class="form-control" type="text" value="{{ $id->taille }}"
+                                                    style="height:80px;" readonly>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-lg-3 col-form-label form-control-label colo ">Conjonctives</label>
-                                        <div class="col-lg-9">
-                                            <input class="form-control" type="text" value="{{$id->conjonctives}}" style="height:80px;" readonly>
+                                        <div class="form-group row">
+                                            <label
+                                                class="col-lg-3 col-form-label form-control-label colo ">Conjonctives</label>
+                                            <div class="col-lg-9">
+                                                <input class="form-control" type="text"
+                                                    value="{{ $id->conjonctives }}" style="height:80px;" readonly>
+                                            </div>
                                         </div>
-                                    </div>
 
 
-                                    <div class="form-group row">
-                                        <label class="col-lg-3 col-form-label form-control-label "></label>
-                                        <div class="col-lg-9">
-                                            <input type="button" class="btn btn-success" value="Retour" onclick="location.href='{{ route('detail' ,[$patient->id]) }}'">
+                                        <div class="form-group row">
+                                            <label class="col-lg-3 col-form-label form-control-label "></label>
+                                            <div class="col-lg-9">
+                                                <input type="button" class="btn btn-success" value="Retour"
+                                                    onclick="location.href='{{ route('detail' ,[$patient->id]) }}'">
 
+                                            </div>
                                         </div>
-                                    </div>
-                                </form>
+                                    </form>
+                                </div>
                             </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <style>
+</body>
 
-  .dib{
+<style>
+    .dib {
         margin-left: 800px;
         padding-top: 35px;
     }
-.car{
-    margin-left: 40px;
-    margin-top: 20px;
-    width:1000px;
 
-}
-.ca{
+    .car {
+        margin-left: 40px;
+        margin-top: 20px;
+        width: 1000px;
 
-    width:1000px;
+    }
 
-}
-.carr{
-    margin-top: 0px;
-    height: 100px;
-    width: 100px;
-}
-.col{
-    background-color: #00D7D8;
-    margin-top: -15px;
-}
-.colo{
-    color: indigo;
-}
-    .mar{
+    .ca {
+
+        width: 1000px;
+
+    }
+
+    .carr {
+        margin-top: 0px;
+        height: 100px;
+        width: 100px;
+    }
+
+    .col {
+        background-color: #00D7D8;
+        margin-top: -15px;
+    }
+
+    .colo {
+        color: indigo;
+    }
+
+    .mar {
         margin-top: 10px;
         margin-left: 190px;
         width: 190px;
@@ -146,28 +176,32 @@
     .profile-card-2 .card.profile-primary::before {
         background-color: #008cff;
     }
+
     .profile-card-2 .card.profile-success::before {
         background-color: #15ca20;
     }
+
     .profile-card-2 .card.profile-danger::before {
         background-color: #fd3550;
     }
+
     .profile-card-2 .card.profile-warning::before {
         background-color: #ff9700;
     }
+
     .profile-card-2 .user-box {
         margin-top: 30px;
     }
 
     .profile-card-3 .user-fullimage {
-        position:relative;
+        position: relative;
     }
 
-    .profile-card-3 .user-fullimage .details{
+    .profile-card-3 .user-fullimage .details {
         position: absolute;
         bottom: 0;
         left: 0px;
-        width:100%;
+        width: 100%;
     }
 
     .profile-card-4 .user-box {
@@ -194,7 +228,7 @@
         line-height: 15px;
     }
 
-    .profile-card-4 .list-details small{
+    .profile-card-4 .list-details small {
         display: table-cell;
         vertical-align: middle;
         font-size: 12px;
@@ -218,15 +252,17 @@
         border-top-right-radius: .25rem;
 
     }
-    .nav-tabs .nav-link:hover{
+
+    .nav-tabs .nav-link:hover {
         border: 1px solid transparent;
     }
+
     .nav-tabs .nav-link i {
         margin-right: 2px;
         font-weight: 600;
     }
 
-    .top-icon.nav-tabs .nav-link i{
+    .top-icon.nav-tabs .nav-link i {
         margin: 0px;
         font-weight: 500;
         display: block;
@@ -234,76 +270,84 @@
         padding: 5px 0;
     }
 
-    .nav-tabs-primary.nav-tabs{
+    .nav-tabs-primary.nav-tabs {
         border-bottom: 1px solid #008cff;
     }
 
-    .nav-tabs-primary .nav-link.active, .nav-tabs-primary .nav-item.show>.nav-link {
+    .nav-tabs-primary .nav-link.active,
+    .nav-tabs-primary .nav-item.show>.nav-link {
         color: #008cff;
         background-color: #fff;
         border-color: #008cff #008cff #fff;
         border-top: 3px solid #008cff;
     }
 
-    .nav-tabs-success.nav-tabs{
+    .nav-tabs-success.nav-tabs {
         border-bottom: 1px solid #15ca20;
     }
 
-    .nav-tabs-success .nav-link.active, .nav-tabs-success .nav-item.show>.nav-link {
+    .nav-tabs-success .nav-link.active,
+    .nav-tabs-success .nav-item.show>.nav-link {
         color: #15ca20;
         background-color: #fff;
         border-color: #15ca20 #15ca20 #fff;
         border-top: 3px solid #15ca20;
     }
 
-    .nav-tabs-info.nav-tabs{
+    .nav-tabs-info.nav-tabs {
         border-bottom: 1px solid #0dceec;
     }
 
-    .nav-tabs-info .nav-link.active, .nav-tabs-info .nav-item.show>.nav-link {
+    .nav-tabs-info .nav-link.active,
+    .nav-tabs-info .nav-item.show>.nav-link {
         color: #0dceec;
         background-color: #fff;
         border-color: #0dceec #0dceec #fff;
         border-top: 3px solid #0dceec;
     }
 
-    .nav-tabs-danger.nav-tabs{
+    .nav-tabs-danger.nav-tabs {
         border-bottom: 1px solid #fd3550;
     }
 
-    .nav-tabs-danger .nav-link.active, .nav-tabs-danger .nav-item.show>.nav-link {
+    .nav-tabs-danger .nav-link.active,
+    .nav-tabs-danger .nav-item.show>.nav-link {
         color: #fd3550;
         background-color: #fff;
         border-color: #fd3550 #fd3550 #fff;
         border-top: 3px solid #fd3550;
     }
 
-    .nav-tabs-warning.nav-tabs{
+    .nav-tabs-warning.nav-tabs {
         border-bottom: 1px solid #ff9700;
     }
 
-    .nav-tabs-warning .nav-link.active, .nav-tabs-warning .nav-item.show>.nav-link {
+    .nav-tabs-warning .nav-link.active,
+    .nav-tabs-warning .nav-item.show>.nav-link {
         color: #ff9700;
         background-color: #fff;
         border-color: #ff9700 #ff9700 #fff;
         border-top: 3px solid #ff9700;
     }
 
-    .nav-tabs-dark.nav-tabs{
+    .nav-tabs-dark.nav-tabs {
         border-bottom: 1px solid #223035;
     }
 
-    .nav-tabs-dark .nav-link.active, .nav-tabs-dark .nav-item.show>.nav-link {
+    .nav-tabs-dark .nav-link.active,
+    .nav-tabs-dark .nav-item.show>.nav-link {
         color: #223035;
         background-color: #fff;
         border-color: #223035 #223035 #fff;
         border-top: 3px solid #223035;
     }
 
-    .nav-tabs-secondary.nav-tabs{
+    .nav-tabs-secondary.nav-tabs {
         border-bottom: 1px solid #75808a;
     }
-    .nav-tabs-secondary .nav-link.active, .nav-tabs-secondary .nav-item.show>.nav-link {
+
+    .nav-tabs-secondary .nav-link.active,
+    .nav-tabs-secondary .nav-item.show>.nav-link {
         color: #75808a;
         background-color: #fff;
         border-color: #75808a #75808a #fff;
@@ -326,12 +370,13 @@
         border-bottom-left-radius: .25rem;
     }
 
-    .tabs-vertical .nav-tabs{
-        border:0;
+    .tabs-vertical .nav-tabs {
+        border: 0;
         border-right: 1px solid #dee2e6;
     }
 
-    .tabs-vertical .nav-tabs .nav-item.show .nav-link, .tabs-vertical .nav-tabs .nav-link.active {
+    .tabs-vertical .nav-tabs .nav-item.show .nav-link,
+    .tabs-vertical .nav-tabs .nav-link.active {
         color: #495057;
         background-color: #fff;
         border-color: #dee2e6 #dee2e6 #fff;
@@ -340,12 +385,13 @@
         border-left: 1px solid #dee2e6;
     }
 
-    .tabs-vertical-primary.tabs-vertical .nav-tabs{
-        border:0;
+    .tabs-vertical-primary.tabs-vertical .nav-tabs {
+        border: 0;
         border-right: 1px solid #008cff;
     }
 
-    .tabs-vertical-primary.tabs-vertical .nav-tabs .nav-item.show .nav-link, .tabs-vertical-primary.tabs-vertical .nav-tabs .nav-link.active {
+    .tabs-vertical-primary.tabs-vertical .nav-tabs .nav-item.show .nav-link,
+    .tabs-vertical-primary.tabs-vertical .nav-tabs .nav-link.active {
         color: #008cff;
         background-color: #fff;
         border-color: #008cff #008cff #fff;
@@ -354,12 +400,13 @@
         border-left: 3px solid #008cff;
     }
 
-    .tabs-vertical-success.tabs-vertical .nav-tabs{
-        border:0;
+    .tabs-vertical-success.tabs-vertical .nav-tabs {
+        border: 0;
         border-right: 1px solid #15ca20;
     }
 
-    .tabs-vertical-success.tabs-vertical .nav-tabs .nav-item.show .nav-link, .tabs-vertical-success.tabs-vertical .nav-tabs .nav-link.active {
+    .tabs-vertical-success.tabs-vertical .nav-tabs .nav-item.show .nav-link,
+    .tabs-vertical-success.tabs-vertical .nav-tabs .nav-link.active {
         color: #15ca20;
         background-color: #fff;
         border-color: #15ca20 #15ca20 #fff;
@@ -368,12 +415,13 @@
         border-left: 3px solid #15ca20;
     }
 
-    .tabs-vertical-info.tabs-vertical .nav-tabs{
-        border:0;
+    .tabs-vertical-info.tabs-vertical .nav-tabs {
+        border: 0;
         border-right: 1px solid #0dceec;
     }
 
-    .tabs-vertical-info.tabs-vertical .nav-tabs .nav-item.show .nav-link, .tabs-vertical-info.tabs-vertical .nav-tabs .nav-link.active {
+    .tabs-vertical-info.tabs-vertical .nav-tabs .nav-item.show .nav-link,
+    .tabs-vertical-info.tabs-vertical .nav-tabs .nav-link.active {
         color: #0dceec;
         background-color: #fff;
         border-color: #0dceec #0dceec #fff;
@@ -382,12 +430,13 @@
         border-left: 3px solid #0dceec;
     }
 
-    .tabs-vertical-danger.tabs-vertical .nav-tabs{
-        border:0;
+    .tabs-vertical-danger.tabs-vertical .nav-tabs {
+        border: 0;
         border-right: 1px solid #fd3550;
     }
 
-    .tabs-vertical-danger.tabs-vertical .nav-tabs .nav-item.show .nav-link, .tabs-vertical-danger.tabs-vertical .nav-tabs .nav-link.active {
+    .tabs-vertical-danger.tabs-vertical .nav-tabs .nav-item.show .nav-link,
+    .tabs-vertical-danger.tabs-vertical .nav-tabs .nav-link.active {
         color: #fd3550;
         background-color: #fff;
         border-color: #fd3550 #fd3550 #fff;
@@ -396,12 +445,13 @@
         border-left: 3px solid #fd3550;
     }
 
-    .tabs-vertical-warning.tabs-vertical .nav-tabs{
-        border:0;
+    .tabs-vertical-warning.tabs-vertical .nav-tabs {
+        border: 0;
         border-right: 1px solid #ff9700;
     }
 
-    .tabs-vertical-warning.tabs-vertical .nav-tabs .nav-item.show .nav-link, .tabs-vertical-warning.tabs-vertical .nav-tabs .nav-link.active {
+    .tabs-vertical-warning.tabs-vertical .nav-tabs .nav-item.show .nav-link,
+    .tabs-vertical-warning.tabs-vertical .nav-tabs .nav-link.active {
         color: #ff9700;
         background-color: #fff;
         border-color: #ff9700 #ff9700 #fff;
@@ -410,12 +460,13 @@
         border-left: 3px solid #ff9700;
     }
 
-    .tabs-vertical-dark.tabs-vertical .nav-tabs{
-        border:0;
+    .tabs-vertical-dark.tabs-vertical .nav-tabs {
+        border: 0;
         border-right: 1px solid #223035;
     }
 
-    .tabs-vertical-dark.tabs-vertical .nav-tabs .nav-item.show .nav-link, .tabs-vertical-dark.tabs-vertical .nav-tabs .nav-link.active {
+    .tabs-vertical-dark.tabs-vertical .nav-tabs .nav-item.show .nav-link,
+    .tabs-vertical-dark.tabs-vertical .nav-tabs .nav-link.active {
         color: #223035;
         background-color: #fff;
         border-color: #223035 #223035 #fff;
@@ -424,12 +475,13 @@
         border-left: 3px solid #223035;
     }
 
-    .tabs-vertical-secondary.tabs-vertical .nav-tabs{
-        border:0;
+    .tabs-vertical-secondary.tabs-vertical .nav-tabs {
+        border: 0;
         border-right: 1px solid #75808a;
     }
 
-    .tabs-vertical-secondary.tabs-vertical .nav-tabs .nav-item.show .nav-link, .tabs-vertical-secondary.tabs-vertical .nav-tabs .nav-link.active {
+    .tabs-vertical-secondary.tabs-vertical .nav-tabs .nav-item.show .nav-link,
+    .tabs-vertical-secondary.tabs-vertical .nav-tabs .nav-link.active {
         color: #75808a;
         background-color: #fff;
         border-color: #75808a #75808a #fff;
@@ -456,15 +508,15 @@
     }
 
     .nav-pills .nav-link:hover {
-        background-color:#f4f5fa;
+        background-color: #f4f5fa;
     }
 
-    .nav-pills .nav-link i{
-        margin-right:2px;
+    .nav-pills .nav-link i {
+        margin-right: 2px;
         font-weight: 600;
     }
 
-    .top-icon.nav-pills .nav-link i{
+    .top-icon.nav-pills .nav-link i {
         margin: 0px;
         font-weight: 500;
         display: block;
@@ -472,62 +524,70 @@
         padding: 5px 0;
     }
 
-    .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    .nav-pills .nav-link.active,
+    .nav-pills .show>.nav-link {
         color: #fff;
         background-color: #008cff;
-        box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(0, 140, 255, 0.5);
+        box-shadow: 0 4px 20px 0 rgba(0, 0, 0, .14), 0 7px 10px -5px rgba(0, 140, 255, 0.5);
     }
 
-    .nav-pills-success .nav-link.active, .nav-pills-success .show>.nav-link {
+    .nav-pills-success .nav-link.active,
+    .nav-pills-success .show>.nav-link {
         color: #fff;
         background-color: #15ca20;
-        box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(21, 202, 32, .5);
+        box-shadow: 0 4px 20px 0 rgba(0, 0, 0, .14), 0 7px 10px -5px rgba(21, 202, 32, .5);
     }
 
-    .nav-pills-info .nav-link.active, .nav-pills-info .show>.nav-link {
+    .nav-pills-info .nav-link.active,
+    .nav-pills-info .show>.nav-link {
         color: #fff;
         background-color: #0dceec;
-        box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(13, 206, 236, 0.5);
+        box-shadow: 0 4px 20px 0 rgba(0, 0, 0, .14), 0 7px 10px -5px rgba(13, 206, 236, 0.5);
     }
 
-    .nav-pills-danger .nav-link.active, .nav-pills-danger .show>.nav-link{
+    .nav-pills-danger .nav-link.active,
+    .nav-pills-danger .show>.nav-link {
         color: #fff;
         background-color: #fd3550;
-        box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(253, 53, 80, .5);
+        box-shadow: 0 4px 20px 0 rgba(0, 0, 0, .14), 0 7px 10px -5px rgba(253, 53, 80, .5);
     }
 
-    .nav-pills-warning .nav-link.active, .nav-pills-warning .show>.nav-link {
+    .nav-pills-warning .nav-link.active,
+    .nav-pills-warning .show>.nav-link {
         color: #fff;
         background-color: #ff9700;
-        box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(255, 151, 0, .5);
+        box-shadow: 0 4px 20px 0 rgba(0, 0, 0, .14), 0 7px 10px -5px rgba(255, 151, 0, .5);
     }
 
-    .nav-pills-dark .nav-link.active, .nav-pills-dark .show>.nav-link {
+    .nav-pills-dark .nav-link.active,
+    .nav-pills-dark .show>.nav-link {
         color: #fff;
         background-color: #223035;
-        box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(34, 48, 53, .5);
+        box-shadow: 0 4px 20px 0 rgba(0, 0, 0, .14), 0 7px 10px -5px rgba(34, 48, 53, .5);
     }
 
-    .nav-pills-secondary .nav-link.active, .nav-pills-secondary .show>.nav-link {
+    .nav-pills-secondary .nav-link.active,
+    .nav-pills-secondary .show>.nav-link {
         color: #fff;
         background-color: #75808a;
-        box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(117, 128, 138, .5);
+        box-shadow: 0 4px 20px 0 rgba(0, 0, 0, .14), 0 7px 10px -5px rgba(117, 128, 138, .5);
     }
-    .card .tab-content{
+
+    .card .tab-content {
         padding: 1rem 0 0 0;
     }
 
     .z-depth-3 {
-        -webkit-box-shadow: 0 11px 7px 0 rgba(0,0,0,0.19),0 13px 25px 0 rgba(0,0,0,0.3);
-        box-shadow: 0 11px 7px 0 rgba(0,0,0,0.19),0 13px 25px 0 rgba(0,0,0,0.3);
-    } </style>
-</body>
+        -webkit-box-shadow: 0 11px 7px 0 rgba(0, 0, 0, 0.19), 0 13px 25px 0 rgba(0, 0, 0, 0.3);
+        box-shadow: 0 11px 7px 0 rgba(0, 0, 0, 0.19), 0 13px 25px 0 rgba(0, 0, 0, 0.3);
+    }
+</style>
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
-    <script src="{{ asset('js/profile.min.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+<script src="{{ asset('js/profile.min.js') }}"></script>
 </body>
 
 </html>

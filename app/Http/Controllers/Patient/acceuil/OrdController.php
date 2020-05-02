@@ -7,20 +7,14 @@ use Illuminate\Support\Facades\Auth;
 
 class OrdController extends Controller
 {
-    public function show($id)
+    public function show()
     {
+
         $patient = Auth::guard('patient')->user();
-        $consultations = Consultation::select('id')
-            ->where('patient_id', $patient->id)
-            ->get()
-            ->toArray();
 
-        $id = Consultation::find($id);
-
-        return view('patient.acceuil.Ord', compact('id'), [
+        return view('patient.acceuil.Ord', [
             'patient' => $patient,
-            'consultations' => $consultations,
-            'id' => $id,
+            'consultations' => Consultation::where('patient_id', $patient->id)->get()
         ]);
     }
 }

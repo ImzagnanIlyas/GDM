@@ -1,10 +1,7 @@
 <?php
 namespace App\Http\Controllers\Patient\acceuil;
 use App\Http\Controllers\Controller;
-use App\Patient;
-use App\Consultation;
 use App\Examen_general;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 
