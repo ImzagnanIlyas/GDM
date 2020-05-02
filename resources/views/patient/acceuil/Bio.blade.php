@@ -18,61 +18,52 @@
 
 <body id="page-top">
     <div id="wrapper">
-        @include('patient.layouts.nav-vertical')
+
         <div class="d-flex flex-column" id="content-wrapper">
-            <div class="text-white" id="content" style="width: 75;">
+            <div class="text-white" id="content">
                 @include('patient.layouts.nav-horizontal')
                 @include('patient.layouts.nav-dossier')
 
                 <div class="container">
-                    <div class="row">
-                        <div class="card car ">
-                            <div class="panel panel-primary filterable">
-                                <div class="panel-heading">
-                                    <div class="card-header colo">
-                                        Biométrie
+                    <div class="d-flex justify-content-center mt-2">
+                        <div class="card col-12 p-0 shadow">
+                            <div class="card-header d-flex justify-content-between align-items-center py-3">
+                                <h4 class="text-dark">Groupe sanguin : <b>A+</b></h4>
+                                <input class="form-control col-3" type="text" placeholder="Rechercher par date" id="searchInput">
+                            </div>
+
+                            <div class="card-body">
+                                @if($vitaux->isEmpty())
+                                    <div class="alert alert-warning mt-4" role="alert">
+                                        Les données n'existent pas.
                                     </div>
-                                    <div class="pull-right dib">
-                                        <button class="btn btn-default btn-xs btn-filter btn btn-primary">
-                                            <span class="glyphicon glyphicon-filter"></span> Chercher
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="card-body">
-                                    <table class="table">
-                                        <thead>
-                                            <tr class="filters">
-                                                <th><input type="text" class="form-control" placeholder="Date" disabled>
-                                                </th>
-                                                <th><input type="text" class="form-control" placeholder="Poids"
-                                                        disabled></th>
-                                                <th><input type="text" class="form-control" placeholder="Taille"
-                                                        disabled></th>
-                                                <th><input type="text" class="form-control" placeholder="Group sanguin"
-                                                        disabled></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @php
-                                                $biometrie =json_decode($patient->biometrie);
-                                            @endphp
-                                            @if( empty($EG) )
-                                                <div class="alert alert-warning mt-4" role="alert">
-                                                    Les données n'existent pas pour ce patient.
-                                                </div>
-                                            @else
-                                                @foreach($EG as $EG)
+                                @else
+                                    <div class="table-responsive table col-md-12 overflow-auto"
+                                        style="max-height: 430px">
+                                        <table class="table dataTable my-0">
+                                            <thead>
+                                                <tr>
+                                                    <th>ID Consultation</th>
+                                                    <th>Taille</th>
+                                                    <th>Poids</th>
+                                                    <th>Date</th>
+                                                    <th>Détails</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach($vitaux as $tmp)
                                                     <tr>
-                                                        <td>{{ $EG->date }}</td>
-                                                        <td>{{ $EG->poids }}</td>
-                                                        <td>{{ $EG->taille }}</td>
-                                                        <td>{{ $biometrie->group_sanguin }}</td>
+                                                        <td> <a href="">{{ $tmp->consultation->id }}</a> </td>
+                                                        <td>{{ $tmp->taille }}</td>
+                                                        <td>{{ $tmp->poids }}</td>
+                                                        <td>{{ $tmp->created_at }}</td>
+                                                        <td> <a href="" class="btn btn-info ">Afficher</a> </td>
                                                     </tr>
                                                 @endforeach
-                                            @endif
-                                        </tbody>
-                                    </table>
-                                </div>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -80,6 +71,9 @@
             </div>
         </div>
     </div>
+    @include('patient.layouts.nav-vertical')
+
+
 </body>
 
 

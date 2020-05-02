@@ -17,7 +17,7 @@
 
 <body id="page-top">
     <div id="wrapper">
-        @include('patient.layouts.nav-vertical')
+
         <div class="d-flex flex-column" id="content-wrapper">
             <div class="text-white" id="content" style="width: 75;">
                 @include('patient.layouts.nav-horizontal')
@@ -45,6 +45,7 @@
             </div>
         </div>
     </div>
+    @include('patient.layouts.nav-vertical')
 </body>
 
 <style>

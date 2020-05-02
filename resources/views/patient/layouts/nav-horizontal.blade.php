@@ -39,22 +39,13 @@
     <div class="container-fluid">
         <button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
         <div class="d-flex justify-content-center align-items-center">
-            <a class="d-flex justify-content-center align-items-center logo" href="{{ url('/patient') }}" id="logo">
+            <a class="d-flex justify-content-center align-items-center logo" href="{{ url('/patient/Consultations-médicales') }}" id="logo">
                 <img src="{{ asset('img/patient/MILAFI.png') }}" height="65">
             </a>
         </div>
         <div class="d-none d-sm-block topbar-divider"></div>
         <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav text-dark col-12" id="accordionSidebar">
-                <li class="nav-item col-2" role="presentation">
-                    <a class="nav-link" href="{{ route('ATCD') }}"><span>Dossier médicale</span></a>
-                </li>
-                <div class="d-none d-sm-block topbar-divider"></div>
-                <li class="nav-item col-2" role="presentation">
-                    <a class="nav-link" href="{{ route('mescon') }}"><span>Consultations</span></a>
-                </li>
-            </ul>
-            <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
+
         </div>
 
         <ul class="nav navbar-nav flex-nowrap">
