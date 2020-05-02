@@ -12,19 +12,11 @@ class BioController extends Controller
 {
     public function show()
     {
-
         $patient = Auth::guard('patient')->user();
         $EG= Examen_general::join('consultations', 'consultations.id' , 'examen_generals.consultation_id')
-        ->where('consultations.patient_id' , $patient->id)
-        ->paginate(5);
-
-               return view('patient.acceuil.Bio' , [
-                'patient'=>$patient,
-                'EG'=>$EG
-                 ]
-
-            );
-
-
+        ->where('consultations.patient_id' , $patient->id)->paginate(5);
+        return view('patient.acceuil.Bio' , [
+                'patient'=>$patient, 'EG'=>$EG
+        ]);
     }
 }
