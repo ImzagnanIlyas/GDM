@@ -84,7 +84,7 @@
                             <div class="panel panel-primary filterable">
                                 <div class="panel-heading">
                                     <div class="card-header colo">
-                                        Examen specialisé
+                                        Examen spécialisé
                                     </div>
                                     <div class="pull-right dib">
                                         <button class="btn btn-default btn-xs btn-filter btn btn-primary"><span
@@ -106,10 +106,9 @@
                                         <tbody>
                                             @foreach($examen as $examen)
                                                 <tr>
-                                                    <td>{{ $examen->consultation->date }}</td>
+                                                    <td>{{ $examen->created_at}}</td>
                                                     <td>{{ $examen->nom }}</td>
-                                                    <td><a  class="btn btn-primary"
-                                                            href="{{ route('Examenspecialise' ,[$examen->id]) }}">Résultat</a>
+                                                    <td><a class="btn btn-primary @empty($examen->resultat) disabled @endempty" href="{{ route('Examenspecialise' ,[$examen->id]) }}">Résultat</a>
                                                     </td>
                                                 </tr>
                                             @endforeach

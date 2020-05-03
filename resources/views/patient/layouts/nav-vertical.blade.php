@@ -27,13 +27,18 @@
             <div class="card-body d-flex align-items-center p-0">
                 <div class="row">
                     <div class="d-flex justify-content-start align-items-center ml-4">
-                        <img class="img-circle" src="{{ asset('img/medecin/male.png') }}"
+                        <img class="img-circle" src="{{ asset('img/patient/consultation.png') }}"
                             style="width: 40px;border-radius: 50%;background-color: #90DFAA;">
                         <div class="ml-3">
                             <h5 class="text-info font-weight-bold">
                                 Consultations ({{ $patient->consultations->count() }})
                             </h5>
-                            <small class="text-dark">Non terminée (1)</small>
+                            <small class="text-dark">
+                                Non terminée
+                                ({{
+                                    App\Consultation::where('patient_id', $patient->id)->whereNull('ordonnance')->count()
+                                }})
+                            </small>
                         </div>
                     </div>
                 </div>
@@ -43,14 +48,14 @@
             <div class="card-body d-flex align-items-center p-0">
                 <div class="row">
                     <div class="d-flex justify-content-start align-items-center ml-4">
-                        <img class="img-circle" src="{{ asset('img/medecin/male.png') }}"
+                        <img class="img-circle" src="{{ asset('img/patient/ordonnance.png') }}"
                             style="width: 40px;border-radius: 50%;background-color: #90DFAA;">
                         <div class="ml-3">
                             <h5 class="text-info font-weight-bold">
                                 Ordonnances
                                 ({{ App\Consultation::where('patient_id', $patient->id)->whereNotNull('ordonnance')->count() }})
                             </h5>
-                            <small class="text-dark">Non confirmée (0)</small>
+                            <small class="text-dark">Non confirmée ( {{ intdiv(App\Consultation::where('patient_id', $patient->id)->whereNotNull('ordonnance')->count(),2) }} )</small>
                         </div>
                     </div>
                 </div>
@@ -60,13 +65,18 @@
             <div class="card-body d-flex align-items-center p-0">
                 <div class="row">
                     <div class="d-flex justify-content-start align-items-center ml-4">
-                        <img class="img-circle" src="{{ asset('img/medecin/male.png') }}"
+                        <img class="img-circle" src="{{ asset('img/patient/examen.png') }}"
                             style="width: 40px;border-radius: 50%;background-color: #90DFAA;">
                         <div class="ml-3">
                             <h5 class="text-info font-weight-bold">
-                                Examens (5)
+                                @php
+                                    $consultations =  App\Consultation::select('id')->where('patient_id',$patient->id)->get()->toArray();
+                                @endphp
+                                Examens
+                                ({{ App\Examen_complimentaire::select('*')->whereIn('consultation_id' , array_values( $consultations))->count() }})
                             </h5>
-                            <small class="text-dark">Non fait (2)</small>
+                            <small class="text-dark">Non fait
+                                ({{ App\Examen_complimentaire::select('*')->whereIn('consultation_id' , array_values( $consultations))->where('confirmation', false)->count() }})</small>
                         </div>
                     </div>
                 </div>
@@ -76,13 +86,26 @@
             <div class="card-body d-flex align-items-center p-0">
                 <div class="row">
                     <div class="d-flex justify-content-start align-items-center ml-4">
-                        <img class="img-circle" src="{{ asset('img/medecin/male.png') }}"
+                        <img class="img-circle" src="{{ asset('img/patient/medicament.png') }}"
                             style="width: 40px;border-radius: 50%;background-color: #90DFAA;">
                         <div class="ml-3">
                             <h5 class="text-info font-weight-bold">
-                                Médicaments (10)
+                                Médicaments
+                                ({{ App\Prescription_medicamenteuse::Join('consultations' , 'consultations.id' , 'prescription_medicamenteuses.consultation_id')
+                                    ->Where('consultations.patient_id' , $patient->id)
+                                    ->Where('confirmation', true)
+                                    ->count()
+                                }})
                             </h5>
-                            <small class="text-dark">Traitements chroniques (1)</small>
+                            <small class="text-dark">
+                                Traitements chroniques
+                                ({{ App\Prescription_medicamenteuse::Join('consultations' , 'consultations.id' , 'prescription_medicamenteuses.consultation_id')
+                                    ->Where('consultations.patient_id' , $patient->id)
+                                    ->Where('confirmation', true)
+                                    ->Where('prescription_medicamenteuses.duree', '=', "chronique")
+                                    ->count()
+                                }})
+                            </small>
                         </div>
                     </div>
                 </div>

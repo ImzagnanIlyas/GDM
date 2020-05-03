@@ -24,7 +24,7 @@
 
 
                 @php
-                    foreach($examenspecialise as $examen){
+                    foreach($examen as $examen){
                     $resultat = json_decode($id->resultat);
                     $data=$resultat->type;}
                 @endphp

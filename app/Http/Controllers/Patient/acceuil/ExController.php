@@ -41,11 +41,11 @@ class ExController extends Controller
         $patient = Auth::guard('patient')->user();
         $consultations =  Consultation::select('id')
         ->where('patient_id',$patient->id)->get()->toArray();
-        $examenspecialise = Examen_specialise::select('*')
+        $examen= Examen_specialise::select('*')
         ->whereIn('consultation_id' , array_values( $consultations))->get();
         $id=Examen_specialise::find($id);
         return view('patient.acceuil.ExamenSpecilaise' , compact('id') , [
-            'examenspecialise' => $examenspecialise ,
+            'examen' => $examen ,
             'consultations'=>$consultations ,
             'consultation'=> $id->consultation ,
             'id'=>$id ,
