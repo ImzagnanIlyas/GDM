@@ -135,9 +135,9 @@
                                             <div class="form-group row">
                                                 <label class="col-lg-3 col-form-label form-control-label"></label>
                                                 <div class="col-lg-9">
-                                                    <a href="{{ route('Examengeneral' ,[$id->EG->id]) }}" class="btn btn-primary">Examen Général</a>
-                                                    <a href="{{ route('Examenspe' , ['id' => $id->id]) }}" class="btn btn-primary">Examen spécialisé</a>
-                                                    <a href="{{ route('Ord-txt', ['consultation_id' => $id->id]) }}" class="btn btn-primary">Ordonnance</a>
+                                                    <a @if($id->EG) href="{{ route('Examengeneral' ,[$id->EG->id]) }}" class="btn btn-primary" @else class="btn btn-primary disabled" @endif>Examen Général</a>
+                                                    <a href="{{ route('Examenspe' , ['id' => $id->id]) }}" class="btn btn-primary @if($id->ESs->isEmpty()) disabled @endif">Examen spécialisé</a>
+                                                    <a href="{{ route('Ord-txt', ['consultation_id' => $id->id]) }}" class="btn btn-primary @empty($id->ordonnance) disabled @endempty">Ordonnance</a>
                                                 </div>
                                             </div>
                                         </form>

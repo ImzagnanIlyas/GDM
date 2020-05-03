@@ -39,16 +39,11 @@ class ExController extends Controller
     public function showES($id)
     {
         $patient = Auth::guard('patient')->user();
-        $consultations =  Consultation::select('id')
-        ->where('patient_id',$patient->id)->get()->toArray();
-        $examenspecialise = Examen_specialise::select('*')
-        ->whereIn('consultation_id' , array_values( $consultations))->get();
-        $id=Examen_specialise::find($id);
+        $examen = Examen_specialise::find($id);
         return view('patient.acceuil.ExamenSpecilaise' , compact('id') , [
-            'examenspecialise' => $examenspecialise ,
-            'consultations'=>$consultations ,
-            'id'=>$id ,
-            'patient'=>$patient
+            'examen' => $examen,
+            'consultation' => $examen->consultation,
+            'patient' => $patient,
         ]);
     }
 
