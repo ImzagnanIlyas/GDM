@@ -114,7 +114,7 @@
                         <div class="card-body d-flex align-items-center p-0">
                             <div class="row">
                                 <div class="d-flex justify-content-start align-items-center ml-4">
-                                    <img class="img-circle" src="{{ asset('img/patient/ordonnance.png') }}"
+                                    <img class="img-circle" src="{{ asset('img/patient/examen.png') }}"
                                         style="width: 100px;border-radius: 50%;background-color: #90DFAA;">
                                     <div class="text-uppercase ml-3">
                                         <h2 class="text-danger font-weight-bold">
