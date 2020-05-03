@@ -54,8 +54,8 @@
                                                 @foreach( $consultations as $c )
                                                     <tr class="text-center">
                                                         <td>{{ $c->id }}</td>
-                                                        <td>{{ $c->medecin->patient->nom.' '.$c->medecin->patient->prenom }}</td>
-                                                        <td class="text-left" title="{{ $c->lieu }}">{{ substr($c->lieu, 0, 30) }} ...</td>
+                                                        <td>{{ $c->medecin->username}}</td>
+                                                        <td class="text-left" title="{{ $c->lieu }}">{{ substr($c->lieu, 0, 30) }}</td>
                                                         <td>{{ $c->motif }}</td>
                                                         <td>{{ date('d/m/Y',strtotime($c->date )) }}</td>
                                                         <td><a href="{{ route('detail' , ['id' => $c->id]) }}" class="btn btn-primary">Afficher</a></td>

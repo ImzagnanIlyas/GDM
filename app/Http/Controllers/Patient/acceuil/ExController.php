@@ -47,6 +47,7 @@ class ExController extends Controller
         return view('patient.acceuil.ExamenSpecilaise' , compact('id') , [
             'examenspecialise' => $examenspecialise ,
             'consultations'=>$consultations ,
+            'consultation'=> $id->consultation ,
             'id'=>$id ,
             'patient'=>$patient
         ]);

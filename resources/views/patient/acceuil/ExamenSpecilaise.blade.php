@@ -28,6 +28,66 @@
                     $resultat = json_decode($id->resultat);
                     $data=$resultat->type;}
                 @endphp
+  <div class="container">
+ <div class="row">
+ <div class="col-sm-8 col-md-12 d-flex justify-content-center text-dark mb-3" style="margin-top: 6rem !important">
+    <div class="card col-md-6">
+        <div class="card-block">
+            <div class="col-lg-12">
+                <div class="d-flex justify-content-start align-items-center p-2">
+                        <a href="#">
+                            <img
+                            class="img-circle"
+                            @if($consultation->medecin->patient->sexe === "Homme")
+                            src="{{ asset('img/patient/doctor.png') }}"
+                            @else
+                            src="{{ asset('img/patient/doctore.png') }}"
+                            @endif
+                            style="width: 100px;height:100px;border-radius: 50%;background-color: #90DFAA;">
+                        </a>
+                    <div class="ml-3">
+                        <h5 class="font-weight-bold">
+                            Dr.
+                            {{ $consultation->medecin->username}}
+
+                        </h5>
+                        <hr style="margin:8px auto">
+                        <h6>{{ $consultation->medecin->specialite }} - {{ $consultation->medecin->inpe }}</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card col-md-6">
+        <div class="card-block">
+            <div class="col-lg-12">
+                <div class="d-flex justify-content-start align-items-center p-2">
+                    <a href="#">
+                        <img
+                        class="img-circle"
+                        @empty($consultation->ordonnance)
+                        src="{{ asset('img/patient/doc-no.png') }}"
+                        @else
+                        src="{{ asset('img/patient/doc-yes.png') }}"
+                        @endempty
+                        style="width: 100px;height:100px;border-radius: 50%;background-color: #90DFAA;">
+                    </a>
+                    <div class="ml-3">
+                        <h5 class="font-weight-bold">
+                            @empty($consultation->ordonnance)
+                            Consultation non terminée
+                            @else
+                            Consultation terminée
+                            @endempty
+                        </h5>
+                        <hr style="margin:8px auto">
+                        <h6>{{ $consultation->id }} - {{ date("d/m/Y H:i", strtotime($consultation->created_at)) }}</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
                 <div class="card care ">
                     <div class="card-header colo">
                         Résultat d'examen spécialicé
@@ -125,6 +185,8 @@
             </div>
         </div>
     </div>
+        </div>
+    </div>
     @include('patient.layouts.nav-vertical')
 </body>
 
@@ -143,8 +205,8 @@
 </script>
 <style>
     .care {
-        margin-left: 60px;
-        margin-top: 40px;
+        margin-left: 65px;
+        margin-top: 20px;
         width: 1000px;
 
     }

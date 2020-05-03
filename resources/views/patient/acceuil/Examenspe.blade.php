@@ -40,8 +40,8 @@
                                             <div class="ml-3">
                                                 <h5 class="font-weight-bold">
                                                     Dr.
-                                                    {{ strtoupper($consultation->medecin->patient->nom) }}
-                                                    {{ $consultation->medecin->patient->prenom }}
+                                                    {{ $consultation->medecin->username}}
+
                                                 </h5>
                                                 <hr style="margin:8px auto">
                                                 <h6>{{ $consultation->medecin->specialite }} - {{ $consultation->medecin->inpe }}</h6>
@@ -108,7 +108,7 @@
                                                 <tr>
                                                     <td>{{ $examen->consultation->date }}</td>
                                                     <td>{{ $examen->nom }}</td>
-                                                    <td><a class="disabled"
+                                                    <td><a  class="btn btn-primary"
                                                             href="{{ route('Examenspecialise' ,[$examen->id]) }}">Résultat</a>
                                                     </td>
                                                 </tr>
@@ -161,7 +161,7 @@
     }
 
     .car {
-        margin-left: 50px;
+        margin-left: 60px;
         margin-top: 20px;
         width: 1000px;
 

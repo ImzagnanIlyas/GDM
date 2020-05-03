@@ -33,6 +33,10 @@
                             </div>
                             <div class="card-body">
                                 <div class="d-flex justify-content-center mt-2">
+                                    @php
+                                 $atcd = json_decode($patient->atcd);
+                                 $allergies=$atcd->allergie
+                                 @endphp
                                     @if ( empty($allergies) )
                                         <div class="alert alert-warning mt-4" role="alert">
                                             Ce patient n'a pas d'allergies.
@@ -82,7 +86,7 @@
                                                         <th>Rythme</th>
                                                         <th>Date Début</th>
                                                         <th>Commentaire</th>
-                                                        <th>Consultation</th>
+                                                        <th>Consultation lié</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -93,7 +97,7 @@
                                                             <td>{{$pres->rythme}}</td>
                                                             <td>{{ date('d/m/Y',strtotime($pres->date_debut)) }}</td>
                                                             <td>{{$pres->commentaire}}</td>
-                                                            <td><a href="{{ route('medecin.consultation.showOrdonnance', [ 'consultation_id' => Crypt::encrypt($pres->consultation->id) ]) }}"> go </a> </td>
+                                                            <td><a href="{{ route('detail', [ $pres->consultation->id ]) }}" class="btn btn-primary"> Consultation </a> </td>
                                                         </tr>
                                                     @endforeach
                                                 </tbody>

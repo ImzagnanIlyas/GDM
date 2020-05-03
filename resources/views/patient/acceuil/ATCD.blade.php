@@ -134,7 +134,7 @@
                                                         <td>{{ $ch->operation }}</td>
                                                         <td>{{ $ch->description }}</td>
                                                         <td>{{ date('d/m/Y', strtotime($ch->date_operation)) }}</td>
-                                                        <td><a href="" class="btn btn-info col-6 mr-1" ><i class="fas fa-external-link-alt"></i></a></td>
+                                                        <td><a href="{{ route('detail', [$ch->id_consultation]) }}" class="btn btn-info col-6 mr-1" ><i class="fas fa-external-link-alt"></i></a></td>
                                                     </tr>
                                                 @endforeach
                                             </table>

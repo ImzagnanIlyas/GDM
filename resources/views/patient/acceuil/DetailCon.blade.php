@@ -37,8 +37,8 @@
                                             <div class="ml-3">
                                                 <h5 class="font-weight-bold">
                                                     Dr.
-                                                    {{ strtoupper($id->medecin->patient->nom) }}
-                                                    {{ $id->medecin->patient->prenom }}
+                                                    {{ $id->medecin->username }}
+
                                                 </h5>
                                                 <hr style="margin:8px auto">
                                                 <h6>{{ $id->medecin->specialite }} - {{ $id->medecin->inpe }}</h6>
@@ -135,7 +135,7 @@
                                             <div class="form-group row">
                                                 <label class="col-lg-3 col-form-label form-control-label"></label>
                                                 <div class="col-lg-9">
-                                                    <a href="{{ route('Examengeneral' ,[$id->EG->id]) }}" class="btn btn-primary">Examen Général</a>
+                                                    <a href="{{ route('Examengeneral' ,[$id->id]) }}" class="btn btn-primary">Examen Général</a>
                                                     <a href="{{ route('Examenspe' , ['id' => $id->id]) }}" class="btn btn-primary">Examen spécialisé</a>
                                                     <a href="{{ route('Ord-txt', ['consultation_id' => $id->id]) }}" class="btn btn-primary">Ordonnance</a>
                                                 </div>
