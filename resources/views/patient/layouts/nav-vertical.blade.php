@@ -16,13 +16,14 @@
 
 
 
-<footer class="sticky-footer">
+
 
     @php
         $patient = Auth::guard('patient')->user();
     @endphp
 
-    <div class="d-flex justify-content-center col-12 mb-3">
+<footer class="sticky-footer">
+    <div class="d-flex justify-content-center" >
         <div class="card shadow border-info" style="width: 17rem; height: 4.1rem">
             <div class="card-body d-flex align-items-center p-0">
                 <div class="row">
@@ -36,7 +37,7 @@
                             <small class="text-dark">
                                 Non terminée
                                 ({{
-                                    Consultation::where('patient_id', $patient->id)->whereNull('ordonnance')->count()
+                                    App\Consultation::where('patient_id', $patient->id)->whereNull('ordonnance')->count()
                                 }})
                             </small>
                         </div>
@@ -112,8 +113,8 @@
             </div>
         </div>
     </div>
-
 </footer>
+
 
 {{-- <nav class="navbar navbar-dark align-items-center sidebar sidebar-dark bg-gradient-success p-0" style="margin-top: 5rem !important;min-height: 0vh;border-radius: 0px 20px 20px 0px;height: 22rem;">
     <div class="container-fluid d-flex flex-column p-0">

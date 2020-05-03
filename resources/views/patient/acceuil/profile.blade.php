@@ -108,7 +108,7 @@
                         <div class="form-group row">
                             <label class="col-lg-4 col-form-label form-control-label col">Nom d'utilisateur</label>
                             <div class="col-lg-4">
-                                <input class="form-control" type="text" value="MohammedELhashmi">
+                                <input class="form-control" type="text" value="{{ $patient->username }}">
                             </div>
                         </div>
                         <div class="form-group row">

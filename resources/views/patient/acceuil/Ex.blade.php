@@ -16,9 +16,9 @@
 </head>
 
 <body id="page-top">
-    <div id="wrapper">
 
-        <div class="d-flex flex-column" id="content-wrapper">
+
+        <div class="d-flex flex-column">
             <div class="text-white" id="content" style="width: 75;">
                 @include('patient.layouts.nav-horizontal')
                 @include('patient.layouts.nav-dossier')
@@ -32,7 +32,7 @@
                             <div class="card-body">
                                 @if($examen->isEmpty())
                                     <div class=" alert alert-warning mt-4" role="alert">
-                                        Ce patient n'a passé aucun examen.
+                                        Vous n'avez passé aucun examen.
                                     </div>
                                 @else
                                     <div class="table-responsive table col-md-12 overflow-auto"  style="min-height: 40vh">
@@ -141,7 +141,7 @@
         margin-top: -15px;
     }
 </style>
-</div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a></div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>

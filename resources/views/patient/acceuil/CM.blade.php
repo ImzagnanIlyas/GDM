@@ -19,10 +19,10 @@
 </head>
 
 <body id="page-top">
-    <div id="wrapper">
 
-        <div class="d-flex flex-column" id="content-wrapper">
-            <div class="text-white" id="content">
+
+        <div class="d-flex flex-column">
+            <div class="text-white">
                 @include('patient.layouts.nav-horizontal')
                 @include('patient.layouts.nav-dossier')
                 <div class="container">
@@ -35,7 +35,7 @@
                             <div class="card-body pb-0">
                                 @if($consultations->isEmpty())
                                     <div class="alert alert-warning mt-4" role="alert">
-                                        Ce patient n'a passé aucune consultation.
+                                        Vous n'avez passé aucune consultation.
                                     </div>
                                 @else
                                     <div class="table-responsive table col-md-12 overflow-auto" style="min-height: 40vh">
@@ -55,7 +55,7 @@
                                                     <tr class="text-center">
                                                         <td>{{ $c->id }}</td>
                                                         <td>{{ $c->medecin->patient->nom.' '.$c->medecin->patient->prenom }}</td>
-                                                        <td class="text-left" title="{{ $c->lieu }}">{{ substr($c->lieu, 0, 30) }} ...</td>
+                                                        <td>{{ $c->lieu }}</td>
                                                         <td>{{ $c->motif }}</td>
                                                         <td>{{ date('d/m/Y',strtotime($c->date )) }}</td>
                                                         <td><a href="{{ route('detail' , ['id' => $c->id]) }}" class="btn btn-primary">Afficher</a></td>
@@ -74,7 +74,7 @@
                 </div>
             </div>
         </div>
-    </div>
+
     @include('patient.layouts.nav-vertical')
 </body>
 

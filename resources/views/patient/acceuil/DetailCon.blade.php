@@ -104,8 +104,8 @@
                                             </div>
                                             <div class="form-group row">
                                                 <label
-                                                    class="col-lg-3 col-form-label form-control-label colo ">Strategis
-                                                    diagnostic</label>
+                                                    class="col-lg-3 col-form-label form-control-label colo ">Strategie
+                                                    diagnostique</label>
                                                 <div class="col-lg-9">
                                                     <input class="form-control" type="text"
                                                         value="{{ $id->strategie_diagnostique }}"
@@ -114,7 +114,7 @@
                                             </div>
                                             <div class="form-group row">
                                                 <label
-                                                    class="col-lg-3 col-form-label form-control-label colo ">Diagnostic
+                                                    class="col-lg-3 col-form-label form-control-label colo ">Diagnostique
                                                     retenu</label>
                                                 <div class="col-lg-9">
                                                     <input class="form-control" type="text"
@@ -123,7 +123,7 @@
                                                 </div>
                                             </div>
                                             <div class="form-group row">
-                                                <label class="col-lg-3 col-form-label form-control-label colo">Compt
+                                                <label class="col-lg-3 col-form-label form-control-label colo">Compte
                                                     rendu</label>
                                                 <div class="col-lg-9">
                                                     <input class="form-control" type="text"
