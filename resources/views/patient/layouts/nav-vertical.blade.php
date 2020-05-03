@@ -56,7 +56,7 @@
                                 Ordonnances
                                 ({{ App\Consultation::where('patient_id', $patient->id)->whereNotNull('ordonnance')->count() }})
                             </h5>
-                            <small class="text-dark">Non confirmée (0)</small>
+                            <small class="text-dark">Non confirmée ( {{ intdiv(App\Consultation::where('patient_id', $patient->id)->whereNotNull('ordonnance')->count(),2) }} )</small>
                         </div>
                     </div>
                 </div>

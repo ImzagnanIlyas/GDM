@@ -37,8 +37,8 @@
                                             <div class="ml-3">
                                                 <h5 class="font-weight-bold">
                                                     Dr.
-                                                    {{ strtoupper($id->medecin->patient->nom) }}
-                                                    {{ $id->medecin->patient->prenom }}
+                                                    {{ $id->medecin->username }}
+
                                                 </h5>
                                                 <hr style="margin:8px auto">
                                                 <h6>{{ $id->medecin->specialite }} - {{ $id->medecin->inpe }}</h6>
