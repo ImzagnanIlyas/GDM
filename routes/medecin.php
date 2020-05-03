@@ -37,6 +37,9 @@ Route::group(['namespace' => 'Medecin'], function() {
 
         Route::get('{consultation_id}/ordonnance', 'Consultation\ConsultationController@showOrdonnance')->name('medecin.consultation.showOrdonnance');
 
+        Route::get('{consultation_id}/compte-rendu', 'Consultation\ConsultationController@showCompteRendu')->name('medecin.consultation.showCompteRendu');
+        Route::post('compte-rendu-submit', 'Consultation\ConsultationController@submitCompteRendu')->name('medecin.consultation.submitCompteRendu');
+
         Route::get('{consultation_id}/examen-complementaire', 'Consultation\ConsultationController@showExamCompl')->name('medecin.consultation.showExamCompl');
         Route::get('{consultation_id}/nouveau-examen-complementaire', 'Consultation\ConsultationController@createExamCompl')->name('medecin.consultation.createExamCompl');
         Route::get('{consultation_id}/examen-complementaire/{examen_id}/resultat', 'Consultation\ConsultationController@showExamComplResultat')->name('medecin.consultation.showExamComplResultat');

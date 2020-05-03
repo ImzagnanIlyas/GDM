@@ -95,7 +95,7 @@ class LiveOrdonnance extends Component
               ->where('consultation_id', $this->consultation->id)
               ->update(['created_at' => now()]);
 
-        Alert::success('Ordonnance ajouté avec succès');
+        Alert::success('Ordonnance ajoutée avec succès');
         return redirect()->route('medecin.consultation.showOrdonnance', [ 'consultation_id' => Crypt::encrypt($this->consultation->id) ]);
     }
 

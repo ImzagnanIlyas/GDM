@@ -262,6 +262,37 @@ class ConsultationController extends Controller
     }
 
     /**************************************************************************
+     * Compte-rendu functions
+     **************************************************************************
+     */
+
+    public function showCompteRendu($consultation_id)
+    {
+        try {
+            $decrypted = Crypt::decrypt($consultation_id);
+        }catch (DecryptException $e) {
+            abort(404);
+        }
+
+        $text = "<p class=\"ql-align-right\"><strong>Le mercredi 29 avril 2020</strong></p><p><strong>Docteur ELGUEZDI Mohamed</strong></p><p><strong>Médecin Gastro-entérologie</strong></p><p><strong>6 PLACE TALHA. AGDAL, Rabat </strong></p><p><strong>0612345678</strong></p><p>&nbsp;</p><p><br></p><p><u>Patient</u></p><p class=\"ql-indent-2\"><strong style=\"color: rgb(136, 136, 136);\">CIN :</strong><span style=\"color: rgb(136, 136, 136);\"> </span>AA00001</p><p class=\"ql-indent-2\"><strong style=\"color: rgb(136, 136, 136);\">Nom et prénom :</strong> IMZAGNAN Ilyas</p><p><u>Consultation</u></p><p class=\"ql-indent-2\"><strong style=\"color: rgb(136, 136, 136);\">Numéro</strong><strong> :</strong> 23</p><p class=\"ql-indent-2\"><strong style=\"color: rgb(136, 136, 136);\">Date :</strong> 28/04/2020</p><p class=\"ql-indent-2\"><strong style=\"color: rgb(136, 136, 136);\">Motif :</strong><strong> </strong>Douleurs à l'estomac</p><p class=\"ql-indent-2\"><strong style=\"color: rgb(136, 136, 136);\">Histoire de la maladie :</strong><span style=\"color: rgb(136, 136, 136);\"> </span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p class=\"ql-indent-2\"><strong style=\"color: rgb(136, 136, 136);\">Para-clinique (Examens complémentaire) :</strong></p><ol><li class=\"ql-indent-3\">Examen de type : <strong>Analyse biologique</strong> (numéro : 20)</li><li class=\"ql-indent-3\">Examen de type : <strong>Imagerie médicale</strong> (numéro : 21)</li><li class=\"ql-indent-3\">Examen de type : <strong>Analyse biologique</strong> (numéro : 22)</li></ol><p class=\"ql-indent-2\"><strong style=\"color: rgb(136, 136, 136);\">Diagnostic final :</strong><span style=\"color: rgb(136, 136, 136);\"> </span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut.</p><p class=\"ql-indent-2\"><strong style=\"color: rgb(136, 136, 136);\">Thérapeutique (Prescriptions médicamenteuses) :</strong></p><ol><li class=\"ql-indent-3\">DOLIPRANE VITAMINE C (500 / 150 MG / MG) (COMPRIME EFFERVESCENT), de 1 à 2 comprimé (Orale) tous les jours soire avant de dourmir, commençant 2020-04-25 pour 3 mois</li></ol><p><br></p>";
+
+        return view('medecin.consultation.consultation-compte-rendu', [
+            'consultation' => Consultation::findOrFail($decrypted),
+            'generated_text' => $text
+        ]);
+    }
+
+    public function submitCompteRendu(Request $request){
+        $consultation = Consultation::findorFail($request->input('consultation_id'));
+
+        $consultation->compte_rendu = $request->input('data-textarea');
+        $consultation->save();
+
+        Alert::success('Compte-rendu ajouté avec succès');
+        return redirect()->route('medecin.consultation.showCompteRendu', [ 'consultation_id' => Crypt::encrypt($consultation->id) ]);
+    }
+
+    /**************************************************************************
      * Examen complémentaire functions
      **************************************************************************
      */

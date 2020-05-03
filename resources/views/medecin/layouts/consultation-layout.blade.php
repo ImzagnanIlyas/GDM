@@ -130,6 +130,9 @@ $active2 = Request::segment(4);
                             <li class="nav-item @if($active2 === 'examen-specialise') active-nav-item @endif" role="presentation"><a class="nav-link" href="{{ route('medecin.consultation.showExamSpecial', [ 'consultation_id' => Crypt::encrypt($consultation->id) ]) }}">Examen(s) spécialisé(s)</a></li>
                             <li class="nav-item @if($active2 === 'examen-complementaire') active-nav-item @endif" role="presentation"><a class="nav-link" href="{{ route('medecin.consultation.showExamCompl', [ 'consultation_id' => Crypt::encrypt($consultation->id) ]) }}">Examen(s) complémentaire(s)</a></li>
                             <li class="nav-item @if($active2 === 'ordonnance') active-nav-item @endif" role="presentation"><a class="nav-link" href="{{ route('medecin.consultation.showOrdonnance', [ 'consultation_id' => Crypt::encrypt($consultation->id) ]) }}">Ordonnance</a></li>
+                            @if( !empty($consultation->ordonnance) )
+                            <li class="nav-item @if($active2 === 'compte-rendu') active-nav-item @endif" role="presentation"><a class="nav-link" href="{{ route('medecin.consultation.showCompteRendu', [ 'consultation_id' => Crypt::encrypt($consultation->id) ]) }}">Compte-rendu</a></li>
+                            @endif
                         </ul>
                     </div>
                 </div>
