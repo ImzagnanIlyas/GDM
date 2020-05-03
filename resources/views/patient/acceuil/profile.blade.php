@@ -16,7 +16,7 @@
     @include('patient.layouts.nav-horizontal')
 
     <div class="col-lg-8 mar">
-        <div class="card z-depth-3">
+        <div class="card z-depth-3" style="margin-top: 6rem !important">
             <div class="card-body">
                 <ul class="nav nav-pills nav-pills-primary nav-justified">
                     <li class="nav-item">
@@ -137,20 +137,17 @@
 
 <style>
     .col {
-        color: indigo;
+        color: darkslategray;
     }
 
     /* User Cards */
 
     .mar {
-
-        margin-left: 20%;
-        margin-right: 20%;
+        margin: auto;
     }
     .nav-pills .nav-link {
         text-align: center;
         text-transform: uppercase;
-        margin-top: 15%;
     }
 
 </style>

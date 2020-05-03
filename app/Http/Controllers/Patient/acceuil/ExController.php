@@ -16,7 +16,7 @@ class ExController extends Controller
         $patient = Auth::guard('patient')->user();
         $consultations =  Consultation::select('id')->where('patient_id',$patient->id)->get()->toArray();
 
-        $examen = Examen_complimentaire::select('*')->whereIn('consultation_id' , array_values( $consultations))->get();
+        $examen = Examen_complimentaire::select('*')->whereIn('consultation_id' , array_values( $consultations))->orderByDesc('created_at')->paginate(4);
         return view('patient.acceuil.Ex' , [
                     'patient'=>$patient,
                     'examen' => $examen ,
@@ -27,12 +27,10 @@ class ExController extends Controller
     public function showEG($id)
     {
         $patient = Auth::guard('patient')->user();
-        $consultations =  Consultation::select('id')->where('patient_id',$patient->id)->get()->toArray();
-        $examenGeneral = Examen_general::select('*')->whereIn('consultation_id' , array_values( $consultations))->get();
-        $id=Examen_general::find($id);
+        $id=Examen_general::findOrFail($id);
         return view('patient.acceuil.ExamenGeneral' ,compact('id') , [
-            'examen' => $examenGeneral ,
-            'consultations'=>$consultations ,
+            'examen' => $id ,
+            'consultation'=> $id->consultation ,
             'id'=>$id,
             'patient'=>$patient
         ]);
@@ -54,17 +52,14 @@ class ExController extends Controller
         ]);
     }
 
-    public function showExamenS()
+    public function showExamenS($id)
     {
         $patient = Auth::guard('patient')->user();
-        $consultations =  Consultation::select('id')
-        ->where('patient_id',$patient->id)->get()->toArray();
-        $examen = Examen_specialise::select('*')
-        ->whereIn('consultation_id' , array_values( $consultations))->get();
+        $consultation = Consultation::findOrFail($id);
         return view('patient.acceuil.Examenspe' , [
-            'examen' => $examen ,
-            'consultations'=>$consultations ,
-            'patient'=>$patient
+            'examen' => $consultation->ESs ,
+            'consultation'=>$consultation ,
+            'patient'=> $patient
         ]);
     }
 

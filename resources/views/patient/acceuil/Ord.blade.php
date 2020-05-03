@@ -35,7 +35,7 @@
                                         Ce patient n'a pas d'ordonnance.
                                     </div>
                                 @else
-                                    <div class="table-responsive table col-md-12 overflow-auto" style="max-height: 430px">
+                                    <div class="table-responsive table col-md-12 overflow-auto" style="min-height: 40vh">
                                         <table class="table dataTable my-0">
                                             <thead>
                                                 <tr class="text-center">
@@ -58,7 +58,7 @@
                                                         @else
                                                             <td>{{ $c->PMs->count() }}</td>
                                                             <td>{{ date('d/m/Y',strtotime($c->PMs->first()->created_at)) }}</td>
-                                                            <td><a href="" class="btn btn-primary">Afficher</a></td>
+                                                            <td><a href="{{ route('Ord-txt', ['consultation_id' => $c->id]) }}" class="btn btn-primary">Afficher</a></td>
                                                         @endif
                                                     </tr>
                                                 @empty

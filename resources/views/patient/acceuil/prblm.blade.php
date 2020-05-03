@@ -23,110 +23,88 @@
             <div class="text-white" id="content" style="width: 75;">
                 @include('patient.layouts.nav-horizontal')
                 @include('patient.layouts.nav-dossier')
-                <ul class="nav nav-tabs" id="myTab" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#allergie" role="tab"
-                            aria-controls="medi" aria-selected="true">Allergie</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#TC" role="tab" aria-controls="hab"
-                            aria-selected="false">Traitement chroniques</a>
-                    </li>
-                </ul>
-                <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane active" id="allergie">
-                        <div class="container">
-                            <div class="row">
-                                <div class="card car ">
-                                    <div class="panel panel-primary filterable">
-                                        <div class="panel-heading">
-                                            <div class="card-header colo">
-                                                Allergie
-                                            </div>
-                                            <div class="pull-right dib">
-                                                <button class="btn btn-default btn-xs btn-filter btn btn-primary"><span
-                                                        class="glyphicon glyphicon-filter"></span> Chercher</button>
-                                            </div>
-                                        </div>
-                                        <div class="card-body">
-                                            <table class="table">
-                                                <thead>
-                                                    <tr class="filters">
-                                                        <th><input type="text" class="form-control" placeholder="Nom"
-                                                                disabled></th>
-                                                        <th><input type="text" class="form-control"
-                                                                placeholder="Description" disabled></th>
 
+                <div class="container">
+                    <div class="d-flex flex-wrap justify-content-center mt-2">
+                        <div class="card col-12 p-0 mb-3 shadow">
+                            <div class="card-header d-flex justify-content-between align-items-center py-3">
+                                <p class="text-primary m-0 font-weight-bold">La liste des allergies</p>
+                                <input class="form-control col-3" type="text" placeholder="Rechercher par nom" id="searchInput">
+                            </div>
+                            <div class="card-body">
+                                <div class="d-flex justify-content-center mt-2">
+                                    @if ( empty($allergies) )
+                                        <div class="alert alert-warning mt-4" role="alert">
+                                            Ce patient n'a pas d'allergies.
+                                        </div>
+                                    @else
+                                        <div class="table-responsive table col-md-12 mt-2 overflow-auto" style="max-height: 430px">
+                                            <table class="table dataTable my-0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Nom</th>
+                                                        <th>Description</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @php
-                                                        $atcd =json_decode($patient->atcd);
-                                                    @endphp
-                                                    @foreach($atcd->allergie as $op)
-                                                        <tr>
-                                                            <td>{{ $op->nom }}</td>
-                                                            <td>{{ $op->description }}</td>
-                                                        </tr>
+                                                    @foreach ($allergies as $tmp)
+                                                    <tr>
+                                                        <td>{{ $tmp->nom }}</td>
+                                                        <td>{{ $tmp->description }}</td>
+                                                    </tr>
                                                     @endforeach
                                                 </tbody>
                                             </table>
                                         </div>
-                                    </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div role="tabpanel" class="tab-pane active" id="TC">
-                        <div class="container">
-                            <div class="row">
-                                <div class="card car ">
-                                    <div class="panel panel-primary filterable">
-                                        <div class="panel-heading">
-                                            <div class="card-header colo">
-                                                Traitement chroniques
-                                            </div>
-                                            <div class="pull-right dib">
-                                                <button class="btn btn-default btn-xs btn-filter btn btn-primary"><span
-                                                        class="glyphicon glyphicon-filter"></span> Chercher</button>
-                                            </div>
+
+                        <div class="card col-12 p-0 shadow">
+                            <div class="card-header d-flex justify-content-between align-items-center py-3">
+                                <p class="text-primary m-0 font-weight-bold">La liste des traitements chroniques</p>
+                                <input class="form-control col-3" type="text" placeholder="Rechercher par médicament" id="searchInput">
+                            </div>
+                            <div class="card-body">
+                                <div class="d-flex justify-content-center mt-2">
+                                    @if ($TC->isEmpty())
+                                        <div class="alert alert-warning mt-4" role="alert">
+                                            Aucun traitement chronique pour ce patient.
                                         </div>
-                                        <div class="card-body">
-                                            <table class="table">
+                                    @else
+                                        <div class="table-responsive table col-md-12 mt-2 overflow-auto" style="max-height: 430px">
+                                            <table class="table dataTable my-0">
                                                 <thead>
-                                                    <tr class="filters">
-                                                        <th><input type="text" class="form-control"
-                                                                placeholder="Nom médicament" disabled></th>
-                                                        <th><input type="text" class="form-control" placeholder="Dose"
-                                                                disabled></th>
-                                                        <th><input type="text" class="form-control" placeholder="Ryhtme"
-                                                                disabled></th>
-                                                        <th><input type="text" class="form-control"
-                                                                placeholder="Date début" disabled></th>
-                                                        <th><input type="text" class="form-control"
-                                                                placeholder="Commentaire" disabled></th>
+                                                    <tr>
+                                                        <th>Nom médicament</th>
+                                                        <th>Dose</th>
+                                                        <th>Rythme</th>
+                                                        <th>Date Début</th>
+                                                        <th>Commentaire</th>
+                                                        <th>Consultation</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @foreach($tc as $tc)
+                                                    @foreach ($TC as $pres)
                                                         <tr>
-                                                            <td>{{ $tc->nom }}</td>
-                                                            <td>{{ $tc->dose }}</td>
-                                                            <td>{{ $tc->rythme }}</td>
-                                                            <td>{{ $tc->date_debut }}</td>
-                                                            <td>{{ $tc->commentaire }}</td>
+                                                            <td>{{$pres->nom}}</td>
+                                                            <td>{{$pres->dose}}</td>
+                                                            <td>{{$pres->rythme}}</td>
+                                                            <td>{{ date('d/m/Y',strtotime($pres->date_debut)) }}</td>
+                                                            <td>{{$pres->commentaire}}</td>
+                                                            <td><a href="{{ route('medecin.consultation.showOrdonnance', [ 'consultation_id' => Crypt::encrypt($pres->consultation->id) ]) }}"> go </a> </td>
                                                         </tr>
                                                     @endforeach
                                                 </tbody>
                                             </table>
                                         </div>
-                                    </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

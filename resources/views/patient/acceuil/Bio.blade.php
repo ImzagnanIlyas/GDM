@@ -32,14 +32,14 @@
                                 <input class="form-control col-3" type="text" placeholder="Rechercher par date" id="searchInput">
                             </div>
 
-                            <div class="card-body">
+                            <div class="card-body pb-0">
                                 @if($vitaux->isEmpty())
                                     <div class="alert alert-warning mt-4" role="alert">
                                         Les données n'existent pas.
                                     </div>
                                 @else
                                     <div class="table-responsive table col-md-12 overflow-auto"
-                                        style="max-height: 430px">
+                                        style="min-height: 40vh">
                                         <table class="table dataTable my-0">
                                             <thead>
                                                 <tr>
@@ -62,6 +62,9 @@
                                                 @endforeach
                                             </tbody>
                                         </table>
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        {{ $vitaux->links() }}
                                     </div>
                                 @endif
                             </div>

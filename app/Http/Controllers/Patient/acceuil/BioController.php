@@ -15,7 +15,7 @@ class BioController extends Controller
                 join('consultations' , 'consultations.id' , 'examen_generals.consultation_id')
                 ->where('consultations.patient_id', $patient->id)
                 ->orderByDesc('examen_generals.created_at')
-                ->paginate(5);
+                ->paginate(4);
 
 
         return view('patient.acceuil.Bio', [

@@ -18,285 +18,163 @@
 <body id="page-top">
     <div id="wrapper">
         <div class="d-flex flex-column" id="content-wrapper">
-            <div class="text-white" id="content" style="width: 75;">
+            <div class="text-white" id="content">
                 @include('patient.layouts.nav-horizontal')
                 @include('patient.layouts.nav-dossier')
-                <ul class="nav nav-tabs" id="myTab" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab"
-                            aria-controls="medi" aria-selected="true">Médicaments</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#habitude" role="tab"
-                            aria-controls="hab" aria-selected="false">Habitudes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#chirurgicaux" role="tab"
-                            aria-controls="chiru" aria-selected="false">Chirurgicaux</a>
-                    </li>
-                    @if($patient->sexe == "F")
-                        <li class="nav-item">
-                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#Gynéco" role="tab"
-                                aria-controls="Gynéco" aria-selected="false">Gynéco</a>
-                        </li>
-                    @endif
-                    <li class="nav-item">
-                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="" role="tab" aria-controls="All"
-                            aria-selected="false"></a>
-                    </li>
-                </ul>
-                <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane active" id="home">
-                        <div class="container">
-                            <div class="row">
-                                <div class="card car ">
-                                    <div class="panel panel-primary filterable">
-                                        <div class="panel-heading">
-                                            <div class="card-header colo">
-                                                Antécédants médicaments
-                                            </div>
-                                            <div class="pull-right dib">
-                                                <button class="btn btn-default btn-xs btn-filter btn btn-primary"><span
-                                                        class="glyphicon glyphicon-filter"></span> Chercher</button>
+                <div class="container">
+                    <div class="d-flex justify-content-center mt-2">
+                        @if ( empty($data) )
+                            <div class="card col-12 p-0 shadow">
+                                <div class="card-header d-flex justify-content-between align-items-center py-3">
+                                    <p class="text-primary m-0 font-weight-bold">La liste des {{ $block }}</p>
+                                    <input class="form-control col-3" type="text" placeholder="Rechercher par date" id="searchInput">
+                                </div>
+                                <div class="card-body pb-0">
+                                    <div class="alert alert-warning mt-4" role="alert">
+                                        Les données n'existent pas pour ce patient.
+                                    </div>
+                                </div>
+                            </div>
+                        @else
+                            @if ($block === "médicaments")
+                                {{-- medicament --}}
+                                <div class="card col-12 p-0 shadow">
+                                    <div class="card-header d-flex justify-content-between align-items-center py-3">
+                                        <p class="text-primary m-0 font-weight-bold">La liste des {{ $block }}</p>
+                                        <input class="form-control col-3" type="text" placeholder="Rechercher par médicament" id="searchInput">
+                                    </div>
+                                    <div class="card-body pb-0">
+                                        <div class="d-flex justify-content-center overflow-auto mt-2"  style="min-height: 40vh">
+                                            <table class="table mt-2">
+                                                <head>
+                                                    <tr>
+                                                        <th>Nom médicament</th>
+                                                        <th>Dose</th>
+                                                        <th>Rythme</th>
+                                                        <th>Date Début</th>
+                                                        <th>Durée</th>
+                                                        <th>Commentaire</th>
+                                                    </tr>
+                                                </head>
+                                                <body>
+                                                    @foreach ($data as $pres)
+                                                        <tr>
+                                                            <td>{{$pres->nom}}</td>
+                                                            <td>{{$pres->dose}}</td>
+                                                            <td>{{$pres->rythme}}</td>
+                                                            <td>{{ date('d/m/Y',strtotime($pres->date_debut)) }}</td>
+                                                            <td>{{$pres->duree}}</td>
+                                                            <td>{{$pres->commentaire}}</td>
+                                                        </tr>
+                                                    @endforeach
+                                            </table>
+                                            <hr>
+                                            <div class="d-flex justify-content-center">
+                                                {{ $data->links() }}
                                             </div>
                                         </div>
-                                        <div class="card-body">
+                                    </div>
+                                </div>
+                            @elseif ($block === "habitudes")
+                                {{-- habitude --}}
+                                <div class="card col-12 p-0 shadow">
+                                    <div class="card-header d-flex justify-content-between align-items-center py-3">
+                                        <p class="text-primary m-0 font-weight-bold">La liste des {{ $block }}</p>
+                                        <input class="form-control col-3" type="text" placeholder="Rechercher par date" id="searchInput">
+                                    </div>
+                                    <div class="card-body pb-0">
+                                        <div class="d-flex justify-content-center overflow-auto mt-2"  style="min-height: 40vh">
                                             <table class="table">
-                                                <thead>
-                                                    <tr class="filters">
-                                                        <th><input type="text" class="form-control"
-                                                                placeholder="Nom médicament" disabled></th>
-                                                        <th><input type="text" class="form-control" placeholder="Dose"
-                                                                disabled></th>
-                                                        <th><input type="text" class="form-control" placeholder="Rythme"
-                                                                disabled></th>
-                                                        <th><input type="text" class="form-control" placeholder="Durée"
-                                                                disabled></th>
-                                                        <th><input type="text" class="form-control"
-                                                                placeholder="Date début" disabled></th>
-                                                        <th><input type="text" class="form-control"
-                                                                placeholder="Commentaire" disabled></th>
+                                                <head>
+                                                    <tr>
+                                                        <th>Date</th>
+                                                        <th>Sport</th>
+                                                        <th>Alimentation</th>
+                                                        <th>Tabac</th>
+                                                        <th>Alcool</th>
+                                                        <th>Autre</th>
                                                     </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @if( empty($pres) )
-                                                        <div class="alert alert-warning mt-4" role="alert">
-                                                            Les données n'existent pas pour ce patient.
-                                                        </div>
-                                                    @else
-                                                        @foreach($pres as $pres)
-                                                            <tr>
-                                                                <td>{{ $pres->nom }}</td>
-                                                                <td>{{ $pres->dose }}</td>
-                                                                <td>{{ $pres->rythme }}</td>
-                                                                <td>{{ $pres->duree }}</td>
-                                                                <td>{{ $pres->date_debut }}</td>
-                                                                <td>{{ $pres->commentaire }}</td>
-                                                            </tr>
-                                                        @endforeach
-                                                    @endif
-                                                </tbody>
+                                                </head>
+                                                <body>
+                                                @foreach ($data as $habitude)
+                                                    <tr>
+                                                        <td>{{ date('d/m/Y',strtotime($habitude->date)) }}</td>
+                                                        <td>{{ $habitude->sport }}</td>
+                                                        <td>{{ $habitude->alimentation }}</td>
+                                                        <td>{{ $habitude->tabac }}</td>
+                                                        <td>{{ $habitude->alcool }}</td>
+                                                        <td>{{ $habitude->autre }}</td>
+                                                    </tr>
+                                                @endforeach
                                             </table>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
+                            @elseif ($block === "chirurgicaux")
+                                {{-- chirurgicaux --}}
+                                <div class="card col-12 p-0 shadow">
+                                    <div class="card-header d-flex justify-content-between align-items-center py-3">
+                                        <p class="text-primary m-0 font-weight-bold">La liste des {{ $block }}</p>
+                                        <input class="form-control col-3" type="text" placeholder="Rechercher par date" id="searchInput">
+                                    </div>
+                                    <div class="card-body pb-0">
+                                        <div class="d-flex justify-content-center overflow-auto mt-2"  style="min-height: 40vh">
+                                            <table class="table">
+                                                <head>
+                                                    <tr>
+                                                        <th>Nom d'opération</th>
+                                                        <th class="col-5">Description</th>
+                                                        <th>Date</th>
+                                                        <th>Consultation liée</th>
+                                                    </tr>
+                                                </head>
+                                                <body>
+                                                @foreach ($data as $ch)
+                                                    <tr>
+                                                        <td>{{ $ch->operation }}</td>
+                                                        <td>{{ $ch->description }}</td>
+                                                        <td>{{ date('d/m/Y', strtotime($ch->date_operation)) }}</td>
+                                                        <td><a href="" class="btn btn-info col-6 mr-1" ><i class="fas fa-external-link-alt"></i></a></td>
+                                                    </tr>
+                                                @endforeach
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            @elseif ($block === "Gynéco")
+                                {{-- Gynéco --}}
+                                <div class="card col-12 p-0 shadow">
+                                    <div class="card-header d-flex justify-content-between align-items-center py-3">
+                                        <p class="text-primary m-0 font-weight-bold">La liste des {{ $block }}</p>
+                                        <input class="form-control col-3" type="text" placeholder="Rechercher par date" id="searchInput">
+                                    </div>
+                                    <div class="card-body pb-0">
+                                        <table class="table" style="margin: 15px;margin-left: 10px;">
+                                            <head>
+                                                <tr>
+                                                    <th>Ménarches</th>
+                                                    <th>Ménopause</th>
+                                                    <th>Cycle</th>
+                                                    <th>Gestation</th>
+                                                    <th></th>
+                                                </tr>
+                                            </head>
+                                            <body>
 
-                    <div class="tab-pane " id="habitude">
-                        @php
-                            $atcd =json_decode($patient->atcd);
-                        @endphp
-                        <div class="card care ">
-                            <div class="card-header colo">
-                                Mes habitudes
-                            </div>
-                            <ul class="nav nav-tabs marg" id="myTab" role="tablist" style="">
-                                <li class="nav-item">
-                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#sport" role="tab"
-                                        aria-controls="medi" aria-selected="true">Sport</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#alcool" role="tab"
-                                        aria-controls="hab" aria-selected="false">Alcool</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#alimentation"
-                                        role="tab" aria-controls="chiru" aria-selected="false">Alimentation</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#tabac" role="tab"
-                                        aria-controls="hab" aria-selected="false">Tabac</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#autre" role="tab"
-                                        aria-controls="chiru" aria-selected="false">Autre</a>
-                                </li>
-                            </ul>
-                            <div class="tab-content">
-                                <div class="tab-pane " id="sport">
-                                    <div class="link-container">
-                                        <h2>Sport</h2>
-                                        <ul>
-                                            @foreach($atcd->habitudes->sport as $hab)
-                                                <li><a href="#">{{ $hab }}</a></li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="tab-pane " id="alcool">
-                                    <div class="link-container">
-                                        <h2>Alcool</h2>
-                                        <ul>
-                                            @foreach($atcd->habitudes->alcool as $hab)
-                                                <li><a href="#">{{ $hab }}</a></li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="tab-pane " id="alimentation">
-                                    <div class="link-container">
-                                        <h2>Alimentation</h2>
-                                        <ul>
-                                            @foreach($atcd->habitudes->alimentation as $hab)
-                                                <li><a href="#">{{ $hab }}</a></li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="tab-pane " id="tabac">
-                                    <div class="link-container">
-                                        <h2>Tabac</h2>
-                                        <ul>
-                                            @foreach($atcd->habitudes->tabac as $hab)
-                                                <li><a href="#">{{ $hab }}</a></li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="tab-pane " id="autre">
-                                    <div class="link-container">
-                                        <h2>Autre</h2>
-                                        <ul>
-                                            @foreach($atcd->habitudes->autre as $hab)
-                                                <li><a href="#">{{ $hab }}</a></li>
-                                            @endforeach
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div role="tabpanel" class="tab-pane " id="chirurgicaux">
-                        <div class="container">
-                            <div class="row">
-                                <div class="card car ">
-                                    <div class="panel panel-primary filterable">
-                                        <div class="panel-heading">
-                                            <div class="card-header colo">
-                                                Antécédants chirurgicaux
-                                            </div>
-                                            <div class="pull-right dib">
-                                                <button class="btn btn-default btn-xs btn-filter btn btn-primary"><span
-                                                        class="glyphicon glyphicon-filter"></span> Chercher</button>
-                                            </div>
-                                        </div>
-                                        <div class="card-body">
-                                            <table class="table">
-                                                <thead>
-                                                    <tr class="filters">
-                                                        <th><input type="text" class="form-control"
-                                                                placeholder="Nom opération" disabled></th>
-                                                        <th><input type="text" class="form-control"
-                                                                placeholder="Date opération" disabled></th>
-                                                        <th><input type="text" class="form-control"
-                                                                placeholder="Description" disabled></th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @php
-                                                        $atcd =json_decode($patient->atcd);
-                                                        $data=$atcd->chirurgicaux;
-                                                    @endphp
-                                                    @if( empty($data) )
-                                                        <div class="alert alert-warning mt-4" role="alert">
-                                                            Les données n'existent pas pour ce patient.
-                                                        </div>
-                                                    @else
-                                                        @foreach($data as $op)
-                                                            <tr>
-                                                                <td>{{ $op->operation }}</td>
-                                                                <td>{{ $op->date_operation }}</td>
-                                                                <td>{{ $op->description }}</td>
-                                                            </tr>
-                                                        @endforeach
-                                                    @endif
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div role="tabpanel" class="tab-pane " id="Gynéco">
-                        <div class="container">
-                            <div class="row">
-                                <div class="card car ">
-                                    <div class="panel panel-primary filterable">
-                                        <div class="panel-heading">
-                                            <div class="card-header colo">
-                                                Gynéco
-                                            </div>
-                                            <div class="pull-right dib">
-                                                <button class="btn btn-default btn-xs btn-filter btn btn-primary"><span
-                                                        class="glyphicon glyphicon-filter"></span> Chercher</button>
-                                            </div>
-                                        </div>
-                                        <div class="card-body">
-                                            <table class="table">
-                                                <thead>
-                                                    <tr class="filters">
-                                                        <th><input type="text" class="form-control"
-                                                                placeholder="Ménarches" disabled></th>
-                                                        <th><input type="text" class="form-control"
-                                                                placeholder="Ménopause" disabled></th>
-                                                        <th><input type="text" class="form-control" placeholder="Cycle"
-                                                                disabled></th>
-                                                        <th><input type="text" class="form-control"
-                                                                placeholder="Gestation" disabled></th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @if($patient->sexe == "F")
-                                                        @php
-                                                            $atcd =json_decode($patient->atcd);
-                                                            $data=$atcd->gyneco;
-                                                        @endphp
+                                                <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                </tr>
 
-                                                        @if( empty($data) )
-                                                            <div class="alert alert-warning mt-4" role="alert">
-                                                                Les données n'existent pas pour ce patient.
-                                                            </div>
-                                                        @else
-                                                            @foreach($data as $at)
-                                                                <tr>
-                                                                    <td>{{ $at->menarches }}</td>
-                                                                    <td>{{ $at->menopause }}</td>
-                                                                    <td>{{ $at->cycle }}</td>
-                                                                    <td>{{ $at->gestation }}<< /td>
-                                                                </tr>
-                                                            @endforeach
-                                                        @endif
-                                                    @endif
-                                                </tbody>
-                                            </table>
-                                        </div>
+                                        </table>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
+                            @endif
+                        @endif
                     </div>
                 </div>
             </div>

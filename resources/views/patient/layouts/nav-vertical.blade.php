@@ -1,4 +1,4 @@
-<!-- <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0" style="padding-top: 4.375rem !important;">
+{{-- <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0" style="padding-top: 4.375rem !important;">
     <div class="container-fluid d-flex flex-column p-0">
         <hr class="sidebar-divider my-0">
         <ul class="nav navbar-nav text-light" id="accordionSidebar">
@@ -11,7 +11,7 @@
         </ul>
         <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
     </div>
-</nav> -->
+</nav> --}}
 
 
 
@@ -47,7 +47,7 @@
                             style="width: 40px;border-radius: 50%;background-color: #90DFAA;">
                         <div class="ml-3">
                             <h5 class="text-info font-weight-bold">
-                                Ordonnance
+                                Ordonnances
                                 ({{ App\Consultation::where('patient_id', $patient->id)->whereNotNull('ordonnance')->count() }})
                             </h5>
                             <small class="text-dark">Non confirmée (0)</small>

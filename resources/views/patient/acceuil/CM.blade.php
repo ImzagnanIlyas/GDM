@@ -32,13 +32,13 @@
                                 <p class="text-primary m-0 font-weight-bold">La liste des consultation médicale</p>
                                 <input class="form-control col-3" type="text" placeholder="Rechercher par date" id="searchInput">
                             </div>
-                            <div class="card-body">
+                            <div class="card-body pb-0">
                                 @if($consultations->isEmpty())
                                     <div class="alert alert-warning mt-4" role="alert">
                                         Ce patient n'a passé aucune consultation.
                                     </div>
                                 @else
-                                    <div class="table-responsive table col-md-12 overflow-auto" style="max-height: 430px">
+                                    <div class="table-responsive table col-md-12 overflow-auto" style="min-height: 40vh">
                                         <table class="table dataTable my-0">
                                             <thead>
                                                 <tr class="text-center">
@@ -55,14 +55,17 @@
                                                     <tr class="text-center">
                                                         <td>{{ $c->id }}</td>
                                                         <td>{{ $c->medecin->patient->nom.' '.$c->medecin->patient->prenom }}</td>
-                                                        <td>{{ $c->lieu }}</td>
+                                                        <td class="text-left" title="{{ $c->lieu }}">{{ substr($c->lieu, 0, 30) }} ...</td>
                                                         <td>{{ $c->motif }}</td>
                                                         <td>{{ date('d/m/Y',strtotime($c->date )) }}</td>
-                                                        <td><a href="" class="btn btn-primary">Afficher</a></td>
+                                                        <td><a href="{{ route('detail' , ['id' => $c->id]) }}" class="btn btn-primary">Afficher</a></td>
                                                     </tr>
                                                 @endforeach
                                             </tbody>
                                         </table>
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        {{ $consultations->links() }}
                                     </div>
                                 @endif
                             </div>
@@ -117,31 +120,6 @@
 
     .col-4 {
         flex-basis: 25%;
-    }
-
-    @media all and (max-width: 767px) {
-        display: none;
-    }
-
-    li {
-        display: block;
-    }
-
-    .col {
-        flex-basis: 100%;
-    }
-
-    .col {
-        display: flex;
-        padding: 10px 0;
-
-        &:before {
-            color: #6C7A89;
-            padding-right: 10px;
-            content: attr(data-label);
-            flex-basis: 50%;
-            text-align: right;
-        }
     }
 </style>
 

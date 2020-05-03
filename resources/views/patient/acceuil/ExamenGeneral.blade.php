@@ -16,98 +16,155 @@
     <div id="wrapper">
 
         <div class="d-flex flex-column" id="content-wrapper">
-            <div class="text-white" id="content" style="width: 75;">
+            <div class="text-white" id="content">
                 @include('patient.layouts.nav-horizontal')
 
                 <div class="container">
                     <div class="row">
-
-
-                        <div class="card-body ca ">
-                            <div class="card car ">
-                                <div class="card-header col">
-                                    Examen général
+                        <div class="col-sm-8 col-md-12 d-flex justify-content-center text-dark mb-3" style="margin-top: 6rem !important">
+                            <div class="card col-md-6">
+                                <div class="card-block">
+                                    <div class="col-lg-12">
+                                        <div class="d-flex justify-content-start align-items-center p-2">
+                                                <a href="#">
+                                                    <img
+                                                    class="img-circle"
+                                                    @if($consultation->medecin->patient->sexe === "Homme")
+                                                    src="{{ asset('img/patient/doctor.png') }}"
+                                                    @else
+                                                    src="{{ asset('img/patient/doctore.png') }}"
+                                                    @endif
+                                                    style="width: 100px;height:100px;border-radius: 50%;background-color: #90DFAA;">
+                                                </a>
+                                            <div class="ml-3">
+                                                <h5 class="font-weight-bold">
+                                                    Dr.
+                                                    {{ strtoupper($consultation->medecin->patient->nom) }}
+                                                    {{ $consultation->medecin->patient->prenom }}
+                                                </h5>
+                                                <hr style="margin:8px auto">
+                                                <h6>{{ $consultation->medecin->specialite }} - {{ $consultation->medecin->inpe }}</h6>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
+                            </div>
+                            <div class="card col-md-6">
+                                <div class="card-block">
+                                    <div class="col-lg-12">
+                                        <div class="d-flex justify-content-start align-items-center p-2">
+                                            <a href="#">
+                                                <img
+                                                class="img-circle"
+                                                @empty($consultation->ordonnance)
+                                                src="{{ asset('img/patient/doc-no.png') }}"
+                                                @else
+                                                src="{{ asset('img/patient/doc-yes.png') }}"
+                                                @endempty
+                                                style="width: 100px;height:100px;border-radius: 50%;background-color: #90DFAA;">
+                                            </a>
+                                            <div class="ml-3">
+                                                <h5 class="font-weight-bold">
+                                                    @empty($consultation->ordonnance)
+                                                    Consultation non terminée
+                                                    @else
+                                                    Consultation terminée
+                                                    @endempty
+                                                </h5>
+                                                <hr style="margin:8px auto">
+                                                <h6>{{ $consultation->id }} - {{ date("d/m/Y H:i", strtotime($consultation->created_at)) }}</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card col-12 p-0 shadow">
+                            <div class="card-header d-flex justify-content-between align-items-center py-3">
+                                <p class="text-primary m-0 font-weight-bold">Examen général</p>
+                            </div>
+                            <div class="card-body pb-0">
                                 <div class="tab-content p-3">
+                                    <div class="tab-pane active show" id="profile">
+                                        <form>
+                                            <div class="form-group row">
+                                                <label class="col-lg-3 col-form-label form-control-label colo">Etat</label>
+                                                <div class="col-lg-9">
+                                                    <input class="form-control" type="text" value="{{ $id->etat }}"
+                                                        style="height:80px;" readonly>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label
+                                                    class="col-lg-3 col-form-label form-control-label colo ">Température</label>
+                                                <div class="col-lg-9">
+                                                    <input class="form-control" type="text" value="{{ $id->temperature }}"
+                                                        style="height:80px;" readonly>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-lg-3 col-form-label form-control-label colo">Tension
+                                                    artielle</label>
+                                                <div class="col-lg-9">
+                                                    <input class="form-control" type="text"
+                                                        value="{{ $id->tension_arterielle }}" style="height:80px;"
+                                                        readonly>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-lg-3 col-form-label form-control-label colo ">Fréquence
+                                                    cardiaque</label>
+                                                <div class="col-lg-9">
+                                                    <input class="form-control" type="text"
+                                                        value="{{ $id->frequence_cardiaque }}" style="height:80px;"
+                                                        readonly>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="col-lg-3 col-form-label form-control-label colo ">Fréquence
+                                                    respiratoire</label>
+                                                <div class="col-lg-9">
+                                                    <input class="form-control" type="text"
+                                                        value="{{ $id->frequence_respiratoire }}" style="height:80px;"
+                                                        readonly>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label
+                                                    class="col-lg-3 col-form-label form-control-label colo ">Poids</label>
+                                                <div class="col-lg-9">
+                                                    <input class="form-control" type="text" value="{{ $id->poids }}"
+                                                        style="height:80px;" readonly>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label
+                                                    class="col-lg-3 col-form-label form-control-label colo">Taille</label>
+                                                <div class="col-lg-9">
+                                                    <input class="form-control" type="text" value="{{ $id->taille }}"
+                                                        style="height:80px;" readonly>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label
+                                                    class="col-lg-3 col-form-label form-control-label colo ">Conjonctives</label>
+                                                <div class="col-lg-9">
+                                                    <input class="form-control" type="text"
+                                                        value="{{ $id->conjonctives }}" style="height:80px;" readonly>
+                                                </div>
+                                            </div>
 
-                                    <form>
-                                        <div class="form-group row">
-                                            <label class="col-lg-3 col-form-label form-control-label colo">Etat</label>
-                                            <div class="col-lg-9">
-                                                <input class="form-control" type="text" value="{{ $id->etat }}"
-                                                    style="height:80px;" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label
-                                                class="col-lg-3 col-form-label form-control-label colo ">Température</label>
-                                            <div class="col-lg-9">
-                                                <input class="form-control" type="text" value="{{ $id->temperature }}"
-                                                    style="height:80px;" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-lg-3 col-form-label form-control-label colo">Tension
-                                                artielle</label>
-                                            <div class="col-lg-9">
-                                                <input class="form-control" type="text"
-                                                    value="{{ $id->tension_arterielle }}" style="height:80px;"
-                                                    readonly>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-lg-3 col-form-label form-control-label colo ">Fréquence
-                                                cardiaque</label>
-                                            <div class="col-lg-9">
-                                                <input class="form-control" type="text"
-                                                    value="{{ $id->frequence_cardiaque }}" style="height:80px;"
-                                                    readonly>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-lg-3 col-form-label form-control-label colo ">Fréquence
-                                                respiratoire</label>
-                                            <div class="col-lg-9">
-                                                <input class="form-control" type="text"
-                                                    value="{{ $id->frequence_respiratoire }}" style="height:80px;"
-                                                    readonly>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label
-                                                class="col-lg-3 col-form-label form-control-label colo ">Poids</label>
-                                            <div class="col-lg-9">
-                                                <input class="form-control" type="text" value="{{ $id->poids }}"
-                                                    style="height:80px;" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label
-                                                class="col-lg-3 col-form-label form-control-label colo">Taille</label>
-                                            <div class="col-lg-9">
-                                                <input class="form-control" type="text" value="{{ $id->taille }}"
-                                                    style="height:80px;" readonly>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label
-                                                class="col-lg-3 col-form-label form-control-label colo ">Conjonctives</label>
-                                            <div class="col-lg-9">
-                                                <input class="form-control" type="text"
-                                                    value="{{ $id->conjonctives }}" style="height:80px;" readonly>
-                                            </div>
-                                        </div>
 
+                                            <div class="form-group row">
+                                                <label class="col-lg-3 col-form-label form-control-label "></label>
+                                                <div class="col-lg-9">
+                                                    <input type="button" class="btn btn-success" value="Retour"
+                                                        onclick="location.href='{{ route('detail' ,[$id->consultation->id]) }}'">
 
-                                        <div class="form-group row">
-                                            <label class="col-lg-3 col-form-label form-control-label "></label>
-                                            <div class="col-lg-9">
-                                                <input type="button" class="btn btn-success" value="Retour"
-                                                    onclick="location.href='{{ route('detail' ,[$patient->id]) }}'">
-
+                                                </div>
                                             </div>
-                                        </div>
-                                    </form>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -116,7 +173,6 @@
             </div>
         </div>
     </div>
-    @include('patient.layouts.nav-vertical')
 </body>
 
 <style>
@@ -150,7 +206,7 @@
     }
 
     .colo {
-        color: indigo;
+        color: darkslategray;
     }
 
     .mar {

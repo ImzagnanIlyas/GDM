@@ -17,7 +17,7 @@ class prblmController extends Controller
             ->paginate(5);
         return view('patient.acceuil.prblm', [
             'patient' => $patient,
-            'tc' => $tc,
+            'TC' => $tc,
         ]);
     }
 }

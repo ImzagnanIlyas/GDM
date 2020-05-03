@@ -7,7 +7,13 @@
 <nav class="navbar navbar-dark navbar-expand bg-success justify-content-center" style="margin-top: 6rem !important">
     <ul class="nav navbar-nav">
         <li class="nav-item @if($active === 'Antécédents') active-nav-item @endif" role="presentation">
-            <a class="nav-link" href="{{ route('ATCD') }}">Antécédents</a>
+            <a class="nav-link dropdown-toggle" href="" id="navbardrop" data-toggle="dropdown">Antécédant</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="{{ route('ATCD', ['block' => 'médicaments']) }}">Médicaments</a>
+                <a class="dropdown-item" href="{{ route('ATCD', ['block' => 'habitudes']) }}">Habitudes</a>
+                <a class="dropdown-item" href="{{ route('ATCD', ['block' => 'chirurgicaux']) }}">Chirurgicaux</a>
+                @if($patient->sexe == "Femme")<a class="dropdown-item" href="{{ route('ATCD', ['block' => 'Gynéco']) }}">Gynéco</a>@endif
+            </div>
         </li>
         <li class="nav-item @if($active === 'Biométrie') active-nav-item @endif" role="presentation">
             <a class="nav-link" href="{{ route('Bio') }}">Biométrie&nbsp;</a>
@@ -49,7 +55,13 @@
     <nav class="navbar navbar-dark navbar-expand bg-success justify-content-center rounded">
         <ul class="nav navbar-nav">
             <li class="nav-item @if($active === 'Antécédents') active-nav-item @endif" role="presentation">
-                <a class="nav-link" href="{{ route('ATCD') }}">Antécédents</a>
+                <a class="nav-link dropdown-toggle" href="" id="navbardrop" data-toggle="dropdown">Antécédant</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{{ route('ATCD', ['block' => 'médicaments']) }}">Médicaments</a>
+                    <a class="dropdown-item" href="{{ route('ATCD', ['block' => 'habitudes']) }}">Habitudes</a>
+                    <a class="dropdown-item" href="{{ route('ATCD', ['block' => 'chirurgicaux']) }}">Chirurgicaux</a>
+                    @if($patient->sexe == "Femme")<a class="dropdown-item" href="{{ route('ATCD', ['block' => 'Gynéco']) }}">Gynéco</a>@endif
+                </div>
             </li>
             <li class="nav-item @if($active === 'Biométrie') active-nav-item @endif" role="presentation">
                 <a class="nav-link" href="{{ route('Bio') }}">Biométrie&nbsp;</a>

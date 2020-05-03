@@ -14,7 +14,17 @@ class OrdController extends Controller
 
         return view('patient.acceuil.Ord', [
             'patient' => $patient,
-            'consultations' => Consultation::where('patient_id', $patient->id)->get()
+            'consultations' => Consultation::where('patient_id', $patient->id)->whereNotNull('ordonnance')->orderByDesc('created_at')->paginate(4)
+        ]);
+    }
+
+    public function showTxt($consultation_id)
+    {
+        $patient = Auth::guard('patient')->user();
+
+        return view('patient.acceuil.ordonnance-text', [
+            'patient' => $patient,
+            'consultation' => Consultation::findOrFail($consultation_id)
         ]);
     }
 }

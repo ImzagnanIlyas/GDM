@@ -22,14 +22,11 @@
             <div class="text-white" id="content" style="width: 75;">
                 @include('patient.layouts.nav-horizontal')
                 @include('patient.layouts.nav-dossier')
-
-
-
                 <div class="container">
                     <div class="d-flex justify-content-center mt-2">
                         <div class="card col-12 p-0 shadow">
                             <div class="card-header d-flex justify-content-between align-items-center py-3">
-                                <p class="text-primary m-0 font-weight-bold">La liste des ordonnances</p>
+                                <p class="text-primary m-0 font-weight-bold">La liste des examens</p>
                                 <input class="form-control col-3" type="text" placeholder="Rechercher par date" id="searchInput">
                             </div>
                             <div class="card-body">
@@ -38,7 +35,7 @@
                                         Ce patient n'a passé aucun examen.
                                     </div>
                                 @else
-                                    <div class="table-responsive table col-md-12 overflow-auto" style="max-height: 405px">
+                                    <div class="table-responsive table col-md-12 overflow-auto"  style="min-height: 40vh">
                                         <table class="table dataTable my-0">
                                             <thead>
                                                 <tr>
@@ -76,6 +73,9 @@
                                                 @endforeach
                                             </tbody>
                                         </table>
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        {{ $examen->links() }}
                                     </div>
                                 @endif
                             </div>

@@ -13,89 +13,140 @@
     <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merienda">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/untitled.css') }}">
+    <style>
+        #quill-textarea{
+            border: 1px solid gray;
+        }
+    </style>
 </head>
-
+@php
+    $resultat = json_decode($examen->resultat)
+@endphp
 <body id="page-top">
     <div id="wrapper">
         <div class="d-flex flex-column" id="content-wrapper">
             <div class="text-white" id="content" style="width: 75;">
                 @include('patient.layouts.nav-horizontal')
-                <div class="text-light bg-white" id="content">
-                    @include('patient.layouts.nav-dossier')
-
-
-                    @php
-                        foreach($examen as $examen){
-                        $resultat = json_decode($id->resultat);}
-                    @endphp
-                    <div class="card car ">
-                        <div class="card-header col">
-                            Résultat d'examen complimentaire
-                        </div>
-
-                        @if( $resultat->type === 'text' )
-                            <div class="col-md-10">
-                                <div class="card-body">
-                                    <div id="quill-textarea" style="color: black">
-                                        {!! $resultat->text !!}
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-8 col-md-12 d-flex justify-content-center text-dark mb-3" style="margin-top: 6rem !important">
+                            <div class="card col-md-6">
+                                <div class="card-block">
+                                    <div class="col-lg-12">
+                                        <div class="d-flex justify-content-start align-items-center p-2">
+                                                <a href="#">
+                                                    <img
+                                                    class="img-circle"
+                                                    @if($consultation->medecin->patient->sexe === "Homme")
+                                                    src="{{ asset('img/patient/doctor.png') }}"
+                                                    @else
+                                                    src="{{ asset('img/patient/doctore.png') }}"
+                                                    @endif
+                                                    style="width: 100px;height:100px;border-radius: 50%;background-color: #90DFAA;">
+                                                </a>
+                                            <div class="ml-3">
+                                                <h5 class="font-weight-bold">
+                                                    Dr.
+                                                    {{ strtoupper($consultation->medecin->patient->nom) }}
+                                                    {{ $consultation->medecin->patient->prenom }}
+                                                </h5>
+                                                <hr style="margin:8px auto">
+                                                <h6>{{ $consultation->medecin->specialite }} - {{ $consultation->medecin->inpe }}</h6>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        @elseif( $resultat->type === 'pdf')
-                            @php
-                                $i = 1;
-                            @endphp
-                            <ul id="files">
-                                @foreach( $resultat->pdf as $pdf )
-                                    <li>
-                                        <a href="{{ route('medecin.consultation.ExamSpecialResultat.PDF', [ 'consultation_id' => $consultation->id, 'examen_id' => $examen->id, 'i' => $i ]) }}"
-                                            target="_blank" class="file_link">
-                                            <div class="link_icon">
-                                                <i class="fas fa-file-pdf"></i>
+                            <div class="card col-md-6">
+                                <div class="card-block">
+                                    <div class="col-lg-12">
+                                        <div class="d-flex justify-content-start align-items-center p-2">
+                                            <a href="#">
+                                                <img
+                                                class="img-circle"
+                                                @empty($consultation->ordonnance)
+                                                src="{{ asset('img/patient/doc-no.png') }}"
+                                                @else
+                                                src="{{ asset('img/patient/doc-yes.png') }}"
+                                                @endempty
+                                                style="width: 100px;height:100px;border-radius: 50%;background-color: #90DFAA;">
+                                            </a>
+                                            <div class="ml-3">
+                                                <h5 class="font-weight-bold">
+                                                    @empty($consultation->ordonnance)
+                                                    Consultation non terminée
+                                                    @else
+                                                    Consultation terminée
+                                                    @endempty
+                                                </h5>
+                                                <hr style="margin:8px auto">
+                                                <h6>{{ $consultation->id }} - {{ date("d/m/Y H:i", strtotime($consultation->created_at)) }}</h6>
                                             </div>
-                                            <div class="details">
-                                                <div class="application/pdf">
-                                                    <h4>PDF {{ $i }}</h4>
-                                                    <small><span
-                                                            class="file_size">{{ ceil(File::size(public_path('storage/'.$pdf))/(1024)) }}
-                                                            Ko</span></small>
-                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card col-12 p-0 shadow">
+                            <div class="card-header d-flex justify-content-between align-items-center py-3">
+                                <p class="text-primary m-0 font-weight-bold">Résultat de l'examen complémentaire ({{$examen->id}})</p>
+                            </div>
+                            <div class="card-body d-flex justify-content-center pb-0">
+                                @if ( $resultat->type === 'text' )
+                                    <div class="col-md-10">
+                                        <div class="card-body">
+                                            <div id="quill-textarea" style="color: black">
+                                                {!! $resultat->text !!}
                                             </div>
-                                        </a>
-                                    </li>
-                                    @php$i++; @endphp
-                                    @endforeach
-                            </ul>
-                        @elseif( $resultat->type === 'image')
-                                <div class="tz-gallery">
-                                    <div class="row">
-                                        @foreach( $resultat->image as $image )
-                                            <div class="col-sm-6 col-md-4">
-                                                <a class="lightbox"
-                                                    href="{{ asset('storage/'.$image) }}">
-                                                    <img src="{{ asset('storage/'.$image) }}"
-                                                        alt="Resultat">
+                                        </div>
+                                    </div>
+                                @elseif ( $resultat->type === 'pdf')
+                                    @php $i = 1; @endphp
+                                    <ul id="files" class="d-flex flex-wrap">
+                                        @foreach ( $resultat->pdf as $pdf )
+                                            <li>
+                                                <a href="{{ route('Resultat.PDF', ['id' => $examen->id, 'i' => $i ]) }}" target="_blank" class="file_link">
+                                                    <div class="link_icon">
+                                                        <i class="fas fa-file-pdf"></i>
+                                                    </div>
+                                                    <div class="details">
+                                                        <div class="application/pdf">
+                                                            <h4>PDF {{ $i }}</h4>
+                                                            <small><span class="file_size">{{  ceil(File::size(public_path('storage/'.$pdf))/(1024)) }} Ko</span></small>
+                                                        </div>
+                                                    </div>
                                                 </a>
+                                            </li>
+                                            @php $i++; @endphp
+                                        @endforeach
+                                    </ul>
+                                @elseif ( $resultat->type === 'image')
+                                    <div class="tz-gallery">
+                                        <div class="row">
+                                            @foreach ( $resultat->image as $image )
+                                                <div class="col-sm-6 col-md-4">
+                                                    <a class="lightbox" href="{{ asset('storage/'.$image) }}">
+                                                        <img src="{{ asset('storage/'.$image) }}" alt="Resultat">
+                                                    </a>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                @elseif ( $resultat->type === 'video')
+                                    <div class="row justify-content-around">
+                                        @foreach ( $resultat->video as $video )
+                                            <div class="col-sm-6 col-md-6">
+                                                <video width="100%" controls>
+                                                    <source src="{{ asset('storage/'.$video) }}" type="video/mp4">
+                                                    Your browser does not support the video tag.
+                                                </video>
                                             </div>
                                         @endforeach
                                     </div>
-                                </div>
-                            @elseif( $resultat->type === 'video')
-                                <div class="row justify-content-around">
-                                    @foreach( $resultat->video as $video )
-                                        <div class="col-sm-6 col-md-6">
-                                            <video width="100%" controls>
-                                                <source src="{{ asset('storage/'.$video) }}"
-                                                    type="video/mp4">
-                                                Your browser does not support the video tag.
-                                            </video>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            @elseif( $resultat->type === 'audio')
-                                @php$i = 1; @endphp
+                                @elseif ( $resultat->type === 'audio')
+                                    @php $i = 1; @endphp
                                     <ul id="audio" class="flex-column bd-highlight mb-3">
-                                        @foreach( $resultat->audio as $audio )
+                                        @foreach ( $resultat->audio as $audio )
                                             <li>
                                                 <div class="audio_link">
                                                     <div class="link_icon">
@@ -105,19 +156,19 @@
                                                         <div class="application/pdf">
                                                             <h4>Audio {{ $i }}</h4>
                                                             <audio controls>
-                                                                <source
-                                                                    src="{{ asset('storage/'.$audio) }}"
-                                                                    type="audio/mpeg">
+                                                                <source src="{{ asset('storage/'.$audio) }}" type="audio/mpeg">
                                                                 Your browser does not support the audio element.
                                                             </audio>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </li>
-                                            @php$i++; @endphp
-                                            @endforeach
+                                            @php $i++; @endphp
+                                        @endforeach
                                     </ul>
-                            @endif
+                                @endif
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
