@@ -83,7 +83,7 @@
                                             }})
                                         </small>
                                     </div>
-                                    <a href="" class="stretched-link"></a>
+                                    <a href="{{ route('CM') }}" class="stretched-link"></a>
                                 </div>
                             </div>
                         </div>
@@ -102,7 +102,7 @@
                                         </h2>
                                         <small class="text-dark">Non confirmée ({{ intdiv(Consultation::where('patient_id', $patient->id)->whereNotNull('ordonnance')->count(),2) }})</small>
                                     </div>
-                                    <a href="" class="stretched-link"></a>
+                                    <a href="{{ route('Ord') }}" class="stretched-link"></a>
                                 </div>
                             </div>
                         </div>
@@ -133,7 +133,7 @@
                                             ({{ Examen_complimentaire::select('*')->whereIn('consultation_id' , array_values( $consultations))->where('confirmation', false)->count() }})
                                         </small>
                                     </div>
-                                    <a href="" class="stretched-link"></a>
+                                    <a href="{{ route('Examens') }}" class="stretched-link"></a>
                                 </div>
                             </div>
                         </div>
@@ -164,7 +164,7 @@
                                             }})
                                         </small>
                                     </div>
-                                    <a href="" class="stretched-link"></a>
+                                    <a href="{{ route('ATCD', ['block' => 'médicaments']) }}" class="stretched-link"></a>
                                 </div>
                             </div>
                         </div>
