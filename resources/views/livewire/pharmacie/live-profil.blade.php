@@ -65,7 +65,7 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="col-md-12 text-right">
-                            <button class="btn btn-success">Update Info</button>
+                            <button class="btn btn-success">Mise à jour</button>
                             <!-- <button type="submit" class="btn btn-danger">Cancel</button> -->
                         </div>
                     </div>
