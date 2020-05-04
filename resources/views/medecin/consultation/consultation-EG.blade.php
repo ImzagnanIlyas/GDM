@@ -17,8 +17,9 @@
 </style>
 
 @if ( empty($consultation->EG->id) )
-    <p>Pas d'examen général pour cette consultation. Sélectionnez l'état du patient pour lancer un nouvel examen général.</p>
-    <table style="width:40%">
+<div class="col-12 d-flex flex-column align-items-center">
+    <p class="">Pas d'examen général pour cette consultation. Sélectionnez l'état du patient pour lancer un nouvel examen général.</p>
+    <table style="width: 40%">
         <tr>
             <th>État général:</th>
             <form method="POST" action="{{ route('medecin.consultation.storeEG', [ 'id' => $consultation->id ]) }}" class="form-inline">
@@ -37,6 +38,7 @@
             </form>
         </tr>
     </table>
+</div>
 @else
     <table style="width:60%">
         <tr>

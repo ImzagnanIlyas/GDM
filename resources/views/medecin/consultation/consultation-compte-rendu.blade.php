@@ -1,7 +1,7 @@
 @extends('medecin.layouts.consultation-layout')
 
 @section('title')
-    Ordonnance
+    Compte-rendu
 @endsection
 
 @section('style')
@@ -29,7 +29,7 @@ input:required{
 @empty ($consultation->compte_rendu)
     <form class='form-row justify-content-center mt-2' method="POST" action="{{ route('medecin.consultation.submitCompteRendu') }}">
         @csrf
-        <div class='form-group col-12' style="max-width: 75%;">
+        <div class='form-group col-12' style="max-width: 75%;max-height: 300px;">
             <div id="quill-textarea" style="min-height: 200px;color: black;">
                 {!! $generated_text !!}
             </div>
