@@ -32,11 +32,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ route('accueil') }}"><img src="{{ asset('img/logo.png') }}" title="Sihaty" alt="Sihaty"></a>
+                <a class="navbar-brand" href="{{ route('accueil') }}"><img src="{{ asset('img/MILAFI2.png') }}" title="Sihaty" alt="Sihaty" style="height: 50px;"></a>
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-right"     >
                     <li><a href="{{ route('examinateur.accueil') }}"><i class="fas fa-user"></i> Mon compte</a></li>
                     <li><a href="{{ route('examinateur.logout') }}" class="btn" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt"></i> Se deconecte</a></li>
                     <form id="logout-form" action="{{ route('examinateur.logout') }}" method="POST" style="display: none;">
@@ -59,7 +59,7 @@
                                 <a href="{{ route('examinateur.mdp') }}"><i class="fas fa-key"></i>Mot de passe</a>
                             </p>
 
-                            <a href="#" class="btn theme-btn btn-block">Historique</a>
+                            <a href="{{ route('examinateur.historique') }}" class="btn theme-btn btn-block">Historique</a>
                         </div>
                     </aside>
                 </div>
