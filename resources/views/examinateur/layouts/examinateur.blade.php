@@ -36,7 +36,7 @@
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right"     >
+                <ul class="nav navbar-nav navbar-right"  style="margin-top: 20px;">
                     <li><a href="{{ route('examinateur.accueil') }}"><i class="fas fa-user"></i> Mon compte</a></li>
                     <li><a href="{{ route('examinateur.logout') }}" class="btn" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt"></i> Se deconecte</a></li>
                     <form id="logout-form" action="{{ route('examinateur.logout') }}" method="POST" style="display: none;">

@@ -27,7 +27,7 @@
         </div>
     </div>
 </div>
-<!-- <div class="col-md-6">
+<div class="col-md-6">
     <div class="card bg-green order-card">
         <div class="card-block">
             <h6>Médicaments vendus</h6>
@@ -35,7 +35,7 @@
             <p class="mb-0">Ce mois-ci<span class="pull-right">213</span></p>
         </div>
     </div>
-</div> -->
+</div>
 
 <div class="col-lg-12 col-md-12">
     <div class="card">
