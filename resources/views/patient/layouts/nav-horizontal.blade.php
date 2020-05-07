@@ -50,7 +50,7 @@
                     <a class="nav-link" href="{{ url('/patient') }}"><span>Acceuil</span></a>
                 </li>
                 <li class="nav-item " role="presentation">
-                    <a class="nav-link" href="{{ route('ATCD' , ['médicaments']) }}">Mon Dossier médicale</a>
+                    <a class="nav-link" href="{{ route('ATCD' , ['médicaments']) }}">Mon dossier médical</a>
                 </li>
             </ul>
             <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
