@@ -32,31 +32,9 @@ class DossierController extends Controller
         }
 
         $patient = Patient::find($decrypted);
-        if ($n == 1) {
-            $data = Prescription_medicamenteuse::Join('medicaments' , 'medicaments.id' , 'prescription_medicamenteuses.medicament_id')
-                            ->Join('consultations' , 'consultations.id' , 'prescription_medicamenteuses.consultation_id')
-                            ->Where([
-                                ['consultations.patient_id' , $decrypted],
-                                ['confirmation' , true]
-                                ])
-                            ->orderByDesc('prescription_medicamenteuses.created_at')
-                            ->paginate(5);
-        }elseif ($n == 2) {
-            $atcd = json_decode($patient->atcd);
-            $data = $atcd->habitudes;
-            usort($data, function($a, $b) {
-                return $b->date <=> $a->date;
-            });
-        }elseif ($n == 3) {
-            $atcd = json_decode($patient->atcd);
-            $data = $atcd->chirurgicaux;
-            usort($data, function($a, $b) {
-                return $b->date_operation <=> $a->date_operation;
-            });
-        }
 
         return view('medecin.dossier.ATCD', [
-            'patient' => $patient, 'n' => $n, 'data' => $data
+            'patient' => $patient, 'n' => $n
         ]);
     }
 

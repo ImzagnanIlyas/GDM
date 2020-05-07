@@ -54,11 +54,3 @@ $active = Request::segment(4);
     </div>
 </div>
 @endsection
-
-@section('js')
-<script>
-    $('#searchInput').change( function(){
-        alert('Charkti m3ana f caméra cachée');
-    });
-</script>
-@endsection
