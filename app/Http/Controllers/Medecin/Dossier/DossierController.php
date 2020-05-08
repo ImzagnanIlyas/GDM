@@ -47,18 +47,9 @@ class DossierController extends Controller
         }
 
         $patient = Patient::find($decrypted);
-        $biometrie = json_decode($patient->biometrie);
-        $EG = Examen_general::
-                join('consultations' , 'consultations.id' , 'examen_generals.consultation_id')
-                ->where('consultations.patient_id', $patient->id)
-                ->orderByDesc('examen_generals.created_at')
-                ->paginate(5);
-
 
         return view('medecin.dossier.biometrie', [
-            'patient' => $patient,
-            'biometrie' => $biometrie,
-            'vitaux' => $EG
+            'patient' => $patient
         ]);
     }
 

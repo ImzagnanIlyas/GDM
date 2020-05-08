@@ -3,7 +3,6 @@
 namespace App\Http\Livewire\Medecin;
 
 use App\Consultation;
-use App\Patient;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -18,7 +17,8 @@ class LiveMesConsultations extends Component
 
     public function mount(){
         $this->searchInput = "";
-        $this->consultations = Consultation::where('medecin_id',  Auth::guard('medecin')->user()->id)->orderBy('created_at', 'desc')->paginate(5);
+        $this->consultations = Consultation::where('medecin_id',  Auth::guard('medecin')
+            ->user()->id)->orderBy('created_at', 'desc')->paginate(5);
     }
 
     public function render()

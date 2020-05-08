@@ -33,7 +33,7 @@ $active = Request::segment(4);
             <nav class="navbar navbar-dark navbar-expand bg-info rounded justify-content-center">
                 <ul class="nav navbar-nav">
                     <li class="nav-item dropdown @if($active === 'ATCD') active-nav-item @endif">
-                        <a class="nav-link dropdown-toggle" href="" id="navbardrop" data-toggle="dropdown">Antécédant</a>
+                        <a class="nav-link dropdown-toggle" href="" id="navbardrop" data-toggle="dropdown">Antécédents</a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="{{ route('medecin.dossier.ATCD', ['patient_id' => Crypt::encrypt($patient->id), 'n' => 1]) }}">Médicaments</a>
                             <a class="dropdown-item" href="{{ route('medecin.dossier.ATCD', ['patient_id' => Crypt::encrypt($patient->id), 'n' => 2]) }}">Habitudes</a>
