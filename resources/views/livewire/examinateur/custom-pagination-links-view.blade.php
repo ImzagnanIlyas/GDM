@@ -11,9 +11,9 @@
             @if (is_array($element))
                 @foreach ($element as $page => $url)
                     @if ($page == $paginator->currentPage())
-                    <a href="{{$url}}" class="is-active"><li></li></a>
+                    <a href="{{$url}}" class="is-active"><li>{{$page}}</li></a>
                     @else
-                    <a href="{{$url}}"><li></li></a>
+                    <a href="{{$url}}"><li>{{$page}}</li></a>
                     @endif
                 @endforeach
             @endif

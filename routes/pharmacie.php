@@ -55,4 +55,10 @@ Route::group(['namespace' => 'Pharmacie'], function() {
     Route::get('mdp', function () {
         return view('pharmacie.mdp');
     })->name('pharmacie.mdp');
+
+    Route::get('historique', function () {
+        return view('pharmacie.historique');
+    })
+    ->name('pharmacie.historique')
+    ->middleware('pharmacie.auth');
 });

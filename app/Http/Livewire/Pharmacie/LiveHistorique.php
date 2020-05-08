@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Livewire\Examinateur;
+namespace App\Http\Livewire\Pharmacie;
 
 use App\Examen_complimentaire;
+use App\Prescription_medicamenteuse;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -12,32 +13,27 @@ class LiveHistorique extends Component
     use WithPagination;
 
     public $searchInput;
-    protected $examens;
+    protected $ordonnances;
     protected $listeners = ['search'];
 
     public function mount(){
         $this->searchInput = "";
-        $this->examens = $this->getExamens();
+        $this->ordonnances = $this->getOrdonnances();
     }
 
     public function render()
     {
         if ($this->searchInput === ""){
-            $this->examens = $this->getExamens();
+            $this->ordonnances = $this->getOrdonnances();
         }else{
             $this->updatedSearchInput();
         }
-        return view('livewire.examinateur.live-historique',[
-            'examens' => $this->examens
+        return view('livewire.pharmacie.live-historique',[
+            'ordonnances' => $this->ordonnances
         ]);
     }
 
-    public function getExamens(){
-        $tmp = Examen_complimentaire::
-                where('examinateur_id', Auth::guard('examinateur')->user()->id)
-                ->orderByDesc('updated_at')
-                ->paginate(5);
-        return $tmp;
+    public function getOrdonnances(){
     }
 
     public function search($value){
@@ -50,11 +46,7 @@ class LiveHistorique extends Component
    }
 
     public function updatedSearchInput(){
-        $this->examens = Examen_complimentaire::
-                        where('examinateur_id', Auth::guard('examinateur')->user()->id)
-                        ->whereDate('updated_at','=',$this->searchInput)
-                        ->orderByDesc('updated_at')
-                        ->paginate(5);
+
     }
 
     public function paginationView()

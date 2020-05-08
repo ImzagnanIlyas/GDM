@@ -1,12 +1,12 @@
 <div>
-    <div class="col-sm-8 col-md-12 m-0">
-        <div class="card mb-0" style="display: flex;flex-direction: row;justify-content: flex-start;">
+    <div class="col-sm-8 col-md-12 m-0" style="margin-bottom: 1px !important">
+        <div class="card mb-0" style="display: flex;flex-direction: row;justify-content: flex-start;border-radius: 100px">
             <h4 class="text-dark" style="width: 60%;margin: 3%;">Historique</h4>
             <input class="form-control" style="width: 30%;margin: auto;" type="text" placeholder="Rechercher par date" wire:model="searchInput" onfocus="(this.type='date')" onblur="(this.type='text')">
         </div>
     </div>
     <div class="col-sm-8 col-md-12">
-    <div class="card">
+    <div class="card" style="border-radius: 20px">
         <div class="card-block">
             @if ($examens->isEmpty())
             <div class="col-sm-8 col-md-12">
@@ -43,6 +43,9 @@
                 </table>
             </div>
             @endif
+            <div class="pagination p1 twelve pb-0">
+                {{ $examens->links() }}
+            </div>
         </div>
     </div>
 </div>

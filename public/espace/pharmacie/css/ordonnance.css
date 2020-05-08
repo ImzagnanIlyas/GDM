@@ -367,10 +367,12 @@ visibility: hidden;
     line-height: 40px;
     padding: 0;
     text-align: center;
+    border-radius: 100%;
+    background-color: rgb(222, 222, 222);
   }
 
   .p1 a.is-active{
-    background-color: #2ecc71;
+    background-color: #2AF598;
     border-radius: 100%;
     color: #fff;
   }

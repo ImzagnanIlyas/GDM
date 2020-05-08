@@ -1,0 +1,3 @@
+<div>
+    {{ dd($ordonnances) }}
+</div>

@@ -92,7 +92,7 @@
         </div>
     </div>
 
-    <div class="pagination p6 twelve">
+    <div class="pagination p1 twelve">
     {{ $examens->links() }}
     </div>
     @endif
