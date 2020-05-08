@@ -112,7 +112,16 @@ class LiveAtcd extends Component
         }
     }
 
-    public function switchAdd(){
-        $this->add = true;
+    public function switchAdd($var){
+        $this->add = $var;
+    }
+
+    public function addHabitude($formData){
+        $atcd = json_decode($this->patient->atcd);
+        array_push($atcd->habitudes, (object)$formData);
+
+        $this->patient->atcd = json_encode($atcd);
+        $this->patient->save();
+        $this->switchAdd(false);
     }
 }
