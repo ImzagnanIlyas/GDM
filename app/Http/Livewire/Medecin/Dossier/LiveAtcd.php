@@ -10,7 +10,8 @@ class LiveAtcd extends Component
 {
     use WithPagination;
 
-    public $patient, $n, $searchInput;
+    public $patient, $n;
+    public $searchInput, $add;
     protected $data;
     protected $listeners = ['search'];
 
@@ -18,6 +19,7 @@ class LiveAtcd extends Component
         $this->patient = $patient;
         $this->n = $n;
         $this->data = $this->getData();
+        $add = false;
     }
 
     public function render()
@@ -108,5 +110,9 @@ class LiveAtcd extends Component
             }
             $this->data = $tmp;
         }
+    }
+
+    public function switchAdd(){
+        $this->add = true;
     }
 }

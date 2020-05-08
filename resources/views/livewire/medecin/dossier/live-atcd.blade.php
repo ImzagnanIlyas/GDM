@@ -43,20 +43,44 @@
         <div class="col-md-12 d-flex justify-content-between mt-2">
             <h4 class="text-dark">Habitude(s)</h4>
             <input class="form-control col-3" type="text" placeholder="Rechercher par date" wire:model="searchInput" onfocus="(this.type='date')" onblur="(this.type='text')">
+            @if(!$add)
+                <button class="btn btn-success" wire:click="switchAdd" title="Ajouter un examen complémentaire"> <i class="fas fa-plus" style="width: 80px"></i> </button>
+            @else
+                <button class="btn btn-success" onclick="event.preventDefault(); document.getElementsByClassName('addHabitude').submit();" title="Confirmer">Confirmer</button>
+            @endif
         </div>
         <div class="d-flex justify-content-center mt-2">
             <table class="table">
                 <head>
                     <tr>
-                        <th>Date</th>
-                        <th>Sport</th>
-                        <th>Alimentation</th>
-                        <th>Tabac</th>
-                        <th>Alcool</th>
-                        <th>Autre</th>
+                        <th class="col-1">Date</th>
+                        <th class="col-3">Sport</th>
+                        <th class="col-2">Alimentation</th>
+                        <th class="col-2">Tabac</th>
+                        <th class="col-2">Alcool</th>
+                        <th class="col-2">Autre</th>
                     </tr>
                 </head>
                 <body>
+                @if($add)
+                    <form class="addHabitude" wire:submit.prevent="addHabitude(Object.fromEntries(new FormData($event.target)))">
+                    <tr>
+                        <td><input class="form-control" type="date"></td>
+                        <td><input class="form-control" type="text"></td>
+                        <td><input class="form-control" type="text"></td>
+                        <td>
+                            <select name="etat" class="form-control " required>
+                                <option selected disabled></option>
+                                <option>Non fumeur</option>
+                                <option>Passif</option>
+                                <option>Fumeur actuellement</option>
+                            </select>
+                        </td>
+                        <td><input class="form-control" type="text"></td>
+                        <td><input class="form-control" type="text"></td>
+                    </tr>
+                    </form>
+                @endif
                 @foreach ($data as $habitude)
                     <tr>
                         <td>{{ date('d/m/Y',strtotime($habitude->date)) }}</td>

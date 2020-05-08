@@ -15,13 +15,14 @@ class LiveBio extends Component
     protected $listeners = ['search'];
 
     public function mount($patient){
+        $this->searchInput = "";
         $this->patient = $patient;
         $this->data = $this->getData();
     }
 
     public function render()
     {
-        if ( empty($this->searchInput) ){
+        if ( $this->searchInput === "" ){
             $this->data = $this->getData();
         }else{
             $this->updatingSearchInput();
@@ -33,8 +34,8 @@ class LiveBio extends Component
     }
 
     public function getData(){
-        $EG = Examen_general::
-                join('consultations' , 'consultations.id' , 'examen_generals.consultation_id')
+        $EG = Examen_general::select('examen_generals.*')
+                ->join('consultations' , 'consultations.id' , 'examen_generals.consultation_id')
                 ->where('consultations.patient_id', $this->patient->id)
                 ->orderByDesc('examen_generals.created_at')
                 ->paginate(5);
@@ -53,11 +54,11 @@ class LiveBio extends Component
     public function updatedSearchInput(){
         if (!empty($this->searchInput)) {
 
-        $this->data = Examen_general::join('consultations' , 'consultations.id' , 'examen_generals.consultation_id')
-        ->where([
-            ['consultations.patient_id', $this->patient->id],
-            ['consultations.date','=',$this->searchInput],
-            ])->paginate(5);
+        $this->data = Examen_general::select('examen_generals.*')
+        ->join('consultations' , 'consultations.id' , 'examen_generals.consultation_id')
+        ->where('consultations.patient_id', $this->patient->id)
+        ->whereDate('examen_generals.created_at', $this->searchInput)
+        ->paginate(5);
         }
 
     }
