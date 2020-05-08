@@ -19,8 +19,8 @@
                             <th>ID Consultation</th>
                             <th>Taille</th>
                             <th>Poids</th>
-                            <th>Date</th>
-                            <th>Plus</th>
+                            <th>Date et heure</th>
+                            <th>Details</th>
                         </tr>
                     </thead>
                     <tbody>

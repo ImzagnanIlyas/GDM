@@ -63,8 +63,7 @@ class DossierController extends Controller
 
         $patient = Patient::find($decrypted);
         return view('medecin.dossier.CM', [
-            'patient' => $patient,
-            'consultations' => Consultation::where('patient_id', $patient->id)->orderByDesc('created_at')->paginate(5)
+            'patient' => $patient
         ]);
     }
 
@@ -78,8 +77,7 @@ class DossierController extends Controller
 
         $patient = Patient::find($decrypted);
         return view('medecin.dossier.ordonnances', [
-            'patient' => $patient,
-            'consultations' => Consultation::where('patient_id', $patient->id)->whereNotNull('ordonnance')->orderByDesc('created_at')->paginate(5)
+            'patient' => $patient
         ]);
     }
 

@@ -108,7 +108,7 @@
         {{-- chirurgicaux --}}
         <div class="col-md-12 d-flex justify-content-between mt-2">
             <h4 class="text-dark">Chirurgicaux</h4>
-            <input class="form-control col-3" type="text" placeholder="Rechercher par nom" wire:model="searchInput">
+            <input class="form-control col-2" type="text" placeholder="Rechercher par nom" wire:model="searchInput">
         </div>
         @if ( empty($data) )
             <div class="alert alert-warning text-center mt-4" role="alert">
