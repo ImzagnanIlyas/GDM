@@ -105,16 +105,9 @@ class DossierController extends Controller
         }
 
         $patient = Patient::find($decrypted);
-        $EC = $EG = Examen_complimentaire::
-                join('consultations' , 'consultations.id' , 'examen_complimentaires.consultation_id')
-                ->select('examen_complimentaires.*')
-                ->where('consultations.patient_id', $patient->id)
-                ->orderByDesc('examen_complimentaires.created_at')
-                ->paginate(4);
 
         return view('medecin.dossier.examens', [
-            'patient' => $patient,
-            'examens' => $EC
+            'patient' => $patient
         ]);
     }
 

@@ -47,15 +47,22 @@ class LiveOrdonnances extends Component
 
     public function updatedSearchInput(){
         if (!empty($this->searchInput)) {
-            $this->data = Consultation::where('patient_id', $this->patient->id)
-                ->whereNotNull('ordonnance')
-                ->whereDate(function ($query) {
-                    $query->select('created_at')
-                        ->from('prescription_medicamenteuses')
-                        ->whereColumn('consultation_id', )
-                        ->first();
-                }, $this->searchInput)
-                ->paginate(5);
+            $this->data = Consultation::select('consultations.*')
+            ->join('prescription_medicamenteuses' , 'prescription_medicamenteuses.consultation_id' , 'consultations.id')
+            ->where('consultations.patient_id', $this->patient->id)
+            ->whereDate('prescription_medicamenteuses.created_at', $this->searchInput)
+            ->paginate(5);
+
+
+            // $this->data = Consultation::where('patient_id', $this->patient->id)
+            //     ->whereNotNull('ordonnance')
+            //     ->whereDate(function ($query) {
+            //         $query->select('created_at')
+            //             ->from('prescription_medicamenteuses')
+            //             // ->whereColumn('consultation_id', )
+            //             ->first();
+            //     }, $this->searchInput)
+            //     ->paginate(5);
         }
     }
 }
