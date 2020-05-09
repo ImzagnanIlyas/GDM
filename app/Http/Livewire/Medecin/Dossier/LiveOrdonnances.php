@@ -48,6 +48,7 @@ class LiveOrdonnances extends Component
     public function updatedSearchInput(){
         if (!empty($this->searchInput)) {
             $this->data = Consultation::select('consultations.*')
+            ->distinct()
             ->join('prescription_medicamenteuses' , 'prescription_medicamenteuses.consultation_id' , 'consultations.id')
             ->where('consultations.patient_id', $this->patient->id)
             ->whereDate('prescription_medicamenteuses.created_at', $this->searchInput)
