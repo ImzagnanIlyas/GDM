@@ -13,6 +13,8 @@
         color: #36b9cc !important;
     }
 </style>
+
+
 @php
 use Illuminate\Support\Facades\Request;
 $active1 = Request::segment(3);
@@ -144,9 +146,35 @@ $active2 = Request::segment(4);
                 @yield('onglet')
 
             </div>
+            @if(!empty($consultation->ordonnance))
+            <script>
+                var elem = document.getElementsByTagName('input');
+                l = elem.length;
+                for (i = 1; i < l; i++) {
+                    elem[i].disabled = true;
+                    elem[i].removeAttribute("id");
+                    elem[i].removeAttribute("name");
+                }
+
+                var elem = document.getElementsByTagName('select');
+                l = elem.length;
+                for (i = 0; i < l; i++) {
+                    elem[i].disabled = true;
+                }
+
+                var elem = document.getElementsByTagName('button');
+                l = elem.length;
+                for (i = 2; i < l; i++) {
+                    elem[i].disabled = true;
+                    elem[i].removeAttribute("type");
+                    elem[i].removeAttribute("wire:click");
+                    elem[i].removeAttribute("onclick");
+                }
+            </script>
+            @endif
         </div>
+
     </div>
 </div>
-
 @endsection
 
