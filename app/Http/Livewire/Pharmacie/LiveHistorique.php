@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Pharmacie;
 
+use App\Consultation;
 use App\Examen_complimentaire;
 use App\Prescription_medicamenteuse;
 use Illuminate\Support\Facades\Auth;
@@ -34,6 +35,11 @@ class LiveHistorique extends Component
     }
 
     public function getOrdonnances(){
+        return Consultation::select('consultations.*')
+                ->distinct()
+                ->join('prescription_medicamenteuses' , 'prescription_medicamenteuses.consultation_id' , 'consultations.id')
+                ->where('prescription_medicamenteuses.pharmacie_id', Auth::guard('pharmacie')->user()->id)
+                ->paginate(5);
     }
 
     public function search($value){
@@ -46,7 +52,12 @@ class LiveHistorique extends Component
    }
 
     public function updatedSearchInput(){
-
+        $this->ordonnances = Consultation::select('consultations.*')
+                            ->distinct()
+                            ->join('prescription_medicamenteuses' , 'prescription_medicamenteuses.consultation_id' , 'consultations.id')
+                            ->where('prescription_medicamenteuses.pharmacie_id', Auth::guard('pharmacie')->user()->id)
+                            ->whereDate('prescription_medicamenteuses.created_at', $this->searchInput)
+                            ->paginate(5);
     }
 
     public function paginationView()

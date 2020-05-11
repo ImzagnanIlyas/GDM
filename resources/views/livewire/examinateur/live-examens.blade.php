@@ -1,6 +1,6 @@
 <div>
     <div class="col-sm-8 col-md-12">
-        <div class="card">
+        <div class="card" style="border-radius: 20px;">
             <div class="card-block">
                 <div class="col-lg-12">
                     <div class="media">
@@ -35,7 +35,7 @@
     </div>
 
     <div class="col-sm-8 col-md-12 m-0">
-        <div class="card mb-0">
+        <div class="card mb-0" style="border-radius: 20px; margin-bottom: 2px !important;">
             <h4 class="text-dark text-center">Examens complémentaires</h4>
         </div>
     </div>
@@ -47,7 +47,7 @@
     </div>
     @else
     <div class="col-sm-8 col-md-12">
-        <div class="card">
+        <div class="card" style="border-radius: 20px;">
             <div class="card-block">
                 <div class="table-responsive table col-md-12 mt-4 overflow-auto">
                     <table class="table dataTable my-0">

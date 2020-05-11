@@ -12,7 +12,7 @@
     @endif
     <div class="card">
         <div class="card-block">
-            <h2 class="title">Change password</h2>
+            <h2 class="title">Changer le mot de passe</h2>
             <form accept-charset="utf-8" class="password" wire:submit.prevent="submit(Object.fromEntries(new FormData($event.target)))">
 
             <div class="form-group">

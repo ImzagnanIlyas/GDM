@@ -1,4 +1,4 @@
-@extends('examinateur.layouts.pharmacie')
+@extends('pharmacie.layouts.pharmacie')
 
 @section('title')
     Hitorique des ordonnances confirmé

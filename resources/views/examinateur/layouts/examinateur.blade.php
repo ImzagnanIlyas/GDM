@@ -53,7 +53,7 @@
                     <aside class="sidebar">
                         <div class="user-profile">
                             <img src="{{ asset('espace/pharmacie/img/avatar.svg') }}" alt="avatar">
-                            <h3>Examinateur {{ Auth::guard('examinateur')->user()->nom }}<span>{{ Auth::guard('examinateur')->user()->adresse }}</span></h3>
+                            <h3>Examinateur <br> {{ Auth::guard('examinateur')->user()->nom }}<span>{{ Auth::guard('examinateur')->user()->adresse }}</span></h3>
                             <p>
                                 <a href="{{ route('examinateur.profil') }}"><i class="fas fa-user-cog"></i>Paramètres</a>
                                 <a href="{{ route('examinateur.mdp') }}"><i class="fas fa-key"></i>Mot de passe</a>
