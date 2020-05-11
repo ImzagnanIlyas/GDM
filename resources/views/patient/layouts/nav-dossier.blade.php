@@ -55,7 +55,7 @@
     <nav class="navbar navbar-dark navbar-expand bg-success justify-content-center rounded">
         <ul class="nav navbar-nav">
             <li class="nav-item @if($active === 'Antécédents') active-nav-item @endif" role="presentation">
-                <a class="nav-link dropdown-toggle" href="" id="navbardrop" data-toggle="dropdown">Antécédant</a>
+                <a class="nav-link dropdown-toggle" href="" id="navbardrop" data-toggle="dropdown">Antécédent</a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="{{ route('ATCD', ['block' => 'médicaments']) }}">Médicaments</a>
                     <a class="dropdown-item" href="{{ route('ATCD', ['block' => 'habitudes']) }}">Habitudes</a>
