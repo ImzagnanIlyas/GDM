@@ -83,7 +83,7 @@
                                             }})
                                         </small>
                                     </div>
-                                    <a href="" class="stretched-link"></a>
+                                    <a href="{{ route('CM') }}" class="stretched-link"></a>
                                 </div>
                             </div>
                         </div>
@@ -102,7 +102,7 @@
                                         </h2>
                                         <small class="text-dark">Non confirmée ({{ intdiv(Consultation::where('patient_id', $patient->id)->whereNotNull('ordonnance')->count(),2) }})</small>
                                     </div>
-                                    <a href="" class="stretched-link"></a>
+                                    <a href="{{ route('Ord') }}" class="stretched-link"></a>
                                 </div>
                             </div>
                         </div>
@@ -114,7 +114,7 @@
                         <div class="card-body d-flex align-items-center p-0">
                             <div class="row">
                                 <div class="d-flex justify-content-start align-items-center ml-4">
-                                    <img class="img-circle" src="{{ asset('img/patient/ordonnance.png') }}"
+                                    <img class="img-circle" src="{{ asset('img/patient/examen.png') }}"
                                         style="width: 100px;border-radius: 50%;background-color: #90DFAA;">
                                     <div class="text-uppercase ml-3">
                                         <h2 class="text-danger font-weight-bold">
@@ -133,7 +133,7 @@
                                             ({{ Examen_complimentaire::select('*')->whereIn('consultation_id' , array_values( $consultations))->where('confirmation', false)->count() }})
                                         </small>
                                     </div>
-                                    <a href="" class="stretched-link"></a>
+                                    <a href="{{ route('Examens') }}" class="stretched-link"></a>
                                 </div>
                             </div>
                         </div>
@@ -164,7 +164,7 @@
                                             }})
                                         </small>
                                     </div>
-                                    <a href="" class="stretched-link"></a>
+                                    <a href="{{ route('ATCD', ['block' => 'médicaments']) }}" class="stretched-link"></a>
                                 </div>
                             </div>
                         </div>
