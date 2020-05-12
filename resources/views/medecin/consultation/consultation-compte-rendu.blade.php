@@ -41,8 +41,8 @@ input:required{
                 <textarea class='form-control' rows="5" id="data-textarea" name="data-textarea" type="textarea" hidden></textarea>
                 <input type="text" name="consultation_id" value="{{ $consultation->id }}" hidden>
             </div>
-            <div class='form-group col-6 mt-5'>
-                <button type='submit' class='btn btn-primary btn-lg btn-block' onclick="$('#data-textarea').val($('.ql-editor').html());">Confirmer</button>
+            <div class='form-group col-4 mt-5'>
+                <button role="CR" type='submit' class='btn btn-primary btn-lg btn-block' onclick="$('#data-textarea').val($('.ql-editor').html());">Confirmer</button>
             </div>
         </form>
     @endif

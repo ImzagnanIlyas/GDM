@@ -165,10 +165,21 @@ $active2 = Request::segment(4);
                 var elem = document.getElementsByTagName('button');
                 l = elem.length;
                 for (i = 2; i < l; i++) {
-                    elem[i].disabled = true;
-                    elem[i].removeAttribute("type");
-                    elem[i].removeAttribute("wire:click");
-                    elem[i].removeAttribute("onclick");
+                    if (! elem[i].getAttribute("role") === "CR" ) {
+                        elem[i].disabled = true;
+                        elem[i].removeAttribute("type");
+                        elem[i].removeAttribute("wire:click");
+                        elem[i].removeAttribute("onclick");
+                    }
+                }
+
+                var elem = document.getElementsByTagName('a');
+                l = elem.length;
+                for (i = 0; i < l; i++) {
+                    if ( elem[i].getAttribute("role") === "edit" ) {
+                        elem[i].setAttribute('href', "");
+                        elem[i].classList.add("disabled");
+                    }
                 }
             </script>
             @endif
