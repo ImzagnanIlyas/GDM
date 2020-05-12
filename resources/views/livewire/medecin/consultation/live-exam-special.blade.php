@@ -3,9 +3,14 @@
     <div class="col-sm-8 col-md-12">
         <div class="row justify-content-between px-2">
             <h4 class="text-dark">Examens spécialisés</h4>
-            <button class="btn btn-success" wire:click="showCreateForm"> <i class="fas fa-plus" style="width: 80px"></i> </button>
+            <button role="edit" class="btn btn-success" wire:click="showCreateForm"> <i class="fas fa-plus" style="width: 80px"></i> </button>
         </div>
     </div>
+    @if ($consultation->ESs->isEmpty())
+        <div class="alert alert-warning text-center mt-4" role="alert">
+            Aucun examen spécialisé pour cette consultation.
+        </div>
+    @else
     <div class="table-responsive table col-md-12 mt-2 overflow-auto" style="max-height: 305px">
         <table class="table dataTable my-0">
             <thead>
@@ -18,7 +23,7 @@
                 </tr>
             </thead>
             <tbody>
-                @forelse( $consultation->ESs as $ES )
+                @foreach( $consultation->ESs as $ES )
                 <tr>
                     <td>{{ $ES->nom }}</td>
                     <td>{{ $ES->created_at }}</td>
@@ -26,7 +31,7 @@
                     <td title="En attend"> <i class="fas fa-clock ml-3" style="color: orange;font-size: x-large;"></i> </td>
                     <td> - </td>
                     <td>
-                        <a href="{{ route('medecin.consultation.showExamSpecialAjoutResultat', [ 'consultation_id' => Crypt::encrypt($consultation->id), 'examen_id' => Crypt::encrypt($ES->id), 'type' => 'text' ]) }}" class="btn btn-primary">Ajouter résultat</a>
+                        <a role="edit" href="{{ route('medecin.consultation.showExamSpecialAjoutResultat', [ 'consultation_id' => Crypt::encrypt($consultation->id), 'examen_id' => Crypt::encrypt($ES->id), 'type' => 'text' ]) }}" class="btn btn-primary">Ajouter résultat</a>
                     </td>
                     @else
                     <td title="Résultat ajouté"> <i class="fas fa-check-circle ml-3" style="color: green;font-size: x-large;"></i> </td>
@@ -37,15 +42,10 @@
                     </td>
                     @endif
                 </tr>
-                @empty
-                <tr>
-                    <div class="alert alert-warning" role="alert">
-                        Pas d'examen spécialisé pour cette consultation.
-                    </div>
-                </tr>
-                @endforelse
+                @endforeach
             </tbody>
         </table>
     </div>
+    @endif
 
 </div>

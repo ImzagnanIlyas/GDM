@@ -150,3 +150,14 @@ $active2 = Request::segment(4);
 
 @endsection
 
+@section('consultation-js')
+
+    @if( $consultation->medecin_id != Auth::guard('medecin')->user()->id )
+        <script>
+            $(document).ready(function(){
+                $("[role='edit']").remove();
+            });
+        </script>
+    @endif
+
+@endsection

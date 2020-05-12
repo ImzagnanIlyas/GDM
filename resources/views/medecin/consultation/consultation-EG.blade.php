@@ -17,28 +17,37 @@
 </style>
 
 @if ( empty($consultation->EG->id) )
-<div class="col-12 d-flex flex-column align-items-center">
-    <p class="">Pas d'examen général pour cette consultation. Sélectionnez l'état du patient pour lancer un nouvel examen général.</p>
-    <table style="width: 40%">
-        <tr>
-            <th>État général:</th>
-            <form method="POST" action="{{ route('medecin.consultation.storeEG', [ 'id' => $consultation->id ]) }}" class="form-inline">
-                @csrf
-                <td>
-                    <select name="etat" class="form-control " required>
-                        <option selected="yes"></option>
-                        <option>Bon</option>
-                        <option>Assez bon</option>
-                        <option>Mauvais</option>
-                    </select>
-                </td>
-                <td>
-                    <button class="btn btn-primary" type="submit"><i class="far fa-check-circle"></i></button>
-                </td>
-            </form>
-        </tr>
-    </table>
-</div>
+
+    @if( $consultation->medecin_id != Auth::guard('medecin')->user()->id )
+        <div class="alert alert-warning text-center mt-4" role="alert">
+            Pas d'examen général pour cette consultation.
+        </div>
+    @else
+
+        <div class="col-12 d-flex flex-column align-items-center">
+            <p class="">Pas d'examen général pour cette consultation. Sélectionnez l'état du patient pour lancer un nouvel examen général.</p>
+            <table style="width: 40%">
+                <tr>
+                    <th>État général:</th>
+                    <form method="POST" action="{{ route('medecin.consultation.storeEG', [ 'id' => $consultation->id ]) }}" class="form-inline">
+                        @csrf
+                        <td>
+                            <select name="etat" class="form-control " required>
+                                <option selected="yes"></option>
+                                <option>Bon</option>
+                                <option>Assez bon</option>
+                                <option>Mauvais</option>
+                            </select>
+                        </td>
+                        <td>
+                            <button role="edit" class="btn btn-primary" type="submit"><i class="far fa-check-circle"></i></button>
+                        </td>
+                    </form>
+                </tr>
+            </table>
+        </div>
+    @endif
+
 @else
     <table style="width:60%">
         <tr>
@@ -53,7 +62,7 @@
             <th>Température en degrés Celsius (°C):</th>
             <td>
                 @if ( empty($consultation->EG->temperature) )
-                        <input type="number" name="temperature" id="temperature" min="1" max="100" class="form-control">
+                        <input role="edit" type="number" name="temperature" id="temperature" min="1" max="100" class="form-control">
                 @else
                     {{ $consultation->EG->temperature }}
                 @endif
@@ -64,7 +73,7 @@
             <td>
                 @if ( empty($consultation->EG->tension_arterielle) )
 
-                        <input type="number" name="ta" id="ta" min="0" max="100" class="form-control">
+                        <input role="edit" type="number" name="ta" id="ta" min="0" max="100" class="form-control">
 
 
                 @else
@@ -77,7 +86,7 @@
             <td>
                 @if ( empty($consultation->EG->frequence_cardiaque) )
 
-                        <input type="number" name="fc" id="fc" min="0" max="100" class="form-control">
+                        <input role="edit" type="number" name="fc" id="fc" min="0" max="100" class="form-control">
                 @else
                     {{ $consultation->EG->frequence_cardiaque }}
                 @endif
@@ -88,7 +97,7 @@
             <td>
                 @if ( empty($consultation->EG->frequence_respiratoire) )
 
-                        <input type="number" name="fr" id="fr" min="0" max="100" class="form-control">
+                        <input role="edit" type="number" name="fr" id="fr" min="0" max="100" class="form-control">
 
                 @else
                     {{ $consultation->EG->frequence_respiratoire }}
@@ -100,7 +109,7 @@
             <td>
                 @if ( empty($consultation->EG->poids) )
 
-                        <input type="number" name="p" id="p" min="0" max="1000" class="form-control">
+                        <input role="edit" type="number" name="p" id="p" min="0" max="1000" class="form-control">
 
                 @else
                     {{ $consultation->EG->poids }}
@@ -112,7 +121,7 @@
             <td>
                 @if ( empty($consultation->EG->taille) )
 
-                        <input type="number" name="t" id="t" min="0" max="300" class="form-control">
+                        <input role="edit" type="number" name="t" id="t" min="0" max="300" class="form-control">
 
                 @else
                     {{ $consultation->EG->taille }}
@@ -123,7 +132,7 @@
             <th>Conjonctives:</th>
             <td>
                 @if ( empty($consultation->EG->conjonctives) )
-                        <select name="c">
+                        <select role="edit" name="c">
                             <option selected="yes"></option>
                             <option>Normalement colorées</option>
                             <option>Légèrement décolorées</option>
@@ -140,7 +149,7 @@
             <td>
                 @if ( empty($consultation->EG->autre) )
 
-                        <textarea name="autres" id="autres" class="form-control"></textarea>
+                        <textarea role="edit" name="autres" id="autres" class="form-control"></textarea>
 
                 @else
                     {{ $consultation->EG->autre }}
@@ -149,7 +158,7 @@
         </tr>
         <tr>
             <td>
-                <button class="btn btn-primary" type="submit">Valider</button>
+                <button role="edit" class="btn btn-primary" type="submit">Valider</button>
             </td>
         </tr>
         </form>
@@ -179,8 +188,8 @@
             @if ( empty($consultation->histoire) )
                 <form method="POST" action="{{ route('medecin.consultation.storeHist', [ 'id' => $consultation->id ]) }}" class="form-inline">
                     @csrf
-                    <input type="text" name="histoire" id="histoire" class="form-control" aria-describedby="helpId">
-                    <button class="btn btn-primary" type="submit"><i class="far fa-check-circle"></i></button>
+                    <input role="edit" type="text" name="histoire" id="histoire" class="form-control" aria-describedby="helpId">
+                    <button role="edit" class="btn btn-primary" type="submit"><i class="far fa-check-circle"></i></button>
                 </form>
             @else
                 {{ $consultation->histoire }}
@@ -193,8 +202,8 @@
             @if ( empty($consultation->strategie_diagnostique) )
                 <form method="POST" action="{{ route('medecin.consultation.storeSD', [ 'id' => $consultation->id ]) }}" class="form-inline">
                     @csrf
-                    <input type="text" name="sd" id="sd" class="form-control" aria-describedby="helpId">
-                    <button class="btn btn-primary" type="submit"><i class="far fa-check-circle"></i></button>
+                    <input role="edit" type="text" name="sd" id="sd" class="form-control" aria-describedby="helpId">
+                    <button role="edit" class="btn btn-primary" type="submit"><i class="far fa-check-circle"></i></button>
                 </form>
             @else
                 {{ $consultation->strategie_diagnostique }}
@@ -207,8 +216,8 @@
             @if ( empty($consultation->diagnostic_retenu) )
                 <form method="POST" action="{{ route('medecin.consultation.storeDR', [ 'id' => $consultation->id ]) }}" class="form-inline">
                     @csrf
-                    <input type="text" name="dr" id="dr" class="form-control" aria-describedby="helpId">
-                    <button class="btn btn-primary" type="submit"><i class="far fa-check-circle"></i></button>
+                    <input role="edit" type="text" name="dr" id="dr" class="form-control" aria-describedby="helpId">
+                    <button role="edit" class="btn btn-primary" type="submit"><i class="far fa-check-circle"></i></button>
                 </form>
             @else
                 {{ $consultation->diagnostic_retenu }}

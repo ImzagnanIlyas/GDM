@@ -27,7 +27,13 @@ input:required{
 @section('onglet')
 
 @empty ($consultation->ordonnance)
-    @livewire('medecin.consultation.live-ordonnance', $consultation)
+    @if( $consultation->medecin_id != Auth::guard('medecin')->user()->id )
+        <div class="alert alert-warning text-center mt-4" role="alert">
+            Pas d'ordonnance pour cette consultation.
+        </div>
+    @else
+        @livewire('medecin.consultation.live-ordonnance', $consultation)
+    @endif
 @else
     <div class="col-md-10">
         <div class="card-body">

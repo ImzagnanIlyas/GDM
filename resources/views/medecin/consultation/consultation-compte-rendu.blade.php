@@ -27,19 +27,25 @@ input:required{
 @section('onglet')
 
 @empty ($consultation->compte_rendu)
-    <form class='form-row justify-content-center mt-2' method="POST" action="{{ route('medecin.consultation.submitCompteRendu') }}">
-        @csrf
-        <div class='form-group col-12' style="max-width: 75%;max-height: 300px;">
-            <div id="quill-textarea" style="min-height: 200px;color: black;">
-                {!! $generated_text !!}
+    @if( $consultation->medecin_id != Auth::guard('medecin')->user()->id )
+        <div class="alert alert-warning text-center mt-4" role="alert">
+            Pas de compte-rendu pour cette consultation.
+        </div>
+    @else
+        <form class='form-row justify-content-center mt-2' method="POST" action="{{ route('medecin.consultation.submitCompteRendu') }}">
+            @csrf
+            <div class='form-group col-12' style="max-width: 75%;max-height: 300px;">
+                <div id="quill-textarea" style="min-height: 200px;color: black;">
+                    {!! $generated_text !!}
+                </div>
+                <textarea class='form-control' rows="5" id="data-textarea" name="data-textarea" type="textarea" hidden></textarea>
+                <input type="text" name="consultation_id" value="{{ $consultation->id }}" hidden>
             </div>
-            <textarea class='form-control' rows="5" id="data-textarea" name="data-textarea" type="textarea" hidden></textarea>
-            <input type="text" name="consultation_id" value="{{ $consultation->id }}" hidden>
-        </div>
-        <div class='form-group col-6 mt-5'>
-            <button type='submit' class='btn btn-primary btn-lg btn-block' onclick="$('#data-textarea').val($('.ql-editor').html());">Confirmer</button>
-        </div>
-    </form>
+            <div class='form-group col-6 mt-5'>
+                <button type='submit' class='btn btn-primary btn-lg btn-block' onclick="$('#data-textarea').val($('.ql-editor').html());">Confirmer</button>
+            </div>
+        </form>
+    @endif
 @else
     <div class="col-md-10">
         <div class="card-body">

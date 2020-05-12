@@ -134,6 +134,7 @@
     @livewireScripts
     @include('sweetalert::alert')
     @yield('js')
+    @yield('consultation-js')
 </body>
 
 </html>

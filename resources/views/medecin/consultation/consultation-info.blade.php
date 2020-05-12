@@ -29,8 +29,8 @@
             @if ( empty($consultation->histoire) )
                 <form method="POST" action="{{ route('medecin.consultation.storeInfo', [ 'id' => $consultation->id ]) }}" class="form-inline">
                     @csrf
-                    <input type="text" name="histoire" id="histoire" class="form-control" aria-describedby="helpId">
-                    &emsp;<button class="btn btn-primary" type="submit"><i class="far fa-check-circle"></i></button>
+                    <input role="edit" type="text" name="histoire" id="histoire" class="form-control" aria-describedby="helpId">
+                    &emsp;<button role="edit" class="btn btn-primary" type="submit"><i class="far fa-check-circle"></i></button>
                 </form>
             @else
                 {{ $consultation->histoire }}
@@ -43,8 +43,8 @@
             @if ( empty($consultation->strategie_diagnostique) )
                 <form method="POST" action="{{ route('medecin.consultation.storeInfo', [ 'id' => $consultation->id ]) }}" class="form-inline">
                     @csrf
-                    <input type="text" name="sd" id="sd" class="form-control" aria-describedby="helpId">
-                    &emsp;<button class="btn btn-primary" type="submit"><i class="far fa-check-circle"></i></button>
+                    <input role="edit" type="text" name="sd" id="sd" class="form-control" aria-describedby="helpId">
+                    &emsp;<button role="edit" class="btn btn-primary" type="submit"><i class="far fa-check-circle"></i></button>
                 </form>
             @else
                 {{ $consultation->strategie_diagnostique }}
@@ -57,8 +57,8 @@
             @if ( empty($consultation->diagnostic_retenu) )
                 <form method="POST" action="{{ route('medecin.consultation.storeInfo', [ 'id' => $consultation->id ]) }}" class="form-inline">
                     @csrf
-                    <input type="text" name="dr" id="dr" class="form-control" aria-describedby="helpId">
-                    &emsp;<button class="btn btn-primary" type="submit"><i class="far fa-check-circle"></i></button>
+                    <input role="edit" type="text" name="dr" id="dr" class="form-control" aria-describedby="helpId">
+                    &emsp;<button role="edit" class="btn btn-primary" type="submit"><i class="far fa-check-circle"></i></button>
                 </form>
             @else
                 {{ $consultation->diagnostic_retenu }}

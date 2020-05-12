@@ -2,11 +2,11 @@
     <div class="col-sm-8 col-md-12">
         <div class="row justify-content-between px-2">
             <h4 class="text-dark">Examens complémentaires</h4>
-            <button class="btn btn-success" wire:click="createExam" title="Ajouter un examen complémentaire"> <i class="fas fa-plus" style="width: 80px"></i> </button>
+            <button role="edit" class="btn btn-success" wire:click="createExam" title="Ajouter un examen complémentaire"> <i class="fas fa-plus" style="width: 80px"></i> </button>
         </div>
     </div>
     @if ($consultation->ECs->isEmpty())
-        <div class="alert alert-warning mt-4" role="alert">
+        <div class="alert alert-warning text-center mt-4" role="alert">
             Aucun examen complémentaire pour cette consultation.
         </div>
     @else
