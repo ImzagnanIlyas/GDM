@@ -45,7 +45,7 @@ $active = Request::segment(4);
                     <li class="nav-item @if($active === 'CM') active-nav-item @endif" role="presentation"><a class="nav-link" href="{{ route('medecin.dossier.CM', ['patient_id' => Crypt::encrypt($patient->id)]) }}">Consultations médicales</a></li>
                     <li class="nav-item @if($active === 'Ordonnances') active-nav-item @endif" role="presentation"><a class="nav-link" href="{{ route('medecin.dossier.Ordonnances', ['patient_id' => Crypt::encrypt($patient->id)]) }}">Ordonnonces</a></li>
                     <li class="nav-item @if($active === 'Examens') active-nav-item @endif" role="presentation"><a class="nav-link" href="{{ route('medecin.dossier.Examens', ['patient_id' => Crypt::encrypt($patient->id)]) }}">Examens</a></li>
-                    <li class="nav-item @if($active === 'Problemes') active-nav-item @endif" role="presentation"><a class="nav-link" href="{{ route('medecin.dossier.Problemes', ['patient_id' => Crypt::encrypt($patient->id)]) }}">Problémes</a></li>
+                    <li class="nav-item @if($active === 'Problemes') active-nav-item @endif" role="presentation"><a class="nav-link" href="{{ route('medecin.dossier.Problemes', ['patient_id' => Crypt::encrypt($patient->id)]) }}">Problèmes</a></li>
                 </ul>
             </nav>
 
