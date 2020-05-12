@@ -15,8 +15,12 @@
         <h3 class="text-dark mb-4">Rechercher un patient</h3>
 
         <div class="card shadow">
-            <div class="card-header py-3">
+            <div class="card-header d-flex justify-content-between align-items-center py-3">
                 <p class="text-primary m-0 font-weight-bold">CIN ENTRÉ : {{ $cin }}</p>
+                <form class='custom-form'  method='GET' action="{{ route('medecin.showAddAlert') }}">
+                    <input type='text' value="{{ $cin }}" id='cin' name='cin' hidden>
+                    <button type='submit' class='btn btn-success'>Nouvelle consultation</button>
+                </form>
             </div>
             <div class="card-body">
                 <div class="table-responsive table" >
@@ -24,15 +28,6 @@
                         <p> Aucun résultat, essayez de saisir un CIN valide</p>
                     @else
                         <table style="width:100%">
-                            <tr>
-                                <th>
-                                    <form class='custom-form'  method='GET' action="{{ route('medecin.showAddAlert') }}">
-                                        <input type='text' value="{{ $cin }}" id='cin' name='cin' hidden>
-                                        <button type='submit' class='btn btn-success'>Nouvelle consultation</button>
-                                    </form>
-                                </th>
-                                <td></td>
-                            </tr>
                             <tr>
                                 <th>CIN</th>
                                 <td>{{ $patient->cin }}</td>

@@ -3,7 +3,6 @@
 @section('onglet')
 <div class="col-md-12 d-flex justify-content-between mt-3">
     <h4 class="text-center"><b>Allergies</b></h4>
-    <input class="form-control col-3" type="text" placeholder="Rechercher par nom" id="searchInput">
 </div>
 <div class="d-flex justify-content-center mt-2">
     @if ( empty($allergies) )
@@ -34,7 +33,6 @@
 <hr>
 <div class="col-md-12 d-flex justify-content-between mt-2">
     <h4 class="text-center"><b>Traitements chroniques</b></h4>
-    <input class="form-control col-3" type="text" placeholder="Rechercher par médicament" id="searchInput">
 </div>
 <div class="d-flex justify-content-center mt-2">
     @if ($TC->isEmpty())
