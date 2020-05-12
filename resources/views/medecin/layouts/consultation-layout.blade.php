@@ -151,9 +151,11 @@ $active2 = Request::segment(4);
                 var elem = document.getElementsByTagName('input');
                 l = elem.length;
                 for (i = 1; i < l; i++) {
-                    elem[i].disabled = true;
-                    elem[i].removeAttribute("id");
-                    elem[i].removeAttribute("name");
+                    if (! elem[i].getAttribute("role") === "CR" ) {
+                        elem[i].disabled = true;
+                        elem[i].removeAttribute("id");
+                        elem[i].removeAttribute("name");
+                    }
                 }
 
                 var elem = document.getElementsByTagName('select');

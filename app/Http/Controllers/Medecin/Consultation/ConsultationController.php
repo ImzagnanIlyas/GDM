@@ -7,6 +7,7 @@ use App\Examen_complimentaire;
 use App\Examen_general;
 use App\Examen_specialise;
 use App\Http\Controllers\Controller;
+use App\Medicament;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -273,8 +274,71 @@ class ConsultationController extends Controller
         }catch (DecryptException $e) {
             abort(404);
         }
+        $consultation =Consultation::findOrFail($decrypted);
 
-        $text = "<p class=\"ql-align-right\"><strong>Le mercredi 29 avril 2020</strong></p><p><strong>Docteur ELGUEZDI Mohamed</strong></p><p><strong>Médecin Gastro-entérologie</strong></p><p><strong>6 PLACE TALHA. AGDAL, Rabat </strong></p><p><strong>0612345678</strong></p><p>&nbsp;</p><p><br></p><p><u>Patient</u></p><p class=\"ql-indent-2\"><strong style=\"color: rgb(136, 136, 136);\">CIN :</strong><span style=\"color: rgb(136, 136, 136);\"> </span>AA00001</p><p class=\"ql-indent-2\"><strong style=\"color: rgb(136, 136, 136);\">Nom et prénom :</strong> IMZAGNAN Ilyas</p><p><u>Consultation</u></p><p class=\"ql-indent-2\"><strong style=\"color: rgb(136, 136, 136);\">Numéro</strong><strong> :</strong> 23</p><p class=\"ql-indent-2\"><strong style=\"color: rgb(136, 136, 136);\">Date :</strong> 28/04/2020</p><p class=\"ql-indent-2\"><strong style=\"color: rgb(136, 136, 136);\">Motif :</strong><strong> </strong>Douleurs à l'estomac</p><p class=\"ql-indent-2\"><strong style=\"color: rgb(136, 136, 136);\">Histoire de la maladie :</strong><span style=\"color: rgb(136, 136, 136);\"> </span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p class=\"ql-indent-2\"><strong style=\"color: rgb(136, 136, 136);\">Para-clinique (Examens complémentaire) :</strong></p><ol><li class=\"ql-indent-3\">Examen de type : <strong>Analyse biologique</strong> (numéro : 20)</li><li class=\"ql-indent-3\">Examen de type : <strong>Imagerie médicale</strong> (numéro : 21)</li><li class=\"ql-indent-3\">Examen de type : <strong>Analyse biologique</strong> (numéro : 22)</li></ol><p class=\"ql-indent-2\"><strong style=\"color: rgb(136, 136, 136);\">Diagnostic final :</strong><span style=\"color: rgb(136, 136, 136);\"> </span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut.</p><p class=\"ql-indent-2\"><strong style=\"color: rgb(136, 136, 136);\">Thérapeutique (Prescriptions médicamenteuses) :</strong></p><ol><li class=\"ql-indent-3\">DOLIPRANE VITAMINE C (500 / 150 MG / MG) (COMPRIME EFFERVESCENT), de 1 à 2 comprimé (Orale) tous les jours soire avant de dourmir, commençant 2020-04-25 pour 3 mois</li></ol><p><br></p>";
+        setlocale (LC_TIME, 'fr_FR.utf8','fra');
+        $time = strftime("%A %d %B %Y");
+        $medecin = strtoupper($consultation->medecin->patient->nom)." ".$consultation->medecin->patient->prenom;
+        $specialite = $consultation->medecin->specialite;
+        $lieu = $consultation->medecin->lieu;
+        $tele = $consultation->medecin->tele_pro;
+        $cin = $consultation->patient->cin;
+        $nom = strtoupper($consultation->patient->nom)." ".$consultation->patient->prenom;
+        $id = $consultation->id;
+        $date = date('d/m/Y',strtotime($consultation->date));
+        $motif = $consultation->motif;
+        $histoire = $consultation->histoire;
+
+        $EC = $consultation->ECs;
+        $ECText = "";
+        if ($EC->isEmpty()) {
+            $ECText = "<li class=\"ql-indent-3\">Aucun examen</li>";
+        }else {
+            foreach ($EC as $value) {
+                $type = json_decode($value->bilan)->type;
+                $ECText .= "<li class=\"ql-indent-3\">Examen de type : <strong>$type</strong> (numéro : $value->id)</li>";
+            }
+        }
+
+        $diagno = $consultation->diagnostic_retenu;
+
+        $PM = $consultation->PMs;
+        $PMText = "";
+        if ($PM->isEmpty()) {
+            $PMText = "<li class=\"ql-indent-3\">Aucune prescriptions médicamenteuse</li>";
+        }else {
+            foreach ($PM as $value) {
+                $medicament =  Medicament::find($value->medicament_id);
+                $PMText .= "<li class=\"ql-indent-3\">".$medicament->nom." (".$medicament->dosage.$medicament->unite_dosage.") (".$medicament->forme."), ".$value->dose." (".$value->voie.") ".$value->rythme.", commençant ".$value->date_debut." ".$value->duree."<span style='color: rgb(68, 68, 68);'> (".$value->commentaire.")</span></li>";
+            }
+        }
+
+        $text = "
+            <p class=\"ql-align-right\"><strong>Le $time</strong></p>
+            <p><strong>Docteur $medecin</strong></p>
+            <p><strong>$specialite</strong></p>
+            <p><strong>$lieu</strong></p>
+            <p><strong>$tele</strong></p><p>&nbsp;</p>
+            <p><br></p>
+            <p><u>Patient</u></p>
+                <p class=\"ql-indent-2\"><strong style=\"color: rgb(136, 136, 136);\">CIN :</strong><span style=\"color: rgb(136, 136, 136);\"> </span>$cin</p>
+                <p class=\"ql-indent-2\"><strong style=\"color: rgb(136, 136, 136);\">Nom et prénom :</strong> $nom</p>
+            <p><u>Consultation</u></p>
+                <p class=\"ql-indent-2\"><strong style=\"color: rgb(136, 136, 136);\">Numéro</strong><strong> :</strong> $id</p>
+                <p class=\"ql-indent-2\"><strong style=\"color: rgb(136, 136, 136);\">Date :</strong> $date</p>
+                <p class=\"ql-indent-2\"><strong style=\"color: rgb(136, 136, 136);\">Motif :</strong><strong> </strong> $motif</p>
+                <p class=\"ql-indent-2\"><strong style=\"color: rgb(136, 136, 136);\">Histoire de la maladie :</strong><span style=\"color: rgb(136, 136, 136);\"> </span>$histoire</p>
+                <p class=\"ql-indent-2\"><strong style=\"color: rgb(136, 136, 136);\">Para-clinique (Examens complémentaire) :</strong></p>
+                    <ol>
+                        $ECText
+                    </ol>
+                <p class=\"ql-indent-2\"><strong style=\"color: rgb(136, 136, 136);\">Diagnostic final :</strong><span style=\"color: rgb(136, 136, 136);\"> </span>$diagno</p>
+                <p class=\"ql-indent-2\"><strong style=\"color: rgb(136, 136, 136);\">Thérapeutique (Prescriptions médicamenteuses) :</strong></p>
+                    <ol>
+                        $PMText
+                    </ol>
+            <p><br></p>
+        ";
 
         return view('medecin.consultation.consultation-compte-rendu', [
             'consultation' => Consultation::findOrFail($decrypted),
