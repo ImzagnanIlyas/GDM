@@ -5,10 +5,10 @@
 @endsection
 
 @section('onglet')
-<div style="margin-right: 20%; margin-left: 20%">
+<div class="col-8 m-auto">
 <table  class="table">
     <tr>
-        <th style="width:50%">Médecin:</th>
+        <th class="col-4">Médecin:</th>
         <td>{{ $consultation->medecin->patient->nom }} {{ $consultation->medecin->patient->prenom }}</td>
     </tr>
     <tr>

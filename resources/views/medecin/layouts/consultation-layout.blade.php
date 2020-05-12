@@ -151,7 +151,7 @@ $active2 = Request::segment(4);
                 var elem = document.getElementsByTagName('input');
                 l = elem.length;
                 for (i = 1; i < l; i++) {
-                    if (! elem[i].getAttribute("role") === "CR" ) {
+                    if ( elem[i].getAttribute("role") !== "CR" ) {
                         elem[i].disabled = true;
                         elem[i].removeAttribute("id");
                         elem[i].removeAttribute("name");
@@ -167,7 +167,7 @@ $active2 = Request::segment(4);
                 var elem = document.getElementsByTagName('button');
                 l = elem.length;
                 for (i = 2; i < l; i++) {
-                    if (! elem[i].getAttribute("role") === "CR" ) {
+                    if ( elem[i].getAttribute("role") !== "CR" ) {
                         elem[i].disabled = true;
                         elem[i].removeAttribute("type");
                         elem[i].removeAttribute("wire:click");
@@ -178,7 +178,7 @@ $active2 = Request::segment(4);
                 var elem = document.getElementsByTagName('a');
                 l = elem.length;
                 for (i = 0; i < l; i++) {
-                    if ( elem[i].getAttribute("role") === "edit" ) {
+                    if ( elem[i].getAttribute("role") == "edit" ) {
                         elem[i].setAttribute('href', "");
                         elem[i].classList.add("disabled");
                     }
