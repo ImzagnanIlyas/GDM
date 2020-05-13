@@ -30,7 +30,6 @@
                         <div class="card col-12 p-0 shadow">
                             <div class="card-header d-flex justify-content-between align-items-center py-3">
                                 <p class="text-primary m-0 font-weight-bold">La liste des consultation médicale</p>
-                                <input class="form-control col-3" type="text" placeholder="Rechercher par date" id="searchInput">
                             </div>
                             <div class="card-body pb-0">
                                 @if($consultations->isEmpty())

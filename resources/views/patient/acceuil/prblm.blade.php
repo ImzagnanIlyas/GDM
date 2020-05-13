@@ -29,7 +29,7 @@
                         <div class="card col-12 p-0 mb-3 shadow">
                             <div class="card-header d-flex justify-content-between align-items-center py-3">
                                 <p class="text-primary m-0 font-weight-bold">La liste des allergies</p>
-                                <input class="form-control col-3" type="text" placeholder="Rechercher par nom" id="searchInput">
+
                             </div>
                             <div class="card-body">
                                 <div class="d-flex justify-content-center mt-2">
@@ -68,7 +68,7 @@
                         <div class="card col-12 p-0 shadow">
                             <div class="card-header d-flex justify-content-between align-items-center py-3">
                                 <p class="text-primary m-0 font-weight-bold">La liste des traitements chroniques</p>
-                                <input class="form-control col-3" type="text" placeholder="Rechercher par médicament" id="searchInput">
+
                             </div>
                             <div class="card-body">
                                 <div class="d-flex justify-content-center mt-2">
