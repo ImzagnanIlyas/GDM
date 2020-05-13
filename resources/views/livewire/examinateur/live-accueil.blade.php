@@ -1,5 +1,8 @@
 <div>
-
+@php
+    use App\Consultation;
+    use App\Examen_complimentaire;
+@endphp
 <div class="col-md-12">
     <div class="card">
         <div class="card-header ">
@@ -22,8 +25,16 @@
     <div class="card bg-blue order-card">
         <div class="card-block">
             <h6>Examen confirmé</h6>
-            <h2 class="text-right"><i class="fas fa-file-medical-alt pull-left"></i><span>256</span></h2>
-            <p class="mb-0">Ce mois-ci<span class="pull-right">178</span></p>
+            <h2 class="text-right"><i class="fas fa-file-medical-alt pull-left"></i><span>
+                {{
+                Examen_complimentaire::where('examinateur_id', Auth::guard('examinateur')->user()->id)->get()->count()
+                }}
+            </span></h2>
+            <p class="mb-0">Ce mois-ci<span class="pull-right">
+                {{
+                Examen_complimentaire::where('examinateur_id', Auth::guard('examinateur')->user()->id)->whereMonth('created_at', date('m'))->get()->count()
+                }}
+            </span></p>
         </div>
     </div>
 </div>
@@ -31,8 +42,27 @@
     <div class="card bg-green order-card">
         <div class="card-block">
             <h6>Patient traité</h6>
-            <h2 class="text-right"><i class="fas fa-user-injured pull-left"></i><span>189</span></h2>
-            <p class="mb-0">Ce mois-ci<span class="pull-right   ">156</span></p>
+            <h2 class="text-right"><i class="fas fa-user-injured pull-left"></i><span>
+                {{
+                Consultation::select('consultations.patient_id')
+                ->join('examen_complimentaires', 'consultations.id', '=', 'examen_complimentaires.consultation_id')
+                ->where('examinateur_id', Auth::guard('examinateur')->user()->id)
+                ->groupBy('consultations.patient_id')
+                ->get()
+                ->count()
+                }}
+            </span></h2>
+            <p class="mb-0">Ce mois-ci<span class="pull-right">
+                {{
+                Consultation::select('consultations.patient_id')
+                ->join('examen_complimentaires', 'consultations.id', '=', 'examen_complimentaires.consultation_id')
+                ->where('examinateur_id', Auth::guard('examinateur')->user()->id)
+                ->whereMonth('examen_complimentaires.created_at', date('m'))
+                ->groupBy('consultations.patient_id')
+                ->get()
+                ->count()
+                }}
+            </span></p>
         </div>
     </div>
 </div>

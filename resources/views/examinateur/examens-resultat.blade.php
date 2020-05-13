@@ -22,7 +22,7 @@
     @endphp
 
     <div class="col-sm-8 col-md-12">
-        <div class="card">
+        <div class="card" style="border-radius: 20px;">
             <div class="card-block">
                 <div class="col-lg-12">
                     <div class="media">
@@ -56,12 +56,12 @@
         </div>
     </div>
     <div class="col-sm-8 col-md-12 m-0">
-        <div class="card mb-0">
+        <div class="card mb-0" style="border-radius: 20px; margin-bottom: 2px !important;">
             <h4 class="text-dark text-center">Examen complémentaire sélectionné</h4>
         </div>
     </div>
     <div class="col-sm-8 col-md-12">
-        <div class="card">
+        <div class="card" style="border-radius: 20px;">
             <div class="card-block">
                 <table class="table dataTable my-0">
                     <thead>
@@ -101,12 +101,12 @@
         </div>
     </div>
     <div class="col-sm-8 col-md-12 m-0">
-        <div class="card mb-0">
-            <h4 class="text-dark text-center">Résultat  </h4>
+        <div class="card mb-0" style="border-radius: 20px; margin-bottom: 2px !important;">
+            <h4 class="text-dark text-center">Résultat</h4>
         </div>
     </div>
     <div class="col-sm-8 col-md-12">
-        <div class="card">
+        <div class="card" style="border-radius: 20px;">
             <div class="card-block">
                 @if ( $resultat->type === 'text' )
                     <div class="col-md-10" style="margin: auto; float: none; padding-bottom: 1%">

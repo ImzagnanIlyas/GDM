@@ -19,7 +19,7 @@ border: 1px solid gray;
 @section('content')
 @php $patient = $examen->consultation->patient @endphp
 <div class="col-sm-8 col-md-12">
-    <div class="card">
+    <div class="card" style="border-radius: 20px;">
         <div class="card-block">
             <div class="col-lg-12">
                 <div class="media">
@@ -54,12 +54,12 @@ border: 1px solid gray;
 </div>
 
 <div class="col-sm-8 col-md-12 m-0">
-    <div class="card mb-0">
+    <div class="card mb-0" style="border-radius: 20px; margin-bottom: 2px !important;">
         <h4 class="text-dark text-center">Examen complémentaire sélectionné</h4>
     </div>
 </div>
 <div class="col-sm-8 col-md-12">
-    <div class="card">
+    <div class="card" style="border-radius: 20px;">
         <div class="card-block">
             <table class="table dataTable my-0">
                 <thead>
@@ -99,12 +99,12 @@ border: 1px solid gray;
     </div>
 </div>
 <div class="col-sm-8 col-md-12 m-0">
-    <div class="card mb-0">
+    <div class="card mb-0" style="border-radius: 20px; margin-bottom: 2px !important;">
         <h4 class="text-dark text-center">Bilan</h4>
     </div>
 </div>
 <div class="col-sm-8 col-md-12">
-    <div class="card">
+    <div class="card" style="border-radius: 20px;">
         <div class="card-block">
             <div class="col-md-12">
                 <div class="card-body">
