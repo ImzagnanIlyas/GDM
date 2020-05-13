@@ -1,5 +1,8 @@
 <div>
-
+@php
+    use App\Consultation;
+    use App\Prescription_medicamenteuse;
+@endphp
 <div class="col-md-12">
     <div class="card">
         <div class="card-header ">
@@ -22,8 +25,29 @@
     <div class="card bg-blue order-card">
         <div class="card-block">
             <h6>Ordonnance confirmé</h6>
-            <h2 class="text-right"><i class="fas fa-file-medical-alt pull-left"></i><span>386</span></h2>
-            <p class="mb-0">Ce mois-ci<span class="pull-right">51</span></p>
+            <h2 class="text-right"><i class="fas fa-file-medical-alt pull-left"></i><span>
+                {{
+                Consultation::select('consultations.*')
+                ->join('prescription_medicamenteuses' ,'consultations.id', '=', 'prescription_medicamenteuses.consultation_id')
+                ->where('prescription_medicamenteuses.pharmacie_id', Auth::guard('pharmacie')->user()->id)
+                ->where('prescription_medicamenteuses.confirmation', true)
+                ->groupBy('prescription_medicamenteuses.consultation_id')
+                ->get()
+                ->count()
+                }}
+            </span></h2>
+            <p class="mb-0">Ce mois-ci<span class="pull-right">
+                {{
+                Consultation::select('consultations.*')
+                ->join('prescription_medicamenteuses' ,'consultations.id', '=', 'prescription_medicamenteuses.consultation_id')
+                ->whereMonth('prescription_medicamenteuses.created_at', date('m'))
+                ->where('prescription_medicamenteuses.pharmacie_id', Auth::guard('pharmacie')->user()->id)
+                ->where('prescription_medicamenteuses.confirmation', true)
+                ->groupBy('prescription_medicamenteuses.consultation_id')
+                ->get()
+                ->count()
+                }}
+            </span></p>
         </div>
     </div>
 </div>
@@ -31,8 +55,16 @@
     <div class="card bg-green order-card">
         <div class="card-block">
             <h6>Médicaments vendus</h6>
-            <h2 class="text-right"><i class="fas fa-pills pull-left"></i><span>1141</span></h2>
-            <p class="mb-0">Ce mois-ci<span class="pull-right">213</span></p>
+            <h2 class="text-right"><i class="fas fa-pills pull-left"></i><span>
+                {{
+                Prescription_medicamenteuse::where('pharmacie_id', Auth::guard('pharmacie')->user()->id)->get()->count()
+                }}
+            </span></h2>
+            <p class="mb-0">Ce mois-ci<span class="pull-right">
+                {{
+                Prescription_medicamenteuse::where('pharmacie_id', Auth::guard('pharmacie')->user()->id)->whereMonth('created_at', date('m'))->get()->count()
+                }}
+            </span></p>
         </div>
     </div>
 </div>

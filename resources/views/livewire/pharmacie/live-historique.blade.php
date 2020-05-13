@@ -34,7 +34,7 @@
                             <td>{{ strtoupper($tmp->medecin->patient->nom) }} {{ $tmp->medecin->patient->prenom }}</td>
                             <td> {{ $tmp->PMs->first()->created_at }} </td>
                             <td class="d-flex justify-content-between text-center">
-                                <a href="" class="btn btn-info col-6 mr-1" ><i class="fas fa-file-alt"></i></a></a>
+                                <a href="{{ route('pharmacie.ordonnance', ['id' => Crypt::encrypt($tmp->patient->id)]) }}" class="btn btn-info col-6 mr-1" ><i class="fas fa-file-alt"></i></a></a>
                             </td>
                         </tr>
                         @endforeach

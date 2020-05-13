@@ -32,7 +32,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ route('accueil') }}"><img src="{{ asset('img/MILAFI2.png') }}" title="Sihaty" alt="Sihaty" style="height: 50px;"></a>
+                <a class="navbar-brand" href="{{ route('pharmacie.accueil') }}"><img src="{{ asset('img/MILAFI2.png') }}" title="Sihaty" alt="Sihaty" style="height: 50px;"></a>
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -59,7 +59,7 @@
                                 <a href="{{ route('pharmacie.mdp') }}"><i class="fas fa-key"></i>Mot de passe</a>
                             </p>
                             <!-- <a href="{{ route('pharmacie.recherche') }}" class="btn theme-btn btn-block">Rechrcher un patient</a> -->
-                            <a href="#" class="btn theme-btn btn-block">Historique</a>
+                            <a href="{{ route('pharmacie.historique') }}" class="btn theme-btn btn-block">Historique</a>
                         </div>
                     </aside>
                 </div>

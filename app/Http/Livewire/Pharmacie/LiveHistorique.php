@@ -36,9 +36,10 @@ class LiveHistorique extends Component
 
     public function getOrdonnances(){
         return Consultation::select('consultations.*')
-                ->distinct()
-                ->join('prescription_medicamenteuses' , 'prescription_medicamenteuses.consultation_id' , 'consultations.id')
+                ->join('prescription_medicamenteuses' ,'consultations.id', '=', 'prescription_medicamenteuses.consultation_id')
                 ->where('prescription_medicamenteuses.pharmacie_id', Auth::guard('pharmacie')->user()->id)
+                ->where('prescription_medicamenteuses.confirmation', true)
+                ->groupBy('prescription_medicamenteuses.consultation_id')
                 ->paginate(5);
     }
 
@@ -53,10 +54,11 @@ class LiveHistorique extends Component
 
     public function updatedSearchInput(){
         $this->ordonnances = Consultation::select('consultations.*')
-                            ->distinct()
-                            ->join('prescription_medicamenteuses' , 'prescription_medicamenteuses.consultation_id' , 'consultations.id')
+                            ->join('prescription_medicamenteuses' ,'consultations.id', '=', 'prescription_medicamenteuses.consultation_id')
                             ->where('prescription_medicamenteuses.pharmacie_id', Auth::guard('pharmacie')->user()->id)
+                            ->where('prescription_medicamenteuses.confirmation', true)
                             ->whereDate('prescription_medicamenteuses.created_at', $this->searchInput)
+                            ->groupBy('prescription_medicamenteuses.consultation_id')
                             ->paginate(5);
     }
 
