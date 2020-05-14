@@ -73,7 +73,7 @@
                                     <img class="img-circle" src="{{ asset('img/patient/consultation.png') }}"
                                         style="width: 100px;border-radius: 50%;background-color: #90DFAA;">
                                     <div class="text-uppercase ml-3">
-                                        <h2 class="text-success font-weight-bold">
+                                        <h2 class="text-success">
                                             Consultations ({{ $patient->consultations->count() }})
                                         </h2>
                                         <small class="text-dark">
@@ -89,14 +89,14 @@
                         </div>
                     </div>
 
-                    <div class="card shadow border-left-warning border-warning py-2 ml-2">
+                    <div class="card shadow border-left-success border-success py-2 ml-2">
                         <div class="card-body d-flex align-items-center p-0">
                             <div class="row">
                                 <div class="d-flex justify-content-start align-items-center ml-4">
                                     <img class="img-circle" src="{{ asset('img/patient/ordonnance.png') }}"
                                         style="width: 100px;border-radius: 50%;background-color: #90DFAA;">
                                     <div class="text-uppercase ml-3">
-                                        <h2 class="text-warning font-weight-bold">
+                                        <h2 class="text-success">
                                             Ordonnances
                                             ({{ Consultation::where('patient_id', $patient->id)->whereNotNull('ordonnance')->count() }})
                                         </h2>
@@ -110,14 +110,14 @@
                 </div>
 
                 <div class="card-group mt-2">
-                    <div class="card shadow border-left-danger border-danger py-2 mr-2">
+                    <div class="card shadow border-left-success border-success py-2 mr-2">
                         <div class="card-body d-flex align-items-center p-0">
                             <div class="row">
                                 <div class="d-flex justify-content-start align-items-center ml-4">
                                     <img class="img-circle" src="{{ asset('img/patient/examen.png') }}"
                                         style="width: 100px;border-radius: 50%;background-color: #90DFAA;">
                                     <div class="text-uppercase ml-3">
-                                        <h2 class="text-danger font-weight-bold">
+                                        <h2 class="text-success">
                                             @php
                                                 $consultations =  Consultation::select('id')->where('patient_id',$patient->id)->get()->toArray();
                                                 $collection = collect();
@@ -139,14 +139,14 @@
                         </div>
                     </div>
 
-                    <div class="card shadow border-left-info border-right-info border-info py-2 ml-2">
+                    <div class="card shadow border-left-success border-right-success border-success py-2 ml-2">
                         <div class="card-body d-flex align-items-center p-0">
                             <div class="row">
                                 <div class="d-flex justify-content-start align-items-center ml-4">
                                     <img class="img-circle" src="{{ asset('img/patient/medicament.png') }}"
                                         style="width: 100px;border-radius: 50%;background-color: #90DFAA;">
                                     <div class="text-uppercase ml-3">
-                                        <h2 class="text-info font-weight-bold">
+                                        <h2 class="text-success">
                                             Médicaments
                                             ({{ Prescription_medicamenteuse::Join('consultations' , 'consultations.id' , 'prescription_medicamenteuses.consultation_id')
                                                 ->Where('consultations.patient_id' , $patient->id)

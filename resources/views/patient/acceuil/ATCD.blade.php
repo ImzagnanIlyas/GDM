@@ -26,8 +26,8 @@
                         @if ( empty($data) )
                             <div class="card col-12 p-0 shadow">
                                 <div class="card-header d-flex justify-content-between align-items-center py-3">
-                                    <p class="text-primary m-0 font-weight-bold">La liste des {{ $block }}</p>
-                                    <input class="form-control col-3" type="text" placeholder="Rechercher par date" id="searchInput">
+                                    <p class="text-primary m-0 font-weight-bold">La liste des antécédents {{ $block }}</p>
+
                                 </div>
                                 <div class="card-body pb-0">
                                     <div class="alert alert-warning mt-4" role="alert">
@@ -41,7 +41,7 @@
                                 <div class="card col-12 p-0 shadow">
                                     <div class="card-header d-flex justify-content-between align-items-center py-3">
                                         <p class="text-primary m-0 font-weight-bold">La liste des {{ $block }}</p>
-                                        <input class="form-control col-3" type="text" placeholder="Rechercher par médicament" id="searchInput">
+
                                     </div>
                                     <div class="card-body pb-0">
                                         <div class="d-flex justify-content-center overflow-auto mt-2"  style="min-height: 40vh">
@@ -79,7 +79,7 @@
                                 <div class="card col-12 p-0 shadow">
                                     <div class="card-header d-flex justify-content-between align-items-center py-3">
                                         <p class="text-primary m-0 font-weight-bold">La liste des {{ $block }}</p>
-                                        <input class="form-control col-3" type="text" placeholder="Rechercher par date" id="searchInput">
+
                                     </div>
                                     <div class="card-body pb-0">
                                         <div class="d-flex justify-content-center overflow-auto mt-2"  style="min-height: 40vh">
@@ -114,7 +114,7 @@
                                 <div class="card col-12 p-0 shadow">
                                     <div class="card-header d-flex justify-content-between align-items-center py-3">
                                         <p class="text-primary m-0 font-weight-bold">La liste des {{ $block }}</p>
-                                        <input class="form-control col-3" type="text" placeholder="Rechercher par date" id="searchInput">
+
                                     </div>
                                     <div class="card-body pb-0">
                                         <div class="d-flex justify-content-center overflow-auto mt-2"  style="min-height: 40vh">
@@ -145,7 +145,7 @@
                                 <div class="card col-12 p-0 shadow">
                                     <div class="card-header d-flex justify-content-between align-items-center py-3">
                                         <p class="text-primary m-0 font-weight-bold">La liste des {{ $block }}</p>
-                                        <input class="form-control col-3" type="text" placeholder="Rechercher par date" id="searchInput">
+
                                     </div>
                                     <div class="card-body pb-0">
                                         <table class="table" style="margin: 15px;margin-left: 10px;">

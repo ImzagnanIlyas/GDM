@@ -31,7 +31,7 @@
                         <img class="img-circle" src="{{ asset('img/patient/consultation.png') }}"
                             style="width: 40px;border-radius: 50%;background-color: #90DFAA;">
                         <div class="ml-3">
-                            <h5 class="text-info font-weight-bold">
+                            <h5 class="text-info ">
                                 Consultations ({{ $patient->consultations->count() }})
                             </h5>
                             <small class="text-dark">
@@ -52,11 +52,11 @@
                         <img class="img-circle" src="{{ asset('img/patient/ordonnance.png') }}"
                             style="width: 40px;border-radius: 50%;background-color: #90DFAA;">
                         <div class="ml-3">
-                            <h5 class="text-info font-weight-bold">
+                            <h5 class="text-info ">
                                 Ordonnances
                                 ({{ App\Consultation::where('patient_id', $patient->id)->whereNotNull('ordonnance')->count() }})
                             </h5>
-                            <small class="text-dark">Non confirmée ( {{ intdiv(App\Consultation::where('patient_id', $patient->id)->whereNotNull('ordonnance')->count(),2) }} )</small>
+                            <small class="text-dark">Non confirmée ({{ intdiv(App\Consultation::where('patient_id', $patient->id)->whereNotNull('ordonnance')->count(),2) }})</small>
                         </div>
                     </div>
                 </div>
@@ -69,7 +69,7 @@
                         <img class="img-circle" src="{{ asset('img/patient/examen.png') }}"
                             style="width: 40px;border-radius: 50%;background-color: #90DFAA;">
                         <div class="ml-3">
-                            <h5 class="text-info font-weight-bold">
+                            <h5 class="text-info ">
                                 @php
                                     $consultations =  App\Consultation::select('id')->where('patient_id',$patient->id)->get()->toArray();
                                 @endphp
@@ -90,7 +90,7 @@
                         <img class="img-circle" src="{{ asset('img/patient/medicament.png') }}"
                             style="width: 40px;border-radius: 50%;background-color: #90DFAA;">
                         <div class="ml-3">
-                            <h5 class="text-info font-weight-bold">
+                            <h5 class="text-info ">
                                 Médicaments
                                 ({{ App\Prescription_medicamenteuse::Join('consultations' , 'consultations.id' , 'prescription_medicamenteuses.consultation_id')
                                     ->Where('consultations.patient_id' , $patient->id)

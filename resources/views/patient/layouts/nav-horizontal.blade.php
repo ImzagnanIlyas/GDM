@@ -46,14 +46,13 @@
         <div class="d-none d-sm-block topbar-divider"></div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav text-dark col-12" id="accordionSidebar">
-                <li class="nav-item col-2" role="presentation">
-                    <a class="nav-link" href="{{ url('/patient') }}"><span>Acceuil</span></a>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link text-success font-weight-bold" href="{{ url('/patient') }}"><span>Acceuil</span></a>
                 </li>
-                <li class="nav-item " role="presentation">
-                    <a class="nav-link" href="{{ route('ATCD' , ['médicaments']) }}">Mon Dossier médicale</a>
+                <li class="nav-item" role="presentation">
+                    <a class="nav-link text-success font-weight-bold" href="{{ route('ATCD' , ['médicaments']) }}">Mon dossier médical</a>
                 </li>
             </ul>
-            <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
         </div>
 
         <ul class="nav navbar-nav flex-nowrap">
