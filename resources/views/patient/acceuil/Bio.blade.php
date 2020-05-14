@@ -47,7 +47,7 @@
                                                     <th>Taille</th>
                                                     <th>Poids</th>
                                                     <th>Date</th>
-                                                    <th>Détails</th>
+
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -57,7 +57,7 @@
                                                         <td>{{ $tmp->taille }}</td>
                                                         <td>{{ $tmp->poids }}</td>
                                                         <td>{{ $tmp->created_at }}</td>
-                                                        <td> <a href="" class="btn btn-info ">Afficher</a> </td>
+
                                                     </tr>
                                                 @endforeach
                                             </tbody>

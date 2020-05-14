@@ -25,4 +25,5 @@ class BioController extends Controller
         ]);
 
     }
+
 }

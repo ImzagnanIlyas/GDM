@@ -47,6 +47,8 @@ Route::group(['namespace' => 'Patient'], function() {
     Route::get('Resultat/{id}/PDF{i}', 'acceuil\resultatController@showPDF')->name('Resultat.PDF')->middleware('patient.auth');
 
     Route::get('search', 'acceuil\mesconController@search')->name('search');
+    Route::get('update', 'acceuil\profileController@updatePwd')->name('update');
+    Route::post('update', 'acceuil\profileController@edit')->name('update');
 
 });
 

@@ -104,27 +104,45 @@
 
 
                 <div class="tab-pane" id="messages">
-                    <form>
+                    @if(session('error'))
+                    <div class="alert alert-danger" role="alert">
+                        {{session('error')}}
+                    </div>
+                    @endif
+                    @if(session('message'))
+                    <div class="alert alert-primary" role="alert">
+                        {{session('message')}}
+                    </div>
+                    @endif
+                    <form action="{!! route('update') !!}" method="post">
+                        @csrf
                         <div class="form-group row">
                             <label class="col-lg-4 col-form-label form-control-label col">Nom d'utilisateur</label>
                             <div class="col-lg-4">
                                 <input class="form-control" type="text" value="{{ $patient->username }}">
                             </div>
                         </div>
-                        <div class="form-group row">
+                        <div class="form-group row ">
                             <label class="col-lg-4 col-form-label form-control-label col">Ancien mot de passe</label>
                             <div class="col-lg-4">
-                                <input class="form-control" type="password" value="">
+                                <input class="form-control" type="password"  name="current_password" id="current_password">
+
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-lg-4 col-form-label form-control-label col">Nouveau mot de passe</label>
                             <div class="col-lg-4">
-                                <input class="form-control" type="password" value="">
+                                <input class="form-control" type="password" value="" name="new_password" id="new_password">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-lg-4 col-form-label form-control-label col">Confirmer le mot de passe </label>
+                            <div class="col-lg-4">
+                                <input class="form-control" type="password" value="" name="new_password" id="new_password">
                             </div>
                         </div>
                         <div class="col-lg-4">
-                            <input type="button" class="btn btn-primary" value="Mettre à jour" onclick="">
+                            <input type="submit" class="btn btn-primary" value="Mettre à jour" id="confirm" name="confirm" >
                         </div>
 
                     </form>
