@@ -17,10 +17,12 @@
         <div class="card shadow">
             <div class="card-header d-flex justify-content-between align-items-center py-3">
                 <p class="text-primary m-0 font-weight-bold">CIN ENTRÉ : {{ $cin }}</p>
-                <form class='custom-form'  method='GET' action="{{ route('medecin.showAddAlert') }}">
-                    <input type='text' value="{{ $cin }}" id='cin' name='cin' hidden>
-                    <button type='submit' class='btn btn-success'>Nouvelle consultation</button>
-                </form>
+                @if ($patient != null)
+                    <form class='custom-form'  method='GET' action="{{ route('medecin.showAddAlert') }}">
+                        <input type='text' value="{{ $cin }}" id='cin' name='cin' hidden>
+                        <button type='submit' class='btn btn-success'>Nouvelle consultation</button>
+                    </form>
+                @endif
             </div>
             <div class="card-body">
                 <div class="table-responsive table" >
@@ -42,15 +44,11 @@
                             </tr>
                             <tr>
                                 <th>Naissance</th>
-                                <td>{{ $patient->ddn }}</td>
+                                <td>{{ date('d/m/Y',strtotime($patient->ddn)) }}</td>
                             </tr>
                             <tr>
                                 <th>Sexe</th>
-                                <td>@if (($patient->sexe)=='H')
-                                    Homme
-                                @else
-                                    Femme
-                                @endif</td>
+                                <td>{{ $patient->sexe }}</td>
                             </tr>
                             <tr>
                                 <th>Téléphone</th>

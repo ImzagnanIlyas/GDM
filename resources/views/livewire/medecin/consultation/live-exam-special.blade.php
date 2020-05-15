@@ -26,7 +26,7 @@
                 @foreach( $consultation->ESs as $ES )
                 <tr>
                     <td>{{ $ES->nom }}</td>
-                    <td>{{ $ES->created_at }}</td>
+                    <td>{{ date('d/m/Y',strtotime($ES->created_at)) }}</td>
                     @if ( empty($ES->resultat) )
                     <td title="En attend"> <i class="fas fa-clock ml-3" style="color: orange;font-size: x-large;"></i> </td>
                     <td> - </td>
@@ -35,7 +35,7 @@
                     </td>
                     @else
                     <td title="Résultat ajouté"> <i class="fas fa-check-circle ml-3" style="color: green;font-size: x-large;"></i> </td>
-                    <td> {{ $ES->updated_at }} </td>
+                    <td>{{ date('d/m/Y',strtotime($ES->updated_at)) }}</td>
                     <td>
                         <a href="{{ route('medecin.consultation.showExamSpecialResultat', [ 'consultation_id' => Crypt::encrypt($consultation->id), 'examen_id' => Crypt::encrypt($ES->id) ]) }}" class="btn btn-primary">Voir résultat</a>
                         <!-- <button class="btn btn-primary" wire:click="showResultat({{$ES->id}})">Voir resultat</button> -->

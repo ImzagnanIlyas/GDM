@@ -13,7 +13,7 @@
     </tr>
     <tr>
         <th>Date de création:</th>
-        <td>{{ $consultation->date }}</td>
+        <td>{{ date('d/m/Y',strtotime($consultation->date)) }}</td>
     </tr>
     <tr>
         <th>Lieu:</th>

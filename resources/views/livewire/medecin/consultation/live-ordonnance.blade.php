@@ -95,7 +95,7 @@
                         <td>{{ $pm['voie'] }}</td>
                         <td>{{ $pm['dose'] }}</td>
                         <td>{{ $pm['rythme'] }}</td>
-                        <td>{{ $pm['date_debut'] }}</td>
+                        <td>{{ date('d/m/Y',strtotime($pm['date_debut'])) }}</td>
                         <td>{{ $pm['duree'] }}</td>
                         <td title="{{ $pm['commentaire'] }}">{{ substr( $pm['commentaire'], 0, 50 ) }}...</td>
                     </tr>

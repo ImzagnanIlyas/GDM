@@ -20,7 +20,7 @@
                         <td>{{ $c->id }}</td>
                         <td>{{ $c->lieu }}</td>
                         <td>{{ $c->motif }}</td>
-                        <td>{{ $c->created_at }}</td>
+                        <td>{{ date('d/m/Y',strtotime($c->created_at)) }}</td>
                         <td><a href="{{ route('medecin.consultation.showExamSpecial', [ 'consultation_id' => Crypt::encrypt($c->id) ]) }}" class="btn btn-primary">Détails</a></td>
                     </tr>
                     @empty

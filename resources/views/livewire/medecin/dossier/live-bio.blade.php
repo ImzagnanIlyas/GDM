@@ -19,7 +19,7 @@
                             <th>ID Consultation</th>
                             <th>Taille</th>
                             <th>Poids</th>
-                            <th>Date et heure</th>
+                            <th>Date</th>
                             <th>Details</th>
                         </tr>
                     </thead>
@@ -29,7 +29,7 @@
                             <td> <a href="{{ route('medecin.consultation.showInfo', [ 'id' => Crypt::encrypt($tmp->consultation->id) ]) }}">{{ $tmp->consultation->id }}</a> </td>
                             <td>{{ $tmp->taille }}</td>
                             <td>{{ $tmp->poids }}</td>
-                            <td>{{ $tmp->created_at }}</td>
+                            <td>{{ date('d/m/Y',strtotime($tmp->created_at)) }}</td>
                             <td> <a href="{{ route('medecin.consultation.showEG', [ 'id' => Crypt::encrypt($tmp->consultation->id) ]) }}" class="btn btn-info col-6 mr-1" ><i class="fas fa-external-link-alt"></i></a> </td>
                         </tr>
                     @endforeach

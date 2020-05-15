@@ -26,7 +26,7 @@
                 @foreach( $consultation->ECs as $EC )
                 <tr>
                     <td>{{ json_decode($EC->bilan)->type }}</td>
-                    <td>{{ $EC->created_at }}</td>
+                    <td>{{ date('d/m/Y',strtotime($EC->created_at)) }}</td>
                     @if (! $EC->confirmation )
                     <td class="text-center" title="En attend"> <i class="fas fa-clock" style="color: orange;font-size: x-large;"></i> </td>
                     <td> - </td>
@@ -38,7 +38,7 @@
                     @else
                     <td  class="text-center" title="Résultat ajouté"> <i class="fas fa-check-circle" style="color: green;font-size: x-large;"></i> </td>
                     <td> {{ $EC->examinateur->nom }}</td>
-                    <td> {{ $EC->updated_at }} </td>
+                    <td> {{ date('d/m/Y',strtotime($EC->updated_at)) }} </td>
                     <td class="d-flex justify-content-between">
                         <a href="{{ route('medecin.consultation.showExamComplBilan', [ 'consultation_id' => Crypt::encrypt($consultation->id), 'examen_id' => Crypt::encrypt($EC->id) ]) }}" class="btn btn-info col-6 mr-1" >Bilan</a>
                         <a href="{{ route('medecin.consultation.showExamComplResultat', [ 'consultation_id' => Crypt::encrypt($consultation->id), 'examen_id' => Crypt::encrypt($EC->id) ]) }}" class="btn btn-primary col-6 ml-1">Résultat</a>

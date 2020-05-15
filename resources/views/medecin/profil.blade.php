@@ -36,15 +36,15 @@
                 <td>{{ Auth::guard('medecin')->user()->patient->nom }}</td>
             </tr>
             <tr>
-                <th>Prenom:</th>
+                <th>Prénom:</th>
                 <td>{{ Auth::guard('medecin')->user()->patient->prenom }}</td>
             </tr>
             <tr>
                 <th>Date de naissance:</th>
-                <td>{{ Auth::guard('medecin')->user()->patient->ddn }}</td>
+                <td>{{ date('d/m/Y',strtotime(Auth::guard('medecin')->user()->patient->ddn)) }}</td>
             </tr>
             <tr>
-                <th>Sexe:</th>
+                <th>Genre:</th>
                 <td>{{ Auth::guard('medecin')->user()->patient->sexe }}</td>
             </tr>
             <tr>

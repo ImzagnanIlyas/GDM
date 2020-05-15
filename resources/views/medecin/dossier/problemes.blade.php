@@ -44,12 +44,12 @@
             <table class="table dataTable my-0">
                 <thead>
                     <tr>
-                        <th>Nom médicament</th>
+                        <th class="col-3">Nom médicament</th>
                         <th>Dose</th>
-                        <th>Rythme</th>
+                        <th class="col-3">Rythme</th>
                         <th>Date Début</th>
                         <th>Commentaire</th>
-                        <th>Consultation</th>
+                        <th class="text-center">Consultation</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -60,7 +60,7 @@
                             <td>{{$pres->rythme}}</td>
                             <td>{{ date('d/m/Y',strtotime($pres->date_debut)) }}</td>
                             <td>{{$pres->commentaire}}</td>
-                            <td><a href="{{ route('medecin.consultation.showOrdonnance', [ 'consultation_id' => Crypt::encrypt($pres->consultation->id) ]) }}"> go </a> </td>
+                            <td class="text-center"><a href="{{ route('medecin.consultation.showOrdonnance', [ 'consultation_id' => Crypt::encrypt($pres->consultation->id) ]) }}" class="btn btn-primary"> <i class="fas fa-file-alt"></i> </a> </td>
                         </tr>
                     @endforeach
                 </tbody>

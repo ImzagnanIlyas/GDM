@@ -25,7 +25,7 @@
                         <td class="text-center">{{ strtoupper($patient->nom).' '.$patient->prenom }}</td>
                         <td class="text-center">{{ $patient->sexe }}</td>
                         <td class="text-center"><a href="{{ route('medecin.mesConsultationsPatient', [ 'patient_id' => Crypt::encrypt($patient->id) ]) }}">{{ $patient->consultations->where('medecin_id', $medecin->id)->count() }}</a></td>
-                        <td class="text-center">{{ $patient->consultations->where('medecin_id', $medecin->id)->sortByDesc('created_at')->first()->created_at }}</td>
+                        <td class="text-center">{{ date('d/m/Y',strtotime($patient->consultations->where('medecin_id', $medecin->id)->sortByDesc('created_at')->first()->created_at)) }}</td>
                         <td class="text-center"><a href="{{ route('medecin.dossier.ATCD', ['patient_id' => Crypt::encrypt($patient->id), 'n' => 1]) }}" class="btn btn-primary">Afficher</a></td>
                     </tr>
                     @empty

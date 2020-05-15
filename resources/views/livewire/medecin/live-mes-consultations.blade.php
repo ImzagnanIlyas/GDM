@@ -25,7 +25,7 @@
                         <td>{{ strtoupper($c->patient->nom).' '.$c->patient->prenom }}</td>
                         <td>{{ $c->lieu }}</td>
                         <td>{{ $c->motif }}</td>
-                        <td>{{ $c->date }}</td>
+                        <td>{{ date('d/m/Y',strtotime($c->date)) }}</td>
                         <td><a href="{{ route('medecin.consultation.showInfo', ['id' => Crypt::encrypt($c->id) ]) }}" class="btn btn-primary">Afficher</a></td>
                     </tr>
                     @empty
