@@ -151,10 +151,12 @@ $active2 = Request::segment(4);
                 var elem = document.getElementsByTagName('input');
                 l = elem.length;
                 for (i = 1; i < l; i++) {
-                    if ( elem[i].getAttribute("role") !== "CR" ) {
-                        elem[i].disabled = true;
-                        elem[i].removeAttribute("id");
-                        elem[i].removeAttribute("name");
+                    if ( elem[i].getAttribute("role") !== "CR") {
+                        if ( elem[i].getAttribute("name") !== "_token" ) {
+                            elem[i].disabled = true;
+                            elem[i].removeAttribute("id");
+                            elem[i].removeAttribute("name");
+                        }
                     }
                 }
 
