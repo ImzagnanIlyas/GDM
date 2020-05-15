@@ -6,6 +6,7 @@ use App\Consultation;
 use App\Patient;
 use App\Prescription_medicamenteuse;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Request;
 use Livewire\Component;
@@ -80,7 +81,8 @@ class LiveOrdonnance extends Component
                 }
             }
             $this->item = Consultation::findOrFail($pm->consultation_id);
-            session()->flash('message', 'Post successfully updated.');
+            session()->flash('message', 'Ordonnance Confirmée avec succès');
+            return redirect()->route('pharmacie.ordonnance', ['id' => Crypt::encrypt($this->patient->id)]);
         }
     }
 }

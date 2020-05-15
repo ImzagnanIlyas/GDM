@@ -11,7 +11,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('espace/pharmacie/table/vendor/perfect-scrollbar/perfect-scrollbar.css') }}">
 <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 <style>
-    #quill-textarea2{
+    div[role="quill-textarea2"]{
         border: 1px solid gray;
     }
     .dp
@@ -56,10 +56,15 @@
         $('.companies').addClass('hidden');
         $(nameid).removeClass('hidden').addClass('visible');
     }
+    setTimeout(function(){
+        if ($('[role=alert]').length > 0) {
+            $('[role=alert]').remove();
+        }
+    }, 5000)
 </script>
 <script>
     var toolbarOptions2 = [];
-    var quill2 = new Quill('#quill-textarea2', {
+    var quill2 = new Quill('[role=quill-textarea2]', {
         readOnly: true,
         modules: {
             toolbar: toolbarOptions2
@@ -68,7 +73,7 @@
     });
     document.addEventListener("livewire:load", function(event) {
         window.livewire.hook('afterDomUpdate', () => {
-            quill2 = new Quill('#quill-textarea2', {
+            quill2 = new Quill('[role=quill-textarea2]', {
                 readOnly: true,
                 modules: {
                     toolbar: toolbarOptions2

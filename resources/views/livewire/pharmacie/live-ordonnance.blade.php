@@ -33,53 +33,54 @@
         </div>
     </div>
     @if($item)
-            <div class="bootcards-list col-sm-12 p-0">
-                <div class="panel panel-default">
-                    <div class="panel-heading clearfix">
-                        <h3 class="panel-title text-center">Ordonnances</h3>
-                    </div>
-                    <div class="list-group js-pscroll" style="max-height: 485px;">
-                        @foreach ($consultations as $id)
-                            @php $consultation = App\Consultation::find($id) @endphp
-                        <!-- Start : items  -->
-                        <div
-                            class="list-group-item"
-                            wire:click="switchItem({{ $consultation->id }})"
-                            style="border-bottom: 3px solid gray;
-                        @if($consultation->id === $item->id)
-                            box-shadow: inset 0px 0px 12px 1px rgba(0, 0, 0, 0.3); border-left: 10px inset #B9B9B9; border-radius: 0px 0px 0px 0px;"
-                        @else
-                            "
-                        @endif
-                        >
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <h4 class="list-group-item-heading">Dr. {{ $consultation->medecin->patient->nom }} {{ $consultation->medecin->patient->prenom }}</h4>
-                                    <p class="list-group-item-text">Specialite {{ $consultation->medecin->specialite }}</p>
-                                </div>
-                                <div class="col-sm-6">
-                                    <p class="list-group-item-text">{{ $consultation->PMs->first()->created_at }}</p>
-                                    <p class="list-group-item-text">{{ $consultation->PMs->count() }} medicament(s)</p>
-                                </div>
+        <div class="bootcards-list col-sm-12 p-0">
+            <div class="panel panel-default">
+                <div class="panel-heading clearfix">
+                    <h3 class="panel-title text-center">Ordonnances</h3>
+                </div>
+                <div class="list-group js-pscroll" style="max-height: 485px;">
+                    @foreach ($consultations as $id)
+                        @php $consultation = App\Consultation::find($id) @endphp
+                    <!-- Start : items  -->
+                    <div
+                        class="list-group-item"
+                        wire:click="switchItem({{ $consultation->id }})"
+                        style="border-bottom: 3px solid gray;
+                    @if($consultation->id === $item->id)
+                        box-shadow: inset 0px 0px 12px 1px rgba(0, 0, 0, 0.3); border-left: 10px inset #B9B9B9; border-radius: 0px 0px 0px 0px;"
+                    @else
+                        "
+                    @endif
+                    >
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h4 class="list-group-item-heading">Dr. {{ $consultation->medecin->patient->nom }} {{ $consultation->medecin->patient->prenom }}</h4>
+                                <p class="list-group-item-text">Specialite {{ $consultation->medecin->specialite }}</p>
+                            </div>
+                            <div class="col-sm-6">
+                                <p class="list-group-item-text">{{ $consultation->PMs->first()->created_at }}</p>
+                                <p class="list-group-item-text">{{ $consultation->PMs->count() }} medicament(s)</p>
                             </div>
                         </div>
-                        <!-- End : items  -->
-                        @endforeach
                     </div>
+                    <!-- End : items  -->
+                    @endforeach
                 </div>
             </div>
-            @else
-            <br>
-            <div class="col-sm-8 col-md-12">
-                <div class="alert alert-warning text-center" role="alert">
-                    Pas d'ordonnance pour ce patient
-                </div>
+        </div>
+    @else
+        <br>
+        <div class="col-sm-8 col-md-12">
+            <div class="alert alert-warning text-center" role="alert">
+                Pas d'ordonnance pour ce patient
             </div>
-            @endif
+        </div>
+    @endif
 </div>
+
 @if (session()->has('message'))
-<div class="col-sm-8 col-md-6">
-    <div class="alert alert-success">
+<div role="alert" class="col-sm-8 col-md-6">
+    <div class="alert alert-success text-center">
         {{ session('message') }}
     </div>
 </div>
@@ -94,7 +95,7 @@
             </div>
             <div class="list-group">
                     <div class="list-group-item js-pscroll" style="max-height: 450px;">
-                        <div id="quill-textarea2" style="color: black">
+                        <div role="quill-textarea2" style="color: black">
                             {!! $item->ordonnance !!}
                         </div>
                     </div>
@@ -148,5 +149,6 @@
     <!-- data  -->
     @endif
 </div>
+
 
 </div>
