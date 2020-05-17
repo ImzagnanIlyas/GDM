@@ -197,14 +197,15 @@ class ConsultationController extends Controller
     }
     public function storeInfo(Request $request, $id)
     {
-        $cons = Consultation::findOrFail($id);
+        $cons = Consultation::findOrFail(Crypt::decrypt($id));
 
         if(!empty($request->input('histoire'))) $cons->histoire = $request->input('histoire');
         if(!empty($request->input('sd'))) $cons->strategie_diagnostique = $request->input('sd');
         if(!empty($request->input('dr'))) $cons->diagnostic_retenu = $request->input('dr');
 
         $cons->save();
-        return redirect()->route('medecin.consultation.showInfo', [ 'id' => $id ]);
+
+        return redirect()->back();
     }
 
     public function showEG($id)
@@ -242,7 +243,7 @@ class ConsultationController extends Controller
 
 
         $EG->save();
-        return redirect()->route('medecin.consultation.showEG', [ 'id' => $c_id ]);
+        return redirect()->back();
     }
 
     /**************************************************************************

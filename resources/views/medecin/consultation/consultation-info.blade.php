@@ -27,7 +27,7 @@
         <th>Histoire:</th>
         <td>
             @if ( empty($consultation->histoire) )
-                <form method="POST" action="{{ route('medecin.consultation.storeInfo', [ 'id' => $consultation->id ]) }}" class="form-inline">
+                <form method="POST" action="{{ route('medecin.consultation.storeInfo', [ 'id' =>  Crypt::encrypt($consultation->id) ]) }}" class="form-inline">
                     @csrf
                     <input role="edit" type="text" name="histoire" id="histoire" class="form-control" aria-describedby="helpId">
                     &emsp;<button role="edit" class="btn btn-primary" type="submit"><i class="far fa-check-circle"></i></button>
@@ -41,7 +41,7 @@
         <th>Strategie diagnostique:</th>
         <td>
             @if ( empty($consultation->strategie_diagnostique) )
-                <form method="POST" action="{{ route('medecin.consultation.storeInfo', [ 'id' => $consultation->id ]) }}" class="form-inline">
+                <form method="POST" action="{{ route('medecin.consultation.storeInfo', [ 'id' =>  Crypt::encrypt($consultation->id) ]) }}" class="form-inline">
                     @csrf
                     <input role="edit" type="text" name="sd" id="sd" class="form-control" aria-describedby="helpId">
                     &emsp;<button role="edit" class="btn btn-primary" type="submit"><i class="far fa-check-circle"></i></button>
@@ -55,7 +55,7 @@
         <th>Diagnostique retenue:</th>
         <td>
             @if ( empty($consultation->diagnostic_retenu) )
-                <form method="POST" action="{{ route('medecin.consultation.storeInfo', [ 'id' => $consultation->id ]) }}" class="form-inline">
+                <form method="POST" action="{{ route('medecin.consultation.storeInfo', [ 'id' =>  Crypt::encrypt($consultation->id) ]) }}" class="form-inline">
                     @csrf
                     <input role="edit" type="text" name="dr" id="dr" class="form-control" aria-describedby="helpId">
                     &emsp;<button role="edit" class="btn btn-primary" type="submit"><i class="far fa-check-circle"></i></button>

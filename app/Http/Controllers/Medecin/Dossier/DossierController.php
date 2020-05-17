@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Medecin\Dossier;
 
 use App\Consultation;
 use App\Examen_complimentaire;
-use App\Examen_general;
 use App\Http\Controllers\Controller;
 use App\Patient;
 use App\Prescription_medicamenteuse;
