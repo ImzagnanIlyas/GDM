@@ -24,7 +24,7 @@
         <td>{{ $consultation->motif }}</td>
     </tr>
     <tr>
-        <th>Histoire:</th>
+        <th>Histoire de la maladie:</th>
         <td>
             @if ( empty($consultation->histoire) )
                 <form method="POST" action="{{ route('medecin.consultation.storeInfo', [ 'id' =>  Crypt::encrypt($consultation->id) ]) }}" class="form-inline">

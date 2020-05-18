@@ -12,9 +12,9 @@
                     <tr>
                         <th>ID</th>
                         <th class="col-2">Nom du patient</th>
-                        <th>Lieu</th>
                         <th>Motif</th>
                         <th>Date</th>
+                        <th>État</th>
                         <th>Détails</th>
                     </tr>
                 </thead>
@@ -23,9 +23,13 @@
                     <tr>
                         <td>{{ $c->id }}</td>
                         <td>{{ strtoupper($c->patient->nom).' '.$c->patient->prenom }}</td>
-                        <td>{{ $c->lieu }}</td>
                         <td>{{ $c->motif }}</td>
                         <td>{{ date('d/m/Y',strtotime($c->date)) }}</td>
+                        @if ( empty($c->ordonnance) )
+                            <td class="text-danger"> <b>Non terminée</b> </td>
+                        @else
+                            <td class="text-success"> <b>Terminée</b> </td>
+                        @endif
                         <td><a href="{{ route('medecin.consultation.showInfo', ['id' => Crypt::encrypt($c->id) ]) }}" class="btn btn-primary">Afficher</a></td>
                     </tr>
                     @empty

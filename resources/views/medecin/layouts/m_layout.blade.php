@@ -90,10 +90,6 @@
                                             <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                             &nbsp;Mon profil
                                         </a>
-                                        <a class="dropdown-item" role="presentation" href="#">
-                                            <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                            &nbsp;Mes activités
-                                        </a>
                                         <div class="dropdown-divider"></div>
                                         <a class="dropdown-item" role="presentation" href="{{ route('medecin.logout') }}"
                                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -131,7 +127,7 @@
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
     <script src="{{ asset('js/theme.js') }}"></script>
-    <script>
+    <!-- <script>
         document.addEventListener('contextmenu', function(e) {
             e.preventDefault();
         });
@@ -143,7 +139,7 @@
             if(e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)){ return false; }
             if(e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)){ return false; }
         }
-    </script>
+    </script> -->
     @livewireScripts
     @include('sweetalert::alert')
     @yield('js')

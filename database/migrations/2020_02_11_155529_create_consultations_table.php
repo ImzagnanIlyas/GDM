@@ -24,7 +24,7 @@ class CreateConsultationsTable extends Migration
             $table->string('strategie_diagnostique')->nullable();
             $table->string('diagnostic_retenu')->nullable();
             $table->mediumText('ordonnance')->nullable();
-            $table->string('compte_rendu')->nullable();
+            $table->mediumText('compte_rendu')->nullable();
             $table->timestamps();
             $table->foreign('patient_id')->references('id')->on('patients');
             $table->foreign('medecin_id')->references('id')->on('medecins');

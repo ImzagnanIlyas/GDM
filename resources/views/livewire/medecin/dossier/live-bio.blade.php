@@ -2,7 +2,7 @@
     <div class="col-md-12 d-flex justify-content-between mt-3">
         <div class="col-md-5 d-flex justify-content-start align-items-center">
             <img src="{{ asset('img/medecin/blood.png') }}" alt="Smiley face" height="50">
-            <h4 class="text-dark ml-2">Groupe sanguin : <b>A+</b></h4>
+            <h4 class="text-dark ml-2">Groupe sanguin : <b>{{ $GS }}</b></h4>
         </div>
         <input class="form-control col-2" type="text" placeholder="Rechercher par date" wire:model="searchInput" onfocus="(this.type='date')" onblur="(this.type='text')">
     </div>

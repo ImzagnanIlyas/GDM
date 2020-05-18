@@ -10,13 +10,14 @@ class LiveBio extends Component
 {
     use WithPagination;
 
-    public $patient, $searchInput;
+    public $patient, $GS, $searchInput;
     protected $data;
     protected $listeners = ['search'];
 
     public function mount($patient){
         $this->searchInput = "";
         $this->patient = $patient;
+        $this->GS = json_decode($this->patient->biometrie)->grp_sanguin;
         $this->data = $this->getData();
     }
 

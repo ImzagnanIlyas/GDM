@@ -35,7 +35,7 @@ class LiveCreateExamCompl extends Component
             $medecin = Auth::guard('medecin')->user();
             setlocale (LC_TIME, 'fr_FR.utf8','fra');
             $this->prescription =
-            "<p class='ql-align-right'><strong>Le ".strftime("%A %d %B %Y").", à ".strftime("%H:%M")."</strong></p><p><strong>Docteur ".strtoupper($medecin->patient->nom)." ".$medecin->patient->prenom."</strong></p><p><strong>Médecin ".$medecin->specialite."</strong></p><p><strong>".$medecin->lieu."</strong></p><p><strong>".$medecin->tele_pro."</strong></p><p>&nbsp;</p>
+            "<p class='ql-align-right'><strong>Le ".strftime("%A %d %B %Y")."</strong></p><p><strong>Docteur ".strtoupper($medecin->patient->nom)." ".$medecin->patient->prenom."</strong></p><p><strong>Médecin ".$medecin->specialite."</strong></p><p><strong>".$medecin->lieu."</strong></p><p><strong>".$medecin->tele_pro."</strong></p><p>&nbsp;</p>
             <p><br></p><p>Patient : ".strtoupper($this->consultation->patient->nom)." ".$this->consultation->patient->prenom."</p><p>&nbsp;</p>";
 
         }else{
@@ -74,7 +74,7 @@ class LiveCreateExamCompl extends Component
             $medecin = Auth::guard('medecin')->user();
             setlocale (LC_TIME, 'fr_FR.utf8','fra');
             $this->prescription =
-            "<p class='ql-align-right'><strong>Le ".strftime("%A %d %B %Y").", à ".strftime("%H:%M")."</strong></p><p><strong>Docteur ".strtoupper($medecin->patient->nom)." ".$medecin->patient->prenom."</strong></p><p><strong>Médecin ".$medecin->specialite."</strong></p><p><strong>".$medecin->lieu."</strong></p><p><strong>".$medecin->tele_pro."</strong></p><p>&nbsp;</p>
+            "<p class='ql-align-right'><strong>Le ".strftime("%A %d %B %Y")."</strong></p><p><strong>Docteur ".strtoupper($medecin->patient->nom)." ".$medecin->patient->prenom."</strong></p><p><strong>Médecin ".$medecin->specialite."</strong></p><p><strong>".$medecin->lieu."</strong></p><p><strong>".$medecin->tele_pro."</strong></p><p>&nbsp;</p>
             <p><br></p><p>Patient : ".strtoupper($this->consultation->patient->nom)." ".$this->consultation->patient->prenom."</p><p>&nbsp;</p><p>Les analyses biologiques :</p>";
 
             foreach ($this->x as $analyse) {
@@ -90,7 +90,7 @@ class LiveCreateExamCompl extends Component
             $medecin = Auth::guard('medecin')->user();
             setlocale (LC_TIME, 'fr_FR.utf8','fra');
             $this->prescription =
-            "<p class='ql-align-right'><strong>Le ".strftime("%A %d %B %Y").", à ".strftime("%H:%M")."</strong></p><p><strong>Docteur ".strtoupper($medecin->patient->nom)." ".$medecin->patient->prenom."</strong></p><p><strong>Médecin ".$medecin->specialite."</strong></p><p><strong>".$medecin->lieu."</strong></p><p><strong>".$medecin->tele_pro."</strong></p><p>&nbsp;</p>
+            "<p class='ql-align-right'><strong>Le ".strftime("%A %d %B %Y")."</strong></p><p><strong>Docteur ".strtoupper($medecin->patient->nom)." ".$medecin->patient->prenom."</strong></p><p><strong>Médecin ".$medecin->specialite."</strong></p><p><strong>".$medecin->lieu."</strong></p><p><strong>".$medecin->tele_pro."</strong></p><p>&nbsp;</p>
             <p><br></p><p>Patient : ".strtoupper($this->consultation->patient->nom)." ".$this->consultation->patient->prenom."</p><p>&nbsp;</p><p>$this->imtype :</p>";
 
             foreach ($this->x as $examen) {
