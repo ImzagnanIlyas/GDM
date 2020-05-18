@@ -50,4 +50,4 @@
     <div class="d-flex justify-content-center">
         {{ $examens->links() }}
     </div>
-    <div>
+</div>

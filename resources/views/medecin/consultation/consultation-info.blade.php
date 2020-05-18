@@ -12,7 +12,7 @@
         <td>{{ $consultation->medecin->patient->nom }} {{ $consultation->medecin->patient->prenom }}</td>
     </tr>
     <tr>
-        <th>Date de création:</th>
+        <th>Date de consultation:</th>
         <td>{{ date('d/m/Y',strtotime($consultation->date)) }}</td>
     </tr>
     <tr>

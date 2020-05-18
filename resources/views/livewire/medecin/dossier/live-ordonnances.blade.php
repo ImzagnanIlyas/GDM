@@ -43,4 +43,4 @@
     <div class="d-flex justify-content-center">
         {{ $consultations->links() }}
     </div>
-<div>
+</div>
