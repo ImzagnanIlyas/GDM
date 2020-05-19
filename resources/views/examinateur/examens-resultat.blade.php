@@ -46,7 +46,7 @@
                                 {{ strtoupper($patient->nom) }}
                                 {{ $patient->prenom }}
                             </h4>
-                            <h5>{{ $patient->cin }} - {{ date("m/d/yy", strtotime($patient->ddn)) }}</h5>
+                            <h5>{{ $patient->cin }} - {{ date("d/m/Y", strtotime($patient->ddn)) }}</h5>
                             <hr style="margin:8px auto">
                             <p>{{ strtoupper($patient->adresse) }}</p>
                         </div>
@@ -78,7 +78,7 @@
 
                         <tr>
                             <td>{{ json_decode($examen->bilan)->type }}</td>
-                            <td>{{ $examen->created_at }}</td>
+                            <td>{{ date("d/m/Y", strtotime($examen->created_at)) }}</td>
                             @if (! $examen->confirmation )
                             <td class="text-center" title="En attend"> <i class="fas fa-clock" style="color: orange;font-size: x-large;"></i> </td>
                             <td> - </td>
@@ -89,7 +89,7 @@
                             @else
                             <td  class="text-center" title="Résultat ajouté"> <i class="fas fa-check-circle" style="color: green;font-size: x-large;"></i> </td>
                             <td> {{ $examen->examinateur->nom }}</td>
-                            <td> {{ $examen->updated_at }} </td>
+                            <td> {{ date("d/m/Y", strtotime($examen->updated_at)) }} </td>
                             <td class="d-flex justify-content-between">
                             <a href="{{ route('examinateur.showExamslBilan', [ 'examen_id' => Crypt::encrypt($examen->id) ]) }}" class="btn btn-info col-6 mr-1">Bilan</a>
                             </td>

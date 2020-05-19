@@ -32,7 +32,7 @@
                             <td>{{ $EC->consultation->patient->cin }}</td>
                             <td> {{ strtoupper($EC->consultation->patient->nom) }} {{ $EC->consultation->patient->prenom }}</td>
                             <td>{{ json_decode($EC->bilan)->type }}</td>
-                            <td> {{ $EC->updated_at }} </td>
+                            <td> {{ date("d/m/Y", strtotime($EC->updated_at)) }} </td>
                             <td class="d-flex justify-content-between">
                                 <a href="{{ route('examinateur.showExamslBilan', [ 'examen_id' => Crypt::encrypt($EC->id) ]) }}" class="btn btn-info col-6 mr-1" >Bilan</a>
                                 <a href="{{ route('examinateur.showExamsResultat', [ 'examen_id' => Crypt::encrypt($EC->id) ]) }}" class="btn btn-primary col-6 ml-1">Résultat</a>

@@ -24,7 +24,7 @@
                             {{ strtoupper($patient->nom) }}
                             {{ $patient->prenom }}
                         </h4>
-                        <h5>{{ $patient->cin }} - {{ date("m/d/yy", strtotime($patient->ddn)) }}</h5>
+                        <h5>{{ $patient->cin }} - {{ date("d/m/Y", strtotime($patient->ddn)) }}</h5>
                         <hr style="margin:8px auto">
                         <p>{{ strtoupper($patient->adresse) }}</p>
                     </div>
@@ -55,10 +55,10 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <h4 class="list-group-item-heading">Dr. {{ $consultation->medecin->patient->nom }} {{ $consultation->medecin->patient->prenom }}</h4>
-                                <p class="list-group-item-text">Specialite {{ $consultation->medecin->specialite }}</p>
+                                <p class="list-group-item-text">Spécialité {{ $consultation->medecin->specialite }}</p>
                             </div>
                             <div class="col-sm-6">
-                                <p class="list-group-item-text">{{ $consultation->PMs->first()->created_at }}</p>
+                                <p class="list-group-item-text">{{ date("d/m/Y", strtotime($consultation->PMs->first()->created_at)) }}</p>
                                 <p class="list-group-item-text">{{ $consultation->PMs->count() }} medicament(s)</p>
                             </div>
                         </div>

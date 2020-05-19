@@ -32,7 +32,7 @@
                                     {{ strtoupper($patient->nom) }}
                                     {{ $patient->prenom }}
                                 </h4>
-                                <h5>{{ $patient->cin }} - {{ date("m/d/yy", strtotime($patient->ddn)) }}</h5>
+                                <h5>{{ $patient->cin }} - {{ date("d/m/Y", strtotime($patient->ddn)) }}</h5>
                                 <hr style="margin:8px auto">
                                 <p>{{ strtoupper($patient->adresse) }}</p>
                             </div>

@@ -24,7 +24,7 @@
                                 {{ strtoupper($patient->nom) }}
                                 {{ $patient->prenom }}
                             </h4>
-                            <h5>{{ $patient->cin }} - {{ date("m/d/yy", strtotime($patient->ddn)) }}</h5>
+                            <h5>{{ $patient->cin }} - {{ date("d/m/Y", strtotime($patient->ddn)) }}</h5>
                             <hr style="margin:8px auto">
                             <p>{{ strtoupper($patient->adresse) }}</p>
                         </div>
@@ -65,7 +65,7 @@
                             @foreach( $examens as $EC )
                             <tr>
                                 <td>{{ json_decode($EC->bilan)->type }}</td>
-                                <td>{{ $EC->created_at }}</td>
+                                <td>{{ date("d/m/Y", strtotime($EC->created_at)) }}</td>
                                 @if (! $EC->confirmation )
                                 <td class="text-center" title="En attend"> <i class="fas fa-clock" style="color: orange;font-size: x-large;"></i> </td>
                                 <td> - </td>
@@ -77,7 +77,7 @@
                                 @else
                                 <td  class="text-center" title="Résultat ajouté"> <i class="fas fa-check-circle" style="color: green;font-size: x-large;"></i> </td>
                                 <td> {{ $EC->examinateur->nom }}</td>
-                                <td> {{ $EC->updated_at }} </td>
+                                <td> {{ date("d/m/Y", strtotime($EC->updated_at)) }} </td>
                                 <td class="d-flex justify-content-between">
                                     <a href="{{ route('examinateur.showExamslBilan', [ 'examen_id' => Crypt::encrypt($EC->id) ]) }}" class="btn btn-info col-6 mr-1" >Bilan</a>
                                     <a href="{{ route('examinateur.showExamsResultat', [ 'examen_id' => Crypt::encrypt($EC->id) ]) }}" class="btn btn-primary col-6 ml-1">Voir résultat</a>

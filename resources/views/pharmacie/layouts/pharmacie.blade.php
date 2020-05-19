@@ -72,7 +72,7 @@
 
     <footer>
         <div class="container text-center">
-            <p><strong>Copyright &copy; 2020 <a href='{{ route('accueil') }}' target='_blank'>Sihaty</a>.</strong></p>
+            <p><strong>Copyright &copy; MILAFI - 2020 .</strong></p>
         </div>
     </footer>
 
