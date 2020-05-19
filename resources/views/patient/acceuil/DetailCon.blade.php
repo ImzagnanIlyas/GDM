@@ -70,7 +70,7 @@
                                                     @endempty
                                                 </h5>
                                                 <hr style="margin:8px auto">
-                                                <h6>{{ $id->id }} - {{ date("d/m/Y H:i", strtotime($id->created_at)) }}</h6>
+                                                <h6>{{ $id->id }} - {{ date("d/m/Y", strtotime($id->created_at)) }}</h6>
                                             </div>
                                         </div>
                                     </div>
