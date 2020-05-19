@@ -122,7 +122,7 @@
                                                 <head>
                                                     <tr>
                                                         <th>Nom d'opération</th>
-                                                        <th class="col-5">Description</th>
+                                                        <th class="">Description</th>
                                                         <th>Date</th>
                                                         <th>Consultation liée</th>
                                                     </tr>
@@ -155,19 +155,17 @@
                                                     <th>Ménopause</th>
                                                     <th>Cycle</th>
                                                     <th>Gestation</th>
-                                                    <th></th>
                                                 </tr>
                                             </head>
                                             <body>
-
+                                                @foreach ($data as $ch)
                                                 <tr>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
+                                                <td>{{$ch->menarches}}</td>
+                                                <td>{{$ch->menopause}}</td>
+                                                <td>{{$ch->cycle}}</td>
+                                                <td>{{$ch->gestation}}</td>
                                                 </tr>
+@endforeach
 
                                         </table>
                                     </div>

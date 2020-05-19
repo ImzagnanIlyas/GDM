@@ -32,6 +32,7 @@ if(strcmp($request->get('current_password'), $request->get('new_password'))==0){
 }
 $request->validate([
     'current_password'=> 'required' ,
+    'new_password'=> 'required|confirmed',
     'new_password'=> 'required|confirmed'
 ]);
 $user = Auth::guard('patient')->user();

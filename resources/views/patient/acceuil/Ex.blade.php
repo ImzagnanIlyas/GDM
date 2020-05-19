@@ -39,12 +39,12 @@
                                         <table class="table dataTable my-0">
                                             <thead>
                                                 <tr>
-                                                    <th class="col-2">Type</th>
-                                                    <th class="col-2">Date</th>
-                                                    <th class="col-1">Résultat</th>
-                                                    <th class="col-2">Examinateur</th>
-                                                    <th class="col-2">Date du résultat</th>
-                                                    <th class="col-3 text-center">Action</th>
+                                                    <th class="">Type</th>
+                                                    <th class="">Date</th>
+                                                    <th class="">Résultat</th>
+                                                    <th class="">Examinateur</th>
+                                                    <th class="">Date du résultat</th>
+                                                    <th class=" text-center">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -57,16 +57,16 @@
                                                     <td> - </td>
                                                     <td> - </td>
                                                     <td class="d-flex justify-content-center">
-                                                        <a href="{{ route('Bilan' ,[$EC->id]) }}" class="btn btn-info col-6 mr-1">Bilan</a>
-                                                        <a href="" class="btn btn-primary disabled col-6 mr-1">Résultat</a>
+                                                        <a href="{{ route('Bilan' ,[$EC->id]) }}" class="btn btn-info  mr-1">Bilan</a>
+                                                        <a href="" class="btn btn-primary disabled  mr-1">Résultat</a>
                                                     </td>
                                                     @else
                                                     <td  class="text-center" title="Résultat ajouté"> <i class="fas fa-check-circle" style="color: green;font-size: x-large;"></i> </td>
                                                     <td> {{ $EC->examinateur->nom }}</td>
                                                     <td> {{ date('d/m/Y', strtotime($EC->updated_at)) }} </td>
                                                     <td class="d-flex justify-content-center">
-                                                        <a href="{{ route('Bilan' ,[$EC->id]) }}" class="btn btn-info col-6 mr-1" >Bilan</a>
-                                                        <a href="{{ route('Resultat' ,[$EC->id]) }}" class="btn btn-primary col-6 mr-1">Résultat</a>
+                                                        <a href="{{ route('Bilan' ,[$EC->id]) }}" class="btn btn-info  mr-1" >Bilan</a>
+                                                        <a href="{{ route('Resultat' ,[$EC->id]) }}" class="btn btn-primary  mr-1">Résultat</a>
                                                     </td>
                                                     @endif
                                                 </tr>

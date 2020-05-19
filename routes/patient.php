@@ -25,7 +25,7 @@ Route::group(['namespace' => 'Patient'], function() {
 
 
     Route::get('Antécédents/{block}','acceuil\acceuilController@ATCD')->name('ATCD')->middleware('patient.auth');
-    Route::get('Biométrie','acceuil\BioController@show')->name('Bio')->middleware('patient.auth');
+    Route::get('Biométrie','acceuil\BioController@index')->name('Bio')->middleware('patient.auth');
     Route::get('Consultations-médicales','acceuil\CMController@show')->name('CM')->middleware('patient.auth');
     Route::get('Ordonnances','acceuil\OrdController@show')->name('Ord')->middleware('patient.auth');
     Route::get('Examens','acceuil\ExController@show')->name('Examens')->middleware('patient.auth');
@@ -35,6 +35,7 @@ Route::group(['namespace' => 'Patient'], function() {
 
     Route::get('mescon','acceuil\mesconController@index')->name('mescon')->middleware('patient.auth');
     Route::get('detail/{id}','acceuil\mesconController@show')->name('detail')->middleware('patient.auth');
+
 
     Route::get('Examengeneral/{id}','acceuil\ExController@showEG')->name('Examengeneral')->middleware('patient.auth');
     Route::get('Examenspecialise/{id}','acceuil\ExController@showES')->name('Examenspecialise')->middleware('patient.auth');

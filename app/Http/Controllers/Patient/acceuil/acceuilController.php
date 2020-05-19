@@ -44,6 +44,12 @@ class acceuilController extends Controller
             usort($data, function($a, $b) {
                 return $b->date_operation <=> $a->date_operation;
             });
+        }elseif ($block === "Gynéco") {
+            $atcd = json_decode($patient->atcd);
+            $data = $atcd->gyneco;
+            usort($data, function($a, $b) {
+                return $b->cycle <=> $a->cycle;
+            });
         }
 
         return view('patient.acceuil.ATCD', [

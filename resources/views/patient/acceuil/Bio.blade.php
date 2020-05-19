@@ -47,6 +47,7 @@
                                                     <th>Taille</th>
                                                     <th>Poids</th>
                                                     <th>Date</th>
+                                                    <th class="">Détail</th>
 
                                                 </tr>
                                             </thead>
@@ -57,6 +58,7 @@
                                                         <td>{{ $tmp->taille }}</td>
                                                         <td>{{ $tmp->poids }}</td>
                                                         <td>{{ $tmp->created_at }}</td>
+                                                        <td class=""><a @if($tmp->id) href="{{ route('Examengeneral' ,[$tmp->id]) }}" class="btn btn-primary" @else class="btn btn-primary disabled" @endif>Afficher</a></td>
 
                                                     </tr>
                                                 @endforeach

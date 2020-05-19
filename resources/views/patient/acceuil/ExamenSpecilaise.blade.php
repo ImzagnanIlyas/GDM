@@ -106,11 +106,11 @@
                                 </div>
                             </div>
                         @elseif( $resultat->type === 'pdf')
-                            @php$i = 1; @endphp
+                            @php $i = 1; @endphp
                                 <ul id="files">
                                     @foreach( $resultat->pdf as $pdf )
                                         <li>
-                                            <a href="{{ route('medecin.consultation.ExamSpecialResultat.PDF', [ 'consultation_id' => $consultation->id, 'examen_id' => $examen->id, 'i' => $i ]) }}"
+                                            <a href="{{ route('Resultat.PDF', [ 'consultation_id' => $consultation->id, 'examen_id' => $examen->id, 'i' => $i ]) }}"
                                                 target="_blank" class="file_link">
                                                 <div class="link_icon">
                                                     <i class="fas fa-file-pdf"></i>
@@ -155,7 +155,7 @@
                                     @endforeach
                                 </div>
                             @elseif( $resultat->type === 'audio')
-                                @php$i = 1; @endphp
+                                @php $i = 1; @endphp
                                     <ul id="audio" class="flex-column bd-highlight mb-3">
                                         @foreach( $resultat->audio as $audio )
                                             <li>
