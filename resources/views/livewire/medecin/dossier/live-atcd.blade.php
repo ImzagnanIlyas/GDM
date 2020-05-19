@@ -1,4 +1,4 @@
-<div style="height: 400px">
+<div style="min-height: 400px">
     @if ($n == 1)
         {{-- medicament --}}
         <div class="col-md-12 d-flex justify-content-between align-items-center mt-2">
@@ -29,7 +29,7 @@
                             <td>{{$pres->rythme}}</td>
                             <td>{{ date('d/m/Y',strtotime($pres->date_debut)) }}</td>
                             <td>{{$pres->duree}}</td>
-                            <td>{{$pres->commentaire}}</td>
+                            <td title="{{$pres->commentaire}}">{{ substr($pres->commentaire,0,25) }} @if( !empty($pres->commentaire))  ... @endif</td>
                         </tr>
                     @endforeach
             </table>

@@ -1,4 +1,4 @@
-<div>
+<div style="min-height: 400px">
     <div class="col-md-12 d-flex justify-content-between mt-3">
         <div class="col-md-5 d-flex justify-content-start align-items-center">
             <img src="{{ asset('img/medecin/blood.png') }}" alt="Smiley face" height="50">
@@ -6,7 +6,7 @@
         </div>
         <input class="form-control col-2" type="text" placeholder="Rechercher par date" wire:model="searchInput" onfocus="(this.type='date')" onblur="(this.type='text')">
     </div>
-    <div class="col-md-12 d-flex justify-content-center mt-3">
+    <div class="col-md-12 d-flex flex-column align-items-center mt-3">
         @if ($EG->isEmpty())
             <div class="alert alert-warning mt-4" role="alert">
                 Les données n'existent pas pour ce patient.
