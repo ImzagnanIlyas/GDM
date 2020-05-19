@@ -73,7 +73,7 @@
             <td>
                 @if ( empty($consultation->EG->tension_arterielle) )
 
-                        <input role="edit" type="number" name="ta" id="ta" min="0" max="100" class="form-control">
+                        <input role="edit" type="text" name="ta" id="ta" class="form-control">
 
 
                 @else
