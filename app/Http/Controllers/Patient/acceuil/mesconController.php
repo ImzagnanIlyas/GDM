@@ -17,7 +17,7 @@ class mesconController extends Controller
     public function show($id)
     {
         $patient = Auth::guard('patient')->user();
-        $consultations =  Consultation::select('id')->where('patient_id',$patient->id)->get()->toArray();
+        $consultations =  Consultation::select('*')->where('patient_id',$patient->id)->get()->toArray();
         $id=Consultation::find($id);
 
         return view('patient.acceuil.DetailCon' , compact('id') , [

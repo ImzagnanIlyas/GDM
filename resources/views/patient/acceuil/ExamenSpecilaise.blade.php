@@ -110,7 +110,7 @@
                                 <ul id="files">
                                     @foreach( $resultat->pdf as $pdf )
                                         <li>
-                                            <a href="{{ route('Resultat.PDF', [ 'consultation_id' => $consultation->id, 'examen_id' => $examen->id, 'i' => $i ]) }}"
+                                            <a href="{{ route('Resultat.PDF', [  $consultation->id,  $examen->id,  $i ]) }}"
                                                 target="_blank" class="file_link">
                                                 <div class="link_icon">
                                                     <i class="fas fa-file-pdf"></i>
