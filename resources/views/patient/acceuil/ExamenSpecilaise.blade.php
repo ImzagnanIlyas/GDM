@@ -15,19 +15,15 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/untitled.css') }}">
 
 </head>
-
+@php
+    $resultat = json_decode($examen->resultat);
+    $data = $resultat->type;
+@endphp
 <body id="page-top">
     <div id="wrapper">
         <div class="d-flex flex-column" id="content-wrapper">
             <div class="text-white" id="content" style="width: 75;">
                 @include('patient.layouts.nav-horizontal')
-
-
-                @php
-                    foreach($examen as $examen){
-                    $resultat = json_decode($id->resultat);
-                    $data=$resultat->type;}
-                @endphp
   <div class="container">
  <div class="row">
  <div class="col-sm-8 col-md-12 d-flex justify-content-center text-dark mb-3" style="margin-top: 6rem !important">
@@ -110,7 +106,7 @@
                                 <ul id="files">
                                     @foreach( $resultat->pdf as $pdf )
                                         <li>
-                                            <a href="{{ route('Resultat.PDF', [ 'consultation_id' => $consultation->id, 'examen_id' => $examen->id, 'i' => $i ]) }}"
+                                            <a href="{{ route('ResultatES.PDF', ['id' => $examen->id, 'i' => $i ]) }}"
                                                 target="_blank" class="file_link">
                                                 <div class="link_icon">
                                                     <i class="fas fa-file-pdf"></i>
@@ -125,7 +121,7 @@
                                                 </div>
                                             </a>
                                         </li>
-                                        @php$i++; @endphp
+                                        @php $i++; @endphp
                                         @endforeach
                                 </ul>
                             @elseif( $resultat->type === 'image')
