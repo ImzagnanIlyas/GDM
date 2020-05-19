@@ -29,7 +29,7 @@
             @if ( empty($consultation->histoire) )
                 <form method="POST" action="{{ route('medecin.consultation.storeInfo', [ 'id' =>  Crypt::encrypt($consultation->id) ]) }}" class="form-inline">
                     @csrf
-                    <input role="edit" type="text" name="histoire" id="histoire" class="form-control" aria-describedby="helpId">
+                    <input role="edit" type="text" name="histoire" id="histoire" class="form-control col-10" aria-describedby="helpId">
                     &emsp;<button role="edit" class="btn btn-primary" type="submit"><i class="far fa-check-circle"></i></button>
                 </form>
             @else
@@ -43,7 +43,7 @@
             @if ( empty($consultation->strategie_diagnostique) )
                 <form method="POST" action="{{ route('medecin.consultation.storeInfo', [ 'id' =>  Crypt::encrypt($consultation->id) ]) }}" class="form-inline">
                     @csrf
-                    <input role="edit" type="text" name="sd" id="sd" class="form-control" aria-describedby="helpId">
+                    <input role="edit" type="text" name="sd" id="sd" class="form-control col-10" aria-describedby="helpId">
                     &emsp;<button role="edit" class="btn btn-primary" type="submit"><i class="far fa-check-circle"></i></button>
                 </form>
             @else
@@ -57,7 +57,7 @@
             @if ( empty($consultation->diagnostic_retenu) )
                 <form method="POST" action="{{ route('medecin.consultation.storeInfo', [ 'id' =>  Crypt::encrypt($consultation->id) ]) }}" class="form-inline">
                     @csrf
-                    <input role="edit" type="text" name="dr" id="dr" class="form-control" aria-describedby="helpId">
+                    <input role="edit" type="text" name="dr" id="dr" class="form-control col-10" aria-describedby="helpId">
                     &emsp;<button role="edit" class="btn btn-primary" type="submit"><i class="far fa-check-circle"></i></button>
                 </form>
             @else
