@@ -11,7 +11,7 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th class="col-2">Nom du patient</th>
+                        <th class="col-3">Nom du patient</th>
                         <th>Motif</th>
                         <th>Date</th>
                         <th>État</th>
