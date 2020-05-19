@@ -20,9 +20,9 @@ class CreateConsultationsTable extends Migration
             $table->date('date');
             $table->string('lieu');
             $table->string('motif');
-            $table->string('histoire')->nullable();
-            $table->string('strategie_diagnostique')->nullable();
-            $table->string('diagnostic_retenu')->nullable();
+            $table->text('histoire')->nullable();
+            $table->text('strategie_diagnostique')->nullable();
+            $table->text('diagnostic_retenu')->nullable();
             $table->mediumText('ordonnance')->nullable();
             $table->mediumText('compte_rendu')->nullable();
             $table->timestamps();
