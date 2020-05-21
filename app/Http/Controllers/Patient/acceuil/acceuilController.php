@@ -32,6 +32,7 @@ class acceuilController extends Controller
                                 ])
                             ->orderByDesc('prescription_medicamenteuses.created_at')
                             ->paginate(4);
+
         }elseif ($block === "habitudes") {
             $atcd = json_decode($patient->atcd);
             $data = $atcd->habitudes;

@@ -109,9 +109,9 @@
                         {{session('error')}}
                     </div>
                     @endif
-                    @if(session('message'))
+                    @if(session('mes'))
                     <div class="alert alert-primary" role="alert">
-                        {{session('message')}}
+                        {{session('mes')}}
                     </div>
                     @endif
                     <form action="{!! route('update') !!}" method="post">
@@ -132,7 +132,7 @@
                         <div class="form-group row">
                             <label class="col-lg-4 col-form-label form-control-label col">Nouveau mot de passe</label>
                             <div class="col-lg-4">
-                                <input class="form-control" type="password" value="" name="new_password" id="new_password">
+                                <input class="form-control" type="password" value="" name="pass" id="pass">
                             </div>
                         </div>
                         <div class="form-group row">

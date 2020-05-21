@@ -70,7 +70,7 @@
                                                     @endempty
                                                 </h5>
                                                 <hr style="margin:8px auto">
-                                                <h6>{{ $id->id }} - {{ date("d/m/Y H:i", strtotime($id->created_at)) }}</h6>
+                                                <h6>{{ $id->id }} - {{ date("d/m/Y", strtotime($id->created_at)) }}</h6>
                                             </div>
                                         </div>
                                     </div>
@@ -122,21 +122,13 @@
                                                         readonly>
                                                 </div>
                                             </div>
-                                            <div class="form-group row">
-                                                <label class="col-lg-3 col-form-label form-control-label colo">Compte
-                                                    rendu</label>
-                                                <div class="col-lg-9">
-                                                    <input class="form-control" type="text"
-                                                        value="{{ $id->compte_rendu }}" style="height:80px;"
-                                                        readonly>
-                                                </div>
-                                            </div>
 
                                             <div class="form-group row">
                                                 <label class="col-lg-3 col-form-label form-control-label"></label>
                                                 <div class="col-lg-9">
                                                     <a @if($id->EG) href="{{ route('Examengeneral' ,[$id->EG->id]) }}" class="btn btn-primary" @else class="btn btn-primary disabled" @endif>Examen Général</a>
                                                     <a href="{{ route('Examenspe' , ['id' => $id->id]) }}" class="btn btn-primary @if($id->ESs->isEmpty()) disabled @endif">Examen spécialisé</a>
+                                                    <a href="{{ route('compt_rendu', ['consultation_id' => $id->id]) }}" class="btn btn-primary @empty($id->compte_rendu) disabled @endempty">Compt rendu </a>
                                                     <a href="{{ route('Ord-txt', ['consultation_id' => $id->id]) }}" class="btn btn-primary @empty($id->ordonnance) disabled @endempty">Ordonnance</a>
                                                 </div>
                                             </div>

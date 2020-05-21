@@ -59,7 +59,7 @@
                                 </p>
                             </div>
                             <div class="col-auto">
-                                <p id="timedate">{{ date("d-m-Y") }} {{ date("H:i") }}</p>
+                                <p id="timedate">{{ date("d/m/Y") }} {{ date("H:i") }}</p>
                             </div>
                         </div>
                     </div>

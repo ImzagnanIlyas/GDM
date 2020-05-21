@@ -57,9 +57,9 @@
                                                         <td> <a href="">{{ $tmp->consultation->id }}</a> </td>
                                                         <td>{{ $tmp->taille }}</td>
                                                         <td>{{ $tmp->poids }}</td>
-                                                        <td>{{ $tmp->created_at }}</td>
-                                                        <td><a @if($tmp->id) href="{{ route('Examengeneral' ,[$tmp->id]) }}" class="btn btn-primary" @else
-                                                             class="btn btn-primary disabled" @endif>Afficher</a></td>
+                                                        <td>{{ date("d/m/Y", strtotime($tmp->created_at)) }}</td>
+                                                        <td><a href="{{ route('Examengeneral' ,[$tmp->id]) }}" class="btn btn-primary"
+                                                            >Afficher</a></td>
 
                                                     </tr>
                                                 @endforeach

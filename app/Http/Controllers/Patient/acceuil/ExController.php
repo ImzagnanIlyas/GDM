@@ -38,19 +38,26 @@ class ExController extends Controller
 
     public function showES($id)
     {
+        // $patient = Auth::guard('patient')->user();
+        // $consultations =  Consultation::select('id')
+        // ->where('patient_id',$patient->id)->get()->toArray();
+        // $examen= Examen_specialise::select('*')
+        // ->whereIn('consultation_id' , array_values( $consultations))->get();
+        // $id=Examen_specialise::find($id);
         $patient = Auth::guard('patient')->user();
-        $consultations =  Consultation::select('id')
-        ->where('patient_id',$patient->id)->get()->toArray();
-        $examen= Examen_specialise::select('*')
-        ->whereIn('consultation_id' , array_values( $consultations))->get();
-        $id=Examen_specialise::find($id);
+        $examen = Examen_specialise::findOrFail($id);
         return view('patient.acceuil.ExamenSpecilaise' , compact('id') , [
-            'examen' => $examen ,
-            'consultations'=>$consultations ,
-            'consultation'=> $id->consultation ,
-            'id'=>$id ,
-            'patient'=>$patient
+            'examen' => $examen,
+            'consultation' => $examen->consultation,
+            'patient' => $patient,
         ]);
+    }
+
+    public function showESPDF($id, $i)
+    {
+        $examen = Examen_specialise::findOrFail($id);
+        $resultat = json_decode($examen->resultat);
+        return response()->file( public_path('storage/'.$resultat->pdf[$i-1]) );
     }
 
     public function showExamenS($id)

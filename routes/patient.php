@@ -32,13 +32,14 @@ Route::group(['namespace' => 'Patient'], function() {
     Route::get('Problèmes','acceuil\prblmController@show')->name('prblm')->middleware('patient.auth');
 
     Route::get('Ordonnance/{consultation_id}','acceuil\OrdController@showTxt')->name('Ord-txt')->middleware('patient.auth');
-
+    Route::get('compt_rendu/{consultation_id}','acceuil\OrdController@showCompt_rendu')->name('compt_rendu')->middleware('patient.auth');
     Route::get('mescon','acceuil\mesconController@index')->name('mescon')->middleware('patient.auth');
     Route::get('detail/{id}','acceuil\mesconController@show')->name('detail')->middleware('patient.auth');
 
 
     Route::get('Examengeneral/{id}','acceuil\ExController@showEG')->name('Examengeneral')->middleware('patient.auth');
     Route::get('Examenspecialise/{id}','acceuil\ExController@showES')->name('Examenspecialise')->middleware('patient.auth');
+    Route::get('Examenspecialise/{id}/PDF{i}', 'acceuil\ExController@showESPDF')->name('ResultatES.PDF')->middleware('patient.auth');
     Route::get('Examenspe/{id}','acceuil\ExController@showExamenS')->name('Examenspe')->middleware('patient.auth');
 
     Route::get('profile','acceuil\profileController@show')->name('profile')->middleware('patient.auth');

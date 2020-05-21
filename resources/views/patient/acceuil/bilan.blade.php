@@ -81,7 +81,7 @@
                                                     @endempty
                                                 </h5>
                                                 <hr style="margin:8px auto">
-                                                <h6>{{ $consultation->id }} - {{ date("d/m/Y H:i", strtotime($consultation->created_at)) }}</h6>
+                                                <h6>{{ $consultation->id }} - {{ date("d/m/Y", strtotime($consultation->created_at)) }}</h6>
                                             </div>
                                         </div>
                                     </div>

@@ -23,21 +23,26 @@ class profileController extends Controller
     public function updatePwd(){
         return view('patient.acceuil.profile');
     }
-    public function edit(Request $request){
-if(!(Hash::check($request->get('current_password'), Auth::guard('patient')->user()->password))){
-    return back()->with('error' , 'Your current password does not match with what you provided ');
+    public function edit(){
+        if(strcmp(request('current_password'), request('pass'))==0){
+            return back()->with('error' , 'Votre ancien mot de passe ne doit pas etre le meme que le nouveau mot de passe  ');
+        }
+        if(!strcmp(request('pass'), request('new_password'))==0){
+            return back()->with('error' , 'Le nouveau mot de passe doit etre le meme que le mode de passe confirmé');
+        }
+if(!(Hash::check(request('current_password'), Auth::guard('patient')->user()->password))){
+    return back()->with('error' , ' Votre ancien mot de passe est incorrecte  ');
 }
-if(strcmp($request->get('current_password'), $request->get('new_password'))==0){
-    return back()->with('error' , 'Your current password cannot be same with the new password');
-}
-$request->validate([
-    'current_password'=> 'required' ,
-    'new_password'=> 'required|confirmed',
-    'new_password'=> 'required|confirmed'
+
+request()->validate([
+    'pass'=> 'required|string|min:8|confirmed' ,
+
 ]);
+
+
 $user = Auth::guard('patient')->user();
-$user->password = bcrypt($request->get('new_password'));
+$user->password = bcrypt(request('pass'));
 $user->save();
-return back()->with('message','password changed successfully');
-    }
+return back()->with('mes' , ' 3la slamtna  ');
 }
+    }

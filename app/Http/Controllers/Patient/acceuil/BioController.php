@@ -10,9 +10,9 @@ class BioController extends Controller
     public function index()
     {
         $patient = Auth::guard('patient')->user();
-        $EG = Examen_general::
-                join('consultations' , 'consultations.id' , 'examen_generals.consultation_id')
-                ->where('consultations.patient_id', $patient->id)
+        $consultations =  Consultation::select('id')->where('patient_id',$patient->id)->get()->toArray();
+        $EG = Examen_general::select('*')
+                ->whereIn('consultation_id' , array_values( $consultations))
                 ->orderByDesc('examen_generals.created_at')
                 ->paginate(4);
         return view('patient.acceuil.Bio', [

@@ -73,7 +73,7 @@
                                                     @endempty
                                                 </h5>
                                                 <hr style="margin:8px auto">
-                                                <h6>{{ $consultation->id }} - {{ date("d/m/Y H:i", strtotime($consultation->created_at)) }}</h6>
+                                                <h6>{{ $consultation->id }} - {{ date("d/m/Y", strtotime($consultation->created_at)) }}</h6>
                                             </div>
                                         </div>
                                     </div>
@@ -106,7 +106,7 @@
                                         <tbody>
                                             @foreach($examen as $examen)
                                                 <tr>
-                                                    <td>{{ $examen->created_at}}</td>
+                                                    <td>{{ date("d/m/Y", strtotime($examen->created_at)) }}</td>
                                                     <td>{{ $examen->nom }}</td>
                                                     <td><a class="btn btn-primary @empty($examen->resultat) disabled @endempty" href="{{ route('Examenspecialise' ,[$examen->id]) }}">Résultat</a>
                                                     </td>

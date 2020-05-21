@@ -27,4 +27,13 @@ class OrdController extends Controller
             'consultation' => Consultation::findOrFail($consultation_id)
         ]);
     }
+    public function showCompt_rendu($id)
+    {
+        $patient = Auth::guard('patient')->user();
+        $consultation = Consultation::find($id);
+        return view('patient.acceuil.compt_rendu', compact('id'), [
+            'consultation' => $consultation,
+            'patient' => $patient,
+        ]);
+    }
 }

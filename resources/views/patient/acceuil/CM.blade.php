@@ -42,9 +42,9 @@
                                             <thead>
                                                 <tr class="text-center">
                                                     <th>ID</th>
-                                                    <th class="col-3">Médecin</th>
+                                                    <th class="">Médecin</th>
                                                     <th>Lieu</th>
-                                                    <th class="col-3">Motif</th>
+                                                    <th class="">Motif</th>
                                                     <th>Date</th>
                                                     <th>Détails</th>
                                                 </tr>
